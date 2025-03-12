@@ -1,3 +1,4 @@
+/* Estilos generales */
 * {
     margin: 0;
     padding: 0;
@@ -12,6 +13,7 @@ body {
     flex-direction: column;
 }
 
+/* Header */
 header {
     background-color: #8b0000;
     color: white;
@@ -20,6 +22,7 @@ header {
     margin-bottom: 1rem;
 }
 
+/* Navegación */
 nav {
     background-color: #333;
     padding: 1rem;
@@ -45,31 +48,19 @@ nav a:hover {
     color: #ffd700;
 }
 
-.ofertas {
-    background-color: #ffd700;
-    padding: 1.5rem;
-    margin: 1rem;
-    border-radius: 10px;
-    text-align: center;
-}
-
-.menu-categoria {
-    margin: 1rem;
+/* Contenido principal */
+.main-content {
     flex: 1;
+    padding: 1rem;
 }
 
-.menu-categoria h2 {
-    color: #8b0000;
-    margin-bottom: 1rem;
-    border-bottom: 2px solid #8b0000;
-    padding-bottom: 0.5rem;
-}
-
+/* Grid de productos */
 .productos-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 1.5rem;
-    padding: 0 1rem;
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
 .producto {
@@ -98,6 +89,7 @@ nav a:hover {
     float: right;
 }
 
+/* Footer */
 footer {
     background-color: #333;
     color: white;
@@ -106,16 +98,10 @@ footer {
     margin-top: auto;
 }
 
-/* Media Queries para móviles */
+/* Responsive */
 @media (max-width: 768px) {
     nav ul {
-        flex-direction: column;
-        text-align: center;
-        gap: 0.5rem;
-    }
-    
-    .productos-grid {
-        grid-template-columns: 1fr;
+        gap: 0.8rem;
     }
     
     .producto {
@@ -128,12 +114,13 @@ footer {
 }
 
 @media (max-width: 480px) {
-    .ofertas {
-        margin: 0.5rem;
-        padding: 1rem;
+    nav ul {
+        flex-direction: column;
+        text-align: center;
+        gap: 0.5rem;
     }
     
-    .producto h3 {
-        font-size: 1rem;
+    .productos-grid {
+        grid-template-columns: 1fr;
     }
 }
