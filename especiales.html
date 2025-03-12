@@ -61,5 +61,24 @@
   <footer>
     <p>&copy; 2023 La Taberna del Puerto - Todos los derechos reservados</p>
   </footer>
+
+  <script>
+    // JavaScript para manejar el menú hamburguesa
+    const navToggle = document.querySelector('.nav-toggle');
+    const navMenu = document.querySelector('#navMenu');
+
+    navToggle.addEventListener('click', () => {
+      navMenu.classList.toggle('show');
+      navToggle.classList.toggle('active');
+    });
+
+    // Cerrar menú al hacer clic en un enlace (útil en móviles)
+    document.querySelectorAll('#navMenu a').forEach(link => {
+      link.addEventListener('click', () => {
+        navMenu.classList.remove('show');
+        navToggle.classList.remove('active');
+      });
+    });
+  </script>
 </body>
 </html>
