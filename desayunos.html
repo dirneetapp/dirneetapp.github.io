@@ -1,55 +1,26 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Desayunos</title>
-    <link rel="stylesheet" href="styles.css">
-</head>
-<body>
-    <header>
-        <nav class="navbar">
-            <div class="logo">Restaurante</div>
-            <div class="hamburger">☰</div>
-            <ul class="nav-menu">
-                <li><a href="index.html">Inicio</a></li>
-                <li><a href="desayunos.html">Desayunos</a></li>
-                <li><a href="bocadillos.html">Bocadillos</a></li>
-                <li><a href="vermuts.html">Vermuts</a></li>
-                <li><a href="tapas.html">Tapas</a></li>
-                <li><a href="torradas.html">Torradas</a></li>
-                <li><a href="tablas.html">Tablas</a></li>
-                <li><a href="especiales.html">Especiales</a></li>
-                <li><a href="trio.html">Trío</a></li>
-                <li><a href="croquetas.html">Croquetas</a></li>
-                <li><a href="postres.html">Postres</a></li>
-            </ul>
-        </nav>
-    </header>
+document.getElementById('menu-toggle').addEventListener('click', function() {
+    var menu = document.getElementById('menu');
+    menu.classList.toggle('active');
+});
 
-    <main>
-        <h1>Desayunos</h1>
-        <div class="menu-grid">
-            <div class="menu-item">
-                <h3>Café con Croissant</h3>
-                <p>Café recién hecho acompañado de un croissant crujiente recién horneado</p>
-                <div class="price">3,50€</div>
-            </div>
-            <div class="menu-item">
-                <h3>Desayuno Completo</h3>
-                <p>Café, zumo natural, tostada con tomate y jamón ibérico</p>
-                <div class="price">6,90€</div>
-            </div>
-        </div>
-    </main>
+document.getElementById('form-producto').addEventListener('submit', function(event) {
+    event.preventDefault();
+    var categoria = document.getElementById('categoria').value;
+    var nombre = document.getElementById('nombre').value;
+    var descripcion = document.getElementById('descripcion').value;
+    var precio = document.getElementById('precio').value;
 
-    <script>
-        const hamburger = document.querySelector(".hamburger");
-        const navMenu = document.querySelector(".nav-menu");
+    var producto = document.createElement('div');
+    producto.className = 'producto';
+    producto.innerHTML = `<h3>${nombre}</h3><p>${descripcion}</p><p class="precio">${precio}€</p>`;
 
-        hamburger.addEventListener("click", () => {
-            navMenu.classList.toggle("active");
-        });
-    </script>
-</body>
-</html>
+    document.getElementById(categoria).appendChild(producto);
+});
+
+document.getElementById('borrar-producto').addEventListener('click', function() {
+    var categoria = document.getElementById('categoria').value;
+    var productos = document.getElementById(categoria).getElementsByClassName('producto');
+    if (productos.length > 0) {
+        productos[productos.length - 1].remove();
+    }
+});
