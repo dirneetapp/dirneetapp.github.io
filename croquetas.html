@@ -34,9 +34,21 @@
     <h1><i class="fa-solid fa-egg"></i> Croquetas</h1>
     <div class="menu-grid">
         <div class="menu-item">
-            <h3>Croquetas de Jamón</h3>
-            <p>Cremosas con jamón ibérico</p>
-            <span class="price">5.20€</span>
+            <div class="item-header">
+        <span class="item-title">Café con Leche</span>
+        <span class="item-price">2.50</span>
+    </div>
+    <p class="item-description">Café arábica con leche entera</p>
+    <button class="add-to-cart" 
+            onclick="cart.addToCart({
+                id: 'cafe-leche',
+                name: 'Café con Leche',
+                price: 2.50,
+                category: 'desayunos'
+            })">
+        Añadir al carrito
+    </button>
+</div>
         </div>
         <div class="menu-item">
             <h3>Croquetas de Bacalao</h3>
@@ -48,4 +60,15 @@
 
 <script src="script.js"></script>
 </body>
+<!-- Carrito de compras -->
+<div class="cart-toggle">🛒</div>
+<div class="cart-container">
+    <div class="cart-content">
+        <h2>Tu Pedido</h2>
+        <div id="cart-items" class="cart-items"></div>
+        <p>Total: <span id="cart-total">0.00</span>€</p>
+        <input type="number" id="table-number" placeholder="Número de mesa" min="1">
+        <button id="checkout-btn" onclick="cart.checkout()">Enviar Pedido</button>
+    </div>
+</div>
 </html>
