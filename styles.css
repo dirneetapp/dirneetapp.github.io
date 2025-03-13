@@ -127,4 +127,45 @@ h1 i {
     .menu-grid {
         grid-template-columns: 1fr;
     }
+/* Estilos para enlaces */
+.menu-link {
+    color: #b85c40;
+    text-decoration: underline;
+    font-weight: bold;
+    display: block;
+    margin: 20px 0;
+    text-align: center;
 }
+
+.cta-button {
+    display: inline-block;
+    background: #b85c40;
+    color: white !important;
+    padding: 12px 25px;
+    border-radius: 25px;
+    text-decoration: none !important;
+    transition: transform 0.3s ease;
+    margin: 20px 0;
+}
+
+.cta-button:hover {
+    transform: translateY(-2px);
+    background: #9d4a32;
+}
+
+.category-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 40px;
+}
+
+.related-category {
+    background: #fff;
+    padding: 10px 20px;
+    border-radius: 30px;
+    text-decoration: none;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    font-size: 0.9em;
+}    
+
