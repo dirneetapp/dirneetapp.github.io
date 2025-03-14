@@ -167,5 +167,101 @@ h1 i {
     text-decoration: none;
     box-shadow: 0 2px 5px rgba(0,0,0,0.1);
     font-size: 0.9em;
-}    
+} 
+/* Estilos para sección de surtidos */
+.surtidos-title {
+    text-align: center;
+    margin: 50px 0 30px;
+    color: #6b4226;
+    font-size: 2em;
+    position: relative;
+}
+
+.surtidos-title::after {
+    content: "";
+    display: block;
+    width: 100px;
+    height: 3px;
+    background: #b85c40;
+    margin: 10px auto;
+}
+
+.surtidos-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+    margin-top: 20px;
+}
+
+.surtido-item {
+    background: #fff;
+    padding: 25px;
+    border-radius: 15px;
+    border: 2px solid #b85c40;
+    position: relative;
+    transition: transform 0.3s ease;
+}
+
+.surtido-item:hover {
+    transform: translateY(-5px);
+}
+
+.surtido-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.surtido-price {
+    font-size: 1.4em;
+    color: #b85c40;
+    font-weight: bold;
+}
+
+.surtido-description {
+    font-size: 0.95em;
+    color: #666;
+    margin-bottom: 15px;
+}
+
+.surtido-details {
+    padding-left: 20px;
+    list-style-type: none;
+}
+
+.surtido-details li {
+    position: relative;
+    margin: 8px 0;
+    padding-left: 25px;
+    font-size: 0.9em;
+}
+
+.surtido-details li::before {
+    content: "✔";
+    color: #b85c40;
+    position: absolute;
+    left: 0;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .surtidos-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .surtido-item {
+        margin: 0 15px;
+    }
+}
+
+/* Efecto destacado */
+.highlight-surtido {
+    animation: pulseBorder 2s infinite alternate;
+}
+
+@keyframes pulseBorder {
+    0% { box-shadow: 0 0 0 0 rgba(184,92,64,0.4); }
+    100% { box-shadow: 0 0 0 10px rgba(184,92,64,0); }
+}   
 }
