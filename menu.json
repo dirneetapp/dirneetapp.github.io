@@ -162,91 +162,91 @@
           "id": "Queso Curado",
           "name": "Queso Curado",
           "description": "",
-          "price": 4.15
+          "price": 5.4
         },
         {
           "id": "Fuet",
           "name": "Fuet",
           "description": "",
-          "price": 3.9
+          "price": 4.8
         },
         {
           "id": "Jamon Dulce",
           "name": "Jamon Dulce",
           "description": "",
-          "price": 3.6
+          "price": 4.6
         },
         {
           "id": "Atun",
           "name": "Atun",
           "description": "",
-          "price": 4.1
+          "price": 5.2
         },
         {
           "id": "Tortilla de Patatas",
           "name": "Tortilla de Patatas",
           "description": "Tortilla de patatas recién hecha",
-          "price": 4.35
+          "price": 5.75
         },
         {
           "id": "Jamon de Reserva",
           "name": "Jamon de Reserva",
           "description": "",
-          "price": 5.4
+          "price": 5.95
         },
         {
           "id": "Butifarra de L'Emporda",
           "name": "Butifarra de L'Emporda",
           "description": "",
-          "price": 4.95
+          "price": 5.3
         },
         {
           "id": "Chorizo Iberico",
           "name": "Chorizo Iberico",
           "description": "",
-          "price": 5.05
+          "price": 5.4
         },
         {
           "id": "Pollo",
           "name": "Pollo",
           "description": "",
-          "price": 6.1
+          "price": 6.3
         },
         {
           "id": "Lomo",
           "name": "Lomo",
           "description": "",
-          "price": 5.7
+          "price": 6.2
         },
         {
           "id": "Frankfurt",
           "name": "Frankfurt",
           "description": "",
-          "price": 5.35
+          "price": 5.5
         },
         {
           "id": "Bacon",
           "name": "Bacon",
           "description": "",
-          "price": 5.1
+          "price": 5.5
         },
         {
           "id": "Salchichas de Pages",
           "name": "Salchichas de Pages",
           "description": "",
-          "price": 5.5
+          "price": 5.85
         },
         {
           "id": "Butifarra de Pages",
           "name": "Butifarra de Pages",
           "description": "",
-          "price": 5.85
+          "price": 6.1
         },
         {
           "id": "Sobrasada de Mallorca",
           "name": "Sobrasada de Mallorca",
           "description": "",
-          "price": 4.95
+          "price": 5.15
         },
         {
           "id": "Chistorra",
@@ -258,7 +258,7 @@
           "id": "Butifarra Negra",
           "name": "Butifarra Negra",
           "description": "",
-          "price": 4.85
+          "price": 5.2
         },
         {
           "id": "Extra de Queso",
@@ -322,10 +322,10 @@
               "price": 2.65
             },
             {
-              "id": "Bacon con Queso",
-              "name": "Bacon con Queso",
+              "id": "Bacon",
+              "name": "Bacon",
               "description": "",
-              "price": 3.6
+              "price": 3.3
             },
             {
               "id": "Chorizo Iberico",
@@ -343,31 +343,37 @@
               "id": "Salchichas",
               "name": "Salchichas",
               "description": "",
-              "price": 4.35
+              "price": 3.35
             },
             {
               "id": "Pollo",
               "name": "Pollo",
               "description": "",
-              "price": 4.4
+              "price": 3.9
             },
             {
               "id": "Lomo",
               "name": "Lomo",
               "description": "",
-              "price": 4.05
+              "price": 3.85
             },
             {
               "id": "Chistorra",
               "name": "Chistorra",
               "description": "",
-              "price": 4.45
+              "price": 3.9
             },
             {
               "id": "Butifarra Negra",
               "name": "Butifarra Negra",
               "description": "",
               "price": 2.75
+            },
+            {
+              "id": "Mini de Frankfurt",
+              "name": "Mini de Frankfurt",
+              "description": "",
+              "price": 2.8
             },
             {
               "id": "Extra de Queso",
@@ -542,7 +548,7 @@
           "id": "Fries&Chips Sergio's",
           "name": "Fries&Chips Sergio's",
           "description": "Cebolla Caramelizada,Bacon y Queso Chedar",
-          "price": 2.5
+          "price": 4.95
         },
         {
           "id": "Callos a la Andaluza",
@@ -560,22 +566,22 @@
           "id": "Torreznos de Soria",
           "name": "Torreznos de Soria",
           "description": "Torreznos de Soria con Pan con Tomate",
-          "price": 6.9
+          "price": 7.35
         },
         {
           "id": "Palitos de Mozzarella",
           "name": "Palitos de Mozzarella",
           "description": "",
-          "price": 5.3
+          "price": 5.95
         },
         {
           "id": "Fingers de Pollo",
           "name": "Fingers de Pollo",
           "description": "",
-          "price": 5.8
+          "price": 6.25
         },
         {
-          "id": "Pincho de Tortilla",
+          "id": "Pincho de Tortilla Und",
           "name": "Pincho de Tortilla Und",
           "description": "",
           "price": 1.6
@@ -584,13 +590,13 @@
           "id": "Patatas Gajo",
           "name": "Patatas Gajo",
           "description": "Con salsa Sergio*s",
-          "price": 6.25
+          "price": 6.55
         },
         {
           "id": "Pinchos Morunos",
           "name": "Pinchos Morunos",
           "description": "",
-          "price": 6.7
+          "price": 6.8
         },
         {
           "id": "Patatas Bravas",
@@ -602,7 +608,7 @@
           "id": "Patatas Fritas",
           "name": "Patatas Fritas",
           "description": "",
-          "price": 4.95
+          "price": 4.15
         },
         {
           "id": "Rabas",
@@ -614,7 +620,7 @@
           "id": "Buñuelos de Bacalao",
           "name": "Buñuelos de Bacalao",
           "description": "",
-          "price": 5.7
+          "price": 6.1
         },
         {
           "id": "Tiras de Pollo Rebozadas Sergio's",
@@ -626,7 +632,7 @@
           "id": "Pechuguitas de Pollo Barbacoa",
           "name": "Pechuguitas de Pollo Barbacoa",
           "description": "",
-          "price": 5.2
+          "price": 6.2
         },
         {
           "id": "Brochetas de Pollo Yakitori 4 Und.",
@@ -644,7 +650,7 @@
           "id": "Pollo Kentucky",
           "name": "Pollo Kentucky",
           "description": "",
-          "price": 6.9
+          "price": 6.95
         },
         {
           "id": "Alcachofas Rebozadas Sergio's",
@@ -656,7 +662,7 @@
           "id": "Alitas de Pollo (5 und)",
           "name": "Alitas de Pollo (5 und)",
           "description": "",
-          "price": 5.5
+          "price": 6.25
         },
         {
           "id": "Bomba de Ternera (3 und)",
@@ -695,7 +701,7 @@
           "id": "Torrada de Anchoas",
           "name": "Torrada de Anchoas",
           "description": "",
-          "price": 6.5
+          "price": 7.1
         },
         {
           "id": "Torrada de Atun y Anchoas",
@@ -707,19 +713,19 @@
           "id": "Torrada de Tortilla Patatas con cebolla",
           "name": "Torrada de Tortilla Patatas con cebolla",
           "description": "",
-          "price": 5.95
+          "price": 6.4
         },
         {
           "id": "Torrada de Pollo",
           "name": "Torrada de Pollo",
           "description": "",
-          "price": 5.9
+          "price": 6.75
         },
         {
           "id": "Torrada de Bacon",
           "name": "Torrada de Bacon",
           "description": "",
-          "price": 5.5
+          "price": 6.1
         },
         {
           "id": "Torrada de Lomo",
@@ -731,73 +737,73 @@
           "id": "Torrada de Butifarra de Pages",
           "name": "Torrada de Butifarra de Pages",
           "description": "",
-          "price": 6.2
+          "price": 6.45
         },
         {
           "id": "Torrada de Salchichas de Pages",
           "name": "Torrada de Salchichas de Pages",
           "description": "",
-          "price": 5.8
+          "price": 6.4
         },
         {
           "id": "Torrada de Lomo,Bacon y Queso",
           "name": "Torrada de Lomo,Bacon y Queso",
           "description": "",
-          "price": 7.55
+          "price": 7.95
         },
         {
           "id": "Torrada de Jamon Dulce con Queso fundido",
           "name": "Torrada de Jamon Dulce con Queso fundido",
           "description": "",
-          "price": 6.1
+          "price": 6.2
         },
         {
           "id": "Torrada de Jamon Reserva",
           "name": "Torrada de Jamon Reserva",
           "description": "",
-          "price": 6.5
+          "price": 6.95
         },
         {
           "id": "Torrada de Queso Curado",
           "name": "Torrada de Queso Curado",
           "description": "",
-          "price": 5.85
+          "price": 6.2
         },
         {
           "id": "Torrada de Sobrasada de Mallorca",
           "name": "Torrada de Sobrasada de Mallorca",
           "description": "",
-          "price": 5.55
+          "price": 5.85
         },
         {
           "id": "Torrada de Fuet",
           "name": "Torrada de Fuet",
           "description": "",
-          "price": 4.8
+          "price": 5.5
         },
         {
           "id": "Torrada de Butifarra de L'Emporda",
           "name": "Torrada de Butifarra de L'Emporda",
           "description": "",
-          "price": 5.25
+          "price": 5.95
         },
         {
           "id": "Torrada de Chorizo Iberico",
           "name": "Torrada de Chorizo Iberico",
           "description": "",
-          "price": 5.4
+          "price": 5.95
         },
         {
           "id": "Torrada de Jamon Dulce",
           "name": "Torrada de Jamon Dulce",
           "description": "",
-          "price": 4.55
+          "price": 5.7
         },
         {
           "id": "Torrada de Frankfurt",
           "name": "Torrada de Frankfurt",
           "description": "",
-          "price": 5.0
+          "price": 6.0
         },
         {
           "id": "Torrada de Chistorra",
@@ -809,7 +815,7 @@
           "id": "Torrada de Butifarra Negra",
           "name": "Torrada de Butifarra Negra",
           "description": "",
-          "price": 5.15
+          "price": 5.65
         },
         {
           "id": "Suplemento Extra de Queso o Bacon",
@@ -843,6 +849,12 @@
           "name": "Queso Curado",
           "description": "2 Torradas con Tomate y Aceite",
           "price": 8.6
+        },
+        {
+          "id": "Lacon",
+          "name": "Lacon",
+          "description": "2 Torradas con Tomate y Aceite",
+          "price": 7.5
         }
       ],
       "subcategories": [],
@@ -864,10 +876,42 @@
           "name": "Butifarra de Pages con Patatas Fritas o Bravas",
           "description": "",
           "price": 8.95
+        },
+        {
+          "id": "Paella (CON RESERVA)",
+          "name": "Paella (CON RESERVA)",
+          "description": "",
+          "price": 17.95
         }
       ],
       "subcategories": [],
       "image": "assets\\cat_Platos Especiales.jpg"
+    },
+    {
+      "id": "Arroz",
+      "name": "Tapa Arroz Sergio's",
+      "theme": "ocean",
+      "items": [
+        {
+          "id": "Arroz con Fumet de pescado y Mejillones",
+          "name": "Arroz con Fumet de pescado y Mejillones",
+          "description": "",
+          "price": 5.45
+        },
+        {
+          "id": "Arroz con Pollo al Curry",
+          "name": "Arroz con Pollo al Curry",
+          "description": "",
+          "price": 4.9
+        },
+        {
+          "id": "Arroz con Pincho Moruno",
+          "name": "Arroz con Pincho Moruno",
+          "description": "",
+          "price": 5.2
+        }
+      ],
+      "image": "assets\\cat_arroz.jpeg"
     },
     {
       "id": "Croquetas",

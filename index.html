@@ -146,10 +146,68 @@
                         <div class="category-card-title">Postres</div>
                         <div class="category-card-description"></div>
                     </a>
+
+                    <!-- Roulette Card for Indecisive Customers -->
+                    <div class="category-card roulette-card" onclick="openRoulette()">
+                        <div
+                            style="height: 200px; display: flex; align-items: center; justify-content: center; background: #2a2a2a; width: 100%;">
+                            <span style="font-size: 5rem;">🎡</span>
+                        </div>
+                        <div class="category-card-title">¿Indeciso?</div>
+                        <div class="category-card-description">¡Deja que la suerte decida por ti!</div>
+                    </div>
                 </div>
             </section>
         </div>
     </main>
+
+    <!-- Roulette Modal -->
+    <div id="rouletteModal" class="roulette-modal">
+        <button class="menu-toggle"
+            style="position:absolute; top:1rem; right:1rem; border:none; background:none; font-size:2rem; display:block;"
+            onclick="closeRoulette()">✕</button>
+        <h2 class="section-title" style="margin-bottom: 20px; border:none;">¿Qué te apetece?</h2>
+
+        <div class="roulette-controls" style="margin-top: 0; margin-bottom: 20px;">
+            <select id="categorySelect"
+                style="padding: 12px; border-radius: 8px; background: #1e1e1e; color: white; border: 1px solid var(--primary-color); font-family: var(--font-body); width: 250px; font-size: 1rem; cursor: pointer; outline: none;">
+                <option value="all">Todo el Menú</option>
+                <!-- Categories will be loaded here -->
+            </select>
+        </div>
+
+        <div id="wheelContainer">
+            <div class="wheel-pointer"></div>
+            <canvas id="wheelCanvas" width="400" height="400"></canvas>
+        </div>
+
+        <div class="roulette-controls" style="margin-top: 20px;">
+            <button id="spinBtn" class="btn-spin" onclick="spinWheel()">¡GIRAR!</button>
+            <button class="btn-close-roulette" onclick="closeRoulette()">Cancelar</button>
+        </div>
+    </div>
+
+    <!-- Result Overlay -->
+    <div id="resultOverlay" class="roulette-result-overlay">
+        <div class="result-card">
+            <div class="result-title">¡Deberías probar!</div>
+            <img id="resultImage" src="" alt="Plato" class="result-image"
+                style="display: none; width: 100%; height: 200px; object-fit: cover; border-radius: 8px; margin: 15px 0;">
+            <div id="resultName" class="result-name"
+                style="font-size: 2rem; margin: 10px 0; font-family: var(--font-heading);">Nombre del Plato</div>
+            <div id="resultDescription" class="result-description"
+                style="color: var(--text-muted); margin-bottom: 10px;">Descripción...</div>
+            <div id="resultCategory"
+                style="color: var(--primary-color); margin-bottom: 20px; font-weight: 600; text-transform: uppercase; font-size: 0.8rem; letter-spacing: 1px;">
+                Categoría</div>
+            <div style="display: flex; gap: 10px; flex-direction: column;">
+                <button class="btn-go-to-item" onclick="closeResult()" style="width: 100%;">¡Me convence!</button>
+                <button class="btn-go-to-item" style="background: rgba(255,255,255,0.1); color: white; width: 100%;"
+                    onclick="retryRoulette()">Girar de nuevo 🎡</button>
+            </div>
+        </div>
+    </div>
+
 
     <div id="imageModal" class="image-modal" onclick="hideImageModal()">
         <img id="imageModalImg" class="image-modal-content" alt="Imagen">
@@ -157,6 +215,7 @@
 
     <footer>
         <p>&copy; 2026 Bar Sergios. Todos los derechos reservados.</p>
+        <p>&copy; Diseñado por: Dirneet</p>
     </footer>
 
     <script>
@@ -172,8 +231,329 @@
             document.getElementById('imageModal').classList.remove('open');
         }
         document.addEventListener('keydown', function (e) {
-            if (e.key === 'Escape') hideImageModal();
+            if (e.key === 'Escape') {
+                hideImageModal();
+                closeRoulette();
+                closeResult();
+            }
         });
+
+        // Roulette Logic
+        let menuData = null;
+        let currentItems = [];
+        let spinning = false;
+        let startAngle = 0;
+        let arc = 0;
+        let spinTimeout = null;
+        let spinAngleStart = 10;
+        let spinTime = 0;
+        let spinTimeTotal = 0;
+        let ctx;
+
+        async function loadMenuData() {
+            if (menuData) return menuData;
+            try {
+                const response = await fetch('menu.json');
+                menuData = await response.json();
+                populateCategories();
+                return menuData;
+            } catch (error) {
+                console.error("Error loading menu data:", error);
+            }
+        }
+
+        function populateCategories() {
+            const select = document.getElementById('categorySelect');
+            if (select.options.length > 1) return; // Already populated
+
+            menuData.categories.forEach(cat => {
+                const option = document.createElement('option');
+                option.value = cat.id;
+                option.textContent = cat.name;
+                select.appendChild(option);
+            });
+
+            select.addEventListener('change', () => {
+                updateWheelItems();
+            });
+        }
+
+        function updateWheelItems() {
+            const categoryId = document.getElementById('categorySelect').value;
+            let pool = [];
+
+            if (categoryId === 'all') {
+                menuData.categories.forEach(cat => {
+                    pool = pool.concat(cat.items);
+                    if (cat.subcategories) {
+                        cat.subcategories.forEach(sub => {
+                            pool = pool.concat(sub.items);
+                        });
+                    }
+                });
+            } else {
+                const cat = menuData.categories.find(c => c.id === categoryId);
+                if (cat) {
+                    pool = [...cat.items];
+                    if (cat.subcategories) {
+                        cat.subcategories.forEach(sub => {
+                            pool = pool.concat(sub.items);
+                        });
+                    }
+                }
+            }
+
+            // Filter out items without names or extras
+            pool = pool.filter(item => item.name && !item.name.toLowerCase().includes("extra"));
+
+            // Pick 10 random items for the wheel
+            currentItems = pool.sort(() => Math.random() - 0.5).slice(0, 10);
+
+            // If we have very few items, duplicate them to make the wheel look better
+            if (currentItems.length > 0 && currentItems.length < 4) {
+                while (currentItems.length < 6) {
+                    currentItems = currentItems.concat(currentItems);
+                }
+                currentItems = currentItems.slice(0, 8);
+            }
+
+            arc = Math.PI / (currentItems.length / 2);
+            drawRouletteWheel();
+        }
+
+        async function openRoulette() {
+            document.getElementById('rouletteModal').classList.add('open');
+            document.body.style.overflow = 'hidden';
+            await loadMenuData();
+
+            // Preload logo for the wheel
+            const logo = new Image();
+            logo.src = 'assets/sergios_logo.png'; // User should ensure this exists
+            logo.onload = () => {
+                window.sergiosLogo = logo;
+                updateWheelItems();
+            };
+            logo.onerror = () => {
+                updateWheelItems();
+            };
+        }
+
+        function closeRoulette() {
+            document.getElementById('rouletteModal').classList.remove('open');
+            if (!document.getElementById('imageModal').classList.contains('open')) {
+                document.body.style.overflow = '';
+            }
+        }
+
+        function drawRouletteWheel() {
+            const canvas = document.getElementById("wheelCanvas");
+            if (canvas.getContext) {
+                const outsideRadius = 190;
+                const insideRadius = 55;
+                const textBaseRadius = 70; // Start text near the center hub
+
+                ctx = canvas.getContext("2d");
+                ctx.clearRect(0, 0, 400, 400);
+
+                ctx.strokeStyle = "rgba(0,0,0,0.1)";
+                ctx.lineWidth = 1;
+
+                // Dynamically adjust font size
+                const fontSize = currentItems.length > 8 ? 11 : 13;
+                ctx.font = `bold ${fontSize}px Outfit, sans-serif`;
+
+                for (let i = 0; i < currentItems.length; i++) {
+                    const angle = startAngle + i * arc;
+
+                    const gradient = ctx.createRadialGradient(200, 200, insideRadius, 200, 200, outsideRadius);
+                    if (i % 2 === 0) {
+                        gradient.addColorStop(0, "#b8860b");
+                        gradient.addColorStop(1, "#daa520");
+                        ctx.fillStyle = gradient;
+                    } else {
+                        gradient.addColorStop(0, "#0a0a0a");
+                        gradient.addColorStop(1, "#222222");
+                        ctx.fillStyle = gradient;
+                    }
+
+                    ctx.beginPath();
+                    ctx.arc(200, 200, outsideRadius, angle, angle + arc, false);
+                    ctx.arc(200, 200, insideRadius, angle + arc, angle, true);
+                    ctx.fill();
+                    ctx.stroke();
+
+                    ctx.save();
+                    ctx.fillStyle = i % 2 === 0 ? "#fff" : "#daa520";
+                    ctx.textAlign = "left";
+                    ctx.textBaseline = "middle";
+
+                    ctx.translate(200 + Math.cos(angle + arc / 2) * textBaseRadius,
+                        200 + Math.sin(angle + arc / 2) * textBaseRadius);
+
+                    ctx.rotate(angle + arc / 2); // Radial alignment
+
+                    const text = currentItems[i].name;
+                    wrapText(ctx, text, 0, 0, 110, 14); 
+
+                    ctx.restore();
+                }
+
+                // Center Hub
+                ctx.save();
+                ctx.beginPath();
+                ctx.arc(200, 200, 58, 0, Math.PI * 2, false);
+                ctx.fillStyle = "#1e1e1e";
+                ctx.fill();
+                ctx.strokeStyle = "#daa520";
+                ctx.lineWidth = 4;
+                ctx.stroke();
+
+                if (window.sergiosLogo) {
+                    const size = 70;
+                    ctx.drawImage(window.sergiosLogo, 200 - size / 2, 200 - size / 2, size, size);
+                } else {
+                    ctx.fillStyle = "#daa520";
+                    ctx.font = 'bold 15px Outfit';
+                    ctx.fillText("Sergio's", 200 - ctx.measureText("Sergio's").width / 2, 205);
+                }
+                ctx.restore();
+
+                // Draw Lights
+                const numLights = 24;
+                const lightPosRadius = 205;
+                for (let i = 0; i < numLights; i++) {
+                    const lightAngle = (i * (360 / numLights)) * (Math.PI / 180);
+                    const lx = 200 + Math.cos(lightAngle) * lightPosRadius;
+                    const ly = 200 + Math.sin(lightAngle) * lightPosRadius;
+                    const isLit = (Math.floor(Date.now() / 400) % 2 === i % 2);
+
+                    ctx.beginPath();
+                    ctx.arc(lx, ly, 4, 0, Math.PI * 2);
+                    ctx.fillStyle = isLit ? "#fff" : "#daa520";
+                    if (isLit) {
+                        ctx.shadowBlur = 10;
+                        ctx.shadowColor = "#fff";
+                    } else {
+                        ctx.shadowBlur = 0;
+                    }
+                    ctx.fill();
+                    ctx.shadowBlur = 0;
+                }
+            }
+        }
+
+        // Helper to wrap text in canvas
+        function wrapText(context, text, x, y, maxWidth, lineHeight) {
+            const words = text.split(' ');
+            let line = '';
+            let lines = [];
+
+            for (let n = 0; n < words.length; n++) {
+                let testLine = line + words[n] + ' ';
+                let metrics = context.measureText(testLine);
+                let testWidth = metrics.width;
+                if (testWidth > maxWidth && n > 0) {
+                    lines.push(line);
+                    line = words[n] + ' ';
+                } else {
+                    line = testLine;
+                }
+            }
+            lines.push(line);
+
+            // Center multiline text vertically relative to the y coordinate
+            const totalHeight = lines.length * lineHeight;
+            y -= (totalHeight / 2) - (lineHeight / 2);
+
+            for (let k = 0; k < lines.length; k++) {
+                context.fillText(lines[k].trim(), x, y + (k * lineHeight));
+            }
+        }
+
+        function spinWheel() {
+            if (spinning) return;
+            const btn = document.getElementById('spinBtn');
+            btn.disabled = true;
+            btn.textContent = "Girando...";
+
+            spinning = true;
+            spinAngleStart = Math.random() * 10 + 10;
+            spinTime = 0;
+            spinTimeTotal = Math.random() * 3000 + 4000;
+            rotateWheel();
+        }
+
+        function rotateWheel() {
+            spinTime += 30;
+            if (spinTime >= spinTimeTotal) {
+                stopRotateWheel();
+                return;
+            }
+            const spinAngle = spinAngleStart - easeOut(spinTime, 0, spinAngleStart, spinTimeTotal);
+            startAngle += (spinAngle * Math.PI / 180);
+            drawRouletteWheel();
+            spinTimeout = setTimeout(rotateWheel, 30);
+        }
+
+        function stopRotateWheel() {
+            clearTimeout(spinTimeout);
+            spinning = false;
+            const btn = document.getElementById('spinBtn');
+            btn.disabled = false;
+            btn.textContent = "¡GIRAR!";
+
+            const degrees = startAngle * 180 / Math.PI + 90;
+            const arcd = arc * 180 / Math.PI;
+            const index = Math.floor((360 - degrees % 360) / arcd) % currentItems.length;
+            const item = currentItems[index];
+            showResult(item);
+        }
+
+        function showResult(item) {
+            document.getElementById('resultName').textContent = item.name;
+            document.getElementById('resultDescription').textContent = item.description || "¡Una elección deliciosa que no te fallará!";
+
+            // Find category name
+            let catName = "Sugerencia del Chef";
+            menuData.categories.forEach(cat => {
+                if (cat.items.some(i => i.id === item.id)) catName = cat.name;
+                if (cat.subcategories) {
+                    cat.subcategories.forEach(sub => {
+                        if (sub.items.some(i => i.id === item.id)) catName = cat.name + " > " + sub.name;
+                    });
+                }
+            });
+            document.getElementById('resultCategory').textContent = catName;
+
+            const resultImg = document.getElementById('resultImage');
+            if (item.image) {
+                // Normalize path for browser
+                resultImg.src = item.image.replace(/\\/g, '/');
+                resultImg.style.display = 'block';
+            } else {
+                resultImg.style.display = 'none';
+            }
+
+            document.getElementById('resultOverlay').classList.add('open');
+        }
+
+        function closeResult() {
+            document.getElementById('resultOverlay').classList.remove('open');
+            closeRoulette();
+        }
+
+        function retryRoulette() {
+            document.getElementById('resultOverlay').classList.remove('open');
+            updateWheelItems();
+            setTimeout(spinWheel, 300); // Small delay for visual transition
+        }
+
+        function easeOut(t, b, c, d) {
+            const ts = (t /= d) * t;
+            const tc = ts * t;
+            return b + c * (tc + -3 * ts + 3 * t);
+        }
+
     </script>
 </body>
 
