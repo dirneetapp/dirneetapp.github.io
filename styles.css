@@ -630,3 +630,35 @@ footer {
     from { opacity: 0; }
     to { opacity: 1; }
 }
+
+/* Nuevo Item Highlight */
+.item-nuevo {
+    border: 2px solid transparent;
+    background-image: linear-gradient(var(--surface-color), var(--surface-color)), linear-gradient(45deg, var(--primary-color), #ff8f00, var(--primary-color));
+    background-origin: border-box;
+    background-clip: padding-box, border-box;
+    animation: borderGlow 2s infinite alternate;
+    position: relative;
+    overflow: hidden;
+}
+
+.item-nuevo::before {
+    content: "¡NUEVO!";
+    position: absolute;
+    top: 15px;
+    right: -30px;
+    background: linear-gradient(45deg, #ff8f00, #ff5722);
+    color: white;
+    padding: 4px 30px;
+    font-size: 0.75rem;
+    font-weight: bold;
+    transform: rotate(45deg);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.3);
+    z-index: 10;
+    letter-spacing: 1px;
+}
+
+@keyframes borderGlow {
+    0% { box-shadow: 0 0 5px rgba(255, 143, 0, 0.2); }
+    100% { box-shadow: 0 0 15px rgba(255, 143, 0, 0.6), inset 0 0 10px rgba(255, 143, 0, 0.1); }
+}
