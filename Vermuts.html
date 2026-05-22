@@ -29,9 +29,28 @@
         <a href="index.html" class="home-btn" title="Volver al inicio">🏠</a>
         <div class="hero-content">
             <h1>Bar Sergios</h1>
-            <p class="subtitle">Gastronomía & Buen Ambiente</p>
+            <p class="subtitle">Gastronomía &amp; Buen Ambiente</p>
         </div>
     </header>
+
+    <div class="lang-switcher" id="langSwitcher">
+        <button id="lang-es" class="lang-btn active" onclick="setLang('es')" title="Español">🇪🇸</button>
+        <button id="lang-en" class="lang-btn" onclick="setLang('en')" title="English">🇬🇧</button>
+        <button id="lang-fr" class="lang-btn" onclick="setLang('fr')" title="Français">🇫🇷</button>
+    </div>
+    <script>
+        function setLang(lang) {
+            localStorage.setItem('menuLang', lang);
+            document.querySelectorAll('.i18n').forEach(function(el) {
+                var text = el.getAttribute('data-' + lang);
+                el.textContent = (text && text.trim()) ? text : el.getAttribute('data-es');
+            });
+            document.querySelectorAll('.lang-btn').forEach(function(b) { b.classList.remove('active'); });
+            var btn = document.getElementById('lang-' + lang);
+            if (btn) btn.classList.add('active');
+        }
+        (function() { setLang(localStorage.getItem('menuLang') || 'es'); })();
+    </script>
     <main class="container">
         <div class="menu-container">
             <section class="menu-section">
@@ -40,88 +59,96 @@
                     <article class="menu-item" style="">
                         
                         <div class="item-details">
-                            <h3 class="item-name">GRUMETE</h3>
-                            <p class="item-description">Mejillones,Olivas,Patatas y 1/2 L. Vermut</p>
+                            <h3 class="item-name"><span class="i18n" data-es="GRUMETE" data-en="GRUMETE" data-fr="GRUMETE">GRUMETE</span></h3>
+                            <p class="item-description"><span class="i18n" data-es="Mejillones,Olivas,Patatas y 1/2 L. Vermut" data-en="Mejillones,Olivas,Patatas y 1/2 L. Vermut" data-fr="Mejillones,Olivas,Patatas y 1/2 L. Vermut">Mejillones,Olivas,Patatas y 1/2 L. Vermut</span></p>
                         </div>
                         <div class='item-price'>10.90 €</div>
                     </article>
                     <article class="menu-item" style="">
                         
                         <div class="item-details">
-                            <h3 class="item-name">MAESTRE</h3>
-                            <p class="item-description">Boquerones,Olivas,Patatas 1/2 L. Vermut</p>
+                            <h3 class="item-name"><span class="i18n" data-es="MAESTRE" data-en="MAESTRE" data-fr="MAESTRE">MAESTRE</span></h3>
+                            <p class="item-description"><span class="i18n" data-es="Boquerones,Olivas,Patatas 1/2 L. Vermut" data-en="Boquerones,Olivas,Patatas 1/2 L. Vermut" data-fr="Boquerones,Olivas,Patatas 1/2 L. Vermut">Boquerones,Olivas,Patatas 1/2 L. Vermut</span></p>
                         </div>
                         <div class='item-price'>10.90 €</div>
                     </article>
                     <article class="menu-item" style="">
                         
                         <div class="item-details">
-                            <h3 class="item-name">SOBRECARGO</h3>
-                            <p class="item-description">Berberechos,Patatas,Olivas y 1/2 L. Vermut</p>
+                            <h3 class="item-name"><span class="i18n" data-es="SOBRECARGO" data-en="SOBRECARGO" data-fr="SOBRECARGO">SOBRECARGO</span></h3>
+                            <p class="item-description"><span class="i18n" data-es="Berberechos,Patatas,Olivas y 1/2 L. Vermut" data-en="Berberechos,Patatas,Olivas y 1/2 L. Vermut" data-fr="Berberechos,Patatas,Olivas y 1/2 L. Vermut">Berberechos,Patatas,Olivas y 1/2 L. Vermut</span></p>
                         </div>
                         <div class='item-price'>11.90 €</div>
                     </article>
                     <article class="menu-item" style="">
                         
                         <div class="item-details">
-                            <h3 class="item-name">CONTRAMAESTRE</h3>
-                            <p class="item-description">Almejas,Boquerones,Olivas,Patatas y 1/2 L. Vermut</p>
+                            <h3 class="item-name"><span class="i18n" data-es="CONTRAMAESTRE" data-en="CONTRAMAESTRE" data-fr="CONTRAMAESTRE">CONTRAMAESTRE</span></h3>
+                            <p class="item-description"><span class="i18n" data-es="Almejas,Boquerones,Olivas,Patatas y 1/2 L. Vermut" data-en="Almejas,Boquerones,Olivas,Patatas y 1/2 L. Vermut" data-fr="Almejas,Boquerones,Olivas,Patatas y 1/2 L. Vermut">Almejas,Boquerones,Olivas,Patatas y 1/2 L. Vermut</span></p>
                         </div>
                         <div class='item-price'>12.90 €</div>
                     </article>
                     <article class="menu-item" style="">
                         
                         <div class="item-details">
-                            <h3 class="item-name">MARINERO</h3>
-                            <p class="item-description">Navajas,Boquerones,Olivas,Patatas y 1/2 L. Vermut</p>
+                            <h3 class="item-name"><span class="i18n" data-es="MARINERO" data-en="MARINERO" data-fr="MARINERO">MARINERO</span></h3>
+                            <p class="item-description"><span class="i18n" data-es="Navajas,Boquerones,Olivas,Patatas y 1/2 L. Vermut" data-en="Navajas,Boquerones,Olivas,Patatas y 1/2 L. Vermut" data-fr="Navajas,Boquerones,Olivas,Patatas y 1/2 L. Vermut">Navajas,Boquerones,Olivas,Patatas y 1/2 L. Vermut</span></p>
                         </div>
                         <div class='item-price'>14.90 €</div>
                     </article>
                     <article class="menu-item" style="">
                         
                         <div class="item-details">
-                            <h3 class="item-name">GAFE</h3>
-                            <p class="item-description">Zamburiñas,Navajas,Olivas,Patatas 1/2 L. Vermut</p>
+                            <h3 class="item-name"><span class="i18n" data-es="GAFE" data-en="GAFE" data-fr="GAFE">GAFE</span></h3>
+                            <p class="item-description"><span class="i18n" data-es="Zamburiñas,Navajas,Olivas,Patatas 1/2 L. Vermut" data-en="Zamburiñas,Navajas,Olivas,Patatas 1/2 L. Vermut" data-fr="Zamburiñas,Navajas,Olivas,Patatas 1/2 L. Vermut">Zamburiñas,Navajas,Olivas,Patatas 1/2 L. Vermut</span></p>
                         </div>
                         <div class='item-price'>14.90 €</div>
                     </article>
                     <article class="menu-item item-nuevo" style="">
                         
                         <div class="item-details">
-                            <h3 class="item-name">ARTILLERO</h3>
-                            <p class="item-description">Olivas,Patatas,Berberechos,Boquerones en Vinagre y 1/2 L. Vermut</p>
+                            <h3 class="item-name"><span class="i18n" data-es="ARTILLERO" data-en="ARTILLERO" data-fr="ARTILLERO">ARTILLERO</span></h3>
+                            <p class="item-description"><span class="i18n" data-es="Olivas,Patatas,Berberechos,Boquerones en Vinagre y 1/2 L. Vermut" data-en="Olivas,Patatas,Berberechos,Boquerones en Vinagre y 1/2 L. Vermut" data-fr="Olivas,Patatas,Berberechos,Boquerones en Vinagre y 1/2 L. Vermut">Olivas,Patatas,Berberechos,Boquerones en Vinagre y 1/2 L. Vermut</span></p>
                         </div>
                         <div class='item-price'>15.50 €</div>
                     </article>
                     <article class="menu-item" style="">
                         
                         <div class="item-details">
-                            <h3 class="item-name">TIMONEL</h3>
-                            <p class="item-description">Berberechos,Anchoas,Navajas,Patatas, Olivas y 1/2 L. Vermut</p>
+                            <h3 class="item-name"><span class="i18n" data-es="TIMONEL" data-en="TIMONEL" data-fr="TIMONEL">TIMONEL</span></h3>
+                            <p class="item-description"><span class="i18n" data-es="Berberechos,Anchoas,Navajas,Patatas, Olivas y 1/2 L. Vermut" data-en="Berberechos,Anchoas,Navajas,Patatas, Olivas y 1/2 L. Vermut" data-fr="Berberechos,Anchoas,Navajas,Patatas, Olivas y 1/2 L. Vermut">Berberechos,Anchoas,Navajas,Patatas, Olivas y 1/2 L. Vermut</span></p>
                         </div>
                         <div class='item-price'>16.30 €</div>
                     </article>
                     <article class="menu-item item-nuevo" style="">
                         
                         <div class="item-details">
-                            <h3 class="item-name">TONELERO</h3>
-                            <p class="item-description">Berberechos,Concha Fina,Boquerones,Patatas, 							Olivas y 1 L. Vermut</p>
+                            <h3 class="item-name"><span class="i18n" data-es="CIRUJANO" data-en="CIRUJANO" data-fr="CIRUJANO">CIRUJANO</span></h3>
+                            <p class="item-description"><span class="i18n" data-es="Concha Fina,Anchoas,Patatas,Olivas y 1/2 L. Vermut." data-en="Concha Fina,Anchoas,Patatas,Olivas y 1/2 L. Vermut." data-fr="Concha Fina,Anchoas,Patatas,Olivas y 1/2 L. Vermut.">Concha Fina,Anchoas,Patatas,Olivas y 1/2 L. Vermut.</span></p>
+                        </div>
+                        <div class='item-price'>16.50 €</div>
+                    </article>
+                    <article class="menu-item item-nuevo" style="">
+                        
+                        <div class="item-details">
+                            <h3 class="item-name"><span class="i18n" data-es="TONELERO" data-en="TONELERO" data-fr="TONELERO">TONELERO</span></h3>
+                            <p class="item-description"><span class="i18n" data-es="Berberechos,Concha Fina,Boquerones,Patatas, 							Olivas y 1 L. Vermut" data-en="Berberechos,Concha Fina,Boquerones,Patatas, 							Olivas y 1 L. Vermut" data-fr="Berberechos,Concha Fina,Boquerones,Patatas, 							Olivas y 1 L. Vermut">Berberechos,Concha Fina,Boquerones,Patatas, 							Olivas y 1 L. Vermut</span></p>
                         </div>
                         <div class='item-price'>21.90 €</div>
                     </article>
                     <article class="menu-item" style="">
                         
                         <div class="item-details">
-                            <h3 class="item-name">POLIZON</h3>
-                            <p class="item-description">Berberechos,Boquerones,Almejas,Mejillones,                 Patatas,Olivas y 1 L. Vermut</p>
+                            <h3 class="item-name"><span class="i18n" data-es="POLIZON" data-en="POLIZON" data-fr="POLIZON">POLIZON</span></h3>
+                            <p class="item-description"><span class="i18n" data-es="Berberechos,Boquerones,Almejas,Mejillones,                 Patatas,Olivas y 1 L. Vermut" data-en="Berberechos,Boquerones,Almejas,Mejillones,                 Patatas,Olivas y 1 L. Vermut" data-fr="Berberechos,Boquerones,Almejas,Mejillones,                 Patatas,Olivas y 1 L. Vermut">Berberechos,Boquerones,Almejas,Mejillones,                 Patatas,Olivas y 1 L. Vermut</span></p>
                         </div>
                         <div class='item-price'>25.90 €</div>
                     </article>
                     <article class="menu-item" style="">
                         
                         <div class="item-details">
-                            <h3 class="item-name">CAPITAN</h3>
-                            <p class="item-description">Berberechos,Mejillones,Anchoas,Almejas,                 Boquerones,Zamburiñas,Olivas,Patatas 1 L. Vermut</p>
+                            <h3 class="item-name"><span class="i18n" data-es="CAPITAN" data-en="CAPITAN" data-fr="CAPITAN">CAPITAN</span></h3>
+                            <p class="item-description"><span class="i18n" data-es="Berberechos,Mejillones,Anchoas,Almejas,                 Boquerones,Zamburiñas,Olivas,Patatas 1 L. Vermut" data-en="Berberechos,Mejillones,Anchoas,Almejas,                 Boquerones,Zamburiñas,Olivas,Patatas 1 L. Vermut" data-fr="Berberechos,Mejillones,Anchoas,Almejas,                 Boquerones,Zamburiñas,Olivas,Patatas 1 L. Vermut">Berberechos,Mejillones,Anchoas,Almejas,                 Boquerones,Zamburiñas,Olivas,Patatas 1 L. Vermut</span></p>
                         </div>
                         <div class='item-price'>29.90 €</div>
                     </article>
@@ -133,8 +160,8 @@
                     <article class="menu-item" style="">
                         
                         <div class="item-details">
-                            <h3 class="item-name">2 Vermuts de la Casa + Patatas Sergio's</h3>
-                            <p class="item-description"></p>
+                            <h3 class="item-name"><span class="i18n" data-es="2 Vermuts de la Casa + Patatas Sergio&#39;s" data-en="2 Vermuts de la Casa + Patatas Sergio&#39;s" data-fr="2 Vermuts de la Casa + Patatas Sergio&#39;s">2 Vermuts de la Casa + Patatas Sergio&#39;s</span></h3>
+                            <p class="item-description"><span class="i18n" data-es="" data-en="" data-fr=""></span></p>
                         </div>
                         <div class='item-price'>10.90 €</div>
                     </article>
@@ -146,88 +173,88 @@
                     <article class="menu-item" style="">
                         
                         <div class="item-details">
-                            <h3 class="item-name">Almejas 20/25</h3>
-                            <p class="item-description"></p>
+                            <h3 class="item-name"><span class="i18n" data-es="Almejas 20/25" data-en="Almejas 20/25" data-fr="Almejas 20/25">Almejas 20/25</span></h3>
+                            <p class="item-description"><span class="i18n" data-es="" data-en="" data-fr=""></span></p>
                         </div>
                         <div class='item-price'>6.80 €</div>
                     </article>
                     <article class="menu-item" style="">
                         
                         <div class="item-details">
-                            <h3 class="item-name">Mejillones 8/12</h3>
-                            <p class="item-description"></p>
+                            <h3 class="item-name"><span class="i18n" data-es="Mejillones 8/12" data-en="Mejillones 8/12" data-fr="Mejillones 8/12">Mejillones 8/12</span></h3>
+                            <p class="item-description"><span class="i18n" data-es="" data-en="" data-fr=""></span></p>
                         </div>
                         <div class='item-price'>5.80 €</div>
                     </article>
                     <article class="menu-item" style="">
                         
                         <div class="item-details">
-                            <h3 class="item-name">Navajas 6/8</h3>
-                            <p class="item-description"></p>
+                            <h3 class="item-name"><span class="i18n" data-es="Navajas 6/8" data-en="Navajas 6/8" data-fr="Navajas 6/8">Navajas 6/8</span></h3>
+                            <p class="item-description"><span class="i18n" data-es="" data-en="" data-fr=""></span></p>
                         </div>
                         <div class='item-price'>5.55 €</div>
                     </article>
                     <article class="menu-item" style="">
                         
                         <div class="item-details">
-                            <h3 class="item-name">Zamburiñas</h3>
-                            <p class="item-description"></p>
+                            <h3 class="item-name"><span class="i18n" data-es="Zamburiñas" data-en="Zamburiñas" data-fr="Zamburiñas">Zamburiñas</span></h3>
+                            <p class="item-description"><span class="i18n" data-es="" data-en="" data-fr=""></span></p>
                         </div>
                         <div class='item-price'>5.10 €</div>
                     </article>
                     <article class="menu-item" style="">
                         
                         <div class="item-details">
-                            <h3 class="item-name">Olivas Rellenas</h3>
-                            <p class="item-description"></p>
+                            <h3 class="item-name"><span class="i18n" data-es="Olivas Rellenas" data-en="Olivas Rellenas" data-fr="Olivas Rellenas">Olivas Rellenas</span></h3>
+                            <p class="item-description"><span class="i18n" data-es="" data-en="" data-fr=""></span></p>
                         </div>
                         <div class='item-price'>1.95 €</div>
                     </article>
                     <article class="menu-item" style="">
                         
                         <div class="item-details">
-                            <h3 class="item-name">Anchoas del Cantabrico 6 Und.</h3>
-                            <p class="item-description"></p>
+                            <h3 class="item-name"><span class="i18n" data-es="Anchoas del Cantabrico 6 Und." data-en="Anchoas del Cantabrico 6 Und." data-fr="Anchoas del Cantabrico 6 Und.">Anchoas del Cantabrico 6 Und.</span></h3>
+                            <p class="item-description"><span class="i18n" data-es="" data-en="" data-fr=""></span></p>
                         </div>
                         <div class='item-price'>6.30 €</div>
                     </article>
                     <article class="menu-item" style="">
                         
                         <div class="item-details">
-                            <h3 class="item-name">Boquerones 8 Und.</h3>
-                            <p class="item-description"></p>
+                            <h3 class="item-name"><span class="i18n" data-es="Boquerones 8 Und." data-en="Boquerones 8 Und." data-fr="Boquerones 8 Und.">Boquerones 8 Und.</span></h3>
+                            <p class="item-description"><span class="i18n" data-es="" data-en="" data-fr=""></span></p>
                         </div>
                         <div class='item-price'>5.90 €</div>
                     </article>
                     <article class="menu-item" style="">
                         
                         <div class="item-details">
-                            <h3 class="item-name">Patatas Bolsa</h3>
-                            <p class="item-description"></p>
+                            <h3 class="item-name"><span class="i18n" data-es="Patatas Bolsa" data-en="Patatas Bolsa" data-fr="Patatas Bolsa">Patatas Bolsa</span></h3>
+                            <p class="item-description"><span class="i18n" data-es="" data-en="" data-fr=""></span></p>
                         </div>
                         <div class='item-price'>1.90 €</div>
                     </article>
                     <article class="menu-item" style="">
                         
                         <div class="item-details">
-                            <h3 class="item-name">Vermut Blanco/Negro de la Casa</h3>
-                            <p class="item-description"></p>
+                            <h3 class="item-name"><span class="i18n" data-es="Vermut Blanco/Negro de la Casa" data-en="Vermut Blanco/Negro de la Casa" data-fr="Vermut Blanco/Negro de la Casa">Vermut Blanco/Negro de la Casa</span></h3>
+                            <p class="item-description"><span class="i18n" data-es="" data-en="" data-fr=""></span></p>
                         </div>
                         <div class='item-price'>3.00 €</div>
                     </article>
                     <article class="menu-item" style="">
                         
                         <div class="item-details">
-                            <h3 class="item-name">Berberechos 20/30</h3>
-                            <p class="item-description"></p>
+                            <h3 class="item-name"><span class="i18n" data-es="Berberechos 20/30" data-en="Berberechos 20/30" data-fr="Berberechos 20/30">Berberechos 20/30</span></h3>
+                            <p class="item-description"><span class="i18n" data-es="" data-en="" data-fr=""></span></p>
                         </div>
                         <div class='item-price'>11.90 €</div>
                     </article>
                     <article class="menu-item" style="">
                         
                         <div class="item-details">
-                            <h3 class="item-name">Concha Fina</h3>
-                            <p class="item-description"></p>
+                            <h3 class="item-name"><span class="i18n" data-es="Concha Fina" data-en="Concha Fina" data-fr="Concha Fina">Concha Fina</span></h3>
+                            <p class="item-description"><span class="i18n" data-es="" data-en="" data-fr=""></span></p>
                         </div>
                         <div class='item-price'>8.90 €</div>
                     </article>
