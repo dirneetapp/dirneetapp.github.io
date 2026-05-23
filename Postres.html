@@ -29,9 +29,28 @@
         <a href="index.html" class="home-btn" title="Volver al inicio">🏠</a>
         <div class="hero-content">
             <h1>Bar Sergios</h1>
-            <p class="subtitle">Gastronomía & Buen Ambiente</p>
+            <p class="subtitle">Gastronomía &amp; Buen Ambiente</p>
         </div>
     </header>
+
+    <div class="lang-switcher" id="langSwitcher">
+        <button id="lang-es" class="lang-btn active" onclick="setLang('es')" title="Español">🇪🇸</button>
+        <button id="lang-en" class="lang-btn" onclick="setLang('en')" title="English">🇬🇧</button>
+        <button id="lang-fr" class="lang-btn" onclick="setLang('fr')" title="Français">🇫🇷</button>
+    </div>
+    <script>
+        function setLang(lang) {
+            localStorage.setItem('menuLang', lang);
+            document.querySelectorAll('.i18n').forEach(function(el) {
+                var text = el.getAttribute('data-' + lang);
+                el.textContent = (text && text.trim()) ? text : el.getAttribute('data-es');
+            });
+            document.querySelectorAll('.lang-btn').forEach(function(b) { b.classList.remove('active'); });
+            var btn = document.getElementById('lang-' + lang);
+            if (btn) btn.classList.add('active');
+        }
+        (function() { setLang(localStorage.getItem('menuLang') || 'es'); })();
+    </script>
     <main class="container">
         <div class="menu-container">
             <section class="menu-section">
@@ -40,66 +59,74 @@
                     <article class="menu-item" style="">
                         
                         <div class="item-details">
-                            <h3 class="item-name">Coulan</h3>
-                            <p class="item-description">Turron o Chocolate</p>
+                            <h3 class="item-name"><span class="i18n" data-es="Coulan" data-en="Coulan" data-fr="Coulan">Coulan</span></h3>
+                            <p class="item-description"><span class="i18n" data-es="Turron o Chocolate" data-en="Turron o Chocolate" data-fr="Turron o Chocolate">Turron o Chocolate</span></p>
                         </div>
-                        <div class='item-price'>5.20 €</div>
+                        
+                        <div class="item-right-col">
+                            <div class='item-price'>5.20 €</div>
+                            
+                        </div>
                     </article>
                     <article class="menu-item" style="">
                         
                         <div class="item-details">
-                            <h3 class="item-name">Tiramisú</h3>
-                            <p class="item-description"></p>
+                            <h3 class="item-name"><span class="i18n" data-es="Tiramisú" data-en="Tiramisú" data-fr="Tiramisú">Tiramisú</span></h3>
+                            <p class="item-description"><span class="i18n" data-es="" data-en="" data-fr=""></span></p>
                         </div>
-                        <div class='item-price'>5.50 €</div>
+                        
+                        <div class="item-right-col">
+                            <div class='item-price'>5.50 €</div>
+                            
+                        </div>
                     </article>
                     <article class="menu-item" style="">
                         
                         <div class="item-details">
-                            <h3 class="item-name">Torrija Caramelizada</h3>
-                            <p class="item-description"></p>
+                            <h3 class="item-name"><span class="i18n" data-es="Tarrina Vainilla y Chocolate" data-en="Tarrina Vainilla y Chocolate" data-fr="Tarrina Vainilla y Chocolate">Tarrina Vainilla y Chocolate</span></h3>
+                            <p class="item-description"><span class="i18n" data-es="" data-en="" data-fr=""></span></p>
                         </div>
-                        <div class='item-price'>5.50 €</div>
+                        
+                        <div class="item-right-col">
+                            <div class='item-price'>3.50 €</div>
+                            
+                        </div>
                     </article>
                     <article class="menu-item" style="">
                         
                         <div class="item-details">
-                            <h3 class="item-name">Tarta de Queso</h3>
-                            <p class="item-description"></p>
+                            <h3 class="item-name"><span class="i18n" data-es="Tarrina Nata y Fresa" data-en="Tarrina Nata y Fresa" data-fr="Tarrina Nata y Fresa">Tarrina Nata y Fresa</span></h3>
+                            <p class="item-description"><span class="i18n" data-es="" data-en="" data-fr=""></span></p>
                         </div>
-                        <div class='item-price'>5.40 €</div>
+                        
+                        <div class="item-right-col">
+                            <div class='item-price'>3.50 €</div>
+                            
+                        </div>
                     </article>
                     <article class="menu-item" style="">
                         
                         <div class="item-details">
-                            <h3 class="item-name">Tarrina Vainilla y Chocolate</h3>
-                            <p class="item-description"></p>
+                            <h3 class="item-name"><span class="i18n" data-es="Sorbete de Limon" data-en="Sorbete de Limon" data-fr="Sorbete de Limon">Sorbete de Limon</span></h3>
+                            <p class="item-description"><span class="i18n" data-es="" data-en="" data-fr=""></span></p>
                         </div>
-                        <div class='item-price'>3.50 €</div>
-                    </article>
-                    <article class="menu-item" style="">
                         
-                        <div class="item-details">
-                            <h3 class="item-name">Tarrina Nata y Fresa</h3>
-                            <p class="item-description"></p>
+                        <div class="item-right-col">
+                            <div class='item-price'>3.50 €</div>
+                            
                         </div>
-                        <div class='item-price'>3.50 €</div>
-                    </article>
-                    <article class="menu-item" style="">
-                        
-                        <div class="item-details">
-                            <h3 class="item-name">Sorbete de Limon</h3>
-                            <p class="item-description"></p>
-                        </div>
-                        <div class='item-price'>3.50 €</div>
                     </article>
                     <article class="menu-item item-nuevo" style="">
                         
                         <div class="item-details">
-                            <h3 class="item-name">Profiteroles Con Nata</h3>
-                            <p class="item-description"></p>
+                            <h3 class="item-name"><span class="i18n" data-es="Profiteroles Con Nata" data-en="Profiteroles Con Nata" data-fr="Profiteroles Con Nata">Profiteroles Con Nata</span></h3>
+                            <p class="item-description"><span class="i18n" data-es="" data-en="" data-fr=""></span></p>
                         </div>
-                        <div class='item-price'>5.80 €</div>
+                        
+                        <div class="item-right-col">
+                            <div class='item-price'>5.80 €</div>
+                            
+                        </div>
                     </article>
                 </div>
             </section>
@@ -121,5 +148,6 @@
         function hideImageModal() { document.getElementById('imageModal').classList.remove('open'); }
         document.addEventListener('keydown', function (e) { if (e.key === 'Escape') hideImageModal(); });
     </script>
+
 </body>
 </html>
