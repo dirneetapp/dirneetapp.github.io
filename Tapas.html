@@ -29,9 +29,28 @@
         <a href="index.html" class="home-btn" title="Volver al inicio">🏠</a>
         <div class="hero-content">
             <h1>Bar Sergios</h1>
-            <p class="subtitle">Gastronomía & Buen Ambiente</p>
+            <p class="subtitle">Gastronomía &amp; Buen Ambiente</p>
         </div>
     </header>
+
+    <div class="lang-switcher" id="langSwitcher">
+        <button id="lang-es" class="lang-btn active" onclick="setLang('es')" title="Español">🇪🇸</button>
+        <button id="lang-en" class="lang-btn" onclick="setLang('en')" title="English">🇬🇧</button>
+        <button id="lang-fr" class="lang-btn" onclick="setLang('fr')" title="Français">🇫🇷</button>
+    </div>
+    <script>
+        function setLang(lang) {
+            localStorage.setItem('menuLang', lang);
+            document.querySelectorAll('.i18n').forEach(function(el) {
+                var text = el.getAttribute('data-' + lang);
+                el.textContent = (text && text.trim()) ? text : el.getAttribute('data-es');
+            });
+            document.querySelectorAll('.lang-btn').forEach(function(b) { b.classList.remove('active'); });
+            var btn = document.getElementById('lang-' + lang);
+            if (btn) btn.classList.add('active');
+        }
+        (function() { setLang(localStorage.getItem('menuLang') || 'es'); })();
+    </script>
     <main class="container">
         <div class="menu-container">
             <section class="menu-section">
@@ -40,202 +59,314 @@
                     <article class="menu-item item-nuevo" style="">
                         
                         <div class="item-details">
-                            <h3 class="item-name">Papas Francesas Cornudas</h3>
-                            <p class="item-description"></p>
+                            <h3 class="item-name"><span class="i18n" data-es="Papas Francesas Cornudas" data-en="Papas Francesas Cornudas" data-fr="Papas Francesas Cornudas">Papas Francesas Cornudas</span></h3>
+                            <p class="item-description"><span class="i18n" data-es="" data-en="" data-fr=""></span></p>
                         </div>
-                        <div class='item-price'>5.60 €</div>
+                        
+                        <div class="item-right-col">
+                            <div class='item-price'>5.60 €</div>
+                            
+                        </div>
+                    </article>
+                    <article class="menu-item item-nuevo" style="">
+                        
+                        <div class="item-details">
+                            <h3 class="item-name"><span class="i18n" data-es="Morros de cerdo y pan con Tomate" data-en="Morros de cerdo y pan con Tomate" data-fr="Morros de cerdo y pan con Tomate">Morros de cerdo y pan con Tomate</span></h3>
+                            <p class="item-description"><span class="i18n" data-es="" data-en="" data-fr=""></span></p>
+                        </div>
+                        
+                        <div class="item-right-col">
+                            <div class='item-price'>6.40 €</div>
+                            
+                        </div>
                     </article>
                     <article class="menu-item" style="">
                         
                         <div class="item-details">
-                            <h3 class="item-name">Choricitos a la Sidra</h3>
-                            <p class="item-description"></p>
+                            <h3 class="item-name"><span class="i18n" data-es="Choricitos a la Sidra" data-en="Choricitos a la Sidra" data-fr="Choricitos a la Sidra">Choricitos a la Sidra</span></h3>
+                            <p class="item-description"><span class="i18n" data-es="" data-en="" data-fr=""></span></p>
                         </div>
-                        <div class='item-price'>7.90 €</div>
+                        
+                        <div class="item-right-col">
+                            <div class='item-price'>7.90 €</div>
+                            
+                        </div>
                     </article>
                     <article class="menu-item" style="">
                         
                         <div class="item-details">
-                            <h3 class="item-name">Fries&Chips Sergio's</h3>
-                            <p class="item-description">Cebolla Caramelizada,Bacon y Queso Chedar</p>
+                            <h3 class="item-name"><span class="i18n" data-es="Fries&Chips Sergio&#39;s" data-en="Fries&Chips Sergio&#39;s" data-fr="Fries&Chips Sergio&#39;s">Fries&Chips Sergio&#39;s</span></h3>
+                            <p class="item-description"><span class="i18n" data-es="Cebolla Caramelizada,Bacon y Queso Chedar" data-en="Cebolla Caramelizada,Bacon y Queso Chedar" data-fr="Cebolla Caramelizada,Bacon y Queso Chedar">Cebolla Caramelizada,Bacon y Queso Chedar</span></p>
                         </div>
-                        <div class='item-price'>4.95 €</div>
+                        
+                        <div class="item-right-col">
+                            <div class='item-price'>4.95 €</div>
+                            
+                        </div>
                     </article>
                     <article class="menu-item" style="">
                         
                         <div class="item-details">
-                            <h3 class="item-name">Callos a la Andaluza</h3>
-                            <p class="item-description"></p>
+                            <h3 class="item-name"><span class="i18n" data-es="Callos a la Andaluza" data-en="Callos a la Andaluza" data-fr="Callos a la Andaluza">Callos a la Andaluza</span></h3>
+                            <p class="item-description"><span class="i18n" data-es="" data-en="" data-fr=""></span></p>
                         </div>
-                        <div class='item-price'>7.80 €</div>
+                        
+                        <div class="item-right-col">
+                            <div class='item-price'>7.80 €</div>
+                            
+                        </div>
                     </article>
                     <article class="menu-item" style="">
                         
                         <div class="item-details">
-                            <h3 class="item-name">Mejillones a la Marinera</h3>
-                            <p class="item-description"></p>
+                            <h3 class="item-name"><span class="i18n" data-es="Mejillones a la Marinera" data-en="Mejillones a la Marinera" data-fr="Mejillones a la Marinera">Mejillones a la Marinera</span></h3>
+                            <p class="item-description"><span class="i18n" data-es="" data-en="" data-fr=""></span></p>
                         </div>
-                        <div class='item-price'>7.95 €</div>
+                        
+                        <div class="item-right-col">
+                            <div class='item-price'>7.95 €</div>
+                            
+                        </div>
                     </article>
                     <article class="menu-item" style="">
                         
                         <div class="item-details">
-                            <h3 class="item-name">Torreznos de Soria</h3>
-                            <p class="item-description">Torreznos de Soria con Pan con Tomate</p>
+                            <h3 class="item-name"><span class="i18n" data-es="Torreznos de Soria" data-en="Torreznos de Soria" data-fr="Torreznos de Soria">Torreznos de Soria</span></h3>
+                            <p class="item-description"><span class="i18n" data-es="Torreznos de Soria con Pan con Tomate" data-en="Torreznos de Soria con Pan con Tomate" data-fr="Torreznos de Soria con Pan con Tomate">Torreznos de Soria con Pan con Tomate</span></p>
                         </div>
-                        <div class='item-price'>7.35 €</div>
+                        
+                        <div class="item-right-col">
+                            <div class='item-price'>7.35 €</div>
+                            
+                        </div>
                     </article>
                     <article class="menu-item" style="">
                         
                         <div class="item-details">
-                            <h3 class="item-name">Palitos de Mozzarella</h3>
-                            <p class="item-description"></p>
+                            <h3 class="item-name"><span class="i18n" data-es="Palitos de Mozzarella" data-en="Palitos de Mozzarella" data-fr="Palitos de Mozzarella">Palitos de Mozzarella</span></h3>
+                            <p class="item-description"><span class="i18n" data-es="" data-en="" data-fr=""></span></p>
                         </div>
-                        <div class='item-price'>5.95 €</div>
+                        
+                        <div class="item-right-col">
+                            <div class='item-price'>5.95 €</div>
+                            
+                        </div>
                     </article>
                     <article class="menu-item" style="">
                         
                         <div class="item-details">
-                            <h3 class="item-name">Fingers de Pollo</h3>
-                            <p class="item-description"></p>
+                            <h3 class="item-name"><span class="i18n" data-es="Fingers de Pollo" data-en="Fingers de Pollo" data-fr="Fingers de Pollo">Fingers de Pollo</span></h3>
+                            <p class="item-description"><span class="i18n" data-es="" data-en="" data-fr=""></span></p>
                         </div>
-                        <div class='item-price'>6.25 €</div>
+                        
+                        <div class="item-right-col">
+                            <div class='item-price'>6.25 €</div>
+                            
+                        </div>
                     </article>
                     <article class="menu-item" style="">
                         
                         <div class="item-details">
-                            <h3 class="item-name">Pincho de Tortilla Und</h3>
-                            <p class="item-description"></p>
+                            <h3 class="item-name"><span class="i18n" data-es="Pincho de Tortilla Und" data-en="Pincho de Tortilla Und" data-fr="Pincho de Tortilla Und">Pincho de Tortilla Und</span></h3>
+                            <p class="item-description"><span class="i18n" data-es="" data-en="" data-fr=""></span></p>
                         </div>
-                        <div class='item-price'>1.60 €</div>
+                        
+                        <div class="item-right-col">
+                            <div class='item-price'>1.60 €</div>
+                            
+                        </div>
                     </article>
                     <article class="menu-item" style="">
                         
                         <div class="item-details">
-                            <h3 class="item-name">Patatas Gajo</h3>
-                            <p class="item-description">Con salsa Sergio*s</p>
+                            <h3 class="item-name"><span class="i18n" data-es="Patatas Gajo" data-en="Patatas Gajo" data-fr="Patatas Gajo">Patatas Gajo</span></h3>
+                            <p class="item-description"><span class="i18n" data-es="Con salsa Sergio*s" data-en="Con salsa Sergio*s" data-fr="Con salsa Sergio*s">Con salsa Sergio*s</span></p>
                         </div>
-                        <div class='item-price'>6.55 €</div>
+                        
+                        <div class="item-right-col">
+                            <div class='item-price'>6.55 €</div>
+                            
+                        </div>
                     </article>
                     <article class="menu-item" style="">
                         
                         <div class="item-details">
-                            <h3 class="item-name">Pinchos Morunos</h3>
-                            <p class="item-description"></p>
+                            <h3 class="item-name"><span class="i18n" data-es="Pinchos Morunos" data-en="Pinchos Morunos" data-fr="Pinchos Morunos">Pinchos Morunos</span></h3>
+                            <p class="item-description"><span class="i18n" data-es="" data-en="" data-fr=""></span></p>
                         </div>
-                        <div class='item-price'>6.80 €</div>
+                        
+                        <div class="item-right-col">
+                            <div class='item-price'>6.80 €</div>
+                            
+                        </div>
                     </article>
                     <article class="menu-item" style="">
                         
                         <div class="item-details">
-                            <h3 class="item-name">Patatas Bravas</h3>
-                            <p class="item-description"></p>
+                            <h3 class="item-name"><span class="i18n" data-es="Patatas Bravas" data-en="Patatas Bravas" data-fr="Patatas Bravas">Patatas Bravas</span></h3>
+                            <p class="item-description"><span class="i18n" data-es="" data-en="" data-fr=""></span></p>
                         </div>
-                        <div class='item-price'>5.75 €</div>
+                        
+                        <div class="item-right-col">
+                            <div class='item-price'>5.75 €</div>
+                            
+                        </div>
                     </article>
                     <article class="menu-item" style="">
                         
                         <div class="item-details">
-                            <h3 class="item-name">Patatas Fritas</h3>
-                            <p class="item-description"></p>
+                            <h3 class="item-name"><span class="i18n" data-es="Patatas Fritas" data-en="Patatas Fritas" data-fr="Patatas Fritas">Patatas Fritas</span></h3>
+                            <p class="item-description"><span class="i18n" data-es="" data-en="" data-fr=""></span></p>
                         </div>
-                        <div class='item-price'>4.15 €</div>
+                        
+                        <div class="item-right-col">
+                            <div class='item-price'>4.15 €</div>
+                            
+                        </div>
                     </article>
                     <article class="menu-item" style="">
                         
                         <div class="item-details">
-                            <h3 class="item-name">Rabas</h3>
-                            <p class="item-description"></p>
+                            <h3 class="item-name"><span class="i18n" data-es="Rabas" data-en="Rabas" data-fr="Rabas">Rabas</span></h3>
+                            <p class="item-description"><span class="i18n" data-es="" data-en="" data-fr=""></span></p>
                         </div>
-                        <div class='item-price'>7.90 €</div>
+                        
+                        <div class="item-right-col">
+                            <div class='item-price'>7.90 €</div>
+                            
+                        </div>
                     </article>
                     <article class="menu-item" style="">
                         
                         <div class="item-details">
-                            <h3 class="item-name">Buñuelos de Bacalao</h3>
-                            <p class="item-description"></p>
+                            <h3 class="item-name"><span class="i18n" data-es="Buñuelos de Bacalao" data-en="Buñuelos de Bacalao" data-fr="Buñuelos de Bacalao">Buñuelos de Bacalao</span></h3>
+                            <p class="item-description"><span class="i18n" data-es="" data-en="" data-fr=""></span></p>
                         </div>
-                        <div class='item-price'>6.10 €</div>
+                        
+                        <div class="item-right-col">
+                            <div class='item-price'>6.10 €</div>
+                            
+                        </div>
                     </article>
                     <article class="menu-item" style="">
                         
                         <div class="item-details">
-                            <h3 class="item-name">Tiras de Pollo Rebozadas Sergio's</h3>
-                            <p class="item-description"></p>
+                            <h3 class="item-name"><span class="i18n" data-es="Tiras de Pollo Rebozadas Sergio&#39;s" data-en="Tiras de Pollo Rebozadas Sergio&#39;s" data-fr="Tiras de Pollo Rebozadas Sergio&#39;s">Tiras de Pollo Rebozadas Sergio&#39;s</span></h3>
+                            <p class="item-description"><span class="i18n" data-es="" data-en="" data-fr=""></span></p>
                         </div>
-                        <div class='item-price'>6.50 €</div>
+                        
+                        <div class="item-right-col">
+                            <div class='item-price'>6.50 €</div>
+                            
+                        </div>
                     </article>
                     <article class="menu-item" style="">
                         
                         <div class="item-details">
-                            <h3 class="item-name">Pechuguitas de Pollo Barbacoa</h3>
-                            <p class="item-description"></p>
+                            <h3 class="item-name"><span class="i18n" data-es="Pechuguitas de Pollo Barbacoa" data-en="Pechuguitas de Pollo Barbacoa" data-fr="Pechuguitas de Pollo Barbacoa">Pechuguitas de Pollo Barbacoa</span></h3>
+                            <p class="item-description"><span class="i18n" data-es="" data-en="" data-fr=""></span></p>
                         </div>
-                        <div class='item-price'>6.20 €</div>
+                        
+                        <div class="item-right-col">
+                            <div class='item-price'>6.20 €</div>
+                            
+                        </div>
                     </article>
                     <article class="menu-item" style="">
                         
                         <div class="item-details">
-                            <h3 class="item-name">Brochetas de Pollo Yakitori 4 Und.</h3>
-                            <p class="item-description"></p>
+                            <h3 class="item-name"><span class="i18n" data-es="Brochetas de Pollo Yakitori 4 Und." data-en="Brochetas de Pollo Yakitori 4 Und." data-fr="Brochetas de Pollo Yakitori 4 Und.">Brochetas de Pollo Yakitori 4 Und.</span></h3>
+                            <p class="item-description"><span class="i18n" data-es="" data-en="" data-fr=""></span></p>
                         </div>
-                        <div class='item-price'>7.80 €</div>
+                        
+                        <div class="item-right-col">
+                            <div class='item-price'>7.80 €</div>
+                            
+                        </div>
                     </article>
                     <article class="menu-item" style="">
                         
                         <div class="item-details">
-                            <h3 class="item-name">Chistorra</h3>
-                            <p class="item-description">Chistorra con Pan con Tomate</p>
+                            <h3 class="item-name"><span class="i18n" data-es="Chistorra" data-en="Chistorra" data-fr="Chistorra">Chistorra</span></h3>
+                            <p class="item-description"><span class="i18n" data-es="Chistorra con Pan con Tomate" data-en="Chistorra con Pan con Tomate" data-fr="Chistorra con Pan con Tomate">Chistorra con Pan con Tomate</span></p>
                         </div>
-                        <div class='item-price'>6.50 €</div>
+                        
+                        <div class="item-right-col">
+                            <div class='item-price'>6.50 €</div>
+                            
+                        </div>
                     </article>
                     <article class="menu-item" style="">
                         
                         <div class="item-details">
-                            <h3 class="item-name">Pollo Kentucky</h3>
-                            <p class="item-description"></p>
+                            <h3 class="item-name"><span class="i18n" data-es="Pollo Kentucky" data-en="Pollo Kentucky" data-fr="Pollo Kentucky">Pollo Kentucky</span></h3>
+                            <p class="item-description"><span class="i18n" data-es="" data-en="" data-fr=""></span></p>
                         </div>
-                        <div class='item-price'>6.95 €</div>
+                        
+                        <div class="item-right-col">
+                            <div class='item-price'>6.95 €</div>
+                            
+                        </div>
                     </article>
                     <article class="menu-item" style="">
                         
                         <div class="item-details">
-                            <h3 class="item-name">Alcachofas Rebozadas Sergio's</h3>
-                            <p class="item-description"></p>
+                            <h3 class="item-name"><span class="i18n" data-es="Alcachofas Rebozadas Sergio&#39;s" data-en="Alcachofas Rebozadas Sergio&#39;s" data-fr="Alcachofas Rebozadas Sergio&#39;s">Alcachofas Rebozadas Sergio&#39;s</span></h3>
+                            <p class="item-description"><span class="i18n" data-es="" data-en="" data-fr=""></span></p>
                         </div>
-                        <div class='item-price'>8.90 €</div>
+                        
+                        <div class="item-right-col">
+                            <div class='item-price'>8.90 €</div>
+                            
+                        </div>
                     </article>
                     <article class="menu-item" style="">
                         
                         <div class="item-details">
-                            <h3 class="item-name">Alitas de Pollo (5 und)</h3>
-                            <p class="item-description"></p>
+                            <h3 class="item-name"><span class="i18n" data-es="Alitas de Pollo (5 und)" data-en="Alitas de Pollo (5 und)" data-fr="Alitas de Pollo (5 und)">Alitas de Pollo (5 und)</span></h3>
+                            <p class="item-description"><span class="i18n" data-es="" data-en="" data-fr=""></span></p>
                         </div>
-                        <div class='item-price'>6.25 €</div>
+                        
+                        <div class="item-right-col">
+                            <div class='item-price'>6.25 €</div>
+                            
+                        </div>
                     </article>
                     <article class="menu-item" style="">
                         
                         <div class="item-details">
-                            <h3 class="item-name">Bomba de Ternera (3 und)</h3>
-                            <p class="item-description"></p>
+                            <h3 class="item-name"><span class="i18n" data-es="Bomba de Ternera (3 und)" data-en="Bomba de Ternera (3 und)" data-fr="Bomba de Ternera (3 und)">Bomba de Ternera (3 und)</span></h3>
+                            <p class="item-description"><span class="i18n" data-es="" data-en="" data-fr=""></span></p>
                         </div>
-                        <div class='item-price'>5.20 €</div>
+                        
+                        <div class="item-right-col">
+                            <div class='item-price'>5.20 €</div>
+                            
+                        </div>
                     </article>
                     <article class="menu-item" style="">
                         
                         <div class="item-details">
-                            <h3 class="item-name">Extra de Pan</h3>
-                            <p class="item-description"></p>
+                            <h3 class="item-name"><span class="i18n" data-es="Extra de Pan" data-en="Extra de Pan" data-fr="Extra de Pan">Extra de Pan</span></h3>
+                            <p class="item-description"><span class="i18n" data-es="" data-en="" data-fr=""></span></p>
                         </div>
-                        <div class='item-price'>1.50 €</div>
+                        
+                        <div class="item-right-col">
+                            <div class='item-price'>1.50 €</div>
+                            
+                        </div>
                     </article>
                     <article class="menu-item" style="">
                         
                         <div class="item-details">
-                            <h3 class="item-name">Extra de Pan con Tomate</h3>
-                            <p class="item-description"></p>
+                            <h3 class="item-name"><span class="i18n" data-es="Extra de Pan con Tomate" data-en="Extra de Pan con Tomate" data-fr="Extra de Pan con Tomate">Extra de Pan con Tomate</span></h3>
+                            <p class="item-description"><span class="i18n" data-es="" data-en="" data-fr=""></span></p>
                         </div>
-                        <div class='item-price'>2.50 €</div>
+                        
+                        <div class="item-right-col">
+                            <div class='item-price'>2.50 €</div>
+                            
+                        </div>
                     </article>
                 </div>
             </section>
@@ -257,5 +388,6 @@
         function hideImageModal() { document.getElementById('imageModal').classList.remove('open'); }
         document.addEventListener('keydown', function (e) { if (e.key === 'Escape') hideImageModal(); });
     </script>
+
 </body>
 </html>
