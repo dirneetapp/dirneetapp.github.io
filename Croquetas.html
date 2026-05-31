@@ -1,279 +1,338 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bar Sergios - Croquetas</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
 </head>
-
 <body class="theme-forest">
     <button class="menu-toggle" onclick="toggleMenu()">☰</button>
-
     <div id="mobileMenu" class="mobile-menu-overlay">
-        <button class="menu-toggle"
-            style="position:absolute; top:1rem; right:1rem; border:none; background:none; font-size:2rem;"
-            onclick="toggleMenu()">✕</button>
+        <button class="menu-toggle" style="position:absolute; top:1rem; right:1rem; border:none; background:none; font-size:2rem;" onclick="toggleMenu()">✕</button>
         <a href="Desayunos.html" class="mobile-menu-link ">Desayunos</a>
         <a href="Bocadillos.html" class="mobile-menu-link ">Bocadillos</a>
         <a href="Vermuts.html" class="mobile-menu-link ">Vermuts</a>
         <a href="Tapas.html" class="mobile-menu-link ">Tapas</a>
         <a href="Torradas.html" class="mobile-menu-link ">Torradas</a>
         <a href="Tablas.html" class="mobile-menu-link ">Tablas</a>
-        <a href="Platos Especiales.html" class="mobile-menu-link {active_Platos Especiales}">Platos Especiales</a>
-        <a href="tapaarroz.html" class="mobile-menu-link">Tapas Arroz Sergio's</a>
+        <a href="Platos Especiales.html" class="mobile-menu-link ">Platos Especiales</a>
+        <a href="Arroz.html" class="mobile-menu-link ">Tapa de Arroz</a>
         <a href="Croquetas.html" class="mobile-menu-link active">Croquetas</a>
         <a href="Postres.html" class="mobile-menu-link ">Postres</a>
+        <a href="tapaarroz.html" class="mobile-menu-link ">Especial Taparroz Sergio's</a>
     </div>
-
     <header class="hero">
         <a href="index.html" class="home-btn" title="Volver al inicio">🏠</a>
         <div class="hero-content">
             <h1>Bar Sergios</h1>
-            <p class="subtitle">Gastronomía & Buen Ambiente</p>
+            <p class="subtitle">Gastronomía &amp; Buen Ambiente</p>
         </div>
     </header>
 
+    <div class="lang-switcher" id="langSwitcher">
+        <button id="lang-es" class="lang-btn active" onclick="setLang('es')" title="Español">🇪🇸</button>
+        <button id="lang-en" class="lang-btn" onclick="setLang('en')" title="English">🇬🇧</button>
+        <button id="lang-fr" class="lang-btn" onclick="setLang('fr')" title="Français">🇫🇷</button>
+    </div>
+    <script>
+        function setLang(lang) {
+            localStorage.setItem('menuLang', lang);
+            document.querySelectorAll('.i18n').forEach(function(el) {
+                var text = el.getAttribute('data-' + lang);
+                el.textContent = (text && text.trim()) ? text : el.getAttribute('data-es');
+            });
+            document.querySelectorAll('.lang-btn').forEach(function(b) { b.classList.remove('active'); });
+            var btn = document.getElementById('lang-' + lang);
+            if (btn) btn.classList.add('active');
+        }
+        (function() { setLang(localStorage.getItem('menuLang') || 'es'); })();
+    </script>
     <main class="container">
         <div class="menu-container">
             <section class="menu-section">
                 <h2 class="section-title">Croquetas</h2>
                 <div class="items-list">
-                    <article class="menu-item">
-
+                    <article class="menu-item" style="">
+                        
                         <div class="item-details">
-                            <h3 class="item-name">6 Croquetas de Espinacas y Queso</h3>
-                            <p class="item-description"></p>
+                            <h3 class="item-name"><span class="i18n" data-es="6 Croquetas de Espinacas y Queso" data-en="6 Croquetas de Espinacas y Queso" data-fr="6 Croquetas de Espinacas y Queso">6 Croquetas de Espinacas y Queso</span></h3>
+                            <p class="item-description"><span class="i18n" data-es="" data-en="" data-fr=""></span></p>
                         </div>
-                        <div class="item-price">7.10 €</div>
+                        
+                        <div class="item-right-col">
+                            <div class='item-price'>7.10 €</div>
+                            
+                        </div>
                     </article>
-
-                    <article class="menu-item">
-
+                    <article class="menu-item" style="">
+                        
                         <div class="item-details">
-                            <h3 class="item-name">6 Croquetas de Chipirones</h3>
-                            <p class="item-description"></p>
+                            <h3 class="item-name"><span class="i18n" data-es="6 Croquetas de Chipirones" data-en="6 Croquetas de Chipirones" data-fr="6 Croquetas de Chipirones">6 Croquetas de Chipirones</span></h3>
+                            <p class="item-description"><span class="i18n" data-es="" data-en="" data-fr=""></span></p>
                         </div>
-                        <div class="item-price">7.55 €</div>
+                        
+                        <div class="item-right-col">
+                            <div class='item-price'>7.55 €</div>
+                            
+                        </div>
                     </article>
-
-                    <article class="menu-item">
-
+                    <article class="menu-item" style="">
+                        
                         <div class="item-details">
-                            <h3 class="item-name">6 Croquetas de Morcilla</h3>
-                            <p class="item-description"></p>
+                            <h3 class="item-name"><span class="i18n" data-es="6 Croquetas de Morcilla" data-en="6 Croquetas de Morcilla" data-fr="6 Croquetas de Morcilla">6 Croquetas de Morcilla</span></h3>
+                            <p class="item-description"><span class="i18n" data-es="" data-en="" data-fr=""></span></p>
                         </div>
-                        <div class="item-price">6.50 €</div>
+                        
+                        <div class="item-right-col">
+                            <div class='item-price'>6.50 €</div>
+                            
+                        </div>
                     </article>
-
-                    <article class="menu-item">
-
+                    <article class="menu-item" style="">
+                        
                         <div class="item-details">
-                            <h3 class="item-name">6 Croquetas de Pollo</h3>
-                            <p class="item-description"></p>
+                            <h3 class="item-name"><span class="i18n" data-es="6 Croquetas de Pollo" data-en="6 Croquetas de Pollo" data-fr="6 Croquetas de Pollo">6 Croquetas de Pollo</span></h3>
+                            <p class="item-description"><span class="i18n" data-es="" data-en="" data-fr=""></span></p>
                         </div>
-                        <div class="item-price">7.50 €</div>
+                        
+                        <div class="item-right-col">
+                            <div class='item-price'>7.50 €</div>
+                            
+                        </div>
                     </article>
-
-                    <article class="menu-item">
-
+                    <article class="menu-item" style="">
+                        
                         <div class="item-details">
-                            <h3 class="item-name">6 Croquetas de Brandada de Bacalao</h3>
-                            <p class="item-description"></p>
+                            <h3 class="item-name"><span class="i18n" data-es="6 Croquetas de Brandada de Bacalao" data-en="6 Croquetas de Brandada de Bacalao" data-fr="6 Croquetas de Brandada de Bacalao">6 Croquetas de Brandada de Bacalao</span></h3>
+                            <p class="item-description"><span class="i18n" data-es="" data-en="" data-fr=""></span></p>
                         </div>
-                        <div class="item-price">7.70 €</div>
+                        
+                        <div class="item-right-col">
+                            <div class='item-price'>7.70 €</div>
+                            
+                        </div>
                     </article>
-
-                    <article class="menu-item">
-
+                    <article class="menu-item" style="">
+                        
                         <div class="item-details">
-                            <h3 class="item-name">6 Croquetas de Jamón</h3>
-                            <p class="item-description"></p>
+                            <h3 class="item-name"><span class="i18n" data-es="6 Croquetas de Jamón" data-en="6 Croquetas de Jamón" data-fr="6 Croquetas de Jamón">6 Croquetas de Jamón</span></h3>
+                            <p class="item-description"><span class="i18n" data-es="" data-en="" data-fr=""></span></p>
                         </div>
-                        <div class="item-price">6.80 €</div>
+                        
+                        <div class="item-right-col">
+                            <div class='item-price'>6.80 €</div>
+                            
+                        </div>
                     </article>
-
-                    <article class="menu-item">
-
+                    <article class="menu-item" style="">
+                        
                         <div class="item-details">
-                            <h3 class="item-name">6 Croquetas de Carne Asada</h3>
-                            <p class="item-description"></p>
+                            <h3 class="item-name"><span class="i18n" data-es="6 Croquetas de Carne Asada" data-en="6 Croquetas de Carne Asada" data-fr="6 Croquetas de Carne Asada">6 Croquetas de Carne Asada</span></h3>
+                            <p class="item-description"><span class="i18n" data-es="" data-en="" data-fr=""></span></p>
                         </div>
-                        <div class="item-price">7.20 €</div>
+                        
+                        <div class="item-right-col">
+                            <div class='item-price'>7.20 €</div>
+                            
+                        </div>
                     </article>
-
-                    <article class="menu-item">
-
+                    <article class="menu-item" style="">
+                        
                         <div class="item-details">
-                            <h3 class="item-name">6 Croquetas de Setas</h3>
-                            <p class="item-description"></p>
+                            <h3 class="item-name"><span class="i18n" data-es="6 Croquetas de Setas" data-en="6 Croquetas de Setas" data-fr="6 Croquetas de Setas">6 Croquetas de Setas</span></h3>
+                            <p class="item-description"><span class="i18n" data-es="" data-en="" data-fr=""></span></p>
                         </div>
-                        <div class="item-price">7.45 €</div>
+                        
+                        <div class="item-right-col">
+                            <div class='item-price'>7.45 €</div>
+                            
+                        </div>
                     </article>
-
-                    <article class="menu-item">
-
+                    <article class="menu-item" style="">
+                        
                         <div class="item-details">
-                            <h3 class="item-name">6 Croquetas de Cocido</h3>
-                            <p class="item-description"></p>
+                            <h3 class="item-name"><span class="i18n" data-es="6 Croquetas de Cocido" data-en="6 Croquetas de Cocido" data-fr="6 Croquetas de Cocido">6 Croquetas de Cocido</span></h3>
+                            <p class="item-description"><span class="i18n" data-es="" data-en="" data-fr=""></span></p>
                         </div>
-                        <div class="item-price">7.50 €</div>
+                        
+                        <div class="item-right-col">
+                            <div class='item-price'>7.50 €</div>
+                            
+                        </div>
                     </article>
-
-                    <article class="menu-item">
-
+                    <article class="menu-item" style="">
+                        
                         <div class="item-details">
-                            <h3 class="item-name">6 Croquetas de Carrillera</h3>
-                            <p class="item-description">Al Pedro Ximenez</p>
+                            <h3 class="item-name"><span class="i18n" data-es="6 Croquetas de Carrillera" data-en="6 Croquetas de Carrillera" data-fr="6 Croquetas de Carrillera">6 Croquetas de Carrillera</span></h3>
+                            <p class="item-description"><span class="i18n" data-es="Al Pedro Ximenez" data-en="Al Pedro Ximenez" data-fr="Al Pedro Ximenez">Al Pedro Ximenez</span></p>
                         </div>
-                        <div class="item-price">7.10 €</div>
+                        
+                        <div class="item-right-col">
+                            <div class='item-price'>7.10 €</div>
+                            
+                        </div>
                     </article>
-
-                    <article class="menu-item">
-
+                    <article class="menu-item" style="">
+                        
                         <div class="item-details">
-                            <h3 class="item-name">6 Croquetas de Merluza y Gambas</h3>
-                            <p class="item-description"></p>
+                            <h3 class="item-name"><span class="i18n" data-es="6 Croquetas de Merluza y Gambas" data-en="6 Croquetas de Merluza y Gambas" data-fr="6 Croquetas de Merluza y Gambas">6 Croquetas de Merluza y Gambas</span></h3>
+                            <p class="item-description"><span class="i18n" data-es="" data-en="" data-fr=""></span></p>
                         </div>
-                        <div class="item-price">7.95 €</div>
+                        
+                        <div class="item-right-col">
+                            <div class='item-price'>7.95 €</div>
+                            
+                        </div>
                     </article>
-
-                    <article class="menu-item">
-
+                    <article class="menu-item" style="">
+                        
                         <div class="item-details">
-                            <h3 class="item-name">6 Croquetas de Cochinillo</h3>
-                            <p class="item-description"></p>
+                            <h3 class="item-name"><span class="i18n" data-es="6 Croquetas de Cochinillo" data-en="6 Croquetas de Cochinillo" data-fr="6 Croquetas de Cochinillo">6 Croquetas de Cochinillo</span></h3>
+                            <p class="item-description"><span class="i18n" data-es="" data-en="" data-fr=""></span></p>
                         </div>
-                        <div class="item-price">6.90 €</div>
+                        
+                        <div class="item-right-col">
+                            <div class='item-price'>6.90 €</div>
+                            
+                        </div>
                     </article>
-
-                    <article class="menu-item">
-
+                    <article class="menu-item" style="">
+                        
                         <div class="item-details">
-                            <h3 class="item-name">6 Croquetas de Rabo de Toro</h3>
-                            <p class="item-description"></p>
+                            <h3 class="item-name"><span class="i18n" data-es="6 Croquetas de Rabo de Toro" data-en="6 Croquetas de Rabo de Toro" data-fr="6 Croquetas de Rabo de Toro">6 Croquetas de Rabo de Toro</span></h3>
+                            <p class="item-description"><span class="i18n" data-es="" data-en="" data-fr=""></span></p>
                         </div>
-                        <div class="item-price">6.75 €</div>
+                        
+                        <div class="item-right-col">
+                            <div class='item-price'>6.75 €</div>
+                            
+                        </div>
                     </article>
-
-                    <article class="menu-item">
-
+                    <article class="menu-item" style="">
+                        
                         <div class="item-details">
-                            <h3 class="item-name">6 Croquetas de Calçots</h3>
-                            <p class="item-description"></p>
+                            <h3 class="item-name"><span class="i18n" data-es="6 Croquetas de Calçots" data-en="6 Croquetas de Calçots" data-fr="6 Croquetas de Calçots">6 Croquetas de Calçots</span></h3>
+                            <p class="item-description"><span class="i18n" data-es="" data-en="" data-fr=""></span></p>
                         </div>
-                        <div class="item-price">7.50 €</div>
+                        
+                        <div class="item-right-col">
+                            <div class='item-price'>7.50 €</div>
+                            
+                        </div>
                     </article>
-
-                    <article class="menu-item">
-
+                    <article class="menu-item" style="">
+                        
                         <div class="item-details">
-                            <h3 class="item-name">6 Croquetas de Pulpo Gallego</h3>
-                            <p class="item-description"></p>
+                            <h3 class="item-name"><span class="i18n" data-es="6 Croquetas de Pulpo Gallego" data-en="6 Croquetas de Pulpo Gallego" data-fr="6 Croquetas de Pulpo Gallego">6 Croquetas de Pulpo Gallego</span></h3>
+                            <p class="item-description"><span class="i18n" data-es="" data-en="" data-fr=""></span></p>
                         </div>
-                        <div class="item-price">7.10 €</div>
+                        
+                        <div class="item-right-col">
+                            <div class='item-price'>7.10 €</div>
+                            
+                        </div>
                     </article>
-
-                    <article class="menu-item">
-
+                    <article class="menu-item" style="">
+                        
                         <div class="item-details">
-                            <h3 class="item-name">6 Croquetas de Queso de Cabra y Cebolla Caramelizada</h3>
-                            <p class="item-description"></p>
+                            <h3 class="item-name"><span class="i18n" data-es="6 Croquetas de Queso de Cabra y Cebolla Caramelizada" data-en="6 Croquetas de Queso de Cabra y Cebolla Caramelizada" data-fr="6 Croquetas de Queso de Cabra y Cebolla Caramelizada">6 Croquetas de Queso de Cabra y Cebolla Caramelizada</span></h3>
+                            <p class="item-description"><span class="i18n" data-es="" data-en="" data-fr=""></span></p>
                         </div>
-                        <div class="item-price">7.40 €</div>
+                        
+                        <div class="item-right-col">
+                            <div class='item-price'>7.40 €</div>
+                            
+                        </div>
                     </article>
-
-                    <article class="menu-item">
-
+                    <article class="menu-item" style="">
+                        
                         <div class="item-details">
-                            <h3 class="item-name">Croqueton de Cocido Und.</h3>
-                            <p class="item-description"></p>
+                            <h3 class="item-name"><span class="i18n" data-es="Croqueton de Cocido Und." data-en="Croqueton de Cocido Und." data-fr="Croqueton de Cocido Und.">Croqueton de Cocido Und.</span></h3>
+                            <p class="item-description"><span class="i18n" data-es="" data-en="" data-fr=""></span></p>
                         </div>
-                        <div class="item-price">1.50 €</div>
+                        
+                        <div class="item-right-col">
+                            <div class='item-price'>1.50 €</div>
+                            
+                        </div>
                     </article>
                 </div>
             </section>
             <section class='menu-section'>
                 <h3 class='subsection-title'>Croquetrio's Sergio's</h3>
                 <div class='items-list'>
-                    <article class="menu-item">
-
+                    <article class="menu-item" style="">
+                        
                         <div class="item-details">
-                            <h3 class="item-name">Surtido del Agua</h3>
-                            <p class="item-description">2 Croquetas Brandada de Bacalao
-                                2 Croquetas Chipirones
-                                2 Croquetas de Merluza con Gambas</p>
+                            <h3 class="item-name"><span class="i18n" data-es="Surtido del Agua" data-en="Surtido del Agua" data-fr="Surtido del Agua">Surtido del Agua</span></h3>
+                            <p class="item-description"><span class="i18n" data-es="2 Croquetas Brandada de Bacalao                 2 Croquetas Chipirones                 2 Croquetas de Merluza con Gambas" data-en="2 Croquetas Brandada de Bacalao                 2 Croquetas Chipirones                 2 Croquetas de Merluza con Gambas" data-fr="2 Croquetas Brandada de Bacalao                 2 Croquetas Chipirones                 2 Croquetas de Merluza con Gambas">2 Croquetas Brandada de Bacalao                 2 Croquetas Chipirones                 2 Croquetas de Merluza con Gambas</span></p>
                         </div>
-                        <div class="item-price">8.90 €</div>
+                        
+                        <div class="item-right-col">
+                            <div class='item-price'>8.90 €</div>
+                            
+                        </div>
                     </article>
-
-                    <article class="menu-item">
-
+                    <article class="menu-item" style="">
+                        
                         <div class="item-details">
-                            <h3 class="item-name">Surtido de la Tierra</h3>
-                            <p class="item-description">2 Croquetas Rabo de Toro
-                                2 Croquetas Carrillera al Pedro Ximenez
-                                2 Croquetas Cochinillo</p>
+                            <h3 class="item-name"><span class="i18n" data-es="Surtido de la Tierra" data-en="Surtido de la Tierra" data-fr="Surtido de la Tierra">Surtido de la Tierra</span></h3>
+                            <p class="item-description"><span class="i18n" data-es="2 Croquetas Rabo de Toro                 2 Croquetas Carrillera al Pedro Ximenez                 2 Croquetas Cochinillo" data-en="2 Croquetas Rabo de Toro                 2 Croquetas Carrillera al Pedro Ximenez                 2 Croquetas Cochinillo" data-fr="2 Croquetas Rabo de Toro                 2 Croquetas Carrillera al Pedro Ximenez                 2 Croquetas Cochinillo">2 Croquetas Rabo de Toro                 2 Croquetas Carrillera al Pedro Ximenez                 2 Croquetas Cochinillo</span></p>
                         </div>
-                        <div class="item-price">8.90 €</div>
+                        
+                        <div class="item-right-col">
+                            <div class='item-price'>8.90 €</div>
+                            
+                        </div>
                     </article>
-
-                    <article class="menu-item">
-
+                    <article class="menu-item" style="">
+                        
                         <div class="item-details">
-                            <h3 class="item-name">Surtido del Aire</h3>
-                            <p class="item-description">2 Croquetas Setas
-                                2 Croquetas Queso de Cabra y Cebolla Caramelizada
-                                2 Croquetas Calçots</p>
+                            <h3 class="item-name"><span class="i18n" data-es="Surtido del Aire" data-en="Surtido del Aire" data-fr="Surtido del Aire">Surtido del Aire</span></h3>
+                            <p class="item-description"><span class="i18n" data-es="2 Croquetas Setas                 2 Croquetas Queso de Cabra y Cebolla Caramelizada                 2 Croquetas Calçots" data-en="2 Croquetas Setas                 2 Croquetas Queso de Cabra y Cebolla Caramelizada                 2 Croquetas Calçots" data-fr="2 Croquetas Setas                 2 Croquetas Queso de Cabra y Cebolla Caramelizada                 2 Croquetas Calçots">2 Croquetas Setas                 2 Croquetas Queso de Cabra y Cebolla Caramelizada                 2 Croquetas Calçots</span></p>
                         </div>
-                        <div class="item-price">8.90 €</div>
+                        
+                        <div class="item-right-col">
+                            <div class='item-price'>8.90 €</div>
+                            
+                        </div>
                     </article>
-
-                    <article class="menu-item">
-
+                    <article class="menu-item" style="">
+                        
                         <div class="item-details">
-                            <h3 class="item-name">Surtido del Fuego</h3>
-                            <p class="item-description">2 Croquetas de Cocido
-                                2 Croquetas de Jamon
-                                2 Croquetas de Pollo</p>
+                            <h3 class="item-name"><span class="i18n" data-es="Surtido del Fuego" data-en="Surtido del Fuego" data-fr="Surtido del Fuego">Surtido del Fuego</span></h3>
+                            <p class="item-description"><span class="i18n" data-es="2 Croquetas de Cocido                 2 Croquetas de Jamon                 2 Croquetas de Pollo" data-en="2 Croquetas de Cocido                 2 Croquetas de Jamon                 2 Croquetas de Pollo" data-fr="2 Croquetas de Cocido                 2 Croquetas de Jamon                 2 Croquetas de Pollo">2 Croquetas de Cocido                 2 Croquetas de Jamon                 2 Croquetas de Pollo</span></p>
                         </div>
-                        <div class="item-price">8.90 €</div>
+                        
+                        <div class="item-right-col">
+                            <div class='item-price'>8.90 €</div>
+                            
+                        </div>
                     </article>
                 </div>
             </section>
         </div>
     </main>
-
     <div id="imageModal" class="image-modal" onclick="hideImageModal()">
         <img id="imageModalImg" class="image-modal-content" alt="Imagen">
     </div>
-
     <footer>
         <p>&copy; 2026 Bar Sergios. Todos los derechos reservados.</p>
     </footer>
-
     <script>
-        function toggleMenu() {
-            document.getElementById('mobileMenu').classList.toggle('open');
-        }
+        function toggleMenu() { document.getElementById('mobileMenu').classList.toggle('open'); }
         function showImageModal(src) {
             var img = document.getElementById('imageModalImg');
             img.src = src;
             document.getElementById('imageModal').classList.add('open');
         }
-        function hideImageModal() {
-            document.getElementById('imageModal').classList.remove('open');
-        }
-        document.addEventListener('keydown', function (e) {
-            if (e.key === 'Escape') hideImageModal();
-        });
+        function hideImageModal() { document.getElementById('imageModal').classList.remove('open'); }
+        document.addEventListener('keydown', function (e) { if (e.key === 'Escape') hideImageModal(); });
     </script>
-</body>
 
+</body>
 </html>

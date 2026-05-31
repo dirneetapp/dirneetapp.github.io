@@ -14,7 +14,7 @@
 </head>
 
 <body class="theme-gold">
-    <div id="introOverlay"
+                                                                                                                    <div id="introOverlay"
         style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #121212; z-index: 9999; display: flex; justify-content: center; align-items: center; transition: opacity 0.5s ease;">
         <img id="introImg1" src="assets/combo1.jpg" alt="Intro 1"
             style="position: absolute; max-width: 100%; max-height: 100%; object-fit: contain; opacity: 1; transition: opacity 0.5s ease;">
@@ -61,19 +61,18 @@
     <button class="menu-toggle" onclick="toggleMenu()">☰</button>
 
     <div id="mobileMenu" class="mobile-menu-overlay">
-        <button class="menu-toggle"
-            style="position:absolute; top:1rem; right:1rem; border:none; background:none; font-size:2rem;"
-            onclick="toggleMenu()">✕</button>
+        <button class="menu-toggle" style="position:absolute; top:1rem; right:1rem; border:none; background:none; font-size:2rem;" onclick="toggleMenu()">✕</button>
         <a href="Desayunos.html" class="mobile-menu-link ">Desayunos</a>
         <a href="Bocadillos.html" class="mobile-menu-link ">Bocadillos</a>
         <a href="Vermuts.html" class="mobile-menu-link ">Vermuts</a>
         <a href="Tapas.html" class="mobile-menu-link ">Tapas</a>
         <a href="Torradas.html" class="mobile-menu-link ">Torradas</a>
         <a href="Tablas.html" class="mobile-menu-link ">Tablas</a>
-        <a href="Platos Especiales.html" class="mobile-menu-link {active_Platos Especiales}">Platos Especiales</a>
-        <a href="tapaarroz.html" class="mobile-menu-link ">Tapa Arroz Sergio's</a>
+        <a href="Platos Especiales.html" class="mobile-menu-link ">Platos Especiales</a>
+        <a href="Arroz.html" class="mobile-menu-link ">Tapa de Arroz</a>
         <a href="Croquetas.html" class="mobile-menu-link ">Croquetas</a>
         <a href="Postres.html" class="mobile-menu-link ">Postres</a>
+        <a href="tapaarroz.html" class="mobile-menu-link ">Especial Taparroz Sergio's</a>
     </div>
 
     <header class="hero">
@@ -84,11 +83,57 @@
         </div>
     </header>
 
+    <div class="lang-switcher" id="langSwitcher">
+        <button id="lang-es" class="lang-btn active" onclick="setLang('es')" title="Español">🇪🇸</button>
+        <button id="lang-en" class="lang-btn" onclick="setLang('en')" title="English">🇬🇧</button>
+        <button id="lang-fr" class="lang-btn" onclick="setLang('fr')" title="Français">🇫🇷</button>
+    </div>
+    <script>
+        function setLang(lang) {
+            localStorage.setItem('menuLang', lang);
+            document.querySelectorAll('.i18n').forEach(function(el) {
+                var text = el.getAttribute('data-' + lang);
+                el.textContent = (text && text.trim()) ? text : el.getAttribute('data-es');
+            });
+            document.querySelectorAll('.lang-btn').forEach(function(b) { b.classList.remove('active'); });
+            var btn = document.getElementById('lang-' + lang);
+            if (btn) btn.classList.add('active');
+        }
+        (function() { setLang(localStorage.getItem('menuLang') || 'es'); })();
+    </script>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
     <main class="container">
         <div class="menu-container">
             <section class="menu-section">
                 <h2 class="section-title" style="text-align:center; display:block; border:none;">Nuestra Carta</h2>
                 <div class="category-grid">
+
                     <a href="Desayunos.html" class="category-card">
                         <img src="assets\cat_Desayunos.jpg" alt="Desayunos" class="category-card-image">
                         <div class="category-card-title">Desayunos</div>
@@ -131,9 +176,9 @@
                         <div class="category-card-description"></div>
                     </a>
 
-                    <a href="tapaarroz.html" class="category-card">
-                        <img src="assets\cat_arroz.jpeg" alt="Tapa Arroz" class="category-card-image">
-                        <div class="category-card-title">Tapa Arroz</div>
+                    <a href="Arroz.html" class="category-card">
+                        <img src="assets\cat_arroz.jpeg" alt="Tapa de Arroz" class="category-card-image">
+                        <div class="category-card-title">Tapa de Arroz</div>
                         <div class="category-card-description"></div>
                     </a>
 
@@ -149,10 +194,15 @@
                         <div class="category-card-description"></div>
                     </a>
 
+                    <a href="tapaarroz.html" class="category-card">
+                        <img src="assets\cat_tapaarroz.jpg" alt="Especial Taparroz Sergio's" class="category-card-image">
+                        <div class="category-card-title">Especial Taparroz Sergio's</div>
+                        <div class="category-card-description"></div>
+                    </a>
+
                     <!-- Roulette Card for Indecisive Customers -->
                     <div class="category-card roulette-card" onclick="openRoulette()">
-                        <div
-                            style="height: 200px; display: flex; align-items: center; justify-content: center; background: #2a2a2a; width: 100%;">
+                        <div style="height: 200px; display: flex; align-items: center; justify-content: center; background: #2a2a2a; width: 100%;">
                             <span style="font-size: 5rem;">🎡</span>
                         </div>
                         <div class="category-card-title">¿Indeciso?</div>
@@ -557,6 +607,9 @@
         }
 
     </script>
+
+
+
 </body>
 
 </html>

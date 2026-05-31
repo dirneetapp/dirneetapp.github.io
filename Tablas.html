@@ -1,113 +1,129 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bar Sergios - Tablas</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
 </head>
-
 <body class="theme-ocean">
     <button class="menu-toggle" onclick="toggleMenu()">☰</button>
-
     <div id="mobileMenu" class="mobile-menu-overlay">
-        <button class="menu-toggle"
-            style="position:absolute; top:1rem; right:1rem; border:none; background:none; font-size:2rem;"
-            onclick="toggleMenu()">✕</button>
+        <button class="menu-toggle" style="position:absolute; top:1rem; right:1rem; border:none; background:none; font-size:2rem;" onclick="toggleMenu()">✕</button>
         <a href="Desayunos.html" class="mobile-menu-link ">Desayunos</a>
         <a href="Bocadillos.html" class="mobile-menu-link ">Bocadillos</a>
         <a href="Vermuts.html" class="mobile-menu-link ">Vermuts</a>
         <a href="Tapas.html" class="mobile-menu-link ">Tapas</a>
         <a href="Torradas.html" class="mobile-menu-link ">Torradas</a>
         <a href="Tablas.html" class="mobile-menu-link active">Tablas</a>
-        <a href="Platos Especiales.html" class="mobile-menu-link {active_Platos Especiales}">Platos Especiales</a>
-        <a href="tapaarroz.html" class="mobile-menu-link">Tapas Arroz Sergio's</a>
+        <a href="Platos Especiales.html" class="mobile-menu-link ">Platos Especiales</a>
+        <a href="Arroz.html" class="mobile-menu-link ">Tapa de Arroz</a>
         <a href="Croquetas.html" class="mobile-menu-link ">Croquetas</a>
         <a href="Postres.html" class="mobile-menu-link ">Postres</a>
+        <a href="tapaarroz.html" class="mobile-menu-link ">Especial Taparroz Sergio's</a>
     </div>
-
     <header class="hero">
         <a href="index.html" class="home-btn" title="Volver al inicio">🏠</a>
         <div class="hero-content">
             <h1>Bar Sergios</h1>
-            <p class="subtitle">Gastronomía & Buen Ambiente</p>
+            <p class="subtitle">Gastronomía &amp; Buen Ambiente</p>
         </div>
     </header>
 
+    <div class="lang-switcher" id="langSwitcher">
+        <button id="lang-es" class="lang-btn active" onclick="setLang('es')" title="Español">🇪🇸</button>
+        <button id="lang-en" class="lang-btn" onclick="setLang('en')" title="English">🇬🇧</button>
+        <button id="lang-fr" class="lang-btn" onclick="setLang('fr')" title="Français">🇫🇷</button>
+    </div>
+    <script>
+        function setLang(lang) {
+            localStorage.setItem('menuLang', lang);
+            document.querySelectorAll('.i18n').forEach(function(el) {
+                var text = el.getAttribute('data-' + lang);
+                el.textContent = (text && text.trim()) ? text : el.getAttribute('data-es');
+            });
+            document.querySelectorAll('.lang-btn').forEach(function(b) { b.classList.remove('active'); });
+            var btn = document.getElementById('lang-' + lang);
+            if (btn) btn.classList.add('active');
+        }
+        (function() { setLang(localStorage.getItem('menuLang') || 'es'); })();
+    </script>
     <main class="container">
         <div class="menu-container">
             <section class="menu-section">
                 <h2 class="section-title">Tablas</h2>
                 <div class="items-list">
-                    <article class="menu-item">
-
+                    <article class="menu-item" style="">
+                        
                         <div class="item-details">
-                            <h3 class="item-name">Surtido de Embutidos</h3>
-                            <p class="item-description">2 Torradas con Tomate y Aceite</p>
+                            <h3 class="item-name"><span class="i18n" data-es="Surtido de Embutidos" data-en="Surtido de Embutidos" data-fr="Surtido de Embutidos">Surtido de Embutidos</span></h3>
+                            <p class="item-description"><span class="i18n" data-es="2 Torradas con Tomate y Aceite" data-en="2 Torradas con Tomate y Aceite" data-fr="2 Torradas con Tomate y Aceite">2 Torradas con Tomate y Aceite</span></p>
                         </div>
-                        <div class="item-price">8.95 €</div>
+                        
+                        <div class="item-right-col">
+                            <div class='item-price'>8.95 €</div>
+                            
+                        </div>
                     </article>
-
-                    <article class="menu-item">
-
+                    <article class="menu-item" style="">
+                        
                         <div class="item-details">
-                            <h3 class="item-name">Jamon Reserva</h3>
-                            <p class="item-description">2 Torradas con Tomate y Aceite</p>
+                            <h3 class="item-name"><span class="i18n" data-es="Jamon Reserva" data-en="Jamon Reserva" data-fr="Jamon Reserva">Jamon Reserva</span></h3>
+                            <p class="item-description"><span class="i18n" data-es="2 Torradas con Tomate y Aceite" data-en="2 Torradas con Tomate y Aceite" data-fr="2 Torradas con Tomate y Aceite">2 Torradas con Tomate y Aceite</span></p>
                         </div>
-                        <div class="item-price">11.90 €</div>
+                        
+                        <div class="item-right-col">
+                            <div class='item-price'>11.90 €</div>
+                            
+                        </div>
                     </article>
-
-                    <article class="menu-item">
-
+                    <article class="menu-item" style="">
+                        
                         <div class="item-details">
-                            <h3 class="item-name">Queso Curado</h3>
-                            <p class="item-description">2 Torradas con Tomate y Aceite</p>
+                            <h3 class="item-name"><span class="i18n" data-es="Queso Curado" data-en="Queso Curado" data-fr="Queso Curado">Queso Curado</span></h3>
+                            <p class="item-description"><span class="i18n" data-es="2 Torradas con Tomate y Aceite" data-en="2 Torradas con Tomate y Aceite" data-fr="2 Torradas con Tomate y Aceite">2 Torradas con Tomate y Aceite</span></p>
                         </div>
-                        <div class="item-price">8.60 €</div>
+                        
+                        <div class="item-right-col">
+                            <div class='item-price'>8.60 €</div>
+                            
+                        </div>
                     </article>
-                    <article class="menu-item">
-
+                    <article class="menu-item" style="">
+                        
                         <div class="item-details">
-                            <h3 class="item-name">Lacon</h3>
-                            <p class="item-description">2 Torradas con Tomate y Aceite</p>
+                            <h3 class="item-name"><span class="i18n" data-es="Lacon" data-en="Lacon" data-fr="Lacon">Lacon</span></h3>
+                            <p class="item-description"><span class="i18n" data-es="2 Torradas con Tomate y Aceite" data-en="2 Torradas con Tomate y Aceite" data-fr="2 Torradas con Tomate y Aceite">2 Torradas con Tomate y Aceite</span></p>
                         </div>
-                        <div class="item-price">7.50 €</div>
+                        
+                        <div class="item-right-col">
+                            <div class='item-price'>7.50 €</div>
+                            
+                        </div>
                     </article>
                 </div>
             </section>
         </div>
     </main>
-
     <div id="imageModal" class="image-modal" onclick="hideImageModal()">
         <img id="imageModalImg" class="image-modal-content" alt="Imagen">
     </div>
-
     <footer>
         <p>&copy; 2026 Bar Sergios. Todos los derechos reservados.</p>
     </footer>
-
     <script>
-        function toggleMenu() {
-            document.getElementById('mobileMenu').classList.toggle('open');
-        }
+        function toggleMenu() { document.getElementById('mobileMenu').classList.toggle('open'); }
         function showImageModal(src) {
             var img = document.getElementById('imageModalImg');
             img.src = src;
             document.getElementById('imageModal').classList.add('open');
         }
-        function hideImageModal() {
-            document.getElementById('imageModal').classList.remove('open');
-        }
-        document.addEventListener('keydown', function (e) {
-            if (e.key === 'Escape') hideImageModal();
-        });
+        function hideImageModal() { document.getElementById('imageModal').classList.remove('open'); }
+        document.addEventListener('keydown', function (e) { if (e.key === 'Escape') hideImageModal(); });
     </script>
-</body>
 
+</body>
 </html>

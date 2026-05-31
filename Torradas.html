@@ -1,276 +1,345 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bar Sergios - Torradas</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
 </head>
-
 <body class="theme-forest">
     <button class="menu-toggle" onclick="toggleMenu()">☰</button>
-
     <div id="mobileMenu" class="mobile-menu-overlay">
-        <button class="menu-toggle"
-            style="position:absolute; top:1rem; right:1rem; border:none; background:none; font-size:2rem;"
-            onclick="toggleMenu()">✕</button>
+        <button class="menu-toggle" style="position:absolute; top:1rem; right:1rem; border:none; background:none; font-size:2rem;" onclick="toggleMenu()">✕</button>
         <a href="Desayunos.html" class="mobile-menu-link ">Desayunos</a>
         <a href="Bocadillos.html" class="mobile-menu-link ">Bocadillos</a>
         <a href="Vermuts.html" class="mobile-menu-link ">Vermuts</a>
         <a href="Tapas.html" class="mobile-menu-link ">Tapas</a>
         <a href="Torradas.html" class="mobile-menu-link active">Torradas</a>
         <a href="Tablas.html" class="mobile-menu-link ">Tablas</a>
-        <a href="Platos Especiales.html" class="mobile-menu-link {active_Platos Especiales}">Platos Especiales</a>
-        <a href="tapaarroz.html" class="mobile-menu-link">Tapas Arroz Sergio's</a>
+        <a href="Platos Especiales.html" class="mobile-menu-link ">Platos Especiales</a>
+        <a href="Arroz.html" class="mobile-menu-link ">Tapa de Arroz</a>
         <a href="Croquetas.html" class="mobile-menu-link ">Croquetas</a>
         <a href="Postres.html" class="mobile-menu-link ">Postres</a>
+        <a href="tapaarroz.html" class="mobile-menu-link ">Especial Taparroz Sergio's</a>
     </div>
-
     <header class="hero">
         <a href="index.html" class="home-btn" title="Volver al inicio">🏠</a>
         <div class="hero-content">
             <h1>Bar Sergios</h1>
-            <p class="subtitle">Gastronomía & Buen Ambiente</p>
+            <p class="subtitle">Gastronomía &amp; Buen Ambiente</p>
         </div>
     </header>
 
+    <div class="lang-switcher" id="langSwitcher">
+        <button id="lang-es" class="lang-btn active" onclick="setLang('es')" title="Español">🇪🇸</button>
+        <button id="lang-en" class="lang-btn" onclick="setLang('en')" title="English">🇬🇧</button>
+        <button id="lang-fr" class="lang-btn" onclick="setLang('fr')" title="Français">🇫🇷</button>
+    </div>
+    <script>
+        function setLang(lang) {
+            localStorage.setItem('menuLang', lang);
+            document.querySelectorAll('.i18n').forEach(function(el) {
+                var text = el.getAttribute('data-' + lang);
+                el.textContent = (text && text.trim()) ? text : el.getAttribute('data-es');
+            });
+            document.querySelectorAll('.lang-btn').forEach(function(b) { b.classList.remove('active'); });
+            var btn = document.getElementById('lang-' + lang);
+            if (btn) btn.classList.add('active');
+        }
+        (function() { setLang(localStorage.getItem('menuLang') || 'es'); })();
+    </script>
     <main class="container">
         <div class="menu-container">
             <section class="menu-section">
                 <h2 class="section-title">Torradas</h2>
                 <div class="items-list">
-                    <article class="menu-item">
-
+                    <article class="menu-item" style="">
+                        
                         <div class="item-details">
-                            <h3 class="item-name">Torrada de Atun</h3>
-                            <p class="item-description"></p>
+                            <h3 class="item-name"><span class="i18n" data-es="Torrada de Atun" data-en="Torrada de Atun" data-fr="Torrada de Atun">Torrada de Atun</span></h3>
+                            <p class="item-description"><span class="i18n" data-es="" data-en="" data-fr=""></span></p>
                         </div>
-                        <div class="item-price">5.40 €</div>
+                        
+                        <div class="item-right-col">
+                            <div class='item-price'>5.40 €</div>
+                            
+                        </div>
                     </article>
-
-                    <article class="menu-item">
-
+                    <article class="menu-item" style="">
+                        
                         <div class="item-details">
-                            <h3 class="item-name">Torrada de Anchoas</h3>
-                            <p class="item-description"></p>
+                            <h3 class="item-name"><span class="i18n" data-es="Torrada de Anchoas" data-en="Torrada de Anchoas" data-fr="Torrada de Anchoas">Torrada de Anchoas</span></h3>
+                            <p class="item-description"><span class="i18n" data-es="" data-en="" data-fr=""></span></p>
                         </div>
-                        <div class="item-price">7.10 €</div>
+                        
+                        <div class="item-right-col">
+                            <div class='item-price'>7.10 €</div>
+                            
+                        </div>
                     </article>
-
-                    <article class="menu-item">
-
+                    <article class="menu-item" style="">
+                        
                         <div class="item-details">
-                            <h3 class="item-name">Torrada de Atun y Anchoas</h3>
-                            <p class="item-description"></p>
+                            <h3 class="item-name"><span class="i18n" data-es="Torrada de Atun y Anchoas" data-en="Torrada de Atun y Anchoas" data-fr="Torrada de Atun y Anchoas">Torrada de Atun y Anchoas</span></h3>
+                            <p class="item-description"><span class="i18n" data-es="" data-en="" data-fr=""></span></p>
                         </div>
-                        <div class="item-price">7.40 €</div>
+                        
+                        <div class="item-right-col">
+                            <div class='item-price'>7.40 €</div>
+                            
+                        </div>
                     </article>
-
-                    <article class="menu-item">
-
+                    <article class="menu-item" style="">
+                        
                         <div class="item-details">
-                            <h3 class="item-name">Torrada de Tortilla Patatas con cebolla</h3>
-                            <p class="item-description"></p>
+                            <h3 class="item-name"><span class="i18n" data-es="Torrada de Tortilla Patatas con cebolla" data-en="Torrada de Tortilla Patatas con cebolla" data-fr="Torrada de Tortilla Patatas con cebolla">Torrada de Tortilla Patatas con cebolla</span></h3>
+                            <p class="item-description"><span class="i18n" data-es="" data-en="" data-fr=""></span></p>
                         </div>
-                        <div class="item-price">6.40 €</div>
+                        
+                        <div class="item-right-col">
+                            <div class='item-price'>6.40 €</div>
+                            
+                        </div>
                     </article>
-
-                    <article class="menu-item">
-
+                    <article class="menu-item" style="">
+                        
                         <div class="item-details">
-                            <h3 class="item-name">Torrada de Pollo</h3>
-                            <p class="item-description"></p>
+                            <h3 class="item-name"><span class="i18n" data-es="Torrada de Pollo" data-en="Torrada de Pollo" data-fr="Torrada de Pollo">Torrada de Pollo</span></h3>
+                            <p class="item-description"><span class="i18n" data-es="" data-en="" data-fr=""></span></p>
                         </div>
-                        <div class="item-price">6.75 €</div>
+                        
+                        <div class="item-right-col">
+                            <div class='item-price'>6.75 €</div>
+                            
+                        </div>
                     </article>
-
-                    <article class="menu-item">
-
+                    <article class="menu-item" style="">
+                        
                         <div class="item-details">
-                            <h3 class="item-name">Torrada de Bacon</h3>
-                            <p class="item-description"></p>
+                            <h3 class="item-name"><span class="i18n" data-es="Torrada de Bacon" data-en="Torrada de Bacon" data-fr="Torrada de Bacon">Torrada de Bacon</span></h3>
+                            <p class="item-description"><span class="i18n" data-es="" data-en="" data-fr=""></span></p>
                         </div>
-                        <div class="item-price">6.10 €</div>
+                        
+                        <div class="item-right-col">
+                            <div class='item-price'>6.10 €</div>
+                            
+                        </div>
                     </article>
-
-                    <article class="menu-item">
-
+                    <article class="menu-item" style="">
+                        
                         <div class="item-details">
-                            <h3 class="item-name">Torrada de Lomo</h3>
-                            <p class="item-description"></p>
+                            <h3 class="item-name"><span class="i18n" data-es="Torrada de Lomo" data-en="Torrada de Lomo" data-fr="Torrada de Lomo">Torrada de Lomo</span></h3>
+                            <p class="item-description"><span class="i18n" data-es="" data-en="" data-fr=""></span></p>
                         </div>
-                        <div class="item-price">5.95 €</div>
+                        
+                        <div class="item-right-col">
+                            <div class='item-price'>5.95 €</div>
+                            
+                        </div>
                     </article>
-
-                    <article class="menu-item">
-
+                    <article class="menu-item" style="">
+                        
                         <div class="item-details">
-                            <h3 class="item-name">Torrada de Butifarra de Pages</h3>
-                            <p class="item-description"></p>
+                            <h3 class="item-name"><span class="i18n" data-es="Torrada de Butifarra de Pages" data-en="Torrada de Butifarra de Pages" data-fr="Torrada de Butifarra de Pages">Torrada de Butifarra de Pages</span></h3>
+                            <p class="item-description"><span class="i18n" data-es="" data-en="" data-fr=""></span></p>
                         </div>
-                        <div class="item-price">6.45 €</div>
+                        
+                        <div class="item-right-col">
+                            <div class='item-price'>6.45 €</div>
+                            
+                        </div>
                     </article>
-
-                    <article class="menu-item">
-
+                    <article class="menu-item" style="">
+                        
                         <div class="item-details">
-                            <h3 class="item-name">Torrada de Salchichas de Pages</h3>
-                            <p class="item-description"></p>
+                            <h3 class="item-name"><span class="i18n" data-es="Torrada de Salchichas de Pages" data-en="Torrada de Salchichas de Pages" data-fr="Torrada de Salchichas de Pages">Torrada de Salchichas de Pages</span></h3>
+                            <p class="item-description"><span class="i18n" data-es="" data-en="" data-fr=""></span></p>
                         </div>
-                        <div class="item-price">6.40 €</div>
+                        
+                        <div class="item-right-col">
+                            <div class='item-price'>6.40 €</div>
+                            
+                        </div>
                     </article>
-
-                    <article class="menu-item">
-
+                    <article class="menu-item" style="">
+                        
                         <div class="item-details">
-                            <h3 class="item-name">Torrada de Lomo,Bacon y Queso</h3>
-                            <p class="item-description"></p>
+                            <h3 class="item-name"><span class="i18n" data-es="Torrada de Lomo,Bacon y Queso" data-en="Torrada de Lomo,Bacon y Queso" data-fr="Torrada de Lomo,Bacon y Queso">Torrada de Lomo,Bacon y Queso</span></h3>
+                            <p class="item-description"><span class="i18n" data-es="" data-en="" data-fr=""></span></p>
                         </div>
-                        <div class="item-price">7.95 €</div>
+                        
+                        <div class="item-right-col">
+                            <div class='item-price'>7.95 €</div>
+                            
+                        </div>
                     </article>
-
-                    <article class="menu-item">
-
+                    <article class="menu-item" style="">
+                        
                         <div class="item-details">
-                            <h3 class="item-name">Torrada de Jamon Dulce con Queso fundido</h3>
-                            <p class="item-description"></p>
+                            <h3 class="item-name"><span class="i18n" data-es="Torrada de Jamon Dulce con Queso fundido" data-en="Torrada de Jamon Dulce con Queso fundido" data-fr="Torrada de Jamon Dulce con Queso fundido">Torrada de Jamon Dulce con Queso fundido</span></h3>
+                            <p class="item-description"><span class="i18n" data-es="" data-en="" data-fr=""></span></p>
                         </div>
-                        <div class="item-price">6.20 €</div>
+                        
+                        <div class="item-right-col">
+                            <div class='item-price'>6.20 €</div>
+                            
+                        </div>
                     </article>
-
-                    <article class="menu-item">
-
+                    <article class="menu-item" style="">
+                        
                         <div class="item-details">
-                            <h3 class="item-name">Torrada de Jamon Reserva</h3>
-                            <p class="item-description"></p>
+                            <h3 class="item-name"><span class="i18n" data-es="Torrada de Jamon Reserva" data-en="Torrada de Jamon Reserva" data-fr="Torrada de Jamon Reserva">Torrada de Jamon Reserva</span></h3>
+                            <p class="item-description"><span class="i18n" data-es="" data-en="" data-fr=""></span></p>
                         </div>
-                        <div class="item-price">6.95 €</div>
+                        
+                        <div class="item-right-col">
+                            <div class='item-price'>6.95 €</div>
+                            
+                        </div>
                     </article>
-
-                    <article class="menu-item">
-
+                    <article class="menu-item" style="">
+                        
                         <div class="item-details">
-                            <h3 class="item-name">Torrada de Queso Curado</h3>
-                            <p class="item-description"></p>
+                            <h3 class="item-name"><span class="i18n" data-es="Torrada de Queso Curado" data-en="Torrada de Queso Curado" data-fr="Torrada de Queso Curado">Torrada de Queso Curado</span></h3>
+                            <p class="item-description"><span class="i18n" data-es="" data-en="" data-fr=""></span></p>
                         </div>
-                        <div class="item-price">6.20 €</div>
+                        
+                        <div class="item-right-col">
+                            <div class='item-price'>6.20 €</div>
+                            
+                        </div>
                     </article>
-
-                    <article class="menu-item">
-
+                    <article class="menu-item" style="">
+                        
                         <div class="item-details">
-                            <h3 class="item-name">Torrada de Sobrasada de Mallorca</h3>
-                            <p class="item-description"></p>
+                            <h3 class="item-name"><span class="i18n" data-es="Torrada de Sobrasada de Mallorca" data-en="Torrada de Sobrasada de Mallorca" data-fr="Torrada de Sobrasada de Mallorca">Torrada de Sobrasada de Mallorca</span></h3>
+                            <p class="item-description"><span class="i18n" data-es="" data-en="" data-fr=""></span></p>
                         </div>
-                        <div class="item-price">5.85 €</div>
+                        
+                        <div class="item-right-col">
+                            <div class='item-price'>5.85 €</div>
+                            
+                        </div>
                     </article>
-
-                    <article class="menu-item">
-
+                    <article class="menu-item" style="">
+                        
                         <div class="item-details">
-                            <h3 class="item-name">Torrada de Fuet</h3>
-                            <p class="item-description"></p>
+                            <h3 class="item-name"><span class="i18n" data-es="Torrada de Fuet" data-en="Torrada de Fuet" data-fr="Torrada de Fuet">Torrada de Fuet</span></h3>
+                            <p class="item-description"><span class="i18n" data-es="" data-en="" data-fr=""></span></p>
                         </div>
-                        <div class="item-price">5.50 €</div>
+                        
+                        <div class="item-right-col">
+                            <div class='item-price'>5.50 €</div>
+                            
+                        </div>
                     </article>
-
-                    <article class="menu-item">
-
+                    <article class="menu-item" style="">
+                        
                         <div class="item-details">
-                            <h3 class="item-name">Torrada de Butifarra de L'Emporda</h3>
-                            <p class="item-description"></p>
+                            <h3 class="item-name"><span class="i18n" data-es="Torrada de Butifarra de L&#39;Emporda" data-en="Torrada de Butifarra de L&#39;Emporda" data-fr="Torrada de Butifarra de L&#39;Emporda">Torrada de Butifarra de L&#39;Emporda</span></h3>
+                            <p class="item-description"><span class="i18n" data-es="" data-en="" data-fr=""></span></p>
                         </div>
-                        <div class="item-price">5.95 €</div>
+                        
+                        <div class="item-right-col">
+                            <div class='item-price'>5.95 €</div>
+                            
+                        </div>
                     </article>
-
-                    <article class="menu-item">
-
+                    <article class="menu-item" style="">
+                        
                         <div class="item-details">
-                            <h3 class="item-name">Torrada de Chorizo Iberico</h3>
-                            <p class="item-description"></p>
+                            <h3 class="item-name"><span class="i18n" data-es="Torrada de Chorizo Iberico" data-en="Torrada de Chorizo Iberico" data-fr="Torrada de Chorizo Iberico">Torrada de Chorizo Iberico</span></h3>
+                            <p class="item-description"><span class="i18n" data-es="" data-en="" data-fr=""></span></p>
                         </div>
-                        <div class="item-price">5.95 €</div>
+                        
+                        <div class="item-right-col">
+                            <div class='item-price'>5.95 €</div>
+                            
+                        </div>
                     </article>
-
-                    <article class="menu-item">
-
+                    <article class="menu-item" style="">
+                        
                         <div class="item-details">
-                            <h3 class="item-name">Torrada de Jamon Dulce</h3>
-                            <p class="item-description"></p>
+                            <h3 class="item-name"><span class="i18n" data-es="Torrada de Jamon Dulce" data-en="Torrada de Jamon Dulce" data-fr="Torrada de Jamon Dulce">Torrada de Jamon Dulce</span></h3>
+                            <p class="item-description"><span class="i18n" data-es="" data-en="" data-fr=""></span></p>
                         </div>
-                        <div class="item-price">5.70 €</div>
+                        
+                        <div class="item-right-col">
+                            <div class='item-price'>5.70 €</div>
+                            
+                        </div>
                     </article>
-
-                    <article class="menu-item">
-
+                    <article class="menu-item" style="">
+                        
                         <div class="item-details">
-                            <h3 class="item-name">Torrada de Frankfurt</h3>
-                            <p class="item-description"></p>
+                            <h3 class="item-name"><span class="i18n" data-es="Torrada de Frankfurt" data-en="Torrada de Frankfurt" data-fr="Torrada de Frankfurt">Torrada de Frankfurt</span></h3>
+                            <p class="item-description"><span class="i18n" data-es="" data-en="" data-fr=""></span></p>
                         </div>
-                        <div class="item-price">6.00 €</div>
+                        
+                        <div class="item-right-col">
+                            <div class='item-price'>6.00 €</div>
+                            
+                        </div>
                     </article>
-
-                    <article class="menu-item">
-
+                    <article class="menu-item" style="">
+                        
                         <div class="item-details">
-                            <h3 class="item-name">Torrada de Chistorra</h3>
-                            <p class="item-description"></p>
+                            <h3 class="item-name"><span class="i18n" data-es="Torrada de Chistorra" data-en="Torrada de Chistorra" data-fr="Torrada de Chistorra">Torrada de Chistorra</span></h3>
+                            <p class="item-description"><span class="i18n" data-es="" data-en="" data-fr=""></span></p>
                         </div>
-                        <div class="item-price">6.30 €</div>
+                        
+                        <div class="item-right-col">
+                            <div class='item-price'>6.30 €</div>
+                            
+                        </div>
                     </article>
-
-                    <article class="menu-item">
-
+                    <article class="menu-item" style="">
+                        
                         <div class="item-details">
-                            <h3 class="item-name">Torrada de Butifarra Negra</h3>
-                            <p class="item-description"></p>
+                            <h3 class="item-name"><span class="i18n" data-es="Torrada de Butifarra Negra" data-en="Torrada de Butifarra Negra" data-fr="Torrada de Butifarra Negra">Torrada de Butifarra Negra</span></h3>
+                            <p class="item-description"><span class="i18n" data-es="" data-en="" data-fr=""></span></p>
                         </div>
-                        <div class="item-price">5.65 €</div>
+                        
+                        <div class="item-right-col">
+                            <div class='item-price'>5.65 €</div>
+                            
+                        </div>
                     </article>
-
-                    <article class="menu-item">
-
+                    <article class="menu-item" style="">
+                        
                         <div class="item-details">
-                            <h3 class="item-name">Suplemento Extra de Queso o Bacon</h3>
-                            <p class="item-description"></p>
+                            <h3 class="item-name"><span class="i18n" data-es="Suplemento Extra de Queso o Bacon" data-en="Suplemento Extra de Queso o Bacon" data-fr="Suplemento Extra de Queso o Bacon">Suplemento Extra de Queso o Bacon</span></h3>
+                            <p class="item-description"><span class="i18n" data-es="" data-en="" data-fr=""></span></p>
                         </div>
-                        <div class="item-price">0.50 €</div>
+                        
+                        <div class="item-right-col">
+                            <div class='item-price'>0.50 €</div>
+                            
+                        </div>
                     </article>
                 </div>
             </section>
         </div>
     </main>
-
     <div id="imageModal" class="image-modal" onclick="hideImageModal()">
         <img id="imageModalImg" class="image-modal-content" alt="Imagen">
     </div>
-
     <footer>
         <p>&copy; 2026 Bar Sergios. Todos los derechos reservados.</p>
     </footer>
-
     <script>
-        function toggleMenu() {
-            document.getElementById('mobileMenu').classList.toggle('open');
-        }
+        function toggleMenu() { document.getElementById('mobileMenu').classList.toggle('open'); }
         function showImageModal(src) {
             var img = document.getElementById('imageModalImg');
             img.src = src;
             document.getElementById('imageModal').classList.add('open');
         }
-        function hideImageModal() {
-            document.getElementById('imageModal').classList.remove('open');
-        }
-        document.addEventListener('keydown', function (e) {
-            if (e.key === 'Escape') hideImageModal();
-        });
+        function hideImageModal() { document.getElementById('imageModal').classList.remove('open'); }
+        document.addEventListener('keydown', function (e) { if (e.key === 'Escape') hideImageModal(); });
     </script>
-</body>
 
+</body>
 </html>
