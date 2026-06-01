@@ -197,11 +197,30 @@
 
                     <!-- Roulette Card for Indecisive Customers -->
                     <div class="category-card roulette-card" onclick="openRoulette()">
-                        <div style="height: 200px; display: flex; align-items: center; justify-content: center; background: #2a2a2a; width: 100%;">
-                            <span style="font-size: 5rem;">🎡</span>
+                        <div class="roulette-card-inner">
+                            <div class="roulette-card-emojis">🎡 🎲 🎰</div>
+                            <div class="roulette-card-subtitle">La suerte decide</div>
                         </div>
-                        <div class="category-card-title">¿Indeciso?</div>
-                        <div class="category-card-description">¡Deja que la suerte decida por ti!</div>
+                        <div class="category-card-title" style="font-size: 1.8rem; padding-top: 1.2rem;">¿No sabes qué pedir?</div>
+                        <div class="category-card-description" style="font-size: 1rem; padding-bottom: 1rem;">
+                            🎯 Gira la ruleta y descubre tu próximo plato favorito
+                        </div>
+                        <div style="padding: 0 1.5rem 1.5rem; width: 100%; box-sizing: border-box; position: relative; z-index: 2;">
+                            <div style="
+                                background: linear-gradient(135deg, var(--primary-color), #e5c150);
+                                color: #121212;
+                                font-weight: 900;
+                                font-size: 1.1rem;
+                                letter-spacing: 2px;
+                                text-transform: uppercase;
+                                text-align: center;
+                                padding: 14px;
+                                border-radius: 50px;
+                                font-family: var(--font-heading);
+                                box-shadow: 0 4px 20px rgba(212,175,55,0.5);
+                                animation: badgePulse 1.5s ease-in-out infinite alternate;
+                            ">🎡 ¡Girar la Ruleta!</div>
+                        </div>
                     </div>
                 </div>
             </section>

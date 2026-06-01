@@ -410,21 +410,107 @@ footer {
 
 /* Roulette Styles */
 .roulette-card {
-    background: linear-gradient(135deg, var(--surface-color) 0%, #1a1a1a 100%);
+    background: linear-gradient(135deg, #1a1200 0%, #2d2000 40%, #1a1200 100%);
     border: 2px solid var(--primary-color) !important;
     cursor: pointer;
     position: relative;
     overflow: hidden;
+    animation: rouletteGlow 2s ease-in-out infinite alternate;
+    transform-origin: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease !important;
+    grid-column: 1 / -1; /* Full width on its own row */
 }
 
-.roulette-card::after {
-    content: "🎰";
-    font-size: 3rem;
+@keyframes rouletteGlow {
+    0%   { box-shadow: 0 0 10px rgba(212,175,55,0.3), 0 0 30px rgba(212,175,55,0.1), inset 0 0 20px rgba(212,175,55,0.05); border-color: rgba(212,175,55,0.7) !important; }
+    100% { box-shadow: 0 0 25px rgba(212,175,55,0.7), 0 0 60px rgba(212,175,55,0.25), inset 0 0 30px rgba(212,175,55,0.1); border-color: var(--primary-color) !important; }
+}
+
+.roulette-card:hover {
+    transform: scale(1.03) translateY(-4px);
+    box-shadow: 0 20px 60px rgba(212,175,55,0.5) !important;
+}
+
+/* Shimmer sweep effect */
+.roulette-card::before {
+    content: "";
     position: absolute;
-    bottom: 10px;
-    right: 10px;
-    opacity: 0.2;
-    transform: rotate(-15deg);
+    top: 0; left: -100%;
+    width: 60%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(212,175,55,0.15), transparent);
+    animation: shimmer 3s infinite;
+    z-index: 1;
+    pointer-events: none;
+}
+
+@keyframes shimmer {
+    0%   { left: -100%; }
+    100% { left: 200%; }
+}
+
+/* ¡JUEGA! badge */
+.roulette-card::after {
+    content: "¡JUEGA!";
+    position: absolute;
+    top: 16px;
+    right: -32px;
+    background: linear-gradient(45deg, #ff8f00, #e65100);
+    color: white;
+    font-size: 0.72rem;
+    font-weight: 900;
+    letter-spacing: 2px;
+    padding: 5px 40px;
+    transform: rotate(45deg);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.5);
+    z-index: 5;
+    font-family: var(--font-body);
+    animation: badgePulse 1.5s ease-in-out infinite alternate;
+}
+
+@keyframes badgePulse {
+    0%   { opacity: 0.85; }
+    100% { opacity: 1; box-shadow: 0 2px 16px rgba(255,143,0,0.6); }
+}
+
+/* Floating emoji inside the card image area */
+.roulette-card-inner {
+    height: 180px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: radial-gradient(ellipse at center, #2d2000 0%, #0d0d00 100%);
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+    gap: 8px;
+}
+
+.roulette-card-emojis {
+    display: flex;
+    gap: 16px;
+    font-size: 3.2rem;
+    animation: floatEmojis 3s ease-in-out infinite alternate;
+    filter: drop-shadow(0 0 12px rgba(212,175,55,0.6));
+    position: relative;
+    z-index: 2;
+}
+
+@keyframes floatEmojis {
+    0%   { transform: translateY(0px) scale(1); }
+    100% { transform: translateY(-8px) scale(1.07); }
+}
+
+.roulette-card-subtitle {
+    font-size: 0.8rem;
+    color: rgba(212,175,55,0.7);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    font-family: var(--font-body);
+    font-weight: 600;
+    z-index: 2;
+    animation: floatEmojis 3s ease-in-out infinite alternate-reverse;
 }
 
 .roulette-modal {
