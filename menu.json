@@ -10,7 +10,7 @@
           "name": "Croisanito",
           "description": "",
           "price": 0.4,
-          "image": "assets\\item_Desayunos_Croisanito.webp"
+          "hidden": false
         },
         {
           "id": "Racion de Churros (4)",
@@ -159,16 +159,22 @@
       "theme": "ocean",
       "items": [
         {
-          "id": "Queso Curado",
-          "name": "Queso Curado",
-          "description": "",
-          "price": 5.4
-        },
-        {
           "id": "Fuet",
           "name": "Fuet",
           "description": "",
-          "price": 4.8
+          "price": 4.8,
+          "hidden": false,
+          "name_en": "Fuet",
+          "desc_en": "Fuet"
+        },
+        {
+          "id": "Queso Curado",
+          "name": "Queso Curado",
+          "description": "",
+          "price": 5.4,
+          "hidden": false,
+          "gluten": true,
+          "lacteos": true
         },
         {
           "id": "Jamon Dulce",
@@ -403,6 +409,12 @@
           "price": 10.9
         },
         {
+          "id": "MAESTRE",
+          "name": "MAESTRE",
+          "description": "Boquerones,Olivas,Patatas 1/2 L. Vermut",
+          "price": 10.9
+        },
+        {
           "id": "SOBRECARGO",
           "name": "SOBRECARGO",
           "description": "Berberechos,Patatas,Olivas y 1/2 L. Vermut",
@@ -413,12 +425,6 @@
           "name": "CONTRAMAESTRE",
           "description": "Almejas,Boquerones,Olivas,Patatas y 1/2 L. Vermut",
           "price": 12.9
-        },
-        {
-          "id": "MAESTRE",
-          "name": "MAESTRE",
-          "description": "Boquerones,Olivas,Patatas 1/2 L. Vermut",
-          "price": 10.9
         },
         {
           "id": "MARINERO",
@@ -433,21 +439,45 @@
           "price": 14.9
         },
         {
+          "id": "ARTILLERO",
+          "name": "ARTILLERO",
+          "description": "Olivas,Patatas,Berberechos,Boquerones en Vinagre y 1/2 L. Vermut",
+          "price": 15.5,
+          "hidden": false,
+          "tag_novedad": true
+        },
+        {
           "id": "TIMONEL",
           "name": "TIMONEL",
           "description": "Berberechos,Anchoas,Navajas,Patatas, Olivas y 1/2 L. Vermut",
           "price": 16.3
         },
         {
+          "id": "CIRUJANO",
+          "name": "CIRUJANO",
+          "description": "Concha Fina,Anchoas,Patatas,Olivas y 1/2 L. Vermut.",
+          "price": 16.5,
+          "hidden": false,
+          "tag_novedad": true
+        },
+        {
+          "id": "TONELERO",
+          "name": "TONELERO",
+          "description": "Berberechos,Concha Fina,Boquerones,Patatas, \t\t\t\t\t\t\tOlivas y 1 L. Vermut",
+          "price": 21.9,
+          "hidden": false,
+          "tag_novedad": true
+        },
+        {
           "id": "POLIZON",
           "name": "POLIZON",
-          "description": "Berberechos,Boquerones,Almejas,Mejillones,Patatas,Olivas y 1 L. Vermut",
+          "description": "Berberechos,Boquerones,Almejas,Mejillones,                 Patatas,Olivas y 1 L. Vermut",
           "price": 25.9
         },
         {
           "id": "CAPITAN",
           "name": "CAPITAN",
-          "description": "Berberechos,Mejillones,Anchoas,Almejas,Boquerones,Zamburiñas,Olivas,Patatas 1 L. Vermut",
+          "description": "Berberechos,Mejillones,Anchoas,Almejas,                 Boquerones,Zamburiñas,Olivas,Patatas 1 L. Vermut",
           "price": 29.9
         }
       ],
@@ -468,12 +498,6 @@
           "id": "Tapeo Clasico",
           "name": "Tapeo Clasico",
           "items": [
-            {
-              "id": "Berberechos 25/30",
-              "name": "Berberechos 25/30",
-              "description": "",
-              "price": 11.5
-            },
             {
               "id": "Almejas 20/25",
               "name": "Almejas 20/25",
@@ -527,6 +551,18 @@
               "name": "Vermut Blanco/Negro de la Casa",
               "description": "",
               "price": 3.0
+            },
+            {
+              "id": "Berberechos 20/30",
+              "name": "Berberechos 20/30",
+              "description": "",
+              "price": 11.9
+            },
+            {
+              "id": "Concha Fina",
+              "name": "Concha Fina",
+              "description": "",
+              "price": 8.9
             }
           ]
         }
@@ -538,6 +574,22 @@
       "name": "Tapas",
       "theme": "lavender",
       "items": [
+        {
+          "id": "Papas Francesas Cornudas",
+          "name": "Papas Francesas Cornudas",
+          "description": "",
+          "price": 5.6,
+          "hidden": false,
+          "tag_novedad": true
+        },
+        {
+          "id": "Morros y pan con Tomate",
+          "name": "Morros de cerdo y pan con Tomate",
+          "description": "",
+          "price": 6.4,
+          "hidden": false,
+          "tag_novedad": true
+        },
         {
           "id": "Choricitos a la Sidra",
           "name": "Choricitos a la Sidra",
@@ -554,7 +606,8 @@
           "id": "Callos a la Andaluza",
           "name": "Callos a la Andaluza",
           "description": "",
-          "price": 7.8
+          "price": 7.8,
+          "hidden": false
         },
         {
           "id": "Mejillones a la Marinera",
@@ -602,7 +655,8 @@
           "id": "Patatas Bravas",
           "name": "Patatas Bravas",
           "description": "",
-          "price": 5.75
+          "price": 5.75,
+          "hidden": false
         },
         {
           "id": "Patatas Fritas",
@@ -889,14 +943,17 @@
     },
     {
       "id": "Arroz",
-      "name": "Tapa Arroz Sergio's",
+      "name": "Tapa de Arroz",
       "theme": "ocean",
       "items": [
         {
           "id": "Arroz con Fumet de pescado y Mejillones",
           "name": "Arroz con Fumet de pescado y Mejillones",
           "description": "",
-          "price": 5.45
+          "price": 5.45,
+          "hidden": false,
+          "pescado": true,
+          "moluscos": true
         },
         {
           "id": "Arroz con Pollo al Curry",
@@ -1029,25 +1086,25 @@
             {
               "id": "Surtido del Agua",
               "name": "Surtido del Agua",
-              "description": "2 Croquetas Brandada de Bacalao\n2 Croquetas Chipirones\n2 Croquetas de Merluza con Gambas",
+              "description": "2 Croquetas Brandada de Bacalao                 2 Croquetas Chipirones                 2 Croquetas de Merluza con Gambas",
               "price": 8.9
             },
             {
               "id": "Surtido de la Tierra",
               "name": "Surtido de la Tierra",
-              "description": "2 Croquetas Rabo de Toro\n2 Croquetas Carrillera al Pedro Ximenez\n2 Croquetas Cochinillo",
+              "description": "2 Croquetas Rabo de Toro                 2 Croquetas Carrillera al Pedro Ximenez                 2 Croquetas Cochinillo",
               "price": 8.9
             },
             {
               "id": "Surtido del Aire",
               "name": "Surtido del Aire",
-              "description": "2 Croquetas Setas\n2 Croquetas Queso de Cabra y Cebolla Caramelizada\n2 Croquetas Calçots",
+              "description": "2 Croquetas Setas                 2 Croquetas Queso de Cabra y Cebolla Caramelizada                 2 Croquetas Calçots",
               "price": 8.9
             },
             {
               "id": "Surtido del Fuego",
               "name": "Surtido del Fuego",
-              "description": "2 Croquetas de Cocido\n2 Croquetas de Jamon\n2 Croquetas de Pollo",
+              "description": "2 Croquetas de Cocido                 2 Croquetas de Jamon                 2 Croquetas de Pollo",
               "price": 8.9
             }
           ],
@@ -1074,18 +1131,6 @@
           "price": 5.5
         },
         {
-          "id": "Torrija Caramelizada",
-          "name": "Torrija Caramelizada",
-          "description": "",
-          "price": 5.5
-        },
-        {
-          "id": "Tarta de Queso",
-          "name": "Tarta de Queso",
-          "description": "",
-          "price": 5.4
-        },
-        {
           "id": "Tarrina Vainilla y Chocolate",
           "name": "Tarrina Vainilla y Chocolate",
           "description": "",
@@ -1102,10 +1147,41 @@
           "name": "Sorbete de Limon",
           "description": "",
           "price": 3.5
+        },
+        {
+          "id": "Profiteroles Con Nata",
+          "name": "Profiteroles Con Nata",
+          "description": "",
+          "price": 5.8,
+          "hidden": false,
+          "tag_novedad": true,
+          "image": "assets/item_ProfiterolesConNata.webp"
         }
       ],
       "subcategories": [],
       "image": "assets\\cat_Postres.jpg"
     }
-  ]
+  ],
+  "menu_del_dia": {
+    "active": false,
+    "price": 12.0,
+    "primeros": "Jamon,Pez",
+    "segundos": "Arroz",
+    "postres": "Tarta Queso",
+    "includes": "Pan y 1 Bebida"
+  },
+  "splash_active": true,
+  "splash_imgs": [
+    true,
+    true,
+    true,
+    true
+  ],
+  "banner": {
+    "active": false,
+    "text": "¡Hoy música en directo a las 22:00!",
+    "expiration": ""
+  },
+  "orders_enabled": false,
+  "whatsapp_number": "34600000000"
 }
