@@ -1,0 +1,1086 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bar Sergios - Ruleta para Indecisos</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .roulette-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: var(--spacing-md) 0;
+            position: relative;
+        }
+
+        .controls-row {
+            width: 100%;
+            max-width: 500px;
+            margin-bottom: var(--spacing-lg);
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            background: var(--surface-color);
+            padding: var(--spacing-md);
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            border: 1px solid rgba(212, 175, 55, 0.2);
+        }
+
+        .control-group {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+
+        .control-group label {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .roulette-select {
+            padding: 12px;
+            background: var(--background-color);
+            border: 2px solid var(--primary-color);
+            color: var(--text-color);
+            border-radius: 8px;
+            font-family: var(--font-body);
+            font-size: 1rem;
+            cursor: pointer;
+            outline: none;
+            transition: box-shadow 0.2s;
+        }
+
+        .roulette-select:focus {
+            box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.25);
+        }
+
+        .shuffle-info {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            background: rgba(255, 255, 255, 0.05);
+            padding: 8px 12px;
+            border-radius: 6px;
+        }
+
+        .btn-shuffle {
+            background: transparent;
+            border: 1px solid var(--primary-color);
+            color: var(--primary-color);
+            padding: 4px 10px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 0.8rem;
+            font-weight: bold;
+            transition: all 0.2s;
+        }
+
+        .btn-shuffle:hover {
+            background: var(--primary-color);
+            color: #121212;
+        }
+
+        /* Roulette Wheel Component */
+        .wheel-wrapper {
+            position: relative;
+            width: min(450px, 90vw);
+            height: min(450px, 90vw);
+            margin: var(--spacing-lg) 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.6));
+        }
+
+        #wheelCanvas {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            border: 6px solid #1a1a1a;
+            box-sizing: border-box;
+            background-color: var(--surface-color);
+        }
+
+        /* Wheel Pointer */
+        .wheel-pointer {
+            position: absolute;
+            top: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 0;
+            border-left: 20px solid transparent;
+            border-right: 20px solid transparent;
+            border-top: 30px solid var(--primary-color);
+            z-index: 10;
+            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.5));
+        }
+
+        .wheel-center-glow {
+            position: absolute;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: radial-gradient(circle, #fff 0%, var(--primary-color) 70%, #d4af37 100%);
+            box-shadow: 0 0 15px var(--primary-color);
+            z-index: 5;
+        }
+
+        .btn-spin {
+            background: linear-gradient(135deg, var(--primary-color) 0%, #ffc107 100%);
+            color: #121212;
+            border: none;
+            padding: 16px 48px;
+            font-size: 1.3rem;
+            font-weight: 700;
+            border-radius: 30px;
+            cursor: pointer;
+            font-family: var(--font-body);
+            box-shadow: 0 6px 20px rgba(212, 175, 55, 0.4);
+            transition: transform 0.2s, box-shadow 0.2s, filter 0.2s;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            z-index: 20;
+            margin-top: 10px;
+        }
+
+        .btn-spin:hover:not(:disabled) {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(212, 175, 55, 0.6);
+            filter: brightness(1.1);
+        }
+
+        .btn-spin:active:not(:disabled) {
+            transform: translateY(1px);
+            box-shadow: 0 4px 15px rgba(212, 175, 55, 0.4);
+        }
+
+        .btn-spin:disabled {
+            background: #444;
+            color: #777;
+            box-shadow: none;
+            cursor: not-allowed;
+        }
+
+        /* Custom Victory Modal Overlay */
+        .victory-modal-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.85);
+            z-index: 1000;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            backdrop-filter: blur(8px);
+            opacity: 0;
+            transition: opacity 0.4s ease;
+            padding: 15px;
+        }
+
+        .victory-modal-overlay.open {
+            display: flex;
+            opacity: 1;
+        }
+
+        .victory-modal {
+            background: var(--surface-color);
+            border-radius: var(--border-radius);
+            width: min(500px, 100%);
+            max-height: 90vh;
+            overflow-y: auto;
+            border: 2px solid var(--primary-color);
+            box-shadow: 0 10px 40px rgba(212, 175, 55, 0.3);
+            transform: scale(0.8);
+            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .victory-modal-overlay.open .victory-modal {
+            transform: scale(1);
+        }
+
+        .victory-header {
+            padding: var(--spacing-md);
+            text-align: center;
+            background: rgba(212, 175, 55, 0.1);
+            border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+        }
+
+        .victory-header h2 {
+            font-family: var(--font-heading);
+            color: var(--primary-color);
+            margin: 0;
+            font-size: 1.8rem;
+        }
+
+        .victory-content {
+            padding: var(--spacing-lg);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        .winner-image {
+            width: 100%;
+            max-height: 200px;
+            object-fit: cover;
+            border-radius: 8px;
+            margin-bottom: var(--spacing-md);
+            box-shadow: var(--shadow);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .winner-name {
+            font-family: var(--font-heading);
+            font-size: 1.8rem;
+            color: var(--text-color);
+            margin-bottom: 5px;
+        }
+
+        .winner-price {
+            font-family: var(--font-heading);
+            font-size: 1.5rem;
+            color: var(--primary-color);
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+
+        .winner-description {
+            color: var(--text-muted);
+            font-size: 1rem;
+            line-height: 1.5;
+            margin-bottom: 20px;
+        }
+
+        .winner-allergens {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 25px;
+        }
+
+        .victory-actions {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            width: 100%;
+        }
+
+        .btn-victory-add {
+            background: var(--primary-color);
+            color: #121212;
+            border: none;
+            padding: 14px;
+            border-radius: 12px;
+            font-size: 1rem;
+            font-weight: 700;
+            cursor: pointer;
+            font-family: var(--font-body);
+            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .btn-victory-add:hover {
+            background: #e5c150;
+            transform: translateY(-1px);
+        }
+
+        .btn-victory-close {
+            background: rgba(255,255,255,0.06);
+            color: var(--text-color);
+            border: 1px solid rgba(255,255,255,0.1);
+            padding: 12px;
+            border-radius: 12px;
+            font-size: 0.95rem;
+            font-weight: 600;
+            cursor: pointer;
+            font-family: var(--font-body);
+            transition: all 0.2s;
+        }
+
+        .btn-victory-close:hover {
+            background: rgba(255,255,255,0.12);
+        }
+
+        #confettiCanvas {
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            z-index: 999;
+            width: 100vw;
+            height: 100vh;
+        }
+    </style>
+</head>
+<body class="theme-lavender">
+    <button class="menu-toggle" onclick="toggleMenu()">☰</button>
+    
+    <div id="mobileMenu" class="mobile-menu-overlay">
+        <button class="menu-toggle" style="position:absolute; top:1rem; right:1rem; border:none; background:none; font-size:2rem;" onclick="toggleMenu()">✕</button>
+        <!-- Generated dynamically via index links inside page structure -->
+    </div>
+
+    <header class="hero">
+        <a href="index.html" class="home-btn" title="Volver al inicio">🏠</a>
+        <div class="hero-content">
+            <h1 class="i18n" data-es="Bar Sergios" data-en="Bar Sergios" data-fr="Bar Sergios">Bar Sergios</h1>
+            <p class="subtitle i18n" data-es="Gastronomía & Buen Ambiente" data-en="Gastronomy & Good Atmosphere" data-fr="Gastronomie & Bonne Ambiance">Gastronomía & Buen Ambiente</p>
+        </div>
+    </header>
+
+    <div class="lang-switcher" id="langSwitcher">
+        <button id="lang-es" class="lang-btn active" onclick="setLang('es')" title="Español">🇪🇸</button>
+        <button id="lang-en" class="lang-btn" onclick="setLang('en')" title="English">🇬🇧</button>
+        <button id="lang-fr" class="lang-btn" onclick="setLang('fr')" title="Français">🇫🇷</button>
+    </div>
+
+    <main class="container">
+        <section class="menu-section">
+            <h2 class="section-title i18n" data-es="Ruleta de la Fortuna" data-en="Wheel of Fortune" data-fr="Roue de la Fortune" style="text-align:center; display:block; border:none; margin-bottom: 10px;">Ruleta de la Fortuna</h2>
+            <p style="text-align: center; color: var(--text-muted); margin-bottom: 2rem;" class="i18n" data-es="¿Indeciso? ¡Deja que la ruleta elija por ti!" data-en="Indecisive? Let the wheel choose for you!" data-fr="Indécis? Laissez la roue choisir pour vous!">¿Indeciso? ¡Deja que la ruleta elija por ti!</p>
+
+            <div class="roulette-container">
+                <div class="controls-row">
+                    <div class="control-group">
+                        <label for="categorySelect" class="i18n" data-es="Seleccionar Categoría:" data-en="Select Category:" data-fr="Sélectionner la Catégorie:">Seleccionar Categoría:</label>
+                        <select id="categorySelect" class="roulette-select" onchange="onCategoryChange()">
+                            <!-- Categories filled dynamically -->
+                        </select>
+                    </div>
+                    <div id="shuffleContainer" class="shuffle-info" style="display: none;">
+                        <span id="shuffleText"></span>
+                        <button class="btn-shuffle i18n" data-es="🔀 Barajar platos" data-en="🔀 Shuffle items" data-fr="🔀 Mélanger les plats" onclick="shuffleCurrentPool()">🔀 Barajar platos</button>
+                    </div>
+                </div>
+
+                <div class="wheel-wrapper">
+                    <div class="wheel-pointer"></div>
+                    <div class="wheel-center-glow"></div>
+                    <canvas id="wheelCanvas" width="800" height="800"></canvas>
+                </div>
+
+                <button id="spinBtn" class="btn-spin i18n" data-es="Girar Ruleta" data-en="Spin Wheel" data-fr="Lancer la Roue" onclick="spinWheel()">Girar Ruleta</button>
+            </div>
+        </section>
+    </main>
+
+    <!-- Fullscreen Confetti Canvas -->
+    <canvas id="confettiCanvas"></canvas>
+
+    <!-- Victory Modal -->
+    <div id="victoryModal" class="victory-modal-overlay" onclick="closeVictoryModalOutside(event)">
+        <div class="victory-modal">
+            <div class="victory-header">
+                <h2 class="i18n" data-es="¡Tu plato sugerido!" data-en="Your suggested dish!" data-fr="Votre plat suggéré!">¡Tu plato sugerido!</h2>
+            </div>
+            <div class="victory-content">
+                <img id="winnerImg" src="" alt="Winner product" class="winner-image" style="display: none;">
+                <div id="winnerName" class="winner-name"></div>
+                <div id="winnerPrice" class="winner-price"></div>
+                <div id="winnerDesc" class="winner-description"></div>
+                <div id="winnerAllergens" class="winner-allergens"></div>
+                
+                <div class="victory-actions">
+                    <!-- Dropdown for multi-price if applicable -->
+                    <div id="modalMultiPriceRow" style="display: none; margin-bottom: 15px; width: 100%;">
+                        <select id="modalPriceSelect" class="cart-price-select" style="font-size:1rem; padding: 10px; width: 100%;">
+                            <!-- Options filled dynamically -->
+                        </select>
+                    </div>
+                    <button id="modalAddBtn" class="btn-victory-add" onclick="addWinnerToCart()">
+                        <span>🛒 Añadir al Pedido</span>
+                    </button>
+                    <button class="btn-victory-close i18n" data-es="Girar de nuevo" data-en="Spin again" data-fr="Lancer à nouveau" onclick="closeVictoryModal()">Girar de nuevo</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Image Zoom Modal -->
+    <div id="imageModal" class="image-modal" onclick="hideImageModal()">
+        <img id="imageModalImg" class="image-modal-content" alt="Imagen">
+    </div>
+
+    <footer>
+        <p>&copy; 2026 Bar Sergios. Todos los derechos reservados.</p>
+    </footer>
+
+    <!-- Load menu data generated from editor_carta.py -->
+    <script src="menu_data.js"></script>
+
+    <script>
+        // Static UI Translations helper
+        const rouletteTranslations = {
+            es: {
+                title: "Ruleta de la Fortuna",
+                subtitle: "¿Indeciso? ¡Deja que la ruleta elija por ti!",
+                selectCategory: "Seleccionar Categoría:",
+                allMenu: "Toda la Carta",
+                spinButton: "Girar Ruleta",
+                shuffleButton: "🔀 Barajar platos",
+                winnerTitle: "¡Tu plato sugerido!",
+                closeButton: "Girar de nuevo",
+                addButton: "🛒 Añadir al Pedido",
+                showingInfo: "Mostrando {count} platos aleatorios. ¿Quieres otros?",
+                noItems: "No hay platos disponibles en esta categoría."
+            },
+            en: {
+                title: "Wheel of Fortune",
+                subtitle: "Indecisive? Let the wheel choose for you!",
+                selectCategory: "Select Category:",
+                allMenu: "Full Menu",
+                spinButton: "Spin Wheel",
+                shuffleButton: "🔀 Shuffle items",
+                winnerTitle: "Your suggested dish!",
+                closeButton: "Spin again",
+                addButton: "🛒 Add to Order",
+                showingInfo: "Showing {count} random dishes. Want others?",
+                noItems: "No dishes available in this category."
+            },
+            fr: {
+                title: "Roue de la Fortune",
+                subtitle: "Indécis? Laissez la roue choisir pour vous!",
+                selectCategory: "Sélectionner la Catégorie:",
+                allMenu: "Toute la Carte",
+                spinButton: "Lancer la Roue",
+                shuffleButton: "🔀 Mélanger les plats",
+                winnerTitle: "Votre plat suggéré!",
+                closeButton: "Lancer à nouveau",
+                addButton: "🛒 Ajouter a la Commande",
+                showingInfo: "Affichage de {count} plats aléatoires. En voulez-vous d'autres?",
+                noItems: "Aucun plat disponible dans cette catégorie."
+            }
+        };
+
+        const ALLERGENS_DICT = {
+            "gluten": { icon: "🌾", name: "Gluten" },
+            "crustaceos": { icon: "🦐", name: "Crustáceos" },
+            "huevos": { icon: "🥚", name: "Huevos" },
+            "pescado": { icon: "🐟", name: "Pescado" },
+            "cacahuetes": { icon: "🥜", name: "Cacahuetes" },
+            "soja": { icon: "🫘", name: "Soja" },
+            "lacteos": { icon: "🥛", name: "Lácteos" },
+            "frutos_cascara": { icon: "🌰", name: "Frutos de cáscara" },
+            "apio": { icon: "🥬", name: "Apio" },
+            "mostaza": { icon: "🌭", name: "Mostaza" },
+            "sesamo": { icon: "🥯", name: "Sésamo" },
+            "sulfitos": { icon: "🍷", name: "Sulfitos" },
+            "altramuces": { icon: "🌼", name: "Altramuces" },
+            "moluscos": { icon: "🦑", name: "Moluscos" },
+            "vegano": { icon: "🌱", name: "Vegano/Vegetariano" }
+        };
+
+        // Theme colors matching HSL palettes (harmonious and high contrast)
+        const segmentColors = [
+            "#d4af37", // Gold
+            "#a663cc", // Purple
+            "#00b4d8", // Ocean
+            "#ff6b6b", // Sunset
+            "#2ec4b6", // Forest/Mint
+            "#ff8f00", // Amber
+            "#4a00e0", // Indigo
+            "#e53935", // Deep Red
+            "#43a047", // Emerald Green
+            "#f06292", // Pink
+            "#795548", // Brown
+            "#00acc1"  // Cyan
+        ];
+
+        let currentLang = 'es';
+        let fullItemsPool = [];
+        let currentWheelItems = [];
+        const MAX_WHEEL_SEGMENTS = 10;
+
+        // Navigation and layout
+        function toggleMenu() {
+            document.getElementById('mobileMenu').classList.toggle('open');
+        }
+
+        function setLang(lang) {
+            currentLang = lang;
+            localStorage.setItem('menuLang', lang);
+            document.querySelectorAll('.i18n').forEach(function(el) {
+                var text = el.getAttribute('data-' + lang);
+                el.textContent = (text && text.trim()) ? text : el.getAttribute('data-es');
+            });
+            document.querySelectorAll('.lang-btn').forEach(function(b) { b.classList.remove('active'); });
+            var btn = document.getElementById('lang-' + lang);
+            if (btn) btn.classList.add('active');
+
+            // Translate options in selects
+            translateCategorySelect();
+            updateShuffleText();
+            drawWheel();
+        }
+
+        // Web Audio API Synthesizer
+        let audioCtx = null;
+        function playTickSound() {
+            try {
+                if (!audioCtx) {
+                    audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+                }
+                if (audioCtx.state === 'suspended') {
+                    audioCtx.resume();
+                }
+                const osc = audioCtx.createOscillator();
+                const gain = audioCtx.createGain();
+                osc.connect(gain);
+                gain.connect(audioCtx.destination);
+                
+                osc.type = 'sine';
+                osc.frequency.setValueAtTime(600, audioCtx.currentTime);
+                osc.frequency.exponentialRampToValueAtTime(120, audioCtx.currentTime + 0.04);
+                
+                gain.gain.setValueAtTime(0.08, audioCtx.currentTime);
+                gain.gain.exponentialRampToValueAtTime(0.005, audioCtx.currentTime + 0.04);
+                
+                osc.start();
+                osc.stop(audioCtx.currentTime + 0.04);
+            } catch (e) {
+                console.warn(e);
+            }
+        }
+
+        function playVictorySound() {
+            try {
+                if (!audioCtx) {
+                    audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+                }
+                if (audioCtx.state === 'suspended') {
+                    audioCtx.resume();
+                }
+                const now = audioCtx.currentTime;
+                
+                // Play a bright major chord progression (Arpeggio style)
+                const baseFreqs = [261.63, 329.63, 392.00, 523.25, 659.25, 783.99, 1046.50]; // C Major scale arpeggio
+                baseFreqs.forEach((freq, idx) => {
+                    const osc = audioCtx.createOscillator();
+                    const gain = audioCtx.createGain();
+                    osc.connect(gain);
+                    gain.connect(audioCtx.destination);
+                    
+                    osc.type = 'triangle';
+                    osc.frequency.setValueAtTime(freq, now + idx * 0.08);
+                    
+                    gain.gain.setValueAtTime(0, now + idx * 0.08);
+                    gain.gain.linearRampToValueAtTime(0.12, now + idx * 0.08 + 0.03);
+                    gain.gain.exponentialRampToValueAtTime(0.005, now + idx * 0.08 + 0.35);
+                    
+                    osc.start(now + idx * 0.08);
+                    osc.stop(now + idx * 0.08 + 0.45);
+                });
+            } catch (e) {
+                console.warn(e);
+            }
+        }
+
+        // Initialize Menu Data and Build UI
+        document.addEventListener('DOMContentLoaded', () => {
+            // Setup mobile links
+            const mobileMenu = document.getElementById('mobileMenu');
+            if (mobileMenu && menuData && menuData.categories) {
+                let mHtml = '<button class="menu-toggle" style="position:absolute; top:1rem; right:1rem; border:none; background:none; font-size:2rem;" onclick="toggleMenu()">✕</button>';
+                mHtml += `<a href="index.html" class="mobile-menu-link">🏠 Inicio</a>`;
+                menuData.categories.forEach(cat => {
+                    mHtml += `<a href="${cat.id}.html" class="mobile-menu-link">${cat.name}</a>`;
+                });
+                mHtml += `<a href="ruleta.html" class="mobile-menu-link active" style="color: #c084fc; font-weight: bold;">🎰 Ruleta Indecisos</a>`;
+                mobileMenu.innerHTML = mHtml;
+            }
+
+            // Fill category select
+            const catSelect = document.getElementById('categorySelect');
+            if (catSelect && menuData && menuData.categories) {
+                let options = `<option value="all" data-es="Toda la Carta" data-en="Full Menu" data-fr="Toute la Carte">Toda la Carta</option>`;
+                menuData.categories.forEach(cat => {
+                    options += `<option value="${cat.id}" data-es="${cat.name}" data-en="${cat.name}" data-fr="${cat.name}">${cat.name}</option>`;
+                });
+                catSelect.innerHTML = options;
+            }
+
+            // Load initial lang
+            setLang(localStorage.getItem('menuLang') || 'es');
+            onCategoryChange();
+        });
+
+        function translateCategorySelect() {
+            const select = document.getElementById('categorySelect');
+            Array.from(select.options).forEach(opt => {
+                const translation = opt.getAttribute('data-' + currentLang) || opt.getAttribute('data-es');
+                opt.textContent = translation;
+            });
+        }
+
+        function updateShuffleText() {
+            const count = Math.min(fullItemsPool.length, MAX_WHEEL_SEGMENTS);
+            const translation = rouletteTranslations[currentLang].showingInfo || rouletteTranslations.es.showingInfo;
+            document.getElementById('shuffleText').textContent = translation.replace('{count}', count);
+        }
+
+        function onCategoryChange() {
+            const select = document.getElementById('categorySelect');
+            const catId = select.value;
+            fullItemsPool = [];
+
+            if (catId === 'all') {
+                // Compile all items
+                menuData.categories.forEach(cat => {
+                    if (cat.items) {
+                        cat.items.forEach(item => {
+                            if (!item.hidden) fullItemsPool.push(item);
+                        });
+                    }
+                    if (cat.subcategories) {
+                        cat.subcategories.forEach(sub => {
+                            if (sub.items) {
+                                sub.items.forEach(item => {
+                                    if (!item.hidden) fullItemsPool.push(item);
+                                });
+                            }
+                        });
+                    }
+                });
+            } else {
+                // Find category
+                const cat = menuData.categories.find(c => c.id === catId);
+                if (cat) {
+                    if (cat.items) {
+                        cat.items.forEach(item => {
+                            if (!item.hidden) fullItemsPool.push(item);
+                        });
+                    }
+                    if (cat.subcategories) {
+                        cat.subcategories.forEach(sub => {
+                            if (sub.items) {
+                                sub.items.forEach(item => {
+                                    if (!item.hidden) fullItemsPool.push(item);
+                                });
+                            }
+                        });
+                    }
+                }
+            }
+
+            const shuffleContainer = document.getElementById('shuffleContainer');
+            if (fullItemsPool.length > MAX_WHEEL_SEGMENTS) {
+                shuffleContainer.style.display = 'flex';
+                updateShuffleText();
+            } else {
+                shuffleContainer.style.display = 'none';
+            }
+
+            shuffleCurrentPool();
+        }
+
+        // Shuffle and choose a random subset for the wheel
+        function shuffleCurrentPool() {
+            if (fullItemsPool.length === 0) {
+                currentWheelItems = [];
+                drawWheel();
+                return;
+            }
+
+            // Shuffle fullItemsPool array
+            let shuffled = [...fullItemsPool].sort(() => 0.5 - Math.random());
+            currentWheelItems = shuffled.slice(0, MAX_WHEEL_SEGMENTS);
+            
+            // Redraw
+            drawWheel();
+        }
+
+        // --- WHEEL PHYSICS & SPIN LOGIC ---
+        const canvas = document.getElementById('wheelCanvas');
+        const ctx = canvas.getContext('2d');
+        let currentAngle = 0;
+        let isSpinning = false;
+
+        function getItemName(item) {
+            if (currentLang === 'en' && item.name_en) return item.name_en;
+            if (currentLang === 'fr' && item.name_fr) return item.name_fr;
+            return item.name;
+        }
+
+        function drawWheel() {
+            const size = canvas.width;
+            const center = size / 2;
+            const radius = center - 20;
+
+            ctx.clearRect(0, 0, size, size);
+
+            if (currentWheelItems.length === 0) {
+                ctx.fillStyle = '#1e1e1e';
+                ctx.beginPath();
+                ctx.arc(center, center, radius, 0, 2 * Math.PI);
+                ctx.fill();
+                
+                ctx.fillStyle = '#fff';
+                ctx.font = "bold 28px 'Outfit', sans-serif";
+                ctx.textAlign = 'center';
+                ctx.textBaseline = 'middle';
+                const text = rouletteTranslations[currentLang].noItems || rouletteTranslations.es.noItems;
+                ctx.fillText(text, center, center);
+                return;
+            }
+
+            const arcAngle = (2 * Math.PI) / currentWheelItems.length;
+
+            currentWheelItems.forEach((item, index) => {
+                const angle = currentAngle + index * arcAngle;
+                ctx.fillStyle = segmentColors[index % segmentColors.length];
+                
+                // Draw arc segment
+                ctx.beginPath();
+                ctx.moveTo(center, center);
+                ctx.arc(center, center, radius, angle, angle + arcAngle);
+                ctx.lineTo(center, center);
+                ctx.fill();
+
+                // Draw segment border
+                ctx.strokeStyle = 'rgba(18, 18, 18, 0.4)';
+                ctx.lineWidth = 4;
+                ctx.stroke();
+
+                // Draw Text
+                ctx.save();
+                ctx.translate(center, center);
+                ctx.rotate(angle + arcAngle / 2);
+                
+                ctx.fillStyle = '#121212';
+                ctx.textAlign = 'right';
+                ctx.textBaseline = 'middle';
+                
+                // Determine text formatting
+                ctx.font = "bold 24px 'Outfit', sans-serif";
+                const maxTextWidth = radius - 80;
+                let text = getItemName(item);
+                
+                // Truncate if too long
+                if (ctx.measureText(text).width > maxTextWidth) {
+                    while (ctx.measureText(text + '...').width > maxTextWidth && text.length > 0) {
+                        text = text.slice(0, -1);
+                    }
+                    text += '...';
+                }
+                
+                ctx.fillText(text, radius - 40, 0);
+                ctx.restore();
+            });
+
+            // Draw center circle
+            ctx.fillStyle = '#121212';
+            ctx.beginPath();
+            ctx.arc(center, center, 60, 0, 2 * Math.PI);
+            ctx.fill();
+
+            ctx.strokeStyle = varColor('--primary-color', '#d4af37');
+            ctx.lineWidth = 4;
+            ctx.stroke();
+
+            // Inner design
+            ctx.fillStyle = '#fff';
+            ctx.font = "28px Arial";
+            ctx.textAlign = 'center';
+            ctx.textBaseline = 'middle';
+            ctx.fillText("🎰", center, center);
+        }
+
+        function varColor(variableName, fallback) {
+            const val = getComputedStyle(document.body).getPropertyValue(variableName).trim();
+            return val || fallback;
+        }
+
+        // Animating the rotation
+        let speed = 0;
+        const friction = 0.983; // realistic decel
+        let lastTickSegment = -1;
+
+        function spinWheel() {
+            if (isSpinning || currentWheelItems.length === 0) return;
+            
+            isSpinning = true;
+            document.getElementById('spinBtn').disabled = true;
+            document.getElementById('categorySelect').disabled = true;
+            
+            // Random spin speed and time duration
+            speed = Math.random() * 0.25 + 0.35; // Initial rad/frame
+            lastTickSegment = -1;
+
+            animateSpin();
+        }
+
+        function animateSpin() {
+            currentAngle += speed;
+            speed *= friction;
+
+            // Normalize angle
+            currentAngle = currentAngle % (2 * Math.PI);
+
+            // Play ticks sound on passing segment dividing line
+            if (currentWheelItems.length > 0) {
+                const arcAngle = (2 * Math.PI) / currentWheelItems.length;
+                // Pointer is at the top (-90 degrees / -PI/2 radians)
+                // Angle pointing to top is -Math.PI / 2
+                // Segment calculations relative to pointer
+                const offsetAngle = Math.PI * 1.5 - currentAngle;
+                const normalizedOffset = (offsetAngle % (2 * Math.PI) + 2 * Math.PI) % (2 * Math.PI);
+                const currentSegment = Math.floor(normalizedOffset / arcAngle) % currentWheelItems.length;
+                
+                if (currentSegment !== lastTickSegment) {
+                    playTickSound();
+                    lastTickSegment = currentSegment;
+                }
+            }
+
+            drawWheel();
+
+            if (speed > 0.0015) {
+                requestAnimationFrame(animateSpin);
+            } else {
+                // Wheel stopped
+                isSpinning = false;
+                document.getElementById('spinBtn').disabled = false;
+                document.getElementById('categorySelect').disabled = false;
+                showWinner();
+            }
+        }
+
+        let winnerItem = null;
+
+        function showWinner() {
+            if (currentWheelItems.length === 0) return;
+
+            const arcAngle = (2 * Math.PI) / currentWheelItems.length;
+            // Pointer is at the top (-Math.PI / 2 radians, which is 1.5 * Math.PI)
+            const offsetAngle = Math.PI * 1.5 - currentAngle;
+            const normalizedOffset = (offsetAngle % (2 * Math.PI) + 2 * Math.PI) % (2 * Math.PI);
+            const winnerIndex = Math.floor(normalizedOffset / arcAngle) % currentWheelItems.length;
+
+            winnerItem = currentWheelItems[winnerIndex];
+            
+            playVictorySound();
+            triggerConfetti();
+
+            // Populate Modal
+            document.getElementById('winnerName').textContent = getItemName(winnerItem);
+            
+            // Description (translated)
+            let descText = winnerItem.description || '';
+            if (currentLang === 'en' && winnerItem.desc_en) descText = winnerItem.desc_en;
+            if (currentLang === 'fr' && winnerItem.desc_fr) descText = winnerItem.desc_fr;
+            document.getElementById('winnerDesc').textContent = descText;
+
+            // Price or multi-price selector
+            const modalMultiPriceRow = document.getElementById('modalMultiPriceRow');
+            const winnerPrice = document.getElementById('winnerPrice');
+            const priceSelect = document.getElementById('modalPriceSelect');
+
+            if (winnerItem.multi_prices) {
+                winnerPrice.style.display = 'none';
+                modalMultiPriceRow.style.display = 'block';
+                
+                let optHtml = '';
+                winnerItem.multi_prices.forEach(mp => {
+                    optHtml += `<option value="${mp.name}|${mp.price}">${mp.name.toUpperCase()} - ${mp.price.toFixed(2)} €</option>`;
+                });
+                priceSelect.innerHTML = optHtml;
+            } else {
+                modalMultiPriceRow.style.display = 'none';
+                winnerPrice.style.display = 'block';
+                winnerPrice.textContent = `${winnerItem.price.toFixed(2)} €`;
+            }
+
+            // Image
+            const img = document.getElementById('winnerImg');
+            if (winnerItem.image) {
+                img.src = winnerItem.image;
+                img.style.display = 'block';
+            } else {
+                img.style.display = 'none';
+            }
+
+            // Allergens
+            const allergensContainer = document.getElementById('winnerAllergens');
+            allergensContainer.innerHTML = '';
+            
+            let hasAllergens = false;
+            Object.keys(ALLERGENS_DICT).forEach(allergenKey => {
+                if (winnerItem[allergenKey]) {
+                    hasAllergens = true;
+                    const meta = ALLERGENS_DICT[allergenKey];
+                    const span = document.createElement('span');
+                    span.textContent = meta.icon;
+                    span.title = meta.name;
+                    span.style.fontSize = '1.8rem';
+                    span.style.cursor = 'help';
+                    allergensContainer.appendChild(span);
+                }
+            });
+
+            // If orders are disabled, hide Add to Cart button in Modal
+            const modalAddBtn = document.getElementById('modalAddBtn');
+            if (menuData && !menuData.orders_enabled) {
+                modalAddBtn.style.display = 'none';
+            } else {
+                modalAddBtn.style.display = 'flex';
+                // Reset button text
+                const textSpan = modalAddBtn.querySelector('span');
+                const translation = rouletteTranslations[currentLang].addButton || rouletteTranslations.es.addButton;
+                textSpan.textContent = translation;
+            }
+
+            // Open Modal
+            const modal = document.getElementById('victoryModal');
+            modal.classList.add('open');
+        }
+
+        function closeVictoryModal() {
+            const modal = document.getElementById('victoryModal');
+            modal.classList.remove('open');
+            stopConfetti();
+        }
+
+        function closeVictoryModalOutside(e) {
+            if (e.target.id === 'victoryModal') {
+                closeVictoryModal();
+            }
+        }
+
+        // Add to Cart from the victory modal
+        function addWinnerToCart() {
+            if (!winnerItem) return;
+
+            let price = winnerItem.price;
+            let optionName = null;
+
+            if (winnerItem.multi_prices) {
+                const selectVal = document.getElementById('modalPriceSelect').value.split('|');
+                optionName = selectVal[0];
+                price = parseFloat(selectVal[1]);
+            }
+
+            // Reference function from standard layout
+            addToCart(winnerItem.id, winnerItem.name, price, optionName);
+
+            // Change button to visual feedback
+            const modalAddBtn = document.getElementById('modalAddBtn');
+            const textSpan = modalAddBtn.querySelector('span');
+            textSpan.textContent = currentLang === 'en' ? '✓ Added' : (currentLang === 'fr' ? '✓ Ajouté' : '✓ Añadido');
+            
+            setTimeout(() => {
+                closeVictoryModal();
+            }, 1000);
+        }
+
+        // Standard Add to Cart helper inside the page scope if shopping cart exists
+        function addToCart(itemId, itemName, price, optionName = null) {
+            let cart = JSON.parse(localStorage.getItem('sergios_cart') || '[]');
+            let existing = cart.find(i => i.id === itemId && i.option === optionName);
+            if (existing) {
+                existing.qty++;
+            } else {
+                cart.push({ id: itemId, name: itemName, price: price, option: optionName, qty: 1 });
+            }
+            localStorage.setItem('sergios_cart', JSON.stringify(cart));
+            
+            // Dispatch dynamic event so if any cart fab is loaded, it triggers
+            window.dispatchEvent(new Event('storage'));
+        }
+
+        // --- SCREEN RESIZE DRAWING ---
+        window.addEventListener('resize', () => {
+            drawWheel();
+        });
+
+        // --- FULLSCREEN CONFETTI SYSTEM ---
+        const confettiCanvas = document.getElementById('confettiCanvas');
+        const cCtx = confettiCanvas.getContext('2d');
+        let confettiActive = false;
+        let confettiParticles = [];
+        const confettiColors = ['#f44336', '#e91e63', '#9c27b0', '#673ab7', '#3f51b5', '#2196f3', '#03a9f4', '#00bcd4', '#009688', '#4caf50', '#8bc34a', '#cddc39', '#ffeb3b', '#ffc107', '#ff9800', '#ff5722'];
+
+        class ConfettiParticle {
+            constructor() {
+                this.x = Math.random() * confettiCanvas.width;
+                this.y = Math.random() * confettiCanvas.height - confettiCanvas.height;
+                this.r = Math.random() * 6 + 4;
+                this.d = Math.random() * confettiCanvas.height;
+                this.color = confettiColors[Math.floor(Math.random() * confettiColors.length)];
+                this.tilt = Math.random() * 10 - 5;
+                this.tiltAngleIncremental = Math.random() * 0.07 + 0.02;
+                this.tiltAngle = 0;
+            }
+
+            draw() {
+                cCtx.beginPath();
+                cCtx.lineWidth = this.r / 2;
+                cCtx.strokeStyle = this.color;
+                cCtx.moveTo(this.x + this.tilt + this.r / 2, this.y);
+                cCtx.lineTo(this.x + this.tilt, this.y + this.tilt + this.r / 2);
+                cCtx.stroke();
+            }
+
+            update() {
+                this.tiltAngle += this.tiltAngleIncremental;
+                this.y += (Math.cos(this.tiltAngle) + 3 + this.r / 2) / 2;
+                this.x += Math.sin(this.tiltAngle);
+                this.tilt = Math.sin(this.tiltAngle - this.r / 2) * 5;
+
+                // Reset position when hitting bottom
+                if (this.y > confettiCanvas.height) {
+                    this.x = Math.random() * confettiCanvas.width;
+                    this.y = -10;
+                    this.tilt = Math.random() * 10 - 5;
+                }
+            }
+        }
+
+        function triggerConfetti() {
+            confettiCanvas.width = window.innerWidth;
+            confettiCanvas.height = window.innerHeight;
+            confettiParticles = [];
+            for (let i = 0; i < 150; i++) {
+                confettiParticles.push(new ConfettiParticle());
+            }
+            confettiActive = true;
+            animateConfetti();
+        }
+
+        function stopConfetti() {
+            confettiActive = false;
+            cCtx.clearRect(0, 0, confettiCanvas.width, confettiCanvas.height);
+        }
+
+        function animateConfetti() {
+            if (!confettiActive) return;
+            cCtx.clearRect(0, 0, confettiCanvas.width, confettiCanvas.height);
+            confettiParticles.forEach(p => {
+                p.update();
+                p.draw();
+            });
+            requestAnimationFrame(animateConfetti);
+        }
+
+        window.addEventListener('resize', () => {
+            if (confettiActive) {
+                confettiCanvas.width = window.innerWidth;
+                confettiCanvas.height = window.innerHeight;
+            }
+        });
+    </script>
+</body>
+</html>

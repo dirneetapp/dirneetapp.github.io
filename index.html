@@ -14,7 +14,7 @@
 </head>
 
 <body class="theme-gold">
-                                                                                                                                    <div id="introOverlay"
+                                                                                                                                                <div id="introOverlay"
         style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #121212; z-index: 9999; display: flex; justify-content: center; align-items: center; transition: opacity 0.5s ease;">
         <img id="introImg1" src="assets/combo1.jpg" alt="Intro 1"
             style="position: absolute; max-width: 100%; max-height: 100%; object-fit: contain; opacity: 1; transition: opacity 0.5s ease;">
@@ -72,6 +72,7 @@
         <a href="Arroz.html" class="mobile-menu-link ">Tapa de Arroz</a>
         <a href="Croquetas.html" class="mobile-menu-link ">Croquetas</a>
         <a href="Postres.html" class="mobile-menu-link ">Postres</a>
+        <a href="ruleta.html" class="mobile-menu-link" style="color: #c084fc; font-weight: 600;">🎰 Ruleta Indecisos</a>
     </div>
 
     <header class="hero">
@@ -100,6 +101,12 @@
         }
         (function() { setLang(localStorage.getItem('menuLang') || 'es'); })();
     </script>
+
+    
+
+    
+
+    
 
     
 
@@ -199,6 +206,14 @@
                         <img src="assets\cat_Postres.jpg" alt="Postres" class="category-card-image">
                         <div class="category-card-title">Postres</div>
                         <div class="category-card-description"></div>
+                    </a>
+
+                    <a href="ruleta.html" class="category-card roulette-card" style="background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%); border-color: rgba(255, 255, 255, 0.15);">
+                        <div style="padding: 2.5rem 1.5rem; text-align: center; color: #fff; display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100%; min-height: 200px;">
+                            <span style="font-size: 3.5rem; margin-bottom: 10px; display: inline-block;" class="roulette-emoji">🎰</span>
+                            <div class="category-card-title" style="color: #fff; padding: 0; margin-bottom: 5px; font-family: 'Playfair Display', serif;">¿Indeciso?</div>
+                            <div style="font-size: 0.95rem; opacity: 0.9;">¡Deja que la ruleta elija por ti!</div>
+                        </div>
                     </a>
                 </div>
             </section>

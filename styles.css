@@ -782,3 +782,27 @@ footer {
     .cart-fab { bottom: 1rem; right: 1rem; width: 54px; height: 54px; font-size: 1.4rem; }
     .cart-panel { width: 100vw; }
 }
+
+/* ===== INDECISOS ROULETTE CARD ===== */
+.roulette-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease !important;
+}
+
+.roulette-card:hover {
+    transform: translateY(-8px) scale(1.03) !important;
+    box-shadow: 0 15px 30px rgba(106, 17, 203, 0.4) !important;
+    border-color: #a663cc !important;
+}
+
+.roulette-card:hover .roulette-emoji {
+    animation: wobble 1.2s ease-in-out infinite alternate;
+}
+
+@keyframes wobble {
+    0% {
+        transform: rotate(-10deg) scale(1.1);
+    }
+    100% {
+        transform: rotate(10deg) scale(1.1);
+    }
+}

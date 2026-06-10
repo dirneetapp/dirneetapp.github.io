@@ -1120,9 +1120,11 @@
       "items": [
         {
           "id": "Coulan",
-          "name": "Coulan",
+          "name": "Coulant",
           "description": "Turron o Chocolate",
-          "price": 5.2
+          "price": 5.2,
+          "hidden": false,
+          "image": "assets/item_Coulant.webp"
         },
         {
           "id": "Tiramisú",
@@ -1132,15 +1134,17 @@
         },
         {
           "id": "Tarrina Vainilla y Chocolate",
-          "name": "Tarrina Vainilla y Chocolate",
+          "name": "Copa Vainilla y Chocolate",
           "description": "",
-          "price": 3.5
+          "price": 3.5,
+          "hidden": false
         },
         {
           "id": "Tarrina Nata y Fresa",
-          "name": "Tarrina Nata y Fresa",
+          "name": "Copa Nata y Fresa",
           "description": "",
-          "price": 3.5
+          "price": 3.5,
+          "hidden": false
         },
         {
           "id": "Sorbete de Limon",
