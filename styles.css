@@ -421,21 +421,6 @@ footer {
     overflow: hidden;
 }
 
-.item-nuevo::before {
-    content: "¡NUEVO!";
-    position: absolute;
-    top: 15px;
-    right: -30px;
-    background: linear-gradient(45deg, #ff8f00, #ff5722);
-    color: white;
-    padding: 4px 30px;
-    font-size: 0.75rem;
-    font-weight: bold;
-    transform: rotate(45deg);
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
-    z-index: 10;
-    letter-spacing: 1px;
-}
 
 @keyframes borderGlow {
     0% {

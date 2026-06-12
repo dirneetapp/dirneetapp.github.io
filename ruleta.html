@@ -1,14 +1,29 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bar Sergios - Ruleta para Indecisos</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
     <style>
+        @media print {
+            body {
+                display: none !important;
+            }
+        }
+
+        .blurred-screen {
+            filter: blur(30px) grayscale(100%) !important;
+            user-select: none !important;
+            pointer-events: none !important;
+        }
+
         .roulette-container {
             display: flex;
             flex-direction: column;
@@ -93,71 +108,108 @@
         /* Roulette Wheel Component */
         .wheel-wrapper {
             position: relative;
-            width: min(450px, 90vw);
-            height: min(450px, 90vw);
+            width: min(460px, 90vw);
+            height: min(460px, 90vw);
             margin: var(--spacing-lg) 0;
             display: flex;
             justify-content: center;
             align-items: center;
-            filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.6));
+            background: radial-gradient(circle, rgba(212, 175, 55, 0.1) 0%, rgba(0, 0, 0, 0) 70%);
+            border-radius: 50%;
+            padding: 10px;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.7);
         }
 
         #wheelCanvas {
             width: 100%;
             height: 100%;
             border-radius: 50%;
-            border: 6px solid #1a1a1a;
+            border: 8px solid #1a1a1a;
             box-sizing: border-box;
             background-color: var(--surface-color);
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.8), inset 0 0 15px rgba(0, 0, 0, 0.6);
         }
 
         /* Wheel Pointer */
         .wheel-pointer {
             position: absolute;
-            top: -10px;
+            top: -15px;
             left: 50%;
             transform: translateX(-50%);
-            width: 0;
-            height: 0;
-            border-left: 20px solid transparent;
-            border-right: 20px solid transparent;
-            border-top: 30px solid var(--primary-color);
+            width: 34px;
+            height: 48px;
+            background: linear-gradient(to bottom, #d4af37, #b89018, #8a640f);
+            clip-path: polygon(50% 100%, 0 0, 100% 0);
             z-index: 10;
-            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.5));
+            filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.6));
+            transform-origin: 50% 0%;
+            transition: transform 0.12s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .wheel-pointer::after {
+            content: '';
+            position: absolute;
+            top: 6px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 8px;
+            height: 8px;
+            background: #ff1744;
+            border-radius: 50%;
+            box-shadow: 0 0 8px #ff1744, 0 0 16px #ff1744;
+        }
+
+        @keyframes pointerTick {
+            0% {
+                transform: translateX(-50%) rotate(0deg);
+            }
+
+            20% {
+                transform: translateX(-50%) rotate(-15deg);
+            }
+
+            100% {
+                transform: translateX(-50%) rotate(0deg);
+            }
+        }
+
+        .wheel-pointer.tick {
+            animation: pointerTick 0.12s ease-out;
         }
 
         .wheel-center-glow {
             position: absolute;
-            width: 40px;
-            height: 40px;
+            width: 50px;
+            height: 50px;
             border-radius: 50%;
-            background: radial-gradient(circle, #fff 0%, var(--primary-color) 70%, #d4af37 100%);
-            box-shadow: 0 0 15px var(--primary-color);
+            background: radial-gradient(circle, #ffffff 0%, #ffe082 40%, #d4af37 80%, #aa8410 100%);
+            box-shadow: 0 0 20px rgba(212, 175, 55, 0.8);
             z-index: 5;
         }
 
         .btn-spin {
-            background: linear-gradient(135deg, var(--primary-color) 0%, #ffc107 100%);
+            background: linear-gradient(135deg, #d4af37 0%, #ffb300 50%, #f57c00 100%);
             color: #121212;
             border: none;
-            padding: 16px 48px;
-            font-size: 1.3rem;
+            padding: 16px 52px;
+            font-size: 1.35rem;
             font-weight: 700;
-            border-radius: 30px;
+            border-radius: 40px;
             cursor: pointer;
             font-family: var(--font-body);
-            box-shadow: 0 6px 20px rgba(212, 175, 55, 0.4);
+            box-shadow: 0 8px 25px rgba(212, 175, 55, 0.45);
             transition: transform 0.2s, box-shadow 0.2s, filter 0.2s;
             text-transform: uppercase;
-            letter-spacing: 1px;
+            letter-spacing: 1.5px;
             z-index: 20;
             margin-top: 10px;
+            border: 2px solid rgba(255, 255, 255, 0.25);
         }
 
         .btn-spin:hover:not(:disabled) {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(212, 175, 55, 0.6);
-            filter: brightness(1.1);
+            transform: translateY(-3px) scale(1.03);
+            box-shadow: 0 12px 30px rgba(212, 175, 55, 0.65);
+            filter: brightness(1.15);
         }
 
         .btn-spin:active:not(:disabled) {
@@ -166,22 +218,62 @@
         }
 
         .btn-spin:disabled {
-            background: #444;
-            color: #777;
+            background: #333;
+            color: #666;
+            border-color: rgba(255, 255, 255, 0.05);
             box-shadow: none;
             cursor: not-allowed;
+        }
+
+        /* Toast notification for prize-disabled state */
+        .prize-disabled-toast {
+            position: fixed;
+            top: 80px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(30, 30, 30, 0.92);
+            border: 1px solid rgba(229, 57, 53, 0.5);
+            color: #ff8a80;
+            padding: 10px 20px;
+            border-radius: 30px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            z-index: 500;
+            display: none;
+            align-items: center;
+            gap: 8px;
+            white-space: nowrap;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+            animation: toastIn 0.3s ease;
+        }
+
+        .prize-disabled-toast.visible {
+            display: flex;
+        }
+
+        @keyframes toastIn {
+            from {
+                opacity: 0;
+                transform: translateX(-50%) translateY(-10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateX(-50%) translateY(0);
+            }
         }
 
         /* Custom Victory Modal Overlay */
         .victory-modal-overlay {
             position: fixed;
             inset: 0;
-            background: rgba(0, 0, 0, 0.85);
+            background: rgba(10, 10, 10, 0.85);
             z-index: 1000;
             display: none;
             align-items: center;
             justify-content: center;
-            backdrop-filter: blur(8px);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
             opacity: 0;
             transition: opacity 0.4s ease;
             padding: 15px;
@@ -193,13 +285,15 @@
         }
 
         .victory-modal {
-            background: var(--surface-color);
-            border-radius: var(--border-radius);
+            background: rgba(30, 30, 30, 0.95);
+            backdrop-filter: blur(25px);
+            -webkit-backdrop-filter: blur(25px);
+            border-radius: 24px;
             width: min(500px, 100%);
             max-height: 90vh;
             overflow-y: auto;
-            border: 2px solid var(--primary-color);
-            box-shadow: 0 10px 40px rgba(212, 175, 55, 0.3);
+            border: 2px solid rgba(212, 175, 55, 0.45);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8), 0 0 30px rgba(212, 175, 55, 0.15);
             transform: scale(0.8);
             transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             display: flex;
@@ -300,9 +394,9 @@
         }
 
         .btn-victory-close {
-            background: rgba(255,255,255,0.06);
+            background: rgba(255, 255, 255, 0.06);
             color: var(--text-color);
-            border: 1px solid rgba(255,255,255,0.1);
+            border: 1px solid rgba(255, 255, 255, 0.1);
             padding: 12px;
             border-radius: 12px;
             font-size: 0.95rem;
@@ -313,7 +407,7 @@
         }
 
         .btn-victory-close:hover {
-            background: rgba(255,255,255,0.12);
+            background: rgba(255, 255, 255, 0.12);
         }
 
         #confettiCanvas {
@@ -326,11 +420,14 @@
         }
     </style>
 </head>
+
 <body class="theme-lavender">
     <button class="menu-toggle" onclick="toggleMenu()">☰</button>
-    
+
     <div id="mobileMenu" class="mobile-menu-overlay">
-        <button class="menu-toggle" style="position:absolute; top:1rem; right:1rem; border:none; background:none; font-size:2rem;" onclick="toggleMenu()">✕</button>
+        <button class="menu-toggle"
+            style="position:absolute; top:1rem; right:1rem; border:none; background:none; font-size:2rem;"
+            onclick="toggleMenu()">✕</button>
         <!-- Generated dynamically via index links inside page structure -->
     </div>
 
@@ -338,7 +435,8 @@
         <a href="index.html" class="home-btn" title="Volver al inicio">🏠</a>
         <div class="hero-content">
             <h1 class="i18n" data-es="Bar Sergios" data-en="Bar Sergios" data-fr="Bar Sergios">Bar Sergios</h1>
-            <p class="subtitle i18n" data-es="Gastronomía & Buen Ambiente" data-en="Gastronomy & Good Atmosphere" data-fr="Gastronomie & Bonne Ambiance">Gastronomía & Buen Ambiente</p>
+            <p class="subtitle i18n" data-es="Gastronomía & Buen Ambiente" data-en="Gastronomy & Good Atmosphere"
+                data-fr="Gastronomie & Bonne Ambiance">Gastronomía & Buen Ambiente</p>
         </div>
     </header>
 
@@ -350,20 +448,28 @@
 
     <main class="container">
         <section class="menu-section">
-            <h2 class="section-title i18n" data-es="Ruleta de la Fortuna" data-en="Wheel of Fortune" data-fr="Roue de la Fortune" style="text-align:center; display:block; border:none; margin-bottom: 10px;">Ruleta de la Fortuna</h2>
-            <p style="text-align: center; color: var(--text-muted); margin-bottom: 2rem;" class="i18n" data-es="¿Indeciso? ¡Deja que la ruleta elija por ti!" data-en="Indecisive? Let the wheel choose for you!" data-fr="Indécis? Laissez la roue choisir pour vous!">¿Indeciso? ¡Deja que la ruleta elija por ti!</p>
+            <h2 class="section-title i18n" data-es="Ruleta de la Fortuna" data-en="Wheel of Fortune"
+                data-fr="Roue de la Fortune"
+                style="text-align:center; display:block; border:none; margin-bottom: 10px;">Ruleta de la Fortuna</h2>
+            <p style="text-align: center; color: var(--text-muted); margin-bottom: 2rem;" class="i18n"
+                data-es="¿Indeciso? ¡Deja que la ruleta elija por ti!"
+                data-en="Indecisive? Let the wheel choose for you!"
+                data-fr="Indécis? Laissez la roue choisir pour vous!">¿Indeciso? ¡Deja que la ruleta elija por ti!</p>
 
             <div class="roulette-container">
                 <div class="controls-row">
                     <div class="control-group">
-                        <label for="categorySelect" class="i18n" data-es="Seleccionar Categoría:" data-en="Select Category:" data-fr="Sélectionner la Catégorie:">Seleccionar Categoría:</label>
+                        <label for="categorySelect" class="i18n" data-es="Seleccionar Categoría:"
+                            data-en="Select Category:" data-fr="Sélectionner la Catégorie:">Seleccionar
+                            Categoría:</label>
                         <select id="categorySelect" class="roulette-select" onchange="onCategoryChange()">
                             <!-- Categories filled dynamically -->
                         </select>
                     </div>
                     <div id="shuffleContainer" class="shuffle-info" style="display: none;">
                         <span id="shuffleText"></span>
-                        <button class="btn-shuffle i18n" data-es="🔀 Barajar platos" data-en="🔀 Shuffle items" data-fr="🔀 Mélanger les plats" onclick="shuffleCurrentPool()">🔀 Barajar platos</button>
+                        <button class="btn-shuffle i18n" data-es="🔀 Barajar platos" data-en="🔀 Shuffle items"
+                            data-fr="🔀 Mélanger les plats" onclick="shuffleCurrentPool()">🔀 Barajar platos</button>
                     </div>
                 </div>
 
@@ -373,7 +479,8 @@
                     <canvas id="wheelCanvas" width="800" height="800"></canvas>
                 </div>
 
-                <button id="spinBtn" class="btn-spin i18n" data-es="Girar Ruleta" data-en="Spin Wheel" data-fr="Lancer la Roue" onclick="spinWheel()">Girar Ruleta</button>
+                <button id="spinBtn" class="btn-spin i18n" data-es="Girar Ruleta" data-en="Spin Wheel"
+                    data-fr="Lancer la Roue" onclick="spinWheel()">Girar Ruleta</button>
             </div>
         </section>
     </main>
@@ -385,7 +492,8 @@
     <div id="victoryModal" class="victory-modal-overlay" onclick="closeVictoryModalOutside(event)">
         <div class="victory-modal">
             <div class="victory-header">
-                <h2 class="i18n" data-es="¡Tu plato sugerido!" data-en="Your suggested dish!" data-fr="Votre plat suggéré!">¡Tu plato sugerido!</h2>
+                <h2 class="i18n" data-es="¡Tu plato sugerido!" data-en="Your suggested dish!"
+                    data-fr="Votre plat suggéré!">¡Tu plato sugerido!</h2>
             </div>
             <div class="victory-content">
                 <img id="winnerImg" src="" alt="Winner product" class="winner-image" style="display: none;">
@@ -393,21 +501,131 @@
                 <div id="winnerPrice" class="winner-price"></div>
                 <div id="winnerDesc" class="winner-description"></div>
                 <div id="winnerAllergens" class="winner-allergens"></div>
-                
+
                 <div class="victory-actions">
                     <!-- Dropdown for multi-price if applicable -->
                     <div id="modalMultiPriceRow" style="display: none; margin-bottom: 15px; width: 100%;">
-                        <select id="modalPriceSelect" class="cart-price-select" style="font-size:1rem; padding: 10px; width: 100%;">
+                        <select id="modalPriceSelect" class="cart-price-select"
+                            style="font-size:1rem; padding: 10px; width: 100%;">
                             <!-- Options filled dynamically -->
                         </select>
                     </div>
                     <button id="modalAddBtn" class="btn-victory-add" onclick="addWinnerToCart()">
                         <span>🛒 Añadir al Pedido</span>
                     </button>
-                    <button class="btn-victory-close i18n" data-es="Girar de nuevo" data-en="Spin again" data-fr="Lancer à nouveau" onclick="closeVictoryModal()">Girar de nuevo</button>
+                    <button class="btn-victory-close i18n" data-es="Girar de nuevo" data-en="Spin again"
+                        data-fr="Lancer à nouveau" onclick="closeVictoryModal()">Girar de nuevo</button>
                 </div>
             </div>
         </div>
+    </div>
+
+    <!-- Prize Modal -->
+    <div id="prizeModal" class="victory-modal-overlay">
+        <div class="victory-modal" style="border-color: #ff8f00; box-shadow: 0 10px 40px rgba(255, 143, 0, 0.35);">
+            <div class="victory-header"
+                style="background: rgba(255, 143, 0, 0.1); border-bottom: 1px solid rgba(255, 143, 0, 0.2);">
+                <h2 style="color: #ff8f00;">🎉 ¡ENHORABUENA! 🎉</h2>
+            </div>
+            <div class="victory-content" style="padding: 2rem;">
+                <div style="font-size: 3.5rem; margin-bottom: 10px;">🎁</div>
+                <div
+                    style="font-size: 1.1rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 2px; font-weight: bold; margin-bottom: 5px;">
+                    Has ganado</div>
+                <div id="prizeName" class="winner-name"
+                    style="color: #fff; font-size: 2.2rem; font-family: var(--font-heading); margin-bottom: 15px;">Copa
+                    de Cerveza</div>
+
+                <div id="prizeCountdownContainer"
+                    style="background: rgba(255, 87, 34, 0.1); border: 1px solid rgba(255, 87, 34, 0.3); padding: 15px; border-radius: 12px; margin-bottom: 25px; width: 100%; box-sizing: border-box;">
+                    <div style="font-size: 1.2rem; font-weight: bold; color: #ff5722; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 5px;"
+                        class="i18n" data-es="¡Muestráselo al Camarero!" data-en="Show it to the Waiter!"
+                        data-fr="Montrez-le au Serveur!">¡Muestráselo al Camarero!</div>
+                    <div id="prizeTimer"
+                        style="font-size: 2.5rem; font-weight: bold; font-family: monospace; color: #ff5722; margin-top: 5px;">
+                        03:00</div>
+                </div>
+
+                <div class="victory-actions">
+                    <button class="btn-victory-close"
+                        style="width: 100%; padding: 14px; border-radius: 12px; background: rgba(255,255,255,0.06); color: var(--text-color); border: 1px solid rgba(255,255,255,0.1); font-weight: bold; cursor: pointer;"
+                        onclick="closePrizeModal()">Cerrar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Limit Modal -->
+    <div id="limitModal" class="victory-modal-overlay">
+        <div class="victory-modal" style="border-color: #e53935; box-shadow: 0 10px 40px rgba(229, 57, 53, 0.3);">
+            <div class="victory-header"
+                style="background: rgba(229, 57, 53, 0.1); border-bottom: 1px solid rgba(229, 57, 53, 0.2);">
+                <h2 style="color: #e53935;" class="i18n" data-es="Límite Diario" data-en="Daily Limit"
+                    data-fr="Limite Journalière">Límite Diario</h2>
+            </div>
+            <div class="victory-content" style="padding: 2rem;">
+                <div style="font-size: 3.5rem; margin-bottom: 10px;">⏰</div>
+                <div style="font-size: 1.3rem; font-weight: bold; color: var(--text-color); margin-bottom: 8px;"
+                    class="i18n" data-es="Ya usaste tu oportunidad de premio hoy"
+                    data-en="You already used your prize chance today"
+                    data-fr="Vous avez déjà utilisé votre chance aujourd'hui">Ya usaste tu oportunidad de premio hoy
+                </div>
+                <div style="font-size: 0.95rem; color: var(--text-muted); margin-bottom: 25px;" class="i18n"
+                    data-es="Pero puedes seguir girando por diversión 🎰" data-en="But you can keep spinning for fun 🎰"
+                    data-fr="Mais vous pouvez continuer à tourner pour le fun 🎰">Pero puedes seguir girando por
+                    diversión 🎰</div>
+                <div class="victory-actions">
+                    <button class="btn-victory-add"
+                        style="width: 100%; padding: 14px; border-radius: 12px; font-size: 1rem;"
+                        onclick="spinAnyway()">🎰 Seguir Girando</button>
+                    <button class="btn-victory-close" style="width: 100%; padding: 12px; border-radius: 12px;"
+                        onclick="closeLimitModal()">Cerrar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Prize Disabled Toast -->
+    <div id="prizeDisabledToast" class="prize-disabled-toast">
+        <span>⚠️</span><span class="i18n" data-es="Solo por diversión · Sin premios hoy"
+            data-en="Just for fun · No prizes today" data-fr="Juste pour le fun · Pas de prix aujourd'hui">Solo por
+            diversión · Sin premios hoy</span>
+    </div>
+
+    <!-- Bad Luck Modal (Prueba Mañana) -->
+    <div id="badLuckModal" class="victory-modal-overlay">
+        <div class="victory-modal" style="border-color: #546e7a; box-shadow: 0 10px 40px rgba(84, 110, 122, 0.35);">
+            <div class="victory-header"
+                style="background: rgba(84, 110, 122, 0.12); border-bottom: 1px solid rgba(84, 110, 122, 0.25);">
+                <h2 style="color: #90a4ae;">😅 ¡Casi!</h2>
+            </div>
+            <div class="victory-content" style="padding: 2rem;">
+                <div style="font-size: 4rem; margin-bottom: 10px;">🍀</div>
+                <div style="font-size: 1.8rem; font-weight: 800; color: #fff; font-family: var(--font-heading); margin-bottom: 8px;"
+                    class="i18n" data-es="¡Prueba Mañana!" data-en="Try Tomorrow!" data-fr="Réessayez Demain!">¡Prueba
+                    Mañana!</div>
+                <div style="font-size: 0.95rem; color: var(--text-muted); margin-bottom: 28px; line-height: 1.6;"
+                    class="i18n"
+                    data-es="Ya usaste tu oportunidad de premio hoy.&lt;&gt;Vuelve mañana para una nueva oportunidad."
+                    data-en="You already used your prize chance today.&lt;&gt;Come back tomorrow for a new opportunity."
+                    data-fr="Vous avez déjà utilisé votre chance.&lt;&gt;Revenez demain pour une nouvelle opportunité.">
+                    Ya usaste tu oportunidad de premio hoy.<br>Vuelve mañana para una nueva oportunidad.</div>
+                <div class="victory-actions">
+                    <button class="btn-victory-add"
+                        style="width: 100%; padding: 14px; border-radius: 12px; font-size: 1rem;"
+                        onclick="closeBadLuckModal(); spinAnyway();">🎰 Seguir Girando</button>
+                    <button class="btn-victory-close" style="width: 100%; padding: 12px; border-radius: 12px;"
+                        onclick="closeBadLuckModal()">Cerrar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Floating Prize Banner -->
+    <div id="prizeBanner"
+        style="display: none; position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%); background: linear-gradient(135deg, #ff8f00 0%, #ff5722 100%); color: white; padding: 12px 24px; border-radius: 30px; box-shadow: 0 4px 15px rgba(255, 143, 0, 0.4); font-weight: bold; z-index: 400; cursor: pointer; align-items: center; gap: 8px; font-family: var(--font-body);"
+        onclick="restorePrizeClaim()">
+        <span>🎁 Ver premio pendiente (03:00)</span>
     </div>
 
     <!-- Image Zoom Modal -->
@@ -504,6 +722,8 @@
         let fullItemsPool = [];
         let currentWheelItems = [];
         const MAX_WHEEL_SEGMENTS = 10;
+        let isFirstSpinToday = false;
+        let prizeDisabledForToday = false; // true after daily limit is reached
 
         // Navigation and layout
         function toggleMenu() {
@@ -513,11 +733,11 @@
         function setLang(lang) {
             currentLang = lang;
             localStorage.setItem('menuLang', lang);
-            document.querySelectorAll('.i18n').forEach(function(el) {
+            document.querySelectorAll('.i18n').forEach(function (el) {
                 var text = el.getAttribute('data-' + lang);
                 el.textContent = (text && text.trim()) ? text : el.getAttribute('data-es');
             });
-            document.querySelectorAll('.lang-btn').forEach(function(b) { b.classList.remove('active'); });
+            document.querySelectorAll('.lang-btn').forEach(function (b) { b.classList.remove('active'); });
             var btn = document.getElementById('lang-' + lang);
             if (btn) btn.classList.add('active');
 
@@ -541,14 +761,14 @@
                 const gain = audioCtx.createGain();
                 osc.connect(gain);
                 gain.connect(audioCtx.destination);
-                
+
                 osc.type = 'sine';
                 osc.frequency.setValueAtTime(600, audioCtx.currentTime);
                 osc.frequency.exponentialRampToValueAtTime(120, audioCtx.currentTime + 0.04);
-                
+
                 gain.gain.setValueAtTime(0.08, audioCtx.currentTime);
                 gain.gain.exponentialRampToValueAtTime(0.005, audioCtx.currentTime + 0.04);
-                
+
                 osc.start();
                 osc.stop(audioCtx.currentTime + 0.04);
             } catch (e) {
@@ -565,7 +785,7 @@
                     audioCtx.resume();
                 }
                 const now = audioCtx.currentTime;
-                
+
                 // Play a bright major chord progression (Arpeggio style)
                 const baseFreqs = [261.63, 329.63, 392.00, 523.25, 659.25, 783.99, 1046.50]; // C Major scale arpeggio
                 baseFreqs.forEach((freq, idx) => {
@@ -573,20 +793,187 @@
                     const gain = audioCtx.createGain();
                     osc.connect(gain);
                     gain.connect(audioCtx.destination);
-                    
+
                     osc.type = 'triangle';
                     osc.frequency.setValueAtTime(freq, now + idx * 0.08);
-                    
+
                     gain.gain.setValueAtTime(0, now + idx * 0.08);
                     gain.gain.linearRampToValueAtTime(0.12, now + idx * 0.08 + 0.03);
                     gain.gain.exponentialRampToValueAtTime(0.005, now + idx * 0.08 + 0.35);
-                    
+
                     osc.start(now + idx * 0.08);
                     osc.stop(now + idx * 0.08 + 0.45);
                 });
             } catch (e) {
                 console.warn(e);
             }
+        }
+
+        // --- PRIZE SYSTEM STATE & TIMERS ---
+        let prizeTimerInterval = null;
+
+        function getMonthlyState() {
+            const currentMonth = new Date().toISOString().slice(0, 7); // e.g., "2026-06"
+            let state = { month: currentMonth, beer: 0, soda: 0, coffee: 0 };
+            try {
+                const stored = localStorage.getItem('sergios_monthly_prizes');
+                if (stored) {
+                    const parsed = JSON.parse(stored);
+                    if (parsed && parsed.month === currentMonth) {
+                        state = parsed;
+                    }
+                }
+            } catch (e) {
+                console.error(e);
+            }
+            return state;
+        }
+
+        function saveMonthlyState(state) {
+            localStorage.setItem('sergios_monthly_prizes', JSON.stringify(state));
+        }
+
+        function hasMonthlyPrizesLeft() {
+            const state = getMonthlyState();
+            return state.beer < 5 || state.soda < 5 || state.coffee < 5;
+        }
+
+        function pickRandomPrize() {
+            const state = getMonthlyState();
+            const availablePrizes = [];
+            if (state.beer < 5) availablePrizes.push({ id: 'beer', name: 'Copa de Cerveza' });
+            if (state.soda < 5) availablePrizes.push({ id: 'soda', name: 'Refresco' });
+            if (state.coffee < 5) availablePrizes.push({ id: 'coffee', name: 'Café' });
+
+            if (availablePrizes.length === 0) return null;
+            const index = Math.floor(Math.random() * availablePrizes.length);
+            return availablePrizes[index];
+        }
+
+        function checkPendingPrize() {
+            try {
+                const stored = localStorage.getItem('sergios_active_prize');
+                if (stored) {
+                    const parsed = JSON.parse(stored);
+                    if (parsed && parsed.expiresAt > Date.now()) {
+                        showPrizeBanner(parsed.prizeName, parsed.expiresAt);
+                        return true;
+                    } else {
+                        localStorage.removeItem('sergios_active_prize');
+                    }
+                }
+            } catch (e) {
+                console.error(e);
+            }
+            return false;
+        }
+
+        let bannerTimeout = null;
+        function showPrizeBanner(prizeName, expiresAt) {
+            const banner = document.getElementById('prizeBanner');
+            banner.style.display = 'flex';
+
+            if (bannerTimeout) clearTimeout(bannerTimeout);
+
+            function updateBannerText() {
+                const remaining = expiresAt - Date.now();
+                if (remaining <= 0) {
+                    banner.style.display = 'none';
+                    return;
+                }
+                const minutes = Math.floor(remaining / 60000);
+                const seconds = Math.floor((remaining % 60000) / 1000);
+                banner.querySelector('span').textContent = `🎁 Reclamar: ${prizeName} (${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')})`;
+                bannerTimeout = setTimeout(updateBannerText, 1000);
+            }
+            updateBannerText();
+        }
+
+        function openPrizeModal(prizeName, expiresAt) {
+            document.getElementById('prizeName').textContent = prizeName;
+            document.getElementById('prizeModal').style.display = 'flex';
+            document.getElementById('prizeModal').classList.add('open');
+
+            if (prizeTimerInterval) clearInterval(prizeTimerInterval);
+
+            function updateModalTimer() {
+                const remaining = expiresAt - Date.now();
+                if (remaining <= 0) {
+                    clearInterval(prizeTimerInterval);
+                    document.getElementById('prizeTimer').textContent = "00:00";
+                    document.getElementById('prizeName').textContent = "Premio Expirado";
+                    localStorage.removeItem('sergios_active_prize');
+                    document.getElementById('prizeBanner').style.display = 'none';
+                    return;
+                }
+                const minutes = Math.floor(remaining / 60000);
+                const seconds = Math.floor((remaining % 60000) / 1000);
+                document.getElementById('prizeTimer').textContent =
+                    String(minutes).padStart(2, '0') + ":" + String(seconds).padStart(2, '0');
+            }
+
+            updateModalTimer();
+            prizeTimerInterval = setInterval(updateModalTimer, 1000);
+        }
+
+        function restorePrizeClaim() {
+            try {
+                const stored = localStorage.getItem('sergios_active_prize');
+                if (stored) {
+                    const parsed = JSON.parse(stored);
+                    if (parsed && parsed.expiresAt > Date.now()) {
+                        openPrizeModal(parsed.prizeName, parsed.expiresAt);
+                    }
+                }
+            } catch (e) {
+                console.error(e);
+            }
+        }
+
+        function closePrizeModal() {
+            document.getElementById('prizeModal').style.display = 'none';
+            document.getElementById('prizeModal').classList.remove('open');
+            if (prizeTimerInterval) clearInterval(prizeTimerInterval);
+            stopConfetti();
+            checkPendingPrize();
+            drawWheel();
+        }
+
+        function closeLimitModal() {
+            document.getElementById('limitModal').style.display = 'none';
+            document.getElementById('limitModal').classList.remove('open');
+            drawWheel();
+        }
+
+        function spinAnyway() {
+            // Close modal and spin without prize eligibility
+            closeLimitModal();
+            prizeDisabledForToday = true;
+            showPrizeDisabledToast();
+            startSpinAnimation();
+        }
+
+        let _prizeToastTimeout = null;
+        function showPrizeDisabledToast() {
+            const toast = document.getElementById('prizeDisabledToast');
+            toast.classList.add('visible');
+            if (_prizeToastTimeout) clearTimeout(_prizeToastTimeout);
+            _prizeToastTimeout = setTimeout(() => {
+                toast.classList.remove('visible');
+            }, 4000);
+        }
+
+        function openBadLuckModal() {
+            const modal = document.getElementById('badLuckModal');
+            modal.style.display = 'flex';
+            // Animate in
+            requestAnimationFrame(() => modal.classList.add('open'));
+        }
+
+        function closeBadLuckModal() {
+            const modal = document.getElementById('badLuckModal');
+            modal.classList.remove('open');
+            modal.style.display = 'none';
         }
 
         // Initialize Menu Data and Build UI
@@ -616,6 +1003,9 @@
             // Load initial lang
             setLang(localStorage.getItem('menuLang') || 'es');
             onCategoryChange();
+
+            // Check pending prize claim
+            checkPendingPrize();
         });
 
         function translateCategorySelect() {
@@ -632,6 +1022,24 @@
             document.getElementById('shuffleText').textContent = translation.replace('{count}', count);
         }
 
+        function isExtraItem(item) {
+            if (!item || !item.name) return false;
+            const nameLower = item.name.toLowerCase().trim();
+            // Filter out general extras/suplementos
+            if (nameLower.includes("extra") || nameLower.includes("suplemento")) {
+                return true;
+            }
+            // Filter out specific ingredients/extras listed by user
+            const forbiddenNames = [
+                "queso",
+                "mayonesa",
+                "pan",
+                "pan con tomate",
+                "bacon"
+            ];
+            return forbiddenNames.includes(nameLower);
+        }
+
         function onCategoryChange() {
             const select = document.getElementById('categorySelect');
             const catId = select.value;
@@ -642,14 +1050,14 @@
                 menuData.categories.forEach(cat => {
                     if (cat.items) {
                         cat.items.forEach(item => {
-                            if (!item.hidden) fullItemsPool.push(item);
+                            if (!item.hidden && !isExtraItem(item)) fullItemsPool.push(item);
                         });
                     }
                     if (cat.subcategories) {
                         cat.subcategories.forEach(sub => {
                             if (sub.items) {
                                 sub.items.forEach(item => {
-                                    if (!item.hidden) fullItemsPool.push(item);
+                                    if (!item.hidden && !isExtraItem(item)) fullItemsPool.push(item);
                                 });
                             }
                         });
@@ -661,14 +1069,14 @@
                 if (cat) {
                     if (cat.items) {
                         cat.items.forEach(item => {
-                            if (!item.hidden) fullItemsPool.push(item);
+                            if (!item.hidden && !isExtraItem(item)) fullItemsPool.push(item);
                         });
                     }
                     if (cat.subcategories) {
                         cat.subcategories.forEach(sub => {
                             if (sub.items) {
                                 sub.items.forEach(item => {
-                                    if (!item.hidden) fullItemsPool.push(item);
+                                    if (!item.hidden && !isExtraItem(item)) fullItemsPool.push(item);
                                 });
                             }
                         });
@@ -697,8 +1105,20 @@
 
             // Shuffle fullItemsPool array
             let shuffled = [...fullItemsPool].sort(() => 0.5 - Math.random());
-            currentWheelItems = shuffled.slice(0, MAX_WHEEL_SEGMENTS);
-            
+
+            if (hasMonthlyPrizesLeft()) {
+                currentWheelItems = shuffled.slice(0, MAX_WHEEL_SEGMENTS - 1);
+                currentWheelItems.push({
+                    id: "premio_special",
+                    name: "Premio",
+                    isPrize: true
+                });
+                // Shuffle again so "Premio" is at a random index
+                currentWheelItems.sort(() => 0.5 - Math.random());
+            } else {
+                currentWheelItems = shuffled.slice(0, MAX_WHEEL_SEGMENTS);
+            }
+
             // Redraw
             drawWheel();
         }
@@ -710,9 +1130,101 @@
         let isSpinning = false;
 
         function getItemName(item) {
+            if (item.isPrize) return item.name;
             if (currentLang === 'en' && item.name_en) return item.name_en;
             if (currentLang === 'fr' && item.name_fr) return item.name_fr;
             return item.name;
+        }
+
+        // --- HELPER FUNCTIONS FOR PREMIUM WHEEL ---
+        function adjustColorBrightness(hex, percent) {
+            let R = parseInt(hex.substring(1, 3), 16);
+            let G = parseInt(hex.substring(3, 5), 16);
+            let B = parseInt(hex.substring(5, 7), 16);
+
+            R = parseInt(R * (100 + percent) / 100);
+            G = parseInt(G * (100 + percent) / 100);
+            B = parseInt(B * (100 + percent) / 100);
+
+            R = (R < 255) ? R : 255;
+            G = (G < 255) ? G : 255;
+            B = (B < 255) ? B : 255;
+
+            R = (R > 0) ? R : 0;
+            G = (G > 0) ? G : 0;
+            B = (B > 0) ? B : 0;
+
+            const rHex = R.toString(16).padStart(2, '0');
+            const gHex = G.toString(16).padStart(2, '0');
+            const bHex = B.toString(16).padStart(2, '0');
+
+            return `#${rHex}${gHex}${bHex}`;
+        }
+
+        function splitTextIntoTwoLines(text, maxTextWidth, context) {
+            if (context.measureText(text).width <= maxTextWidth) {
+                return [text];
+            }
+
+            const words = text.split(' ');
+            if (words.length <= 1) {
+                let line = text;
+                while (context.measureText(line + '...').width > maxTextWidth && line.length > 0) {
+                    line = line.slice(0, -1);
+                }
+                return [line + '...'];
+            }
+
+            let bestSplit = 1;
+            let minDiff = Infinity;
+
+            for (let i = 1; i < words.length; i++) {
+                const line1 = words.slice(0, i).join(' ');
+                const line2 = words.slice(i).join(' ');
+
+                const w1 = context.measureText(line1).width;
+                const w2 = context.measureText(line2).width;
+
+                if (w1 <= maxTextWidth && w2 <= maxTextWidth) {
+                    const diff = Math.abs(w1 - w2);
+                    if (diff < minDiff) {
+                        minDiff = diff;
+                        bestSplit = i;
+                    }
+                }
+            }
+
+            if (minDiff !== Infinity) {
+                return [
+                    words.slice(0, bestSplit).join(' '),
+                    words.slice(bestSplit).join(' ')
+                ];
+            }
+
+            let line1 = "";
+            let i = 0;
+            while (i < words.length) {
+                const testLine = line1 ? line1 + " " + words[i] : words[i];
+                if (context.measureText(testLine).width > maxTextWidth) {
+                    break;
+                }
+                line1 = testLine;
+                i++;
+            }
+            if (!line1 && words.length > 0) {
+                line1 = words[0];
+                i = 1;
+            }
+            let line2 = words.slice(i).join(' ');
+
+            if (context.measureText(line2).width > maxTextWidth) {
+                while (context.measureText(line2 + '...').width > maxTextWidth && line2.length > 0) {
+                    line2 = line2.slice(0, -1);
+                }
+                line2 += '...';
+            }
+
+            return [line1, line2];
         }
 
         function drawWheel() {
@@ -727,7 +1239,7 @@
                 ctx.beginPath();
                 ctx.arc(center, center, radius, 0, 2 * Math.PI);
                 ctx.fill();
-                
+
                 ctx.fillStyle = '#fff';
                 ctx.font = "bold 28px 'Outfit', sans-serif";
                 ctx.textAlign = 'center';
@@ -741,8 +1253,23 @@
 
             currentWheelItems.forEach((item, index) => {
                 const angle = currentAngle + index * arcAngle;
-                ctx.fillStyle = segmentColors[index % segmentColors.length];
-                
+
+                // Radial gradient sector color
+                if (item.isPrize) {
+                    const grad = ctx.createRadialGradient(center, center, 20, center, center, radius);
+                    grad.addColorStop(0, '#ffe082');
+                    grad.addColorStop(0.5, '#ffb300');
+                    grad.addColorStop(1, '#ff6f00');
+                    ctx.fillStyle = grad;
+                } else {
+                    const baseColor = segmentColors[index % segmentColors.length];
+                    const grad = ctx.createRadialGradient(center, center, 20, center, center, radius);
+                    grad.addColorStop(0, adjustColorBrightness(baseColor, 20));
+                    grad.addColorStop(0.6, baseColor);
+                    grad.addColorStop(1, adjustColorBrightness(baseColor, -30));
+                    ctx.fillStyle = grad;
+                }
+
                 // Draw arc segment
                 ctx.beginPath();
                 ctx.moveTo(center, center);
@@ -750,50 +1277,81 @@
                 ctx.lineTo(center, center);
                 ctx.fill();
 
-                // Draw segment border
-                ctx.strokeStyle = 'rgba(18, 18, 18, 0.4)';
-                ctx.lineWidth = 4;
+                // Draw segment border (subtle semi-transparent lines)
+                ctx.strokeStyle = 'rgba(255, 255, 255, 0.15)';
+                ctx.lineWidth = 2;
                 ctx.stroke();
 
                 // Draw Text
                 ctx.save();
                 ctx.translate(center, center);
                 ctx.rotate(angle + arcAngle / 2);
-                
-                ctx.fillStyle = '#121212';
+
                 ctx.textAlign = 'right';
                 ctx.textBaseline = 'middle';
-                
-                // Determine text formatting
-                ctx.font = "bold 24px 'Outfit', sans-serif";
-                const maxTextWidth = radius - 80;
-                let text = getItemName(item);
-                
-                // Truncate if too long
-                if (ctx.measureText(text).width > maxTextWidth) {
-                    while (ctx.measureText(text + '...').width > maxTextWidth && text.length > 0) {
-                        text = text.slice(0, -1);
-                    }
-                    text += '...';
+                ctx.font = "bold 20px 'Outfit', sans-serif";
+
+                if (item.isPrize) {
+                    ctx.fillStyle = '#121212';
+                } else {
+                    ctx.fillStyle = '#ffffff';
+                    ctx.shadowColor = 'rgba(0, 0, 0, 0.7)';
+                    ctx.shadowBlur = 4;
+                    ctx.shadowOffsetX = 1;
+                    ctx.shadowOffsetY = 1;
                 }
-                
-                ctx.fillText(text, radius - 40, 0);
+
+                const maxTextWidth = radius - 120;
+                let text = getItemName(item);
+                if (item.isPrize) {
+                    text = "🎁 " + text;
+                }
+
+                const lines = splitTextIntoTwoLines(text, maxTextWidth, ctx);
+                const textX = radius - 55; // cleared of outer gold ring
+
+                if (lines.length === 1) {
+                    ctx.fillText(lines[0], textX, 0);
+                } else {
+                    ctx.fillText(lines[0], textX, -11);
+                    ctx.fillText(lines[1], textX, 11);
+                }
+
                 ctx.restore();
             });
+
+            // Draw outer gold metallic ring
+            ctx.strokeStyle = '#d4af37';
+            ctx.lineWidth = 10;
+            ctx.beginPath();
+            ctx.arc(center, center, radius - 5, 0, 2 * Math.PI);
+            ctx.stroke();
+
+            // Draw inner gold metallic ring to frame text
+            ctx.strokeStyle = 'rgba(212, 175, 55, 0.35)';
+            ctx.lineWidth = 2;
+            ctx.beginPath();
+            ctx.arc(center, center, radius - 15, 0, 2 * Math.PI);
+            ctx.stroke();
 
             // Draw center circle
             ctx.fillStyle = '#121212';
             ctx.beginPath();
-            ctx.arc(center, center, 60, 0, 2 * Math.PI);
+            ctx.arc(center, center, 65, 0, 2 * Math.PI);
             ctx.fill();
 
-            ctx.strokeStyle = varColor('--primary-color', '#d4af37');
-            ctx.lineWidth = 4;
+            // Center circle border (metallic gold gradient)
+            const centerGrad = ctx.createRadialGradient(center, center, 55, center, center, 65);
+            centerGrad.addColorStop(0, '#121212');
+            centerGrad.addColorStop(0.8, '#d4af37');
+            centerGrad.addColorStop(1, '#aa8410');
+            ctx.strokeStyle = centerGrad;
+            ctx.lineWidth = 6;
             ctx.stroke();
 
             // Inner design
             ctx.fillStyle = '#fff';
-            ctx.font = "28px Arial";
+            ctx.font = "32px Arial";
             ctx.textAlign = 'center';
             ctx.textBaseline = 'middle';
             ctx.fillText("🎰", center, center);
@@ -811,11 +1369,32 @@
 
         function spinWheel() {
             if (isSpinning || currentWheelItems.length === 0) return;
-            
+
+            // Check daily prize limit
+            const localDateStr = new Date().toLocaleDateString('sv'); // sv locale returns YYYY-MM-DD
+            const alreadySpunToday = localStorage.getItem('sergios_last_spin') === localDateStr;
+
+            if (alreadySpunToday) {
+                // Show limit modal - user can choose to spin anyway (no prize) or close
+                document.getElementById('limitModal').style.display = 'flex';
+                document.getElementById('limitModal').classList.add('open');
+                return;
+            }
+
+            // First spin of the day: consume the prize opportunity
+            localStorage.setItem('sergios_last_spin', localDateStr);
+            prizeDisabledForToday = false;
+
+            startSpinAnimation();
+        }
+
+        function startSpinAnimation() {
+            if (isSpinning || currentWheelItems.length === 0) return;
+
             isSpinning = true;
             document.getElementById('spinBtn').disabled = true;
             document.getElementById('categorySelect').disabled = true;
-            
+
             // Random spin speed and time duration
             speed = Math.random() * 0.25 + 0.35; // Initial rad/frame
             lastTickSegment = -1;
@@ -839,10 +1418,18 @@
                 const offsetAngle = Math.PI * 1.5 - currentAngle;
                 const normalizedOffset = (offsetAngle % (2 * Math.PI) + 2 * Math.PI) % (2 * Math.PI);
                 const currentSegment = Math.floor(normalizedOffset / arcAngle) % currentWheelItems.length;
-                
+
                 if (currentSegment !== lastTickSegment) {
                     playTickSound();
                     lastTickSegment = currentSegment;
+
+                    // Trigger physical pointer tick animation
+                    const pointer = document.querySelector('.wheel-pointer');
+                    if (pointer) {
+                        pointer.classList.remove('tick');
+                        void pointer.offsetWidth; // trigger reflow
+                        pointer.classList.add('tick');
+                    }
                 }
             }
 
@@ -856,6 +1443,10 @@
                 document.getElementById('spinBtn').disabled = false;
                 document.getElementById('categorySelect').disabled = false;
                 showWinner();
+                // Remind user prizes are disabled if applicable
+                if (prizeDisabledForToday) {
+                    showPrizeDisabledToast();
+                }
             }
         }
 
@@ -871,13 +1462,37 @@
             const winnerIndex = Math.floor(normalizedOffset / arcAngle) % currentWheelItems.length;
 
             winnerItem = currentWheelItems[winnerIndex];
-            
+
+            // Check if winner is the Prize segment (only if prizes are enabled for today)
+            if (winnerItem.isPrize && !prizeDisabledForToday) {
+                const prize = pickRandomPrize();
+                if (prize) {
+                    const state = getMonthlyState();
+                    state[prize.id]++;
+                    saveMonthlyState(state);
+
+                    playVictorySound();
+                    triggerConfetti();
+
+                    const expiresAt = Date.now() + 3 * 60 * 1000;
+                    localStorage.setItem('sergios_active_prize', JSON.stringify({ prizeName: prize.name, expiresAt: expiresAt }));
+                    openPrizeModal(prize.name, expiresAt);
+                    return;
+                }
+            }
+
+            // If prize segment landed but prizes are disabled (limit reached), show "Prueba Mañana"
+            if (winnerItem.isPrize && prizeDisabledForToday) {
+                openBadLuckModal();
+                return;
+            }
+
             playVictorySound();
             triggerConfetti();
 
             // Populate Modal
             document.getElementById('winnerName').textContent = getItemName(winnerItem);
-            
+
             // Description (translated)
             let descText = winnerItem.description || '';
             if (currentLang === 'en' && winnerItem.desc_en) descText = winnerItem.desc_en;
@@ -892,7 +1507,7 @@
             if (winnerItem.multi_prices) {
                 winnerPrice.style.display = 'none';
                 modalMultiPriceRow.style.display = 'block';
-                
+
                 let optHtml = '';
                 winnerItem.multi_prices.forEach(mp => {
                     optHtml += `<option value="${mp.name}|${mp.price}">${mp.name.toUpperCase()} - ${mp.price.toFixed(2)} €</option>`;
@@ -916,7 +1531,7 @@
             // Allergens
             const allergensContainer = document.getElementById('winnerAllergens');
             allergensContainer.innerHTML = '';
-            
+
             let hasAllergens = false;
             Object.keys(ALLERGENS_DICT).forEach(allergenKey => {
                 if (winnerItem[allergenKey]) {
@@ -952,6 +1567,7 @@
             const modal = document.getElementById('victoryModal');
             modal.classList.remove('open');
             stopConfetti();
+            drawWheel();
         }
 
         function closeVictoryModalOutside(e) {
@@ -980,7 +1596,7 @@
             const modalAddBtn = document.getElementById('modalAddBtn');
             const textSpan = modalAddBtn.querySelector('span');
             textSpan.textContent = currentLang === 'en' ? '✓ Added' : (currentLang === 'fr' ? '✓ Ajouté' : '✓ Añadido');
-            
+
             setTimeout(() => {
                 closeVictoryModal();
             }, 1000);
@@ -996,7 +1612,7 @@
                 cart.push({ id: itemId, name: itemName, price: price, option: optionName, qty: 1 });
             }
             localStorage.setItem('sergios_cart', JSON.stringify(cart));
-            
+
             // Dispatch dynamic event so if any cart fab is loaded, it triggers
             window.dispatchEvent(new Event('storage'));
         }
@@ -1075,12 +1691,31 @@
             requestAnimationFrame(animateConfetti);
         }
 
-        window.addEventListener('resize', () => {
-            if (confettiActive) {
-                confettiCanvas.width = window.innerWidth;
-                confettiCanvas.height = window.innerHeight;
+        // --- SCREENSHOT / COPY PROTECTION ---
+        window.addEventListener('blur', () => {
+            document.body.classList.add('blurred-screen');
+        });
+        window.addEventListener('focus', () => {
+            document.body.classList.remove('blurred-screen');
+        });
+        document.addEventListener('contextmenu', e => e.preventDefault());
+        document.addEventListener('copy', e => e.preventDefault());
+        window.addEventListener('keydown', (e) => {
+            if ((e.ctrlKey && (e.key === 'p' || e.key === 's')) || e.key === 'F12') {
+                e.preventDefault();
+            }
+            if (e.key === 'PrintScreen' || e.keyCode === 44) {
+                e.preventDefault();
+                navigator.clipboard.writeText('Captura deshabilitada');
+                alert('Captura de pantalla no permitida.');
+            }
+        });
+        window.addEventListener('keyup', (e) => {
+            if (e.key === 'PrintScreen' || e.keyCode === 44) {
+                navigator.clipboard.writeText('Captura deshabilitada');
             }
         });
     </script>
 </body>
+
 </html>
