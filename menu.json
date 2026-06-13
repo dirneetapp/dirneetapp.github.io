@@ -575,6 +575,14 @@
       "theme": "lavender",
       "items": [
         {
+          "id": "Anillas de Calamar",
+          "name": "Anillas de Calamar",
+          "description": "Anillas de Calamar Rebozadas de la Yaya",
+          "price": 7.5,
+          "hidden": false,
+          "tag_novedad": true
+        },
+        {
           "id": "Papas Francesas Cornudas",
           "name": "Papas Francesas Cornudas",
           "description": "",
@@ -1187,5 +1195,25 @@
     "expiration": ""
   },
   "orders_enabled": false,
-  "whatsapp_number": "34600000000"
+  "whatsapp_number": "34600000000",
+  "roulette": {
+    "prizes_active": false,
+    "prizes": [
+      {
+        "id": "beer",
+        "name": "Copa de Cerveza",
+        "quantity": 5
+      },
+      {
+        "id": "soda",
+        "name": "Refresco",
+        "quantity": 5
+      },
+      {
+        "id": "coffee",
+        "name": "Café",
+        "quantity": 5
+      }
+    ]
+  }
 }

@@ -641,6 +641,18 @@
     <script src="menu_data.js"></script>
 
     <script>
+        // Ensure menuData.roulette exists
+        if (typeof menuData !== 'undefined' && !menuData.roulette) {
+            menuData.roulette = {
+                prizes_active: true,
+                prizes: [
+                    { id: 'beer', name: 'Copa de Cerveza', quantity: 5 },
+                    { id: 'soda', name: 'Refresco', quantity: 5 },
+                    { id: 'coffee', name: 'Café', quantity: 5 }
+                ]
+            };
+        }
+
         // Static UI Translations helper
         const rouletteTranslations = {
             es: {
@@ -812,15 +824,33 @@
         // --- PRIZE SYSTEM STATE & TIMERS ---
         let prizeTimerInterval = null;
 
+        let apiData = null;
+
         function getMonthlyState() {
             const currentMonth = new Date().toISOString().slice(0, 7); // e.g., "2026-06"
-            let state = { month: currentMonth, beer: 0, soda: 0, coffee: 0 };
+            let state = { month: currentMonth };
+            
+            // Initialize all known prize ids from menuData or fallback
+            let knownPrizes = [];
+            if (typeof menuData !== 'undefined' && menuData.roulette && menuData.roulette.prizes) {
+                knownPrizes = menuData.roulette.prizes;
+            } else {
+                knownPrizes = [
+                    { id: 'beer', name: 'Copa de Cerveza', quantity: 5 },
+                    { id: 'soda', name: 'Refresco', quantity: 5 },
+                    { id: 'coffee', name: 'Café', quantity: 5 }
+                ];
+            }
+            knownPrizes.forEach(p => {
+                state[p.id] = 0;
+            });
+            
             try {
                 const stored = localStorage.getItem('sergios_monthly_prizes');
                 if (stored) {
                     const parsed = JSON.parse(stored);
                     if (parsed && parsed.month === currentMonth) {
-                        state = parsed;
+                        Object.assign(state, parsed);
                     }
                 }
             } catch (e) {
@@ -834,16 +864,57 @@
         }
 
         function hasMonthlyPrizesLeft() {
+            if (apiData && apiData.prizes) {
+                return apiData.prizes.some(p => {
+                    const deliv = apiData.delivered[p.id] || 0;
+                    return deliv < p.quantity;
+                });
+            }
+            if (typeof menuData !== 'undefined' && menuData.roulette && !menuData.roulette.prizes_active) {
+                return false;
+            }
             const state = getMonthlyState();
-            return state.beer < 5 || state.soda < 5 || state.coffee < 5;
+            let knownPrizes = (typeof menuData !== 'undefined' && menuData.roulette && menuData.roulette.prizes) 
+                ? menuData.roulette.prizes 
+                : [
+                    { id: 'beer', name: 'Copa de Cerveza', quantity: 5 },
+                    { id: 'soda', name: 'Refresco', quantity: 5 },
+                    { id: 'coffee', name: 'Café', quantity: 5 }
+                  ];
+            return knownPrizes.some(p => {
+                const deliv = state[p.id] || 0;
+                return deliv < p.quantity;
+            });
         }
 
         function pickRandomPrize() {
-            const state = getMonthlyState();
             const availablePrizes = [];
-            if (state.beer < 5) availablePrizes.push({ id: 'beer', name: 'Copa de Cerveza' });
-            if (state.soda < 5) availablePrizes.push({ id: 'soda', name: 'Refresco' });
-            if (state.coffee < 5) availablePrizes.push({ id: 'coffee', name: 'Café' });
+            if (apiData && apiData.prizes) {
+                apiData.prizes.forEach(p => {
+                    const deliv = apiData.delivered[p.id] || 0;
+                    if (deliv < p.quantity) {
+                        availablePrizes.push({ id: p.id, name: p.name });
+                    }
+                });
+            } else {
+                if (typeof menuData !== 'undefined' && menuData.roulette && !menuData.roulette.prizes_active) {
+                    return null;
+                }
+                const state = getMonthlyState();
+                let knownPrizes = (typeof menuData !== 'undefined' && menuData.roulette && menuData.roulette.prizes) 
+                    ? menuData.roulette.prizes 
+                    : [
+                        { id: 'beer', name: 'Copa de Cerveza', quantity: 5 },
+                        { id: 'soda', name: 'Refresco', quantity: 5 },
+                        { id: 'coffee', name: 'Café', quantity: 5 }
+                      ];
+                knownPrizes.forEach(p => {
+                    const deliv = state[p.id] || 0;
+                    if (deliv < p.quantity) {
+                        availablePrizes.push({ id: p.id, name: p.name });
+                    }
+                });
+            }
 
             if (availablePrizes.length === 0) return null;
             const index = Math.floor(Math.random() * availablePrizes.length);
@@ -1002,7 +1073,9 @@
 
             // Load initial lang
             setLang(localStorage.getItem('menuLang') || 'es');
-            onCategoryChange();
+            
+            // Load roulette configuration from local server
+            loadRouletteConfig();
 
             // Check pending prize claim
             checkPendingPrize();
@@ -1014,6 +1087,46 @@
                 const translation = opt.getAttribute('data-' + currentLang) || opt.getAttribute('data-es');
                 opt.textContent = translation;
             });
+        }
+
+        function arePrizesActive() {
+            if (apiData && apiData.hasOwnProperty('prizes_active')) {
+                return apiData.prizes_active;
+            }
+            if (menuData && menuData.roulette && menuData.roulette.hasOwnProperty('prizes_active')) {
+                return menuData.roulette.prizes_active;
+            }
+            return true; // Default to active
+        }
+
+        async function loadRouletteConfig() {
+            // 1. Try relative path
+            try {
+                const res = await fetch('/api/roulette');
+                if (res.ok) {
+                    apiData = await res.json();
+                    console.log("Loaded roulette config from relative API", apiData);
+                    onCategoryChange();
+                    return;
+                }
+            } catch (e) {}
+
+            // 2. Try localhost ports 5000 to 5005
+            for (let port = 5000; port <= 5005; port++) {
+                try {
+                    const res = await fetch(`http://localhost:${port}/api/roulette`, { mode: 'cors' });
+                    if (res.ok) {
+                        apiData = await res.json();
+                        apiData.port = port; // store port to use for claim
+                        console.log(`Loaded roulette config from http://localhost:${port}/api/roulette`, apiData);
+                        onCategoryChange();
+                        return;
+                    }
+                } catch (e) {}
+            }
+
+            console.log("API server not detected. Running in standard/offline mode.");
+            onCategoryChange();
         }
 
         function updateShuffleText() {
@@ -1106,7 +1219,7 @@
             // Shuffle fullItemsPool array
             let shuffled = [...fullItemsPool].sort(() => 0.5 - Math.random());
 
-            if (hasMonthlyPrizesLeft()) {
+            if (arePrizesActive() && hasMonthlyPrizesLeft()) {
                 currentWheelItems = shuffled.slice(0, MAX_WHEEL_SEGMENTS - 1);
                 currentWheelItems.push({
                     id: "premio_special",
@@ -1370,6 +1483,14 @@
         function spinWheel() {
             if (isSpinning || currentWheelItems.length === 0) return;
 
+            // If prizes are globally disabled, spin purely for fun (no prize limit checks)
+            if (!arePrizesActive()) {
+                prizeDisabledForToday = true;
+                showPrizeDisabledToast();
+                startSpinAnimation();
+                return;
+            }
+
             // Check daily prize limit
             const localDateStr = new Date().toLocaleDateString('sv'); // sv locale returns YYYY-MM-DD
             const alreadySpunToday = localStorage.getItem('sergios_last_spin') === localDateStr;
@@ -1467,8 +1588,26 @@
             if (winnerItem.isPrize && !prizeDisabledForToday) {
                 const prize = pickRandomPrize();
                 if (prize) {
+                    // Claim on server if API is active
+                    if (apiData) {
+                        const port = apiData.port;
+                        const claimUrl = port ? `http://localhost:${port}/api/claim` : '/api/claim';
+                        fetch(claimUrl, {
+                            method: 'POST',
+                            headers: { 'Content-Type': 'application/json' },
+                            body: JSON.stringify({ prize_id: prize.id })
+                        })
+                        .then(res => res.json())
+                        .then(data => {
+                            if (data.status === 'success') {
+                                apiData.delivered = data.delivered;
+                            }
+                        })
+                        .catch(err => console.error("Error claiming prize on server:", err));
+                    }
+
                     const state = getMonthlyState();
-                    state[prize.id]++;
+                    state[prize.id] = (state[prize.id] || 0) + 1;
                     saveMonthlyState(state);
 
                     playVictorySound();
