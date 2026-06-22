@@ -10,31 +10,37 @@
           "name": "Croisanito",
           "description": "",
           "price": 0.4,
-          "hidden": false
+          "hidden": false,
+          "name_en": "Croissant"
         },
         {
           "id": "Racion de Churros (4)",
           "name": "Racion de Churros (4)",
           "description": "",
-          "price": 2.0
+          "price": 2.0,
+          "hidden": true,
+          "name_en": "Churros"
         },
         {
           "id": "Torrada Mantequilla y Mermelada",
           "name": "Torrada Mantequilla y Mermelada",
           "description": "",
-          "price": 1.7
+          "price": 1.8
         },
         {
           "id": "Torrada Pan con Tomate y Aceite",
           "name": "Torrada Pan con Tomate y Aceite",
           "description": "",
-          "price": 1.6
+          "price": 1.7
         },
         {
           "id": "Bikini",
           "name": "Bikini",
           "description": "",
-          "price": 3.5
+          "price": 3.5,
+          "hidden": false,
+          "name_en": "Bikini",
+          "desc_en": "Toasted ham & cheese sandwich"
         },
         {
           "id": "Chocolate a la Taza Diferentes Sabores",
@@ -46,91 +52,93 @@
           "id": "Mini Bocata Frio + Cafe",
           "name": "Mini Bocata Frio + Cafe",
           "description": "",
-          "price": 3.1
+          "price": 3.3
         },
         {
           "id": "Mini Bocata Frio + Caña",
           "name": "Mini Bocata Frio + Caña",
           "description": "",
-          "price": 3.2
+          "price": 3.4
         },
         {
           "id": "Mini Bocata Frio + Refresco Lata",
           "name": "Mini Bocata Frio + Refresco Lata",
           "description": "",
-          "price": 3.95
+          "price": 4.1
         },
         {
           "id": "Mini Bocata + Cafe",
           "name": "Mini Bocata + Cafe",
           "description": "(Bacon,Lomo o Pollo)",
-          "price": 4.2
+          "price": 4.4
         },
         {
           "id": "Mini Bocata + Caña",
           "name": "Mini Bocata + Caña",
           "description": "(Bacon,Lomo o Pollo)",
-          "price": 4.5
+          "price": 4.7
         },
         {
           "id": "Mini Bocata Tortilla de patatas + Cafe",
           "name": "Mini Bocata Tortilla de patatas + Cafe",
           "description": "",
-          "price": 3.5
+          "price": 3.6
         },
         {
           "id": "Mini Bocata Frio + Zumo Botella",
           "name": "Mini Bocata Frio + Zumo Botella",
           "description": "",
-          "price": 3.9
+          "price": 4.1
         },
         {
           "id": "Mini Bocata Caliente + Zumo Botella",
           "name": "Mini Bocata Caliente + Zumo Botella",
           "description": "",
-          "price": 4.5
+          "price": 4.7
         },
         {
           "id": "Torrada (Mermelada y Mant.) + Cafe",
           "name": "Torrada (Mermelada y Mant.) + Cafe",
           "description": "",
-          "price": 2.9
+          "price": 3.0
         },
         {
           "id": "Torrada con Tomate y Aceite + Cafe",
           "name": "Torrada con Tomate y Aceite + Cafe",
           "description": "",
-          "price": 2.6
+          "price": 2.8
         },
         {
           "id": "Bikini + Cafe",
           "name": "Bikini + Cafe",
           "description": "",
-          "price": 4.7
+          "price": 4.8
         },
         {
           "id": "Zumo Naranja Nat. + Mini Bocata Frio + Cafe",
           "name": "Zumo Naranja Nat. + Mini Bocata Frio + Cafe",
           "description": "",
-          "price": 5.4
+          "price": 5.5
         },
         {
           "id": "Zumo Naranja Nat. + Mini Bocata Caliente + Cafe",
           "name": "Zumo Naranja Nat. + Mini Bocata Caliente + Cafe",
           "description": "",
-          "price": 6.4
+          "price": 6.6
         },
         {
           "id": "4 Churros con Chocolate a la taza",
           "name": "4 Churros con Chocolate a la taza",
           "description": "",
-          "price": 3.8
+          "price": 3.8,
+          "hidden": true
         },
         {
           "id": "4 Churros con cafe",
           "name": "4 Churros con cafe",
           "description": "",
-          "price": 3.4
+          "price": 3.4,
+          "hidden": true
         },
         {
           "id": "3 Croisanitos con Cafe",
@@ -151,7 +159,9 @@
           "price": 0.3
         }
       ],
-      "image": "assets\\cat_Desayunos.jpg"
+      "image": "assets/cat_Desayunos.webp",
+      "name_en": "Breakfasts",
+      "name_fr": "Petits-Déjeuners"
     },
     {
       "id": "Bocadillos",
@@ -162,37 +172,45 @@
           "id": "Fuet",
           "name": "Fuet",
           "description": "",
-          "price": 4.8,
+          "price": 5.2,
           "hidden": false,
           "name_en": "Fuet",
-          "desc_en": "Fuet"
+          "desc_en": "Catalan dried sausage"
         },
         {
           "id": "Queso Curado",
           "name": "Queso Curado",
           "description": "",
-          "price": 5.4,
+          "price": 5.8,
           "hidden": false,
           "gluten": true,
-          "lacteos": true
+          "lacteos": true,
+          "name_en": "Aged Cheese"
         },
         {
           "id": "Jamon Dulce",
           "name": "Jamon Dulce",
           "description": "",
-          "price": 4.6
+          "price": 4.6,
+          "hidden": false,
+          "name_en": "Cooked Ham"
         },
         {
           "id": "Atun",
           "name": "Atun",
           "description": "",
-          "price": 5.2
+          "price": 5.4,
+          "hidden": false,
+          "name_en": "Tuna"
         },
         {
           "id": "Tortilla de Patatas",
           "name": "Tortilla de Patatas",
           "description": "Tortilla de patatas recién hecha",
-          "price": 5.75
+          "price": 5.75,
+          "hidden": false,
+          "name_en": "Spanish Omelette",
+          "desc_en": "Freshly made potato omelette"
         },
         {
           "id": "Jamon de Reserva",
@@ -210,7 +228,9 @@
           "id": "Chorizo Iberico",
           "name": "Chorizo Iberico",
           "description": "",
-          "price": 5.4
+          "price": 5.4,
+          "hidden": false,
+          "name_en": "Iberian Chorizo"
         },
         {
           "id": "Pollo",
@@ -252,7 +272,7 @@
           "id": "Sobrasada de Mallorca",
           "name": "Sobrasada de Mallorca",
           "description": "",
-          "price": 5.15
+          "price": 5.2
         },
         {
           "id": "Chistorra",
@@ -279,7 +299,7 @@
           "price": 0.5
         }
       ],
-      "image": "assets\\cat_Bocadillos.jpg",
+      "image": "assets/cat_Bocadillos.webp",
       "subcategories": [
         {
           "id": "MiniBocadillos",
@@ -289,7 +309,9 @@
               "id": "Queso Curado",
               "name": "Queso Curado",
               "description": "",
-              "price": 2.75
+              "price": 2.9,
+              "hidden": false,
+              "name_en": "Aged Cheese"
             },
             {
               "id": "Fuet",
@@ -301,31 +323,35 @@
               "id": "Jamon Dulce",
               "name": "Jamon Dulce",
               "description": "",
-              "price": 2.5
+              "price": 2.5,
+              "hidden": false,
+              "name_en": "Cooked Ham"
             },
             {
               "id": "Atun",
               "name": "Atun",
               "description": "",
-              "price": 2.8
+              "price": 2.8,
+              "hidden": false,
+              "name_en": "Tuna"
             },
             {
               "id": "Tortilla de Patatas",
               "name": "Tortilla de Patatas",
               "description": "",
-              "price": 3.05
+              "price": 3.2
             },
             {
               "id": "Jamon de Reserva",
               "name": "Jamon de Reserva",
               "description": "",
-              "price": 3.3
+              "price": 3.5
             },
             {
               "id": "Butifarra de L'Emporda",
               "name": "Butifarra de L'Emporda",
               "description": "",
-              "price": 2.65
+              "price": 2.8
             },
             {
               "id": "Bacon",
@@ -395,7 +421,9 @@
             }
           ]
         }
-      ]
+      ],
+      "name_en": "Sandwiches",
+      "name_fr": "Sandwichs"
     },
     {
       "id": "Vermuts",
@@ -406,37 +434,57 @@
           "id": "GRUMETE",
           "name": "GRUMETE",
           "description": "Mejillones,Olivas,Patatas y 1/2 L. Vermut",
-          "price": 10.9
+          "price": 10.9,
+          "hidden": false,
+          "name_en": "DECKHAND",
+          "desc_en": "Mussels, Olives, Crisps & ½L House Vermouth"
         },
         {
           "id": "MAESTRE",
           "name": "MAESTRE",
           "description": "Boquerones,Olivas,Patatas 1/2 L. Vermut",
-          "price": 10.9
+          "price": 10.9,
+          "hidden": false,
+          "name_en": "BOATSWAIN",
+          "desc_en": "Anchovies in Vinegar, Olives, Crisps & ½L House Vermouth"
         },
         {
           "id": "SOBRECARGO",
           "name": "SOBRECARGO",
           "description": "Berberechos,Patatas,Olivas y 1/2 L. Vermut",
-          "price": 11.9
+          "price": 11.9,
+          "hidden": false,
+          "name_en": "PURSER",
+          "desc_en": "Cockles, Crisps, Olives & ½L House Vermouth"
         },
         {
           "id": "CONTRAMAESTRE",
           "name": "CONTRAMAESTRE",
           "description": "Almejas,Boquerones,Olivas,Patatas y 1/2 L. Vermut",
-          "price": 12.9
+          "price": 12.9,
+          "hidden": false,
+          "name_en": "FIRST MATE",
+          "desc_en": "Clams, Anchovies in Vinegar, Olives, Crisps & ½L House Vermouth"
         },
         {
           "id": "MARINERO",
           "name": "MARINERO",
           "description": "Navajas,Boquerones,Olivas,Patatas y 1/2 L. Vermut",
-          "price": 14.9
+          "price": 14.9,
+          "hidden": false,
+          "name_en": "SAILOR",
+          "desc_en": "Razor Clams, Anchovies in Vinegar, Olives, Crisps & ½L House Vermouth"
         },
         {
           "id": "GAFE",
           "name": "GAFE",
           "description": "Zamburiñas,Navajas,Olivas,Patatas 1/2 L. Vermut",
-          "price": 14.9
+          "price": 13.9,
+          "hidden": false,
+          "name_en": "HELMSMAN",
+          "desc_en": "Zamburiñas,Navajas,Olives,Potatoes 1/2 L. Vermouth",
+          "name_fr": "GAFE",
+          "desc_fr": "Zamburianas,Rasoirs,Olives,Pommes de terre 1/2 L. Vermouth"
         },
         {
           "id": "ARTILLERO",
@@ -456,7 +504,7 @@
           "id": "CIRUJANO",
           "name": "CIRUJANO",
           "description": "Concha Fina,Anchoas,Patatas,Olivas y 1/2 L. Vermut.",
-          "price": 16.5,
+          "price": 17.5,
           "hidden": false,
           "tag_novedad": true
         },
@@ -567,7 +615,9 @@
           ]
         }
       ],
-      "image": "assets\\cat_Vermuts.jpg"
+      "image": "assets/cat_Vermuts.webp",
+      "name_en": "Vermouths",
+      "name_fr": "Vermouths"
     },
     {
       "id": "Tapas",
@@ -627,7 +677,9 @@
           "id": "Torreznos de Soria",
           "name": "Torreznos de Soria",
           "description": "Torreznos de Soria con Pan con Tomate",
-          "price": 7.35
+          "price": 7.35,
+          "hidden": false,
+          "image": "assets/item_TorreznosdeSoria.webp"
         },
         {
           "id": "Palitos de Mozzarella",
@@ -746,7 +798,9 @@
         }
       ],
       "subcategories": [],
-      "image": "assets\\cat_Tapas.jpg"
+      "image": "assets/cat_Tapas.webp",
+      "name_en": "Tapas",
+      "name_fr": "Tapas"
     },
     {
       "id": "Torradas",
@@ -757,19 +811,19 @@
           "id": "Torrada de Atun",
           "name": "Torrada de Atun",
           "description": "",
-          "price": 5.4
+          "price": 5.9
         },
         {
           "id": "Torrada de Anchoas",
           "name": "Torrada de Anchoas",
           "description": "",
-          "price": 7.1
+          "price": 7.4
         },
         {
           "id": "Torrada de Atun y Anchoas",
           "name": "Torrada de Atun y Anchoas",
           "description": "",
-          "price": 7.4
+          "price": 7.8
         },
         {
           "id": "Torrada de Tortilla Patatas con cebolla",
@@ -841,13 +895,15 @@
           "id": "Torrada de Fuet",
           "name": "Torrada de Fuet",
           "description": "",
-          "price": 5.5
+          "price": 5.9
         },
         {
           "id": "Torrada de Butifarra de L'Emporda",
           "name": "Torrada de Butifarra de L'Emporda",
           "description": "",
-          "price": 5.95
+          "price": 5.95,
+          "hidden": false,
+          "image": "assets/item_TorradadeButifarradeLEmporda.webp"
         },
         {
           "id": "Torrada de Chorizo Iberico",
@@ -883,11 +939,13 @@
           "id": "Suplemento Extra de Queso o Bacon",
           "name": "Suplemento Extra de Queso o Bacon",
           "description": "",
-          "price": 0.5
+          "price": 0.8
         }
       ],
       "subcategories": [],
-      "image": "assets\\cat_Torradas.jpg"
+      "image": "assets/cat_Torradas.webp",
+      "name_en": "Toasted Breads",
+      "name_fr": "Toasts"
     },
     {
       "id": "Tablas",
@@ -898,29 +956,31 @@
           "id": "Surtido de Embutidos",
           "name": "Surtido de Embutidos",
           "description": "2 Torradas con Tomate y Aceite",
-          "price": 8.95
+          "price": 9.95
         },
         {
           "id": "Jamon Reserva",
           "name": "Jamon Reserva",
           "description": "2 Torradas con Tomate y Aceite",
-          "price": 11.9
+          "price": 12.9
         },
         {
           "id": "Queso Curado",
           "name": "Queso Curado",
           "description": "2 Torradas con Tomate y Aceite",
-          "price": 8.6
+          "price": 9.6
         },
         {
           "id": "Lacon",
           "name": "Lacon",
           "description": "2 Torradas con Tomate y Aceite",
-          "price": 7.5
+          "price": 8.5
         }
       ],
       "subcategories": [],
-      "image": "assets\\cat_Tablas.jpg"
+      "image": "assets/cat_Tablas.webp",
+      "name_en": "Sharing Boards",
+      "name_fr": "Planches"
     },
     {
       "id": "Platos Especiales",
@@ -947,7 +1007,9 @@
         }
       ],
       "subcategories": [],
-      "image": "assets\\cat_Platos Especiales.jpg"
+      "image": "assets/cat_Platos Especiales.webp",
+      "name_en": "Special Dishes",
+      "name_fr": "Plats Spéciaux"
     },
     {
       "id": "Arroz",
@@ -976,7 +1038,9 @@
           "price": 5.2
         }
       ],
-      "image": "assets\\cat_arroz.jpeg"
+      "image": "assets/cat_arroz.webp",
+      "name_en": "Rice Tapa",
+      "name_fr": "Tapa de Riz"
     },
     {
       "id": "Croquetas",
@@ -1083,7 +1147,7 @@
           "id": "Croqueton de Cocido Und.",
           "name": "Croqueton de Cocido Und.",
           "description": "",
-          "price": 1.5
+          "price": 1.6
         }
       ],
       "subcategories": [
@@ -1119,7 +1183,9 @@
           "description": "Combos de Croquetas"
         }
       ],
-      "image": "assets\\cat_Croquetas.jpg"
+      "image": "assets/cat_Croquetas.webp",
+      "name_en": "Croquettes",
+      "name_fr": "Croquettes"
     },
     {
       "id": "Postres",
@@ -1132,6 +1198,10 @@
           "description": "Turron o Chocolate",
           "price": 5.2,
           "hidden": false,
+          "name_en": "Coulant",
+          "desc_en": "Turron or Chocolate",
+          "name_fr": "Coulant",
+          "desc_fr": "Touron ou Chocolat",
           "image": "assets/item_Coulant.webp"
         },
         {
@@ -1144,21 +1214,21 @@
           "id": "Tarrina Vainilla y Chocolate",
           "name": "Copa Vainilla y Chocolate",
           "description": "",
-          "price": 3.5,
+          "price": 4.5,
           "hidden": false
         },
         {
           "id": "Tarrina Nata y Fresa",
           "name": "Copa Nata y Fresa",
           "description": "",
-          "price": 3.5,
+          "price": 4.5,
           "hidden": false
         },
         {
           "id": "Sorbete de Limon",
           "name": "Sorbete de Limon",
           "description": "",
-          "price": 3.5
+          "price": 4.5
         },
         {
           "id": "Profiteroles Con Nata",
@@ -1167,11 +1237,17 @@
           "price": 5.8,
           "hidden": false,
           "tag_novedad": true,
-          "image": "assets/profiteroles.jpeg"
+          "name_en": "Profiteroles Con Nata",
+          "desc_en": "Delicate bites stuffed with whipped cream. Bathed with Chocolate",
+          "name_fr": "Profiteroles Con Nata",
+          "desc_fr": "De délicates collations farcies à la crème fouettée baignées de chocolat",
+          "image": "assets/profiteroles.webp"
         }
       ],
       "subcategories": [],
-      "image": "assets\\cat_Postres.jpg"
+      "image": "assets/cat_Postres.webp",
+      "name_en": "Desserts",
+      "name_fr": "Desserts"
     }
   ],
   "menu_del_dia": {
@@ -1182,7 +1258,7 @@
     "postres": "Tarta Queso",
     "includes": "Pan y 1 Bebida"
   },
-  "splash_active": true,
+  "splash_active": false,
   "splash_imgs": [
     true,
     true,
@@ -1195,7 +1271,7 @@
     "expiration": ""
   },
   "orders_enabled": false,
-  "whatsapp_number": "34600000000",
+  "whatsapp_number": "34645415031",
   "roulette": {
     "prizes_active": false,
     "prizes": [

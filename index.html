@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bar Sergios - Inicio</title>
+    <title>Bar Sergio's - Inicio</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
@@ -14,71 +14,32 @@
 </head>
 
 <body class="theme-gold">
-                                                                                                                                                                        <div id="introOverlay"
-        style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #121212; z-index: 9999; display: flex; justify-content: center; align-items: center; transition: opacity 0.5s ease;">
-        <img id="introImg1" src="assets/combo1.jpg" alt="Intro 1"
-            style="position: absolute; max-width: 100%; max-height: 100%; object-fit: contain; opacity: 1; transition: opacity 0.5s ease;">
-        <img id="introImg2" src="assets/combo2.jpg" alt="Intro 2"
-            style="position: absolute; max-width: 100%; max-height: 100%; object-fit: contain; opacity: 0; transition: opacity 0.5s ease;">
-        <img id="introImg3" src="assets/combo3.jpg" alt="Intro 3"
-            style="position: absolute; max-width: 100%; max-height: 100%; object-fit: contain; opacity: 0; transition: opacity 0.5s ease;">
-        <img id="introImg4" src="assets/combo4.jpg" alt="Intro 4"
-            style="position: absolute; max-width: 100%; max-height: 100%; object-fit: contain; opacity: 0; transition: opacity 0.5s ease;">
-    </div>
+                                                                                                                                                                                                                                                                                                                        <div id="introOverlay" style="display: none;"></div>
     <script>
-        document.body.style.overflow = 'hidden';
-        (function() {
-            const images = [
-                document.getElementById('introImg1'),
-                document.getElementById('introImg2'),
-                document.getElementById('introImg3'),
-                document.getElementById('introImg4')
-            ];
-            let current = 0;
-            const displayTime = 3000; // 3 seconds per image
-
-            function next() {
-                if (current < images.length - 1) {
-                    if (images[current]) images[current].style.opacity = '0';
-                    current++;
-                    if (images[current]) images[current].style.opacity = '1';
-                    setTimeout(next, displayTime);
-                } else {
-                    const overlay = document.getElementById('introOverlay');
-                    if (overlay) {
-                        overlay.style.opacity = '0';
-                        setTimeout(() => {
-                            overlay.style.display = 'none';
-                            document.body.style.overflow = '';
-                        }, 500);
-                    }
-                }
-            }
-            setTimeout(next, displayTime);
-        })();
+        // document.body.style.overflow = 'hidden';
     </script>
 
     <button class="menu-toggle" onclick="toggleMenu()">☰</button>
 
     <div id="mobileMenu" class="mobile-menu-overlay">
         <button class="menu-toggle" style="position:absolute; top:1rem; right:1rem; border:none; background:none; font-size:2rem;" onclick="toggleMenu()">✕</button>
-        <a href="Desayunos.html" class="mobile-menu-link ">Desayunos</a>
-        <a href="Bocadillos.html" class="mobile-menu-link ">Bocadillos</a>
-        <a href="Vermuts.html" class="mobile-menu-link ">Vermuts</a>
-        <a href="Tapas.html" class="mobile-menu-link ">Tapas</a>
-        <a href="Torradas.html" class="mobile-menu-link ">Torradas</a>
-        <a href="Tablas.html" class="mobile-menu-link ">Tablas</a>
-        <a href="Platos Especiales.html" class="mobile-menu-link ">Platos Especiales</a>
-        <a href="Arroz.html" class="mobile-menu-link ">Tapa de Arroz</a>
-        <a href="Croquetas.html" class="mobile-menu-link ">Croquetas</a>
-        <a href="Postres.html" class="mobile-menu-link ">Postres</a>
-        <a href="ruleta.html" class="mobile-menu-link" style="color: #c084fc; font-weight: 600;">🎰 Ruleta Indecisos</a>
+        <a href="Desayunos.html" class="mobile-menu-link "><span class="i18n" data-es="Desayunos" data-en="Breakfasts" data-fr="Petits-Déjeuners">Desayunos</span></a>
+        <a href="Bocadillos.html" class="mobile-menu-link "><span class="i18n" data-es="Bocadillos" data-en="Sandwiches" data-fr="Sandwichs">Bocadillos</span></a>
+        <a href="Vermuts.html" class="mobile-menu-link "><span class="i18n" data-es="Vermuts" data-en="Vermouths" data-fr="Vermouths">Vermuts</span></a>
+        <a href="Tapas.html" class="mobile-menu-link "><span class="i18n" data-es="Tapas" data-en="Tapas" data-fr="Tapas">Tapas</span></a>
+        <a href="Torradas.html" class="mobile-menu-link "><span class="i18n" data-es="Torradas" data-en="Toasted Breads" data-fr="Toasts">Torradas</span></a>
+        <a href="Tablas.html" class="mobile-menu-link "><span class="i18n" data-es="Tablas" data-en="Sharing Boards" data-fr="Planches">Tablas</span></a>
+        <a href="Platos Especiales.html" class="mobile-menu-link "><span class="i18n" data-es="Platos Especiales" data-en="Special Dishes" data-fr="Plats Spéciaux">Platos Especiales</span></a>
+        <a href="Arroz.html" class="mobile-menu-link "><span class="i18n" data-es="Tapa de Arroz" data-en="Rice Tapa" data-fr="Tapa de Riz">Tapa de Arroz</span></a>
+        <a href="Croquetas.html" class="mobile-menu-link "><span class="i18n" data-es="Croquetas" data-en="Croquettes" data-fr="Croquettes">Croquetas</span></a>
+        <a href="Postres.html" class="mobile-menu-link "><span class="i18n" data-es="Postres" data-en="Desserts" data-fr="Desserts">Postres</span></a>
+        <a href="ruleta.html" class="mobile-menu-link" style="color: #c084fc; font-weight: 600;"><span class="i18n" data-es="🎰 Ruleta Indecisos" data-en="🎰 Indecisive Wheel" data-fr="🎰 Roue des Indécis">🎰 Ruleta Indecisos</span></a>
     </div>
 
     <header class="hero">
         <a href="index.html" class="home-btn" title="Volver al inicio">🏠</a>
         <div class="hero-content">
-            <h1>Bar Sergios</h1>
+            <h1>Bar Sergio's</h1>
             <p class="subtitle">Gastronomía & Buen Ambiente</p>
         </div>
     </header>
@@ -102,129 +63,77 @@
         (function() { setLang(localStorage.getItem('menuLang') || 'es'); })();
     </script>
 
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    <main class="container">
+<main class="container">
         <div class="menu-container">
             <section class="menu-section">
-                <h2 class="section-title" style="text-align:center; display:block; border:none;">Nuestra Carta</h2>
-                <div class="category-grid">
+                <h2 class="section-title" style="text-align:center; display:block; border:none;"><span class="i18n" data-es="Nuestra Carta" data-en="Our Menu" data-fr="Notre Carte">Nuestra Carta</span></h2>
+<div class="category-grid">
 
                     <a href="Desayunos.html" class="category-card">
-                        <img src="assets\cat_Desayunos.jpg" alt="Desayunos" class="category-card-image">
-                        <div class="category-card-title">Desayunos</div>
+                        <img src="assets/cat_Desayunos.webp" alt="Desayunos" class="category-card-image">
+                        <div class="category-card-title"><span class="i18n" data-es="Desayunos" data-en="Breakfasts" data-fr="Petits-Déjeuners">Desayunos</span></div>
                         <div class="category-card-description"></div>
                     </a>
 
                     <a href="Bocadillos.html" class="category-card">
-                        <img src="assets\cat_Bocadillos.jpg" alt="Bocadillos" class="category-card-image">
-                        <div class="category-card-title">Bocadillos</div>
+                        <img src="assets/cat_Bocadillos.webp" alt="Bocadillos" class="category-card-image">
+                        <div class="category-card-title"><span class="i18n" data-es="Bocadillos" data-en="Sandwiches" data-fr="Sandwichs">Bocadillos</span></div>
                         <div class="category-card-description"></div>
                     </a>
 
                     <a href="Vermuts.html" class="category-card">
-                        <img src="assets\cat_Vermuts.jpg" alt="Vermuts" class="category-card-image">
-                        <div class="category-card-title">Vermuts</div>
+                        <img src="assets/cat_Vermuts.webp" alt="Vermuts" class="category-card-image">
+                        <div class="category-card-title"><span class="i18n" data-es="Vermuts" data-en="Vermouths" data-fr="Vermouths">Vermuts</span></div>
                         <div class="category-card-description"></div>
                     </a>
 
                     <a href="Tapas.html" class="category-card">
-                        <img src="assets\cat_Tapas.jpg" alt="Tapas" class="category-card-image">
-                        <div class="category-card-title">Tapas</div>
+                        <img src="assets/cat_Tapas.webp" alt="Tapas" class="category-card-image">
+                        <div class="category-card-title"><span class="i18n" data-es="Tapas" data-en="Tapas" data-fr="Tapas">Tapas</span></div>
                         <div class="category-card-description"></div>
                     </a>
 
                     <a href="Torradas.html" class="category-card">
-                        <img src="assets\cat_Torradas.jpg" alt="Torradas" class="category-card-image">
-                        <div class="category-card-title">Torradas</div>
+                        <img src="assets/cat_Torradas.webp" alt="Torradas" class="category-card-image">
+                        <div class="category-card-title"><span class="i18n" data-es="Torradas" data-en="Toasted Breads" data-fr="Toasts">Torradas</span></div>
                         <div class="category-card-description"></div>
                     </a>
 
                     <a href="Tablas.html" class="category-card">
-                        <img src="assets\cat_Tablas.jpg" alt="Tablas" class="category-card-image">
-                        <div class="category-card-title">Tablas</div>
+                        <img src="assets/cat_Tablas.webp" alt="Tablas" class="category-card-image">
+                        <div class="category-card-title"><span class="i18n" data-es="Tablas" data-en="Sharing Boards" data-fr="Planches">Tablas</span></div>
                         <div class="category-card-description"></div>
                     </a>
 
                     <a href="Platos Especiales.html" class="category-card">
-                        <img src="assets\cat_Platos Especiales.jpg" alt="Platos Especiales" class="category-card-image">
-                        <div class="category-card-title">Platos Especiales</div>
+                        <img src="assets/cat_Platos Especiales.webp" alt="Platos Especiales" class="category-card-image">
+                        <div class="category-card-title"><span class="i18n" data-es="Platos Especiales" data-en="Special Dishes" data-fr="Plats Spéciaux">Platos Especiales</span></div>
                         <div class="category-card-description"></div>
                     </a>
 
                     <a href="Arroz.html" class="category-card">
-                        <img src="assets\cat_arroz.jpeg" alt="Tapa de Arroz" class="category-card-image">
-                        <div class="category-card-title">Tapa de Arroz</div>
+                        <img src="assets/cat_arroz.webp" alt="Tapa de Arroz" class="category-card-image">
+                        <div class="category-card-title"><span class="i18n" data-es="Tapa de Arroz" data-en="Rice Tapa" data-fr="Tapa de Riz">Tapa de Arroz</span></div>
                         <div class="category-card-description"></div>
                     </a>
 
                     <a href="Croquetas.html" class="category-card">
-                        <img src="assets\cat_Croquetas.jpg" alt="Croquetas" class="category-card-image">
-                        <div class="category-card-title">Croquetas</div>
+                        <img src="assets/cat_Croquetas.webp" alt="Croquetas" class="category-card-image">
+                        <div class="category-card-title"><span class="i18n" data-es="Croquetas" data-en="Croquettes" data-fr="Croquettes">Croquetas</span></div>
                         <div class="category-card-description"></div>
                     </a>
 
                     <a href="Postres.html" class="category-card">
-                        <img src="assets\cat_Postres.jpg" alt="Postres" class="category-card-image">
-                        <div class="category-card-title">Postres</div>
+                        <img src="assets/cat_Postres.webp" alt="Postres" class="category-card-image">
+                        <div class="category-card-title"><span class="i18n" data-es="Postres" data-en="Desserts" data-fr="Desserts">Postres</span></div>
                         <div class="category-card-description"></div>
                     </a>
 
                     <a href="ruleta.html" class="category-card roulette-card" style="background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%); border-color: rgba(255, 255, 255, 0.15);">
                         <div style="padding: 2.5rem 1.5rem; text-align: center; color: #fff; display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100%; min-height: 200px;">
                             <span style="font-size: 3.5rem; margin-bottom: 10px; display: inline-block;" class="roulette-emoji">🎰</span>
-                            <div class="category-card-title" style="color: #fff; padding: 0; margin-bottom: 5px; font-family: 'Playfair Display', serif;">¿Indeciso?</div>
-                            <div style="font-size: 0.95rem; opacity: 0.9;">¡Deja que la ruleta elija por ti!</div>
+                            <div class="category-card-title" style="color: #fff; padding: 0; margin-bottom: 5px; font-family: 'Playfair Display', serif;"><span class="i18n" data-es="¿Indeciso?" data-en="Feeling Indecisive?" data-fr="Indécis?">¿Indeciso?</span></div>
+                            <div style="font-size: 0.95rem; opacity: 0.9;"><span class="i18n" data-es="¡Deja que la ruleta elija por ti!" data-en="Let the wheel choose for you!" data-fr="Laissez la roue choisir pour vous!">¡Deja que la ruleta elija por ti!</span></div>
                         </div>
                     </a>
                 </div>
@@ -240,7 +149,7 @@
     </div>
 
     <footer>
-        <p>&copy; 2026 Bar Sergios. Todos los derechos reservados.</p>
+        <p>&copy; 2026 Bar Sergio's. Todos los derechos reservados.</p>
         <p>&copy; Diseñado por: Dirneet</p>
     </footer>
 
@@ -268,6 +177,75 @@
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- SCHED_START -->
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const now = new Date();
+        const currentHour = now.getHours().toString().padStart(2, '0') + ':' + now.getMinutes().toString().padStart(2, '0');
+        let currentDay = now.getDay();
+        if (currentDay === 0) currentDay = 7;
+        
+        document.querySelectorAll('.category-card[data-sched-enabled="true"]').forEach(card => {
+            const start = card.getAttribute('data-sched-start');
+            const end = card.getAttribute('data-sched-end');
+            const days = card.getAttribute('data-sched-days').split(',').map(Number);
+            
+            const isDayActive = days.includes(currentDay);
+            const isTimeActive = currentHour >= start && currentHour <= end;
+            
+            if (!isDayActive || !isTimeActive) {
+                card.style.opacity = '0.55';
+                card.style.pointerEvents = 'none';
+                card.style.position = 'relative';
+                if (!card.querySelector('.closed-badge')) {
+                    const badge = document.createElement('div');
+                    badge.className = 'closed-badge';
+                    badge.textContent = `Cerrado (Disponible ${start} - ${end})`;
+                    badge.style.position = 'absolute';
+                    badge.style.top = '10px';
+                    badge.style.right = '10px';
+                    badge.style.background = '#e53935';
+                    badge.style.color = 'white';
+                    badge.style.padding = '4px 8px';
+                    badge.style.fontSize = '0.8rem';
+                    badge.style.fontWeight = 'bold';
+                    badge.style.borderRadius = '4px';
+                    badge.style.zIndex = '5';
+                    card.appendChild(badge);
+                }
+            }
+        });
+    });
+</script>
+<!-- SCHED_END -->
 </body>
 
 </html>

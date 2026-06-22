@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bar Sergios - Desayunos</title>
+    <title>Bar Sergio's - Desayunos</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
@@ -13,23 +13,23 @@
     <button class="menu-toggle" onclick="toggleMenu()">☰</button>
     <div id="mobileMenu" class="mobile-menu-overlay">
         <button class="menu-toggle" style="position:absolute; top:1rem; right:1rem; border:none; background:none; font-size:2rem;" onclick="toggleMenu()">✕</button>
-        <a href="Desayunos.html" class="mobile-menu-link active">Desayunos</a>
-        <a href="Bocadillos.html" class="mobile-menu-link ">Bocadillos</a>
-        <a href="Vermuts.html" class="mobile-menu-link ">Vermuts</a>
-        <a href="Tapas.html" class="mobile-menu-link ">Tapas</a>
-        <a href="Torradas.html" class="mobile-menu-link ">Torradas</a>
-        <a href="Tablas.html" class="mobile-menu-link ">Tablas</a>
-        <a href="Platos Especiales.html" class="mobile-menu-link ">Platos Especiales</a>
-        <a href="Arroz.html" class="mobile-menu-link ">Tapa de Arroz</a>
-        <a href="Croquetas.html" class="mobile-menu-link ">Croquetas</a>
-        <a href="Postres.html" class="mobile-menu-link ">Postres</a>
-        <a href="ruleta.html" class="mobile-menu-link" style="color: #c084fc; font-weight: 600;">🎰 Ruleta Indecisos</a>
+        <a href="Desayunos.html" class="mobile-menu-link active"><span class="i18n" data-es="Desayunos" data-en="Breakfasts" data-fr="Petits-Déjeuners">Desayunos</span></a>
+        <a href="Bocadillos.html" class="mobile-menu-link "><span class="i18n" data-es="Bocadillos" data-en="Sandwiches" data-fr="Sandwichs">Bocadillos</span></a>
+        <a href="Vermuts.html" class="mobile-menu-link "><span class="i18n" data-es="Vermuts" data-en="Vermouths" data-fr="Vermouths">Vermuts</span></a>
+        <a href="Tapas.html" class="mobile-menu-link "><span class="i18n" data-es="Tapas" data-en="Tapas" data-fr="Tapas">Tapas</span></a>
+        <a href="Torradas.html" class="mobile-menu-link "><span class="i18n" data-es="Torradas" data-en="Toasted Breads" data-fr="Toasts">Torradas</span></a>
+        <a href="Tablas.html" class="mobile-menu-link "><span class="i18n" data-es="Tablas" data-en="Sharing Boards" data-fr="Planches">Tablas</span></a>
+        <a href="Platos Especiales.html" class="mobile-menu-link "><span class="i18n" data-es="Platos Especiales" data-en="Special Dishes" data-fr="Plats Spéciaux">Platos Especiales</span></a>
+        <a href="Arroz.html" class="mobile-menu-link "><span class="i18n" data-es="Tapa de Arroz" data-en="Rice Tapa" data-fr="Tapa de Riz">Tapa de Arroz</span></a>
+        <a href="Croquetas.html" class="mobile-menu-link "><span class="i18n" data-es="Croquetas" data-en="Croquettes" data-fr="Croquettes">Croquetas</span></a>
+        <a href="Postres.html" class="mobile-menu-link "><span class="i18n" data-es="Postres" data-en="Desserts" data-fr="Desserts">Postres</span></a>
+        <a href="ruleta.html" class="mobile-menu-link" style="color: #c084fc; font-weight: 600;"><span class="i18n" data-es="🎰 Ruleta Indecisos" data-en="🎰 Indecisive Wheel" data-fr="🎰 Roue des Indécis">🎰 Ruleta Indecisos</span></a>
     </div>
     <header class="hero">
         <a href="index.html" class="home-btn" title="Volver al inicio">🏠</a>
         <div class="hero-content">
-            <h1>Bar Sergios</h1>
-            <p class="subtitle">Gastronomía &amp; Buen Ambiente</p>
+            <h1>Bar Sergio's</h1>
+            <p class="subtitle"><span class="i18n" data-es="Gastronomía &amp; Buen Ambiente" data-en="Gastronomy &amp; Good Vibes" data-fr="Gastronomie &amp; Bonne Ambiance">Gastronomía &amp; Buen Ambiente</span></p>
         </div>
     </header>
 
@@ -52,14 +52,34 @@
         (function() { setLang(localStorage.getItem('menuLang') || 'es'); })();
     </script>
     <main class="container">
+        <div class="filter-container">
+            <button id="filter-all" class="filter-btn active" onclick="filterMenu('all')">
+                <span class="i18n" data-es="🍽️ Todos" data-en="🍽️ All" data-fr="🍽️ Tous">🍽️ Todos</span>
+            </button>
+            <button id="filter-gluten" class="filter-btn" onclick="filterMenu('gluten')">
+                <span class="i18n" data-es="🌾 Sin Gluten" data-en="🌾 Gluten-Free" data-fr="🌾 Sans Gluten">🌾 Sin Gluten</span>
+            </button>
+            <button id="filter-lacteos" class="filter-btn" onclick="filterMenu('lacteos')">
+                <span class="i18n" data-es="🥛 Sin Lactosa" data-en="🥛 Lactose-Free" data-fr="🥛 Sans Lactose">🥛 Sin Lactosa</span>
+            </button>
+            <button id="filter-vegano" class="filter-btn" onclick="filterMenu('vegano')">
+                <span class="i18n" data-es="🌱 Vegano" data-en="🌱 Vegan" data-fr="🌱 Végan">🌱 Vegano</span>
+            </button>
+            <button id="filter-picante" class="filter-btn" onclick="filterMenu('picante')">
+                <span class="i18n" data-es="🌶️ Picante" data-en="🌶️ Spicy" data-fr="🌶️ Épicé">🌶️ Picante</span>
+            </button>
+            <button id="filter-especialidad" class="filter-btn" onclick="filterMenu('especialidad')">
+                <span class="i18n" data-es="⭐ Especialidad" data-en="⭐ Specialty" data-fr="⭐ Spécialité">⭐ Especialidad</span>
+            </button>
+        </div>
         <div class="menu-container">
             <section class="menu-section">
-                <h2 class="section-title">Desayunos</h2>
+                <h2 class="section-title"><span class="i18n" data-es="Desayunos" data-en="Breakfasts" data-fr="Petits-Déjeuners">Desayunos</span></h2>
                 <div class="items-list">
-                    <article class="menu-item" style="">
+                    <article class="menu-item" data-gluten="false" data-lacteos="false" data-vegano="false" data-spice="0" data-recomendado="false">
                         
                         <div class="item-details">
-                            <h3 class="item-name"><span class="i18n" data-es="Croisanito" data-en="Croisanito" data-fr="Croisanito">Croisanito</span></h3>
+                            <h3 class="item-name"><span class="i18n" data-es="Croisanito" data-en="Croissant" data-fr="Croisanito">Croisanito</span></h3>
                             <p class="item-description"><span class="i18n" data-es="" data-en="" data-fr=""></span></p>
                         </div>
                         
@@ -68,22 +88,22 @@
                             
                         </div>
                     </article>
-                    <article class="menu-item" style="">
+                    <article class="menu-item" data-gluten="false" data-lacteos="false" data-vegano="false" data-spice="0" data-recomendado="false">
                         
                         <div class="item-details">
-                            <h3 class="item-name"><span class="i18n" data-es="Racion de Churros (4)" data-en="Racion de Churros (4)" data-fr="Racion de Churros (4)">Racion de Churros (4)</span></h3>
+                            <h3 class="item-name"><span class="i18n" data-es="Torrada Mantequilla y Mermelada" data-en="Torrada Mantequilla y Mermelada" data-fr="Torrada Mantequilla y Mermelada">Torrada Mantequilla y Mermelada</span></h3>
                             <p class="item-description"><span class="i18n" data-es="" data-en="" data-fr=""></span></p>
                         </div>
                         
                         <div class="item-right-col">
-                            <div class='item-price'>2.00 €</div>
+                            <div class='item-price'>1.80 €</div>
                             
                         </div>
                     </article>
-                    <article class="menu-item" style="">
+                    <article class="menu-item" data-gluten="false" data-lacteos="false" data-vegano="false" data-spice="0" data-recomendado="false">
                         
                         <div class="item-details">
-                            <h3 class="item-name"><span class="i18n" data-es="Torrada Mantequilla y Mermelada" data-en="Torrada Mantequilla y Mermelada" data-fr="Torrada Mantequilla y Mermelada">Torrada Mantequilla y Mermelada</span></h3>
+                            <h3 class="item-name"><span class="i18n" data-es="Torrada Pan con Tomate y Aceite" data-en="Torrada Pan con Tomate y Aceite" data-fr="Torrada Pan con Tomate y Aceite">Torrada Pan con Tomate y Aceite</span></h3>
                             <p class="item-description"><span class="i18n" data-es="" data-en="" data-fr=""></span></p>
                         </div>
                         
@@ -92,23 +112,11 @@
                             
                         </div>
                     </article>
-                    <article class="menu-item" style="">
-                        
-                        <div class="item-details">
-                            <h3 class="item-name"><span class="i18n" data-es="Torrada Pan con Tomate y Aceite" data-en="Torrada Pan con Tomate y Aceite" data-fr="Torrada Pan con Tomate y Aceite">Torrada Pan con Tomate y Aceite</span></h3>
-                            <p class="item-description"><span class="i18n" data-es="" data-en="" data-fr=""></span></p>
-                        </div>
-                        
-                        <div class="item-right-col">
-                            <div class='item-price'>1.60 €</div>
-                            
-                        </div>
-                    </article>
-                    <article class="menu-item" style="">
+                    <article class="menu-item" data-gluten="false" data-lacteos="false" data-vegano="false" data-spice="0" data-recomendado="false">
                         
                         <div class="item-details">
                             <h3 class="item-name"><span class="i18n" data-es="Bikini" data-en="Bikini" data-fr="Bikini">Bikini</span></h3>
-                            <p class="item-description"><span class="i18n" data-es="" data-en="" data-fr=""></span></p>
+                            <p class="item-description"><span class="i18n" data-es="" data-en="Toasted ham & cheese sandwich" data-fr=""></span></p>
                         </div>
                         
                         <div class="item-right-col">
@@ -116,7 +124,7 @@
                             
                         </div>
                     </article>
-                    <article class="menu-item" style="">
+                    <article class="menu-item" data-gluten="false" data-lacteos="false" data-vegano="false" data-spice="0" data-recomendado="false">
                         
                         <div class="item-details">
                             <h3 class="item-name"><span class="i18n" data-es="Chocolate a la Taza Diferentes Sabores" data-en="Chocolate a la Taza Diferentes Sabores" data-fr="Chocolate a la Taza Diferentes Sabores">Chocolate a la Taza Diferentes Sabores</span></h3>
@@ -128,7 +136,7 @@
                             
                         </div>
                     </article>
-                    <article class="menu-item" style="">
+                    <article class="menu-item" data-gluten="false" data-lacteos="false" data-vegano="false" data-spice="0" data-recomendado="false">
                         
                         <div class="item-details">
                             <h3 class="item-name"><span class="i18n" data-es="Mini Bocata Frio + Cafe" data-en="Mini Bocata Frio + Cafe" data-fr="Mini Bocata Frio + Cafe">Mini Bocata Frio + Cafe</span></h3>
@@ -136,170 +144,14 @@
                         </div>
                         
                         <div class="item-right-col">
-                            <div class='item-price'>3.10 €</div>
+                            <div class='item-price'>3.30 €</div>
                             
                         </div>
                     </article>
-                    <article class="menu-item" style="">
+                    <article class="menu-item" data-gluten="false" data-lacteos="false" data-vegano="false" data-spice="0" data-recomendado="false">
                         
                         <div class="item-details">
                             <h3 class="item-name"><span class="i18n" data-es="Mini Bocata Frio + Caña" data-en="Mini Bocata Frio + Caña" data-fr="Mini Bocata Frio + Caña">Mini Bocata Frio + Caña</span></h3>
-                            <p class="item-description"><span class="i18n" data-es="" data-en="" data-fr=""></span></p>
-                        </div>
-                        
-                        <div class="item-right-col">
-                            <div class='item-price'>3.20 €</div>
-                            
-                        </div>
-                    </article>
-                    <article class="menu-item" style="">
-                        
-                        <div class="item-details">
-                            <h3 class="item-name"><span class="i18n" data-es="Mini Bocata Frio + Refresco Lata" data-en="Mini Bocata Frio + Refresco Lata" data-fr="Mini Bocata Frio + Refresco Lata">Mini Bocata Frio + Refresco Lata</span></h3>
-                            <p class="item-description"><span class="i18n" data-es="" data-en="" data-fr=""></span></p>
-                        </div>
-                        
-                        <div class="item-right-col">
-                            <div class='item-price'>3.95 €</div>
-                            
-                        </div>
-                    </article>
-                    <article class="menu-item" style="">
-                        
-                        <div class="item-details">
-                            <h3 class="item-name"><span class="i18n" data-es="Mini Bocata + Cafe" data-en="Mini Bocata + Cafe" data-fr="Mini Bocata + Cafe">Mini Bocata + Cafe</span></h3>
-                            <p class="item-description"><span class="i18n" data-es="(Bacon,Lomo o Pollo)" data-en="(Bacon,Lomo o Pollo)" data-fr="(Bacon,Lomo o Pollo)">(Bacon,Lomo o Pollo)</span></p>
-                        </div>
-                        
-                        <div class="item-right-col">
-                            <div class='item-price'>4.20 €</div>
-                            
-                        </div>
-                    </article>
-                    <article class="menu-item" style="">
-                        
-                        <div class="item-details">
-                            <h3 class="item-name"><span class="i18n" data-es="Mini Bocata + Caña" data-en="Mini Bocata + Caña" data-fr="Mini Bocata + Caña">Mini Bocata + Caña</span></h3>
-                            <p class="item-description"><span class="i18n" data-es="(Bacon,Lomo o Pollo)" data-en="(Bacon,Lomo o Pollo)" data-fr="(Bacon,Lomo o Pollo)">(Bacon,Lomo o Pollo)</span></p>
-                        </div>
-                        
-                        <div class="item-right-col">
-                            <div class='item-price'>4.50 €</div>
-                            
-                        </div>
-                    </article>
-                    <article class="menu-item" style="">
-                        
-                        <div class="item-details">
-                            <h3 class="item-name"><span class="i18n" data-es="Mini Bocata Tortilla de patatas + Cafe" data-en="Mini Bocata Tortilla de patatas + Cafe" data-fr="Mini Bocata Tortilla de patatas + Cafe">Mini Bocata Tortilla de patatas + Cafe</span></h3>
-                            <p class="item-description"><span class="i18n" data-es="" data-en="" data-fr=""></span></p>
-                        </div>
-                        
-                        <div class="item-right-col">
-                            <div class='item-price'>3.50 €</div>
-                            
-                        </div>
-                    </article>
-                    <article class="menu-item" style="">
-                        
-                        <div class="item-details">
-                            <h3 class="item-name"><span class="i18n" data-es="Mini Bocata Frio + Zumo Botella" data-en="Mini Bocata Frio + Zumo Botella" data-fr="Mini Bocata Frio + Zumo Botella">Mini Bocata Frio + Zumo Botella</span></h3>
-                            <p class="item-description"><span class="i18n" data-es="" data-en="" data-fr=""></span></p>
-                        </div>
-                        
-                        <div class="item-right-col">
-                            <div class='item-price'>3.90 €</div>
-                            
-                        </div>
-                    </article>
-                    <article class="menu-item" style="">
-                        
-                        <div class="item-details">
-                            <h3 class="item-name"><span class="i18n" data-es="Mini Bocata Caliente + Zumo Botella" data-en="Mini Bocata Caliente + Zumo Botella" data-fr="Mini Bocata Caliente + Zumo Botella">Mini Bocata Caliente + Zumo Botella</span></h3>
-                            <p class="item-description"><span class="i18n" data-es="" data-en="" data-fr=""></span></p>
-                        </div>
-                        
-                        <div class="item-right-col">
-                            <div class='item-price'>4.50 €</div>
-                            
-                        </div>
-                    </article>
-                    <article class="menu-item" style="">
-                        
-                        <div class="item-details">
-                            <h3 class="item-name"><span class="i18n" data-es="Torrada (Mermelada y Mant.) + Cafe" data-en="Torrada (Mermelada y Mant.) + Cafe" data-fr="Torrada (Mermelada y Mant.) + Cafe">Torrada (Mermelada y Mant.) + Cafe</span></h3>
-                            <p class="item-description"><span class="i18n" data-es="" data-en="" data-fr=""></span></p>
-                        </div>
-                        
-                        <div class="item-right-col">
-                            <div class='item-price'>2.90 €</div>
-                            
-                        </div>
-                    </article>
-                    <article class="menu-item" style="">
-                        
-                        <div class="item-details">
-                            <h3 class="item-name"><span class="i18n" data-es="Torrada con Tomate y Aceite + Cafe" data-en="Torrada con Tomate y Aceite + Cafe" data-fr="Torrada con Tomate y Aceite + Cafe">Torrada con Tomate y Aceite + Cafe</span></h3>
-                            <p class="item-description"><span class="i18n" data-es="" data-en="" data-fr=""></span></p>
-                        </div>
-                        
-                        <div class="item-right-col">
-                            <div class='item-price'>2.60 €</div>
-                            
-                        </div>
-                    </article>
-                    <article class="menu-item" style="">
-                        
-                        <div class="item-details">
-                            <h3 class="item-name"><span class="i18n" data-es="Bikini + Cafe" data-en="Bikini + Cafe" data-fr="Bikini + Cafe">Bikini + Cafe</span></h3>
-                            <p class="item-description"><span class="i18n" data-es="" data-en="" data-fr=""></span></p>
-                        </div>
-                        
-                        <div class="item-right-col">
-                            <div class='item-price'>4.70 €</div>
-                            
-                        </div>
-                    </article>
-                    <article class="menu-item" style="">
-                        
-                        <div class="item-details">
-                            <h3 class="item-name"><span class="i18n" data-es="Zumo Naranja Nat. + Mini Bocata Frio + Cafe" data-en="Zumo Naranja Nat. + Mini Bocata Frio + Cafe" data-fr="Zumo Naranja Nat. + Mini Bocata Frio + Cafe">Zumo Naranja Nat. + Mini Bocata Frio + Cafe</span></h3>
-                            <p class="item-description"><span class="i18n" data-es="" data-en="" data-fr=""></span></p>
-                        </div>
-                        
-                        <div class="item-right-col">
-                            <div class='item-price'>5.40 €</div>
-                            
-                        </div>
-                    </article>
-                    <article class="menu-item" style="">
-                        
-                        <div class="item-details">
-                            <h3 class="item-name"><span class="i18n" data-es="Zumo Naranja Nat. + Mini Bocata Caliente + Cafe" data-en="Zumo Naranja Nat. + Mini Bocata Caliente + Cafe" data-fr="Zumo Naranja Nat. + Mini Bocata Caliente + Cafe">Zumo Naranja Nat. + Mini Bocata Caliente + Cafe</span></h3>
-                            <p class="item-description"><span class="i18n" data-es="" data-en="" data-fr=""></span></p>
-                        </div>
-                        
-                        <div class="item-right-col">
-                            <div class='item-price'>6.40 €</div>
-                            
-                        </div>
-                    </article>
-                    <article class="menu-item" style="">
-                        
-                        <div class="item-details">
-                            <h3 class="item-name"><span class="i18n" data-es="4 Churros con Chocolate a la taza" data-en="4 Churros con Chocolate a la taza" data-fr="4 Churros con Chocolate a la taza">4 Churros con Chocolate a la taza</span></h3>
-                            <p class="item-description"><span class="i18n" data-es="" data-en="" data-fr=""></span></p>
-                        </div>
-                        
-                        <div class="item-right-col">
-                            <div class='item-price'>3.80 €</div>
-                            
-                        </div>
-                    </article>
-                    <article class="menu-item" style="">
-                        
-                        <div class="item-details">
-                            <h3 class="item-name"><span class="i18n" data-es="4 Churros con cafe" data-en="4 Churros con cafe" data-fr="4 Churros con cafe">4 Churros con cafe</span></h3>
                             <p class="item-description"><span class="i18n" data-es="" data-en="" data-fr=""></span></p>
                         </div>
                         
@@ -308,7 +160,139 @@
                             
                         </div>
                     </article>
-                    <article class="menu-item" style="">
+                    <article class="menu-item" data-gluten="false" data-lacteos="false" data-vegano="false" data-spice="0" data-recomendado="false">
+                        
+                        <div class="item-details">
+                            <h3 class="item-name"><span class="i18n" data-es="Mini Bocata Frio + Refresco Lata" data-en="Mini Bocata Frio + Refresco Lata" data-fr="Mini Bocata Frio + Refresco Lata">Mini Bocata Frio + Refresco Lata</span></h3>
+                            <p class="item-description"><span class="i18n" data-es="" data-en="" data-fr=""></span></p>
+                        </div>
+                        
+                        <div class="item-right-col">
+                            <div class='item-price'>4.10 €</div>
+                            
+                        </div>
+                    </article>
+                    <article class="menu-item" data-gluten="false" data-lacteos="false" data-vegano="false" data-spice="0" data-recomendado="false">
+                        
+                        <div class="item-details">
+                            <h3 class="item-name"><span class="i18n" data-es="Mini Bocata + Cafe" data-en="Mini Bocata + Cafe" data-fr="Mini Bocata + Cafe">Mini Bocata + Cafe</span></h3>
+                            <p class="item-description"><span class="i18n" data-es="(Bacon,Lomo o Pollo)" data-en="(Bacon,Lomo o Pollo)" data-fr="(Bacon,Lomo o Pollo)">(Bacon,Lomo o Pollo)</span></p>
+                        </div>
+                        
+                        <div class="item-right-col">
+                            <div class='item-price'>4.40 €</div>
+                            
+                        </div>
+                    </article>
+                    <article class="menu-item" data-gluten="false" data-lacteos="false" data-vegano="false" data-spice="0" data-recomendado="false">
+                        
+                        <div class="item-details">
+                            <h3 class="item-name"><span class="i18n" data-es="Mini Bocata + Caña" data-en="Mini Bocata + Caña" data-fr="Mini Bocata + Caña">Mini Bocata + Caña</span></h3>
+                            <p class="item-description"><span class="i18n" data-es="(Bacon,Lomo o Pollo)" data-en="(Bacon,Lomo o Pollo)" data-fr="(Bacon,Lomo o Pollo)">(Bacon,Lomo o Pollo)</span></p>
+                        </div>
+                        
+                        <div class="item-right-col">
+                            <div class='item-price'>4.70 €</div>
+                            
+                        </div>
+                    </article>
+                    <article class="menu-item" data-gluten="false" data-lacteos="false" data-vegano="false" data-spice="0" data-recomendado="false">
+                        
+                        <div class="item-details">
+                            <h3 class="item-name"><span class="i18n" data-es="Mini Bocata Tortilla de patatas + Cafe" data-en="Mini Bocata Tortilla de patatas + Cafe" data-fr="Mini Bocata Tortilla de patatas + Cafe">Mini Bocata Tortilla de patatas + Cafe</span></h3>
+                            <p class="item-description"><span class="i18n" data-es="" data-en="" data-fr=""></span></p>
+                        </div>
+                        
+                        <div class="item-right-col">
+                            <div class='item-price'>3.60 €</div>
+                            
+                        </div>
+                    </article>
+                    <article class="menu-item" data-gluten="false" data-lacteos="false" data-vegano="false" data-spice="0" data-recomendado="false">
+                        
+                        <div class="item-details">
+                            <h3 class="item-name"><span class="i18n" data-es="Mini Bocata Frio + Zumo Botella" data-en="Mini Bocata Frio + Zumo Botella" data-fr="Mini Bocata Frio + Zumo Botella">Mini Bocata Frio + Zumo Botella</span></h3>
+                            <p class="item-description"><span class="i18n" data-es="" data-en="" data-fr=""></span></p>
+                        </div>
+                        
+                        <div class="item-right-col">
+                            <div class='item-price'>4.10 €</div>
+                            
+                        </div>
+                    </article>
+                    <article class="menu-item" data-gluten="false" data-lacteos="false" data-vegano="false" data-spice="0" data-recomendado="false">
+                        
+                        <div class="item-details">
+                            <h3 class="item-name"><span class="i18n" data-es="Mini Bocata Caliente + Zumo Botella" data-en="Mini Bocata Caliente + Zumo Botella" data-fr="Mini Bocata Caliente + Zumo Botella">Mini Bocata Caliente + Zumo Botella</span></h3>
+                            <p class="item-description"><span class="i18n" data-es="" data-en="" data-fr=""></span></p>
+                        </div>
+                        
+                        <div class="item-right-col">
+                            <div class='item-price'>4.70 €</div>
+                            
+                        </div>
+                    </article>
+                    <article class="menu-item" data-gluten="false" data-lacteos="false" data-vegano="false" data-spice="0" data-recomendado="false">
+                        
+                        <div class="item-details">
+                            <h3 class="item-name"><span class="i18n" data-es="Torrada (Mermelada y Mant.) + Cafe" data-en="Torrada (Mermelada y Mant.) + Cafe" data-fr="Torrada (Mermelada y Mant.) + Cafe">Torrada (Mermelada y Mant.) + Cafe</span></h3>
+                            <p class="item-description"><span class="i18n" data-es="" data-en="" data-fr=""></span></p>
+                        </div>
+                        
+                        <div class="item-right-col">
+                            <div class='item-price'>3.00 €</div>
+                            
+                        </div>
+                    </article>
+                    <article class="menu-item" data-gluten="false" data-lacteos="false" data-vegano="false" data-spice="0" data-recomendado="false">
+                        
+                        <div class="item-details">
+                            <h3 class="item-name"><span class="i18n" data-es="Torrada con Tomate y Aceite + Cafe" data-en="Torrada con Tomate y Aceite + Cafe" data-fr="Torrada con Tomate y Aceite + Cafe">Torrada con Tomate y Aceite + Cafe</span></h3>
+                            <p class="item-description"><span class="i18n" data-es="" data-en="" data-fr=""></span></p>
+                        </div>
+                        
+                        <div class="item-right-col">
+                            <div class='item-price'>2.80 €</div>
+                            
+                        </div>
+                    </article>
+                    <article class="menu-item" data-gluten="false" data-lacteos="false" data-vegano="false" data-spice="0" data-recomendado="false">
+                        
+                        <div class="item-details">
+                            <h3 class="item-name"><span class="i18n" data-es="Bikini + Cafe" data-en="Bikini + Cafe" data-fr="Bikini + Cafe">Bikini + Cafe</span></h3>
+                            <p class="item-description"><span class="i18n" data-es="" data-en="" data-fr=""></span></p>
+                        </div>
+                        
+                        <div class="item-right-col">
+                            <div class='item-price'>4.80 €</div>
+                            
+                        </div>
+                    </article>
+                    <article class="menu-item" data-gluten="false" data-lacteos="false" data-vegano="false" data-spice="0" data-recomendado="false">
+                        
+                        <div class="item-details">
+                            <h3 class="item-name"><span class="i18n" data-es="Zumo Naranja Nat. + Mini Bocata Frio + Cafe" data-en="Zumo Naranja Nat. + Mini Bocata Frio + Cafe" data-fr="Zumo Naranja Nat. + Mini Bocata Frio + Cafe">Zumo Naranja Nat. + Mini Bocata Frio + Cafe</span></h3>
+                            <p class="item-description"><span class="i18n" data-es="" data-en="" data-fr=""></span></p>
+                        </div>
+                        
+                        <div class="item-right-col">
+                            <div class='item-price'>5.50 €</div>
+                            
+                        </div>
+                    </article>
+                    <article class="menu-item" data-gluten="false" data-lacteos="false" data-vegano="false" data-spice="0" data-recomendado="false">
+                        
+                        <div class="item-details">
+                            <h3 class="item-name"><span class="i18n" data-es="Zumo Naranja Nat. + Mini Bocata Caliente + Cafe" data-en="Zumo Naranja Nat. + Mini Bocata Caliente + Cafe" data-fr="Zumo Naranja Nat. + Mini Bocata Caliente + Cafe">Zumo Naranja Nat. + Mini Bocata Caliente + Cafe</span></h3>
+                            <p class="item-description"><span class="i18n" data-es="" data-en="" data-fr=""></span></p>
+                        </div>
+                        
+                        <div class="item-right-col">
+                            <div class='item-price'>6.60 €</div>
+                            
+                        </div>
+                    </article>
+                    <article class="menu-item" data-gluten="false" data-lacteos="false" data-vegano="false" data-spice="0" data-recomendado="false">
                         
                         <div class="item-details">
                             <h3 class="item-name"><span class="i18n" data-es="3 Croisanitos con Cafe" data-en="3 Croisanitos con Cafe" data-fr="3 Croisanitos con Cafe">3 Croisanitos con Cafe</span></h3>
@@ -320,7 +304,7 @@
                             
                         </div>
                     </article>
-                    <article class="menu-item" style="">
+                    <article class="menu-item" data-gluten="false" data-lacteos="false" data-vegano="false" data-spice="0" data-recomendado="false">
                         
                         <div class="item-details">
                             <h3 class="item-name"><span class="i18n" data-es="3 Croisanitos con Chocolate a la Taza" data-en="3 Croisanitos con Chocolate a la Taza" data-fr="3 Croisanitos con Chocolate a la Taza">3 Croisanitos con Chocolate a la Taza</span></h3>
@@ -332,7 +316,7 @@
                             
                         </div>
                     </article>
-                    <article class="menu-item" style="">
+                    <article class="menu-item" data-gluten="false" data-lacteos="false" data-vegano="false" data-spice="0" data-recomendado="false">
                         
                         <div class="item-details">
                             <h3 class="item-name"><span class="i18n" data-es="Extra Queso" data-en="Extra Queso" data-fr="Extra Queso">Extra Queso</span></h3>
@@ -352,7 +336,7 @@
         <img id="imageModalImg" class="image-modal-content" alt="Imagen">
     </div>
     <footer>
-        <p>&copy; 2026 Bar Sergios. Todos los derechos reservados.</p>
+        <p>&copy; 2026 Bar Sergio's. Todos los derechos reservados.</p>
     </footer>
     <script>
         function toggleMenu() { document.getElementById('mobileMenu').classList.toggle('open'); }
@@ -363,6 +347,75 @@
         }
         function hideImageModal() { document.getElementById('imageModal').classList.remove('open'); }
         document.addEventListener('keydown', function (e) { if (e.key === 'Escape') hideImageModal(); });
+
+        function filterMenu(type) {
+            document.querySelectorAll('.filter-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            const activeBtn = document.getElementById('filter-' + type);
+            if (activeBtn) activeBtn.classList.add('active');
+
+            document.querySelectorAll('.menu-item').forEach(item => {
+                let show = true;
+                if (type === 'gluten') {
+                    show = item.getAttribute('data-gluten') !== 'true';
+                } else if (type === 'lacteos') {
+                    show = item.getAttribute('data-lacteos') !== 'true';
+                } else if (type === 'vegano') {
+                    show = item.getAttribute('data-vegano') === 'true';
+                } else if (type === 'picante') {
+                    show = parseInt(item.getAttribute('data-spice') || '0') > 0;
+                } else if (type === 'especialidad') {
+                    show = item.getAttribute('data-recomendado') === 'true';
+                }
+                
+                if (show) {
+                    item.style.display = '';
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+        }
+
+        document.addEventListener("DOMContentLoaded", function() {
+            const body = document.body;
+            if (body.getAttribute('data-sched-enabled') === 'true') {
+                const start = body.getAttribute('data-sched-start');
+                const end = body.getAttribute('data-sched-end');
+                const days = body.getAttribute('data-sched-days').split(',').map(Number);
+                
+                const now = new Date();
+                const currentHour = now.getHours().toString().padStart(2, '0') + ':' + now.getMinutes().toString().padStart(2, '0');
+                let currentDay = now.getDay();
+                if (currentDay === 0) currentDay = 7;
+                
+                const isDayActive = days.includes(currentDay);
+                const isTimeActive = currentHour >= start && currentHour <= end;
+                
+                if (!isDayActive || !isTimeActive) {
+                    const container = document.querySelector('.container');
+                    const warning = document.createElement('div');
+                    warning.className = 'schedule-warning';
+                    warning.innerHTML = `
+                        <div class="i18n" 
+                             data-es="⚠️ Esta sección está fuera de su horario de servicio (Disponible de ` + start + ` a ` + end + `). No se pueden realizar pedidos en este momento." 
+                             data-en="⚠️ This section is outside of its service hours (Available from ` + start + ` to ` + end + `). Orders cannot be placed at this time." 
+                             data-fr="⚠️ Cette section es en dehors de ses heures de service (Disponible de ` + start + ` à ` + end + `). Les commandes ne peuvent pas être passées pour le moment.">
+                             ⚠️ Esta sección está fuera de su horario de servicio (Disponible de ` + start + ` a ` + end + `). No se pueden realizar pedidos en este momento.
+                        </div>
+                    `;
+                    container.insertBefore(warning, container.firstChild);
+                    
+                    document.querySelectorAll('.btn-add-cart, .cart-add-row').forEach(el => {
+                        el.style.display = 'none';
+                    });
+                    
+                    if (typeof setLang === 'function') {
+                        setLang(localStorage.getItem('menuLang') || 'es');
+                    }
+                }
+            }
+        });
     </script>
 
 </body>

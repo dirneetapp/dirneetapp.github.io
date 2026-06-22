@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bar Sergios - Vermuts</title>
+    <title>Bar Sergio's - Vermuts</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
@@ -13,23 +13,23 @@
     <button class="menu-toggle" onclick="toggleMenu()">☰</button>
     <div id="mobileMenu" class="mobile-menu-overlay">
         <button class="menu-toggle" style="position:absolute; top:1rem; right:1rem; border:none; background:none; font-size:2rem;" onclick="toggleMenu()">✕</button>
-        <a href="Desayunos.html" class="mobile-menu-link ">Desayunos</a>
-        <a href="Bocadillos.html" class="mobile-menu-link ">Bocadillos</a>
-        <a href="Vermuts.html" class="mobile-menu-link active">Vermuts</a>
-        <a href="Tapas.html" class="mobile-menu-link ">Tapas</a>
-        <a href="Torradas.html" class="mobile-menu-link ">Torradas</a>
-        <a href="Tablas.html" class="mobile-menu-link ">Tablas</a>
-        <a href="Platos Especiales.html" class="mobile-menu-link ">Platos Especiales</a>
-        <a href="Arroz.html" class="mobile-menu-link ">Tapa de Arroz</a>
-        <a href="Croquetas.html" class="mobile-menu-link ">Croquetas</a>
-        <a href="Postres.html" class="mobile-menu-link ">Postres</a>
-        <a href="ruleta.html" class="mobile-menu-link" style="color: #c084fc; font-weight: 600;">🎰 Ruleta Indecisos</a>
+        <a href="Desayunos.html" class="mobile-menu-link "><span class="i18n" data-es="Desayunos" data-en="Breakfasts" data-fr="Petits-Déjeuners">Desayunos</span></a>
+        <a href="Bocadillos.html" class="mobile-menu-link "><span class="i18n" data-es="Bocadillos" data-en="Sandwiches" data-fr="Sandwichs">Bocadillos</span></a>
+        <a href="Vermuts.html" class="mobile-menu-link active"><span class="i18n" data-es="Vermuts" data-en="Vermouths" data-fr="Vermouths">Vermuts</span></a>
+        <a href="Tapas.html" class="mobile-menu-link "><span class="i18n" data-es="Tapas" data-en="Tapas" data-fr="Tapas">Tapas</span></a>
+        <a href="Torradas.html" class="mobile-menu-link "><span class="i18n" data-es="Torradas" data-en="Toasted Breads" data-fr="Toasts">Torradas</span></a>
+        <a href="Tablas.html" class="mobile-menu-link "><span class="i18n" data-es="Tablas" data-en="Sharing Boards" data-fr="Planches">Tablas</span></a>
+        <a href="Platos Especiales.html" class="mobile-menu-link "><span class="i18n" data-es="Platos Especiales" data-en="Special Dishes" data-fr="Plats Spéciaux">Platos Especiales</span></a>
+        <a href="Arroz.html" class="mobile-menu-link "><span class="i18n" data-es="Tapa de Arroz" data-en="Rice Tapa" data-fr="Tapa de Riz">Tapa de Arroz</span></a>
+        <a href="Croquetas.html" class="mobile-menu-link "><span class="i18n" data-es="Croquetas" data-en="Croquettes" data-fr="Croquettes">Croquetas</span></a>
+        <a href="Postres.html" class="mobile-menu-link "><span class="i18n" data-es="Postres" data-en="Desserts" data-fr="Desserts">Postres</span></a>
+        <a href="ruleta.html" class="mobile-menu-link" style="color: #c084fc; font-weight: 600;"><span class="i18n" data-es="🎰 Ruleta Indecisos" data-en="🎰 Indecisive Wheel" data-fr="🎰 Roue des Indécis">🎰 Ruleta Indecisos</span></a>
     </div>
     <header class="hero">
         <a href="index.html" class="home-btn" title="Volver al inicio">🏠</a>
         <div class="hero-content">
-            <h1>Bar Sergios</h1>
-            <p class="subtitle">Gastronomía &amp; Buen Ambiente</p>
+            <h1>Bar Sergio's</h1>
+            <p class="subtitle"><span class="i18n" data-es="Gastronomía &amp; Buen Ambiente" data-en="Gastronomy &amp; Good Vibes" data-fr="Gastronomie &amp; Bonne Ambiance">Gastronomía &amp; Buen Ambiente</span></p>
         </div>
     </header>
 
@@ -52,15 +52,35 @@
         (function() { setLang(localStorage.getItem('menuLang') || 'es'); })();
     </script>
     <main class="container">
+        <div class="filter-container">
+            <button id="filter-all" class="filter-btn active" onclick="filterMenu('all')">
+                <span class="i18n" data-es="🍽️ Todos" data-en="🍽️ All" data-fr="🍽️ Tous">🍽️ Todos</span>
+            </button>
+            <button id="filter-gluten" class="filter-btn" onclick="filterMenu('gluten')">
+                <span class="i18n" data-es="🌾 Sin Gluten" data-en="🌾 Gluten-Free" data-fr="🌾 Sans Gluten">🌾 Sin Gluten</span>
+            </button>
+            <button id="filter-lacteos" class="filter-btn" onclick="filterMenu('lacteos')">
+                <span class="i18n" data-es="🥛 Sin Lactosa" data-en="🥛 Lactose-Free" data-fr="🥛 Sans Lactose">🥛 Sin Lactosa</span>
+            </button>
+            <button id="filter-vegano" class="filter-btn" onclick="filterMenu('vegano')">
+                <span class="i18n" data-es="🌱 Vegano" data-en="🌱 Vegan" data-fr="🌱 Végan">🌱 Vegano</span>
+            </button>
+            <button id="filter-picante" class="filter-btn" onclick="filterMenu('picante')">
+                <span class="i18n" data-es="🌶️ Picante" data-en="🌶️ Spicy" data-fr="🌶️ Épicé">🌶️ Picante</span>
+            </button>
+            <button id="filter-especialidad" class="filter-btn" onclick="filterMenu('especialidad')">
+                <span class="i18n" data-es="⭐ Especialidad" data-en="⭐ Specialty" data-fr="⭐ Spécialité">⭐ Especialidad</span>
+            </button>
+        </div>
         <div class="menu-container">
             <section class="menu-section">
-                <h2 class="section-title">Vermuts</h2>
+                <h2 class="section-title"><span class="i18n" data-es="Vermuts" data-en="Vermouths" data-fr="Vermouths">Vermuts</span></h2>
                 <div class="items-list">
-                    <article class="menu-item" style="">
+                    <article class="menu-item" data-gluten="false" data-lacteos="false" data-vegano="false" data-spice="0" data-recomendado="false">
                         
                         <div class="item-details">
-                            <h3 class="item-name"><span class="i18n" data-es="GRUMETE" data-en="GRUMETE" data-fr="GRUMETE">GRUMETE</span></h3>
-                            <p class="item-description"><span class="i18n" data-es="Mejillones,Olivas,Patatas y 1/2 L. Vermut" data-en="Mejillones,Olivas,Patatas y 1/2 L. Vermut" data-fr="Mejillones,Olivas,Patatas y 1/2 L. Vermut">Mejillones,Olivas,Patatas y 1/2 L. Vermut</span></p>
+                            <h3 class="item-name"><span class="i18n" data-es="GRUMETE" data-en="DECKHAND" data-fr="GRUMETE">GRUMETE</span></h3>
+                            <p class="item-description"><span class="i18n" data-es="Mejillones,Olivas,Patatas y 1/2 L. Vermut" data-en="Mussels, Olives, Crisps & ½L House Vermouth" data-fr="Mejillones,Olivas,Patatas y 1/2 L. Vermut">Mejillones,Olivas,Patatas y 1/2 L. Vermut</span></p>
                         </div>
                         
                         <div class="item-right-col">
@@ -68,11 +88,11 @@
                             
                         </div>
                     </article>
-                    <article class="menu-item" style="">
+                    <article class="menu-item" data-gluten="false" data-lacteos="false" data-vegano="false" data-spice="0" data-recomendado="false">
                         
                         <div class="item-details">
-                            <h3 class="item-name"><span class="i18n" data-es="MAESTRE" data-en="MAESTRE" data-fr="MAESTRE">MAESTRE</span></h3>
-                            <p class="item-description"><span class="i18n" data-es="Boquerones,Olivas,Patatas 1/2 L. Vermut" data-en="Boquerones,Olivas,Patatas 1/2 L. Vermut" data-fr="Boquerones,Olivas,Patatas 1/2 L. Vermut">Boquerones,Olivas,Patatas 1/2 L. Vermut</span></p>
+                            <h3 class="item-name"><span class="i18n" data-es="MAESTRE" data-en="BOATSWAIN" data-fr="MAESTRE">MAESTRE</span></h3>
+                            <p class="item-description"><span class="i18n" data-es="Boquerones,Olivas,Patatas 1/2 L. Vermut" data-en="Anchovies in Vinegar, Olives, Crisps & ½L House Vermouth" data-fr="Boquerones,Olivas,Patatas 1/2 L. Vermut">Boquerones,Olivas,Patatas 1/2 L. Vermut</span></p>
                         </div>
                         
                         <div class="item-right-col">
@@ -80,11 +100,11 @@
                             
                         </div>
                     </article>
-                    <article class="menu-item" style="">
+                    <article class="menu-item" data-gluten="false" data-lacteos="false" data-vegano="false" data-spice="0" data-recomendado="false">
                         
                         <div class="item-details">
-                            <h3 class="item-name"><span class="i18n" data-es="SOBRECARGO" data-en="SOBRECARGO" data-fr="SOBRECARGO">SOBRECARGO</span></h3>
-                            <p class="item-description"><span class="i18n" data-es="Berberechos,Patatas,Olivas y 1/2 L. Vermut" data-en="Berberechos,Patatas,Olivas y 1/2 L. Vermut" data-fr="Berberechos,Patatas,Olivas y 1/2 L. Vermut">Berberechos,Patatas,Olivas y 1/2 L. Vermut</span></p>
+                            <h3 class="item-name"><span class="i18n" data-es="SOBRECARGO" data-en="PURSER" data-fr="SOBRECARGO">SOBRECARGO</span></h3>
+                            <p class="item-description"><span class="i18n" data-es="Berberechos,Patatas,Olivas y 1/2 L. Vermut" data-en="Cockles, Crisps, Olives & ½L House Vermouth" data-fr="Berberechos,Patatas,Olivas y 1/2 L. Vermut">Berberechos,Patatas,Olivas y 1/2 L. Vermut</span></p>
                         </div>
                         
                         <div class="item-right-col">
@@ -92,11 +112,11 @@
                             
                         </div>
                     </article>
-                    <article class="menu-item" style="">
+                    <article class="menu-item" data-gluten="false" data-lacteos="false" data-vegano="false" data-spice="0" data-recomendado="false">
                         
                         <div class="item-details">
-                            <h3 class="item-name"><span class="i18n" data-es="CONTRAMAESTRE" data-en="CONTRAMAESTRE" data-fr="CONTRAMAESTRE">CONTRAMAESTRE</span></h3>
-                            <p class="item-description"><span class="i18n" data-es="Almejas,Boquerones,Olivas,Patatas y 1/2 L. Vermut" data-en="Almejas,Boquerones,Olivas,Patatas y 1/2 L. Vermut" data-fr="Almejas,Boquerones,Olivas,Patatas y 1/2 L. Vermut">Almejas,Boquerones,Olivas,Patatas y 1/2 L. Vermut</span></p>
+                            <h3 class="item-name"><span class="i18n" data-es="CONTRAMAESTRE" data-en="FIRST MATE" data-fr="CONTRAMAESTRE">CONTRAMAESTRE</span></h3>
+                            <p class="item-description"><span class="i18n" data-es="Almejas,Boquerones,Olivas,Patatas y 1/2 L. Vermut" data-en="Clams, Anchovies in Vinegar, Olives, Crisps & ½L House Vermouth" data-fr="Almejas,Boquerones,Olivas,Patatas y 1/2 L. Vermut">Almejas,Boquerones,Olivas,Patatas y 1/2 L. Vermut</span></p>
                         </div>
                         
                         <div class="item-right-col">
@@ -104,11 +124,11 @@
                             
                         </div>
                     </article>
-                    <article class="menu-item" style="">
+                    <article class="menu-item" data-gluten="false" data-lacteos="false" data-vegano="false" data-spice="0" data-recomendado="false">
                         
                         <div class="item-details">
-                            <h3 class="item-name"><span class="i18n" data-es="MARINERO" data-en="MARINERO" data-fr="MARINERO">MARINERO</span></h3>
-                            <p class="item-description"><span class="i18n" data-es="Navajas,Boquerones,Olivas,Patatas y 1/2 L. Vermut" data-en="Navajas,Boquerones,Olivas,Patatas y 1/2 L. Vermut" data-fr="Navajas,Boquerones,Olivas,Patatas y 1/2 L. Vermut">Navajas,Boquerones,Olivas,Patatas y 1/2 L. Vermut</span></p>
+                            <h3 class="item-name"><span class="i18n" data-es="MARINERO" data-en="SAILOR" data-fr="MARINERO">MARINERO</span></h3>
+                            <p class="item-description"><span class="i18n" data-es="Navajas,Boquerones,Olivas,Patatas y 1/2 L. Vermut" data-en="Razor Clams, Anchovies in Vinegar, Olives, Crisps & ½L House Vermouth" data-fr="Navajas,Boquerones,Olivas,Patatas y 1/2 L. Vermut">Navajas,Boquerones,Olivas,Patatas y 1/2 L. Vermut</span></p>
                         </div>
                         
                         <div class="item-right-col">
@@ -116,19 +136,19 @@
                             
                         </div>
                     </article>
-                    <article class="menu-item" style="">
+                    <article class="menu-item" data-gluten="false" data-lacteos="false" data-vegano="false" data-spice="0" data-recomendado="false">
                         
                         <div class="item-details">
-                            <h3 class="item-name"><span class="i18n" data-es="GAFE" data-en="GAFE" data-fr="GAFE">GAFE</span></h3>
-                            <p class="item-description"><span class="i18n" data-es="Zamburiñas,Navajas,Olivas,Patatas 1/2 L. Vermut" data-en="Zamburiñas,Navajas,Olivas,Patatas 1/2 L. Vermut" data-fr="Zamburiñas,Navajas,Olivas,Patatas 1/2 L. Vermut">Zamburiñas,Navajas,Olivas,Patatas 1/2 L. Vermut</span></p>
+                            <h3 class="item-name"><span class="i18n" data-es="GAFE" data-en="HELMSMAN" data-fr="GAFE">GAFE</span></h3>
+                            <p class="item-description"><span class="i18n" data-es="Zamburiñas,Navajas,Olivas,Patatas 1/2 L. Vermut" data-en="Zamburiñas,Navajas,Olives,Potatoes 1/2 L. Vermouth" data-fr="Zamburianas,Rasoirs,Olives,Pommes de terre 1/2 L. Vermouth">Zamburiñas,Navajas,Olivas,Patatas 1/2 L. Vermut</span></p>
                         </div>
                         
                         <div class="item-right-col">
-                            <div class='item-price'>14.90 €</div>
+                            <div class='item-price'>13.90 €</div>
                             
                         </div>
                     </article>
-                    <article class="menu-item item-nuevo" style="">
+                    <article class="menu-item item-nuevo" data-gluten="false" data-lacteos="false" data-vegano="false" data-spice="0" data-recomendado="false">
                         
                         <div class="item-details">
                             <h3 class="item-name"><span class="i18n" data-es="ARTILLERO" data-en="ARTILLERO" data-fr="ARTILLERO">ARTILLERO</span><span style='background: linear-gradient(135deg, #ff5722 0%, #ff8f00 100%); color: white; font-size:0.7rem; padding: 2px 8px; border-radius: 10px; margin-left: 5px; vertical-align: middle; text-transform: uppercase; font-weight: bold; box-shadow: 0 2px 4px rgba(255, 87, 34, 0.35);'>🆕 Novedad</span></h3>
@@ -140,7 +160,7 @@
                             
                         </div>
                     </article>
-                    <article class="menu-item" style="">
+                    <article class="menu-item" data-gluten="false" data-lacteos="false" data-vegano="false" data-spice="0" data-recomendado="false">
                         
                         <div class="item-details">
                             <h3 class="item-name"><span class="i18n" data-es="TIMONEL" data-en="TIMONEL" data-fr="TIMONEL">TIMONEL</span></h3>
@@ -152,7 +172,7 @@
                             
                         </div>
                     </article>
-                    <article class="menu-item item-nuevo" style="">
+                    <article class="menu-item item-nuevo" data-gluten="false" data-lacteos="false" data-vegano="false" data-spice="0" data-recomendado="false">
                         
                         <div class="item-details">
                             <h3 class="item-name"><span class="i18n" data-es="CIRUJANO" data-en="CIRUJANO" data-fr="CIRUJANO">CIRUJANO</span><span style='background: linear-gradient(135deg, #ff5722 0%, #ff8f00 100%); color: white; font-size:0.7rem; padding: 2px 8px; border-radius: 10px; margin-left: 5px; vertical-align: middle; text-transform: uppercase; font-weight: bold; box-shadow: 0 2px 4px rgba(255, 87, 34, 0.35);'>🆕 Novedad</span></h3>
@@ -160,11 +180,11 @@
                         </div>
                         
                         <div class="item-right-col">
-                            <div class='item-price'>16.50 €</div>
+                            <div class='item-price'>17.50 €</div>
                             
                         </div>
                     </article>
-                    <article class="menu-item item-nuevo" style="">
+                    <article class="menu-item item-nuevo" data-gluten="false" data-lacteos="false" data-vegano="false" data-spice="0" data-recomendado="false">
                         
                         <div class="item-details">
                             <h3 class="item-name"><span class="i18n" data-es="TONELERO" data-en="TONELERO" data-fr="TONELERO">TONELERO</span><span style='background: linear-gradient(135deg, #ff5722 0%, #ff8f00 100%); color: white; font-size:0.7rem; padding: 2px 8px; border-radius: 10px; margin-left: 5px; vertical-align: middle; text-transform: uppercase; font-weight: bold; box-shadow: 0 2px 4px rgba(255, 87, 34, 0.35);'>🆕 Novedad</span></h3>
@@ -176,7 +196,7 @@
                             
                         </div>
                     </article>
-                    <article class="menu-item" style="">
+                    <article class="menu-item" data-gluten="false" data-lacteos="false" data-vegano="false" data-spice="0" data-recomendado="false">
                         
                         <div class="item-details">
                             <h3 class="item-name"><span class="i18n" data-es="POLIZON" data-en="POLIZON" data-fr="POLIZON">POLIZON</span></h3>
@@ -188,7 +208,7 @@
                             
                         </div>
                     </article>
-                    <article class="menu-item" style="">
+                    <article class="menu-item" data-gluten="false" data-lacteos="false" data-vegano="false" data-spice="0" data-recomendado="false">
                         
                         <div class="item-details">
                             <h3 class="item-name"><span class="i18n" data-es="CAPITAN" data-en="CAPITAN" data-fr="CAPITAN">CAPITAN</span></h3>
@@ -203,9 +223,9 @@
                 </div>
             </section>
             <section class='menu-section'>
-                <h3 class='subsection-title'>OFERTA VERMUT</h3>
+                <h3 class='subsection-title'><span class="i18n" data-es="OFERTA VERMUT" data-en="OFERTA VERMUT" data-fr="OFERTA VERMUT">OFERTA VERMUT</span></h3>
                 <div class='items-list'>
-                    <article class="menu-item" style="">
+                    <article class="menu-item" data-gluten="false" data-lacteos="false" data-vegano="false" data-spice="0" data-recomendado="false">
                         
                         <div class="item-details">
                             <h3 class="item-name"><span class="i18n" data-es="2 Vermuts de la Casa + Patatas Sergio&#39;s" data-en="2 Vermuts de la Casa + Patatas Sergio&#39;s" data-fr="2 Vermuts de la Casa + Patatas Sergio&#39;s">2 Vermuts de la Casa + Patatas Sergio&#39;s</span></h3>
@@ -220,9 +240,9 @@
                 </div>
             </section>
             <section class='menu-section'>
-                <h3 class='subsection-title'>Tapeo Clasico</h3>
+                <h3 class='subsection-title'><span class="i18n" data-es="Tapeo Clasico" data-en="Tapeo Clasico" data-fr="Tapeo Clasico">Tapeo Clasico</span></h3>
                 <div class='items-list'>
-                    <article class="menu-item" style="">
+                    <article class="menu-item" data-gluten="false" data-lacteos="false" data-vegano="false" data-spice="0" data-recomendado="false">
                         
                         <div class="item-details">
                             <h3 class="item-name"><span class="i18n" data-es="Almejas 20/25" data-en="Almejas 20/25" data-fr="Almejas 20/25">Almejas 20/25</span></h3>
@@ -234,7 +254,7 @@
                             
                         </div>
                     </article>
-                    <article class="menu-item" style="">
+                    <article class="menu-item" data-gluten="false" data-lacteos="false" data-vegano="false" data-spice="0" data-recomendado="false">
                         
                         <div class="item-details">
                             <h3 class="item-name"><span class="i18n" data-es="Mejillones 8/12" data-en="Mejillones 8/12" data-fr="Mejillones 8/12">Mejillones 8/12</span></h3>
@@ -246,7 +266,7 @@
                             
                         </div>
                     </article>
-                    <article class="menu-item" style="">
+                    <article class="menu-item" data-gluten="false" data-lacteos="false" data-vegano="false" data-spice="0" data-recomendado="false">
                         
                         <div class="item-details">
                             <h3 class="item-name"><span class="i18n" data-es="Navajas 6/8" data-en="Navajas 6/8" data-fr="Navajas 6/8">Navajas 6/8</span></h3>
@@ -258,7 +278,7 @@
                             
                         </div>
                     </article>
-                    <article class="menu-item" style="">
+                    <article class="menu-item" data-gluten="false" data-lacteos="false" data-vegano="false" data-spice="0" data-recomendado="false">
                         
                         <div class="item-details">
                             <h3 class="item-name"><span class="i18n" data-es="Zamburiñas" data-en="Zamburiñas" data-fr="Zamburiñas">Zamburiñas</span></h3>
@@ -270,7 +290,7 @@
                             
                         </div>
                     </article>
-                    <article class="menu-item" style="">
+                    <article class="menu-item" data-gluten="false" data-lacteos="false" data-vegano="false" data-spice="0" data-recomendado="false">
                         
                         <div class="item-details">
                             <h3 class="item-name"><span class="i18n" data-es="Olivas Rellenas" data-en="Olivas Rellenas" data-fr="Olivas Rellenas">Olivas Rellenas</span></h3>
@@ -282,7 +302,7 @@
                             
                         </div>
                     </article>
-                    <article class="menu-item" style="">
+                    <article class="menu-item" data-gluten="false" data-lacteos="false" data-vegano="false" data-spice="0" data-recomendado="false">
                         
                         <div class="item-details">
                             <h3 class="item-name"><span class="i18n" data-es="Anchoas del Cantabrico 6 Und." data-en="Anchoas del Cantabrico 6 Und." data-fr="Anchoas del Cantabrico 6 Und.">Anchoas del Cantabrico 6 Und.</span></h3>
@@ -294,7 +314,7 @@
                             
                         </div>
                     </article>
-                    <article class="menu-item" style="">
+                    <article class="menu-item" data-gluten="false" data-lacteos="false" data-vegano="false" data-spice="0" data-recomendado="false">
                         
                         <div class="item-details">
                             <h3 class="item-name"><span class="i18n" data-es="Boquerones 8 Und." data-en="Boquerones 8 Und." data-fr="Boquerones 8 Und.">Boquerones 8 Und.</span></h3>
@@ -306,7 +326,7 @@
                             
                         </div>
                     </article>
-                    <article class="menu-item" style="">
+                    <article class="menu-item" data-gluten="false" data-lacteos="false" data-vegano="false" data-spice="0" data-recomendado="false">
                         
                         <div class="item-details">
                             <h3 class="item-name"><span class="i18n" data-es="Patatas Bolsa" data-en="Patatas Bolsa" data-fr="Patatas Bolsa">Patatas Bolsa</span></h3>
@@ -318,7 +338,7 @@
                             
                         </div>
                     </article>
-                    <article class="menu-item" style="">
+                    <article class="menu-item" data-gluten="false" data-lacteos="false" data-vegano="false" data-spice="0" data-recomendado="false">
                         
                         <div class="item-details">
                             <h3 class="item-name"><span class="i18n" data-es="Vermut Blanco/Negro de la Casa" data-en="Vermut Blanco/Negro de la Casa" data-fr="Vermut Blanco/Negro de la Casa">Vermut Blanco/Negro de la Casa</span></h3>
@@ -330,7 +350,7 @@
                             
                         </div>
                     </article>
-                    <article class="menu-item" style="">
+                    <article class="menu-item" data-gluten="false" data-lacteos="false" data-vegano="false" data-spice="0" data-recomendado="false">
                         
                         <div class="item-details">
                             <h3 class="item-name"><span class="i18n" data-es="Berberechos 20/30" data-en="Berberechos 20/30" data-fr="Berberechos 20/30">Berberechos 20/30</span></h3>
@@ -342,7 +362,7 @@
                             
                         </div>
                     </article>
-                    <article class="menu-item" style="">
+                    <article class="menu-item" data-gluten="false" data-lacteos="false" data-vegano="false" data-spice="0" data-recomendado="false">
                         
                         <div class="item-details">
                             <h3 class="item-name"><span class="i18n" data-es="Concha Fina" data-en="Concha Fina" data-fr="Concha Fina">Concha Fina</span></h3>
@@ -362,7 +382,7 @@
         <img id="imageModalImg" class="image-modal-content" alt="Imagen">
     </div>
     <footer>
-        <p>&copy; 2026 Bar Sergios. Todos los derechos reservados.</p>
+        <p>&copy; 2026 Bar Sergio's. Todos los derechos reservados.</p>
     </footer>
     <script>
         function toggleMenu() { document.getElementById('mobileMenu').classList.toggle('open'); }
@@ -373,6 +393,75 @@
         }
         function hideImageModal() { document.getElementById('imageModal').classList.remove('open'); }
         document.addEventListener('keydown', function (e) { if (e.key === 'Escape') hideImageModal(); });
+
+        function filterMenu(type) {
+            document.querySelectorAll('.filter-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            const activeBtn = document.getElementById('filter-' + type);
+            if (activeBtn) activeBtn.classList.add('active');
+
+            document.querySelectorAll('.menu-item').forEach(item => {
+                let show = true;
+                if (type === 'gluten') {
+                    show = item.getAttribute('data-gluten') !== 'true';
+                } else if (type === 'lacteos') {
+                    show = item.getAttribute('data-lacteos') !== 'true';
+                } else if (type === 'vegano') {
+                    show = item.getAttribute('data-vegano') === 'true';
+                } else if (type === 'picante') {
+                    show = parseInt(item.getAttribute('data-spice') || '0') > 0;
+                } else if (type === 'especialidad') {
+                    show = item.getAttribute('data-recomendado') === 'true';
+                }
+                
+                if (show) {
+                    item.style.display = '';
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+        }
+
+        document.addEventListener("DOMContentLoaded", function() {
+            const body = document.body;
+            if (body.getAttribute('data-sched-enabled') === 'true') {
+                const start = body.getAttribute('data-sched-start');
+                const end = body.getAttribute('data-sched-end');
+                const days = body.getAttribute('data-sched-days').split(',').map(Number);
+                
+                const now = new Date();
+                const currentHour = now.getHours().toString().padStart(2, '0') + ':' + now.getMinutes().toString().padStart(2, '0');
+                let currentDay = now.getDay();
+                if (currentDay === 0) currentDay = 7;
+                
+                const isDayActive = days.includes(currentDay);
+                const isTimeActive = currentHour >= start && currentHour <= end;
+                
+                if (!isDayActive || !isTimeActive) {
+                    const container = document.querySelector('.container');
+                    const warning = document.createElement('div');
+                    warning.className = 'schedule-warning';
+                    warning.innerHTML = `
+                        <div class="i18n" 
+                             data-es="⚠️ Esta sección está fuera de su horario de servicio (Disponible de ` + start + ` a ` + end + `). No se pueden realizar pedidos en este momento." 
+                             data-en="⚠️ This section is outside of its service hours (Available from ` + start + ` to ` + end + `). Orders cannot be placed at this time." 
+                             data-fr="⚠️ Cette section es en dehors de ses heures de service (Disponible de ` + start + ` à ` + end + `). Les commandes ne peuvent pas être passées pour le moment.">
+                             ⚠️ Esta sección está fuera de su horario de servicio (Disponible de ` + start + ` a ` + end + `). No se pueden realizar pedidos en este momento.
+                        </div>
+                    `;
+                    container.insertBefore(warning, container.firstChild);
+                    
+                    document.querySelectorAll('.btn-add-cart, .cart-add-row').forEach(el => {
+                        el.style.display = 'none';
+                    });
+                    
+                    if (typeof setLang === 'function') {
+                        setLang(localStorage.getItem('menuLang') || 'es');
+                    }
+                }
+            }
+        });
     </script>
 
 </body>

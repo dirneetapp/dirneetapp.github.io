@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bar Sergios - Torradas</title>
+    <title>Bar Sergio's - Torradas</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
@@ -13,23 +13,23 @@
     <button class="menu-toggle" onclick="toggleMenu()">☰</button>
     <div id="mobileMenu" class="mobile-menu-overlay">
         <button class="menu-toggle" style="position:absolute; top:1rem; right:1rem; border:none; background:none; font-size:2rem;" onclick="toggleMenu()">✕</button>
-        <a href="Desayunos.html" class="mobile-menu-link ">Desayunos</a>
-        <a href="Bocadillos.html" class="mobile-menu-link ">Bocadillos</a>
-        <a href="Vermuts.html" class="mobile-menu-link ">Vermuts</a>
-        <a href="Tapas.html" class="mobile-menu-link ">Tapas</a>
-        <a href="Torradas.html" class="mobile-menu-link active">Torradas</a>
-        <a href="Tablas.html" class="mobile-menu-link ">Tablas</a>
-        <a href="Platos Especiales.html" class="mobile-menu-link ">Platos Especiales</a>
-        <a href="Arroz.html" class="mobile-menu-link ">Tapa de Arroz</a>
-        <a href="Croquetas.html" class="mobile-menu-link ">Croquetas</a>
-        <a href="Postres.html" class="mobile-menu-link ">Postres</a>
-        <a href="ruleta.html" class="mobile-menu-link" style="color: #c084fc; font-weight: 600;">🎰 Ruleta Indecisos</a>
+        <a href="Desayunos.html" class="mobile-menu-link "><span class="i18n" data-es="Desayunos" data-en="Breakfasts" data-fr="Petits-Déjeuners">Desayunos</span></a>
+        <a href="Bocadillos.html" class="mobile-menu-link "><span class="i18n" data-es="Bocadillos" data-en="Sandwiches" data-fr="Sandwichs">Bocadillos</span></a>
+        <a href="Vermuts.html" class="mobile-menu-link "><span class="i18n" data-es="Vermuts" data-en="Vermouths" data-fr="Vermouths">Vermuts</span></a>
+        <a href="Tapas.html" class="mobile-menu-link "><span class="i18n" data-es="Tapas" data-en="Tapas" data-fr="Tapas">Tapas</span></a>
+        <a href="Torradas.html" class="mobile-menu-link active"><span class="i18n" data-es="Torradas" data-en="Toasted Breads" data-fr="Toasts">Torradas</span></a>
+        <a href="Tablas.html" class="mobile-menu-link "><span class="i18n" data-es="Tablas" data-en="Sharing Boards" data-fr="Planches">Tablas</span></a>
+        <a href="Platos Especiales.html" class="mobile-menu-link "><span class="i18n" data-es="Platos Especiales" data-en="Special Dishes" data-fr="Plats Spéciaux">Platos Especiales</span></a>
+        <a href="Arroz.html" class="mobile-menu-link "><span class="i18n" data-es="Tapa de Arroz" data-en="Rice Tapa" data-fr="Tapa de Riz">Tapa de Arroz</span></a>
+        <a href="Croquetas.html" class="mobile-menu-link "><span class="i18n" data-es="Croquetas" data-en="Croquettes" data-fr="Croquettes">Croquetas</span></a>
+        <a href="Postres.html" class="mobile-menu-link "><span class="i18n" data-es="Postres" data-en="Desserts" data-fr="Desserts">Postres</span></a>
+        <a href="ruleta.html" class="mobile-menu-link" style="color: #c084fc; font-weight: 600;"><span class="i18n" data-es="🎰 Ruleta Indecisos" data-en="🎰 Indecisive Wheel" data-fr="🎰 Roue des Indécis">🎰 Ruleta Indecisos</span></a>
     </div>
     <header class="hero">
         <a href="index.html" class="home-btn" title="Volver al inicio">🏠</a>
         <div class="hero-content">
-            <h1>Bar Sergios</h1>
-            <p class="subtitle">Gastronomía &amp; Buen Ambiente</p>
+            <h1>Bar Sergio's</h1>
+            <p class="subtitle"><span class="i18n" data-es="Gastronomía &amp; Buen Ambiente" data-en="Gastronomy &amp; Good Vibes" data-fr="Gastronomie &amp; Bonne Ambiance">Gastronomía &amp; Buen Ambiente</span></p>
         </div>
     </header>
 
@@ -52,11 +52,31 @@
         (function() { setLang(localStorage.getItem('menuLang') || 'es'); })();
     </script>
     <main class="container">
+        <div class="filter-container">
+            <button id="filter-all" class="filter-btn active" onclick="filterMenu('all')">
+                <span class="i18n" data-es="🍽️ Todos" data-en="🍽️ All" data-fr="🍽️ Tous">🍽️ Todos</span>
+            </button>
+            <button id="filter-gluten" class="filter-btn" onclick="filterMenu('gluten')">
+                <span class="i18n" data-es="🌾 Sin Gluten" data-en="🌾 Gluten-Free" data-fr="🌾 Sans Gluten">🌾 Sin Gluten</span>
+            </button>
+            <button id="filter-lacteos" class="filter-btn" onclick="filterMenu('lacteos')">
+                <span class="i18n" data-es="🥛 Sin Lactosa" data-en="🥛 Lactose-Free" data-fr="🥛 Sans Lactose">🥛 Sin Lactosa</span>
+            </button>
+            <button id="filter-vegano" class="filter-btn" onclick="filterMenu('vegano')">
+                <span class="i18n" data-es="🌱 Vegano" data-en="🌱 Vegan" data-fr="🌱 Végan">🌱 Vegano</span>
+            </button>
+            <button id="filter-picante" class="filter-btn" onclick="filterMenu('picante')">
+                <span class="i18n" data-es="🌶️ Picante" data-en="🌶️ Spicy" data-fr="🌶️ Épicé">🌶️ Picante</span>
+            </button>
+            <button id="filter-especialidad" class="filter-btn" onclick="filterMenu('especialidad')">
+                <span class="i18n" data-es="⭐ Especialidad" data-en="⭐ Specialty" data-fr="⭐ Spécialité">⭐ Especialidad</span>
+            </button>
+        </div>
         <div class="menu-container">
             <section class="menu-section">
-                <h2 class="section-title">Torradas</h2>
+                <h2 class="section-title"><span class="i18n" data-es="Torradas" data-en="Toasted Breads" data-fr="Toasts">Torradas</span></h2>
                 <div class="items-list">
-                    <article class="menu-item" style="">
+                    <article class="menu-item" data-gluten="false" data-lacteos="false" data-vegano="false" data-spice="0" data-recomendado="false">
                         
                         <div class="item-details">
                             <h3 class="item-name"><span class="i18n" data-es="Torrada de Atun" data-en="Torrada de Atun" data-fr="Torrada de Atun">Torrada de Atun</span></h3>
@@ -64,26 +84,14 @@
                         </div>
                         
                         <div class="item-right-col">
-                            <div class='item-price'>5.40 €</div>
+                            <div class='item-price'>5.90 €</div>
                             
                         </div>
                     </article>
-                    <article class="menu-item" style="">
+                    <article class="menu-item" data-gluten="false" data-lacteos="false" data-vegano="false" data-spice="0" data-recomendado="false">
                         
                         <div class="item-details">
                             <h3 class="item-name"><span class="i18n" data-es="Torrada de Anchoas" data-en="Torrada de Anchoas" data-fr="Torrada de Anchoas">Torrada de Anchoas</span></h3>
-                            <p class="item-description"><span class="i18n" data-es="" data-en="" data-fr=""></span></p>
-                        </div>
-                        
-                        <div class="item-right-col">
-                            <div class='item-price'>7.10 €</div>
-                            
-                        </div>
-                    </article>
-                    <article class="menu-item" style="">
-                        
-                        <div class="item-details">
-                            <h3 class="item-name"><span class="i18n" data-es="Torrada de Atun y Anchoas" data-en="Torrada de Atun y Anchoas" data-fr="Torrada de Atun y Anchoas">Torrada de Atun y Anchoas</span></h3>
                             <p class="item-description"><span class="i18n" data-es="" data-en="" data-fr=""></span></p>
                         </div>
                         
@@ -92,7 +100,19 @@
                             
                         </div>
                     </article>
-                    <article class="menu-item" style="">
+                    <article class="menu-item" data-gluten="false" data-lacteos="false" data-vegano="false" data-spice="0" data-recomendado="false">
+                        
+                        <div class="item-details">
+                            <h3 class="item-name"><span class="i18n" data-es="Torrada de Atun y Anchoas" data-en="Torrada de Atun y Anchoas" data-fr="Torrada de Atun y Anchoas">Torrada de Atun y Anchoas</span></h3>
+                            <p class="item-description"><span class="i18n" data-es="" data-en="" data-fr=""></span></p>
+                        </div>
+                        
+                        <div class="item-right-col">
+                            <div class='item-price'>7.80 €</div>
+                            
+                        </div>
+                    </article>
+                    <article class="menu-item" data-gluten="false" data-lacteos="false" data-vegano="false" data-spice="0" data-recomendado="false">
                         
                         <div class="item-details">
                             <h3 class="item-name"><span class="i18n" data-es="Torrada de Tortilla Patatas con cebolla" data-en="Torrada de Tortilla Patatas con cebolla" data-fr="Torrada de Tortilla Patatas con cebolla">Torrada de Tortilla Patatas con cebolla</span></h3>
@@ -104,7 +124,7 @@
                             
                         </div>
                     </article>
-                    <article class="menu-item" style="">
+                    <article class="menu-item" data-gluten="false" data-lacteos="false" data-vegano="false" data-spice="0" data-recomendado="false">
                         
                         <div class="item-details">
                             <h3 class="item-name"><span class="i18n" data-es="Torrada de Pollo" data-en="Torrada de Pollo" data-fr="Torrada de Pollo">Torrada de Pollo</span></h3>
@@ -116,7 +136,7 @@
                             
                         </div>
                     </article>
-                    <article class="menu-item" style="">
+                    <article class="menu-item" data-gluten="false" data-lacteos="false" data-vegano="false" data-spice="0" data-recomendado="false">
                         
                         <div class="item-details">
                             <h3 class="item-name"><span class="i18n" data-es="Torrada de Bacon" data-en="Torrada de Bacon" data-fr="Torrada de Bacon">Torrada de Bacon</span></h3>
@@ -128,7 +148,7 @@
                             
                         </div>
                     </article>
-                    <article class="menu-item" style="">
+                    <article class="menu-item" data-gluten="false" data-lacteos="false" data-vegano="false" data-spice="0" data-recomendado="false">
                         
                         <div class="item-details">
                             <h3 class="item-name"><span class="i18n" data-es="Torrada de Lomo" data-en="Torrada de Lomo" data-fr="Torrada de Lomo">Torrada de Lomo</span></h3>
@@ -140,7 +160,7 @@
                             
                         </div>
                     </article>
-                    <article class="menu-item" style="">
+                    <article class="menu-item" data-gluten="false" data-lacteos="false" data-vegano="false" data-spice="0" data-recomendado="false">
                         
                         <div class="item-details">
                             <h3 class="item-name"><span class="i18n" data-es="Torrada de Butifarra de Pages" data-en="Torrada de Butifarra de Pages" data-fr="Torrada de Butifarra de Pages">Torrada de Butifarra de Pages</span></h3>
@@ -152,7 +172,7 @@
                             
                         </div>
                     </article>
-                    <article class="menu-item" style="">
+                    <article class="menu-item" data-gluten="false" data-lacteos="false" data-vegano="false" data-spice="0" data-recomendado="false">
                         
                         <div class="item-details">
                             <h3 class="item-name"><span class="i18n" data-es="Torrada de Salchichas de Pages" data-en="Torrada de Salchichas de Pages" data-fr="Torrada de Salchichas de Pages">Torrada de Salchichas de Pages</span></h3>
@@ -164,7 +184,7 @@
                             
                         </div>
                     </article>
-                    <article class="menu-item" style="">
+                    <article class="menu-item" data-gluten="false" data-lacteos="false" data-vegano="false" data-spice="0" data-recomendado="false">
                         
                         <div class="item-details">
                             <h3 class="item-name"><span class="i18n" data-es="Torrada de Lomo,Bacon y Queso" data-en="Torrada de Lomo,Bacon y Queso" data-fr="Torrada de Lomo,Bacon y Queso">Torrada de Lomo,Bacon y Queso</span></h3>
@@ -176,7 +196,7 @@
                             
                         </div>
                     </article>
-                    <article class="menu-item" style="">
+                    <article class="menu-item" data-gluten="false" data-lacteos="false" data-vegano="false" data-spice="0" data-recomendado="false">
                         
                         <div class="item-details">
                             <h3 class="item-name"><span class="i18n" data-es="Torrada de Jamon Dulce con Queso fundido" data-en="Torrada de Jamon Dulce con Queso fundido" data-fr="Torrada de Jamon Dulce con Queso fundido">Torrada de Jamon Dulce con Queso fundido</span></h3>
@@ -188,7 +208,7 @@
                             
                         </div>
                     </article>
-                    <article class="menu-item" style="">
+                    <article class="menu-item" data-gluten="false" data-lacteos="false" data-vegano="false" data-spice="0" data-recomendado="false">
                         
                         <div class="item-details">
                             <h3 class="item-name"><span class="i18n" data-es="Torrada de Jamon Reserva" data-en="Torrada de Jamon Reserva" data-fr="Torrada de Jamon Reserva">Torrada de Jamon Reserva</span></h3>
@@ -200,7 +220,7 @@
                             
                         </div>
                     </article>
-                    <article class="menu-item" style="">
+                    <article class="menu-item" data-gluten="false" data-lacteos="false" data-vegano="false" data-spice="0" data-recomendado="false">
                         
                         <div class="item-details">
                             <h3 class="item-name"><span class="i18n" data-es="Torrada de Queso Curado" data-en="Torrada de Queso Curado" data-fr="Torrada de Queso Curado">Torrada de Queso Curado</span></h3>
@@ -212,7 +232,7 @@
                             
                         </div>
                     </article>
-                    <article class="menu-item" style="">
+                    <article class="menu-item" data-gluten="false" data-lacteos="false" data-vegano="false" data-spice="0" data-recomendado="false">
                         
                         <div class="item-details">
                             <h3 class="item-name"><span class="i18n" data-es="Torrada de Sobrasada de Mallorca" data-en="Torrada de Sobrasada de Mallorca" data-fr="Torrada de Sobrasada de Mallorca">Torrada de Sobrasada de Mallorca</span></h3>
@@ -224,7 +244,7 @@
                             
                         </div>
                     </article>
-                    <article class="menu-item" style="">
+                    <article class="menu-item" data-gluten="false" data-lacteos="false" data-vegano="false" data-spice="0" data-recomendado="false">
                         
                         <div class="item-details">
                             <h3 class="item-name"><span class="i18n" data-es="Torrada de Fuet" data-en="Torrada de Fuet" data-fr="Torrada de Fuet">Torrada de Fuet</span></h3>
@@ -232,13 +252,13 @@
                         </div>
                         
                         <div class="item-right-col">
-                            <div class='item-price'>5.50 €</div>
+                            <div class='item-price'>5.90 €</div>
                             
                         </div>
                     </article>
-                    <article class="menu-item" style="">
-                        
-                        <div class="item-details">
+                    <article class="menu-item" data-gluten="false" data-lacteos="false" data-vegano="false" data-spice="0" data-recomendado="false">
+                        <img src='assets/item_TorradadeButifarradeLEmporda.webp' alt='Torrada de Butifarra de L'Emporda' class='item-image' onclick="showImageModal('assets/item_TorradadeButifarradeLEmporda.webp')">
+                        <div class="item-details" onclick="showImageModal('assets/item_TorradadeButifarradeLEmporda.webp')" style='cursor: zoom-in;'>
                             <h3 class="item-name"><span class="i18n" data-es="Torrada de Butifarra de L&#39;Emporda" data-en="Torrada de Butifarra de L&#39;Emporda" data-fr="Torrada de Butifarra de L&#39;Emporda">Torrada de Butifarra de L&#39;Emporda</span></h3>
                             <p class="item-description"><span class="i18n" data-es="" data-en="" data-fr=""></span></p>
                         </div>
@@ -248,7 +268,7 @@
                             
                         </div>
                     </article>
-                    <article class="menu-item" style="">
+                    <article class="menu-item" data-gluten="false" data-lacteos="false" data-vegano="false" data-spice="0" data-recomendado="false">
                         
                         <div class="item-details">
                             <h3 class="item-name"><span class="i18n" data-es="Torrada de Chorizo Iberico" data-en="Torrada de Chorizo Iberico" data-fr="Torrada de Chorizo Iberico">Torrada de Chorizo Iberico</span></h3>
@@ -260,7 +280,7 @@
                             
                         </div>
                     </article>
-                    <article class="menu-item" style="">
+                    <article class="menu-item" data-gluten="false" data-lacteos="false" data-vegano="false" data-spice="0" data-recomendado="false">
                         
                         <div class="item-details">
                             <h3 class="item-name"><span class="i18n" data-es="Torrada de Jamon Dulce" data-en="Torrada de Jamon Dulce" data-fr="Torrada de Jamon Dulce">Torrada de Jamon Dulce</span></h3>
@@ -272,7 +292,7 @@
                             
                         </div>
                     </article>
-                    <article class="menu-item" style="">
+                    <article class="menu-item" data-gluten="false" data-lacteos="false" data-vegano="false" data-spice="0" data-recomendado="false">
                         
                         <div class="item-details">
                             <h3 class="item-name"><span class="i18n" data-es="Torrada de Frankfurt" data-en="Torrada de Frankfurt" data-fr="Torrada de Frankfurt">Torrada de Frankfurt</span></h3>
@@ -284,7 +304,7 @@
                             
                         </div>
                     </article>
-                    <article class="menu-item" style="">
+                    <article class="menu-item" data-gluten="false" data-lacteos="false" data-vegano="false" data-spice="0" data-recomendado="false">
                         
                         <div class="item-details">
                             <h3 class="item-name"><span class="i18n" data-es="Torrada de Chistorra" data-en="Torrada de Chistorra" data-fr="Torrada de Chistorra">Torrada de Chistorra</span></h3>
@@ -296,7 +316,7 @@
                             
                         </div>
                     </article>
-                    <article class="menu-item" style="">
+                    <article class="menu-item" data-gluten="false" data-lacteos="false" data-vegano="false" data-spice="0" data-recomendado="false">
                         
                         <div class="item-details">
                             <h3 class="item-name"><span class="i18n" data-es="Torrada de Butifarra Negra" data-en="Torrada de Butifarra Negra" data-fr="Torrada de Butifarra Negra">Torrada de Butifarra Negra</span></h3>
@@ -308,7 +328,7 @@
                             
                         </div>
                     </article>
-                    <article class="menu-item" style="">
+                    <article class="menu-item" data-gluten="false" data-lacteos="false" data-vegano="false" data-spice="0" data-recomendado="false">
                         
                         <div class="item-details">
                             <h3 class="item-name"><span class="i18n" data-es="Suplemento Extra de Queso o Bacon" data-en="Suplemento Extra de Queso o Bacon" data-fr="Suplemento Extra de Queso o Bacon">Suplemento Extra de Queso o Bacon</span></h3>
@@ -316,7 +336,7 @@
                         </div>
                         
                         <div class="item-right-col">
-                            <div class='item-price'>0.50 €</div>
+                            <div class='item-price'>0.80 €</div>
                             
                         </div>
                     </article>
@@ -328,7 +348,7 @@
         <img id="imageModalImg" class="image-modal-content" alt="Imagen">
     </div>
     <footer>
-        <p>&copy; 2026 Bar Sergios. Todos los derechos reservados.</p>
+        <p>&copy; 2026 Bar Sergio's. Todos los derechos reservados.</p>
     </footer>
     <script>
         function toggleMenu() { document.getElementById('mobileMenu').classList.toggle('open'); }
@@ -339,6 +359,75 @@
         }
         function hideImageModal() { document.getElementById('imageModal').classList.remove('open'); }
         document.addEventListener('keydown', function (e) { if (e.key === 'Escape') hideImageModal(); });
+
+        function filterMenu(type) {
+            document.querySelectorAll('.filter-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            const activeBtn = document.getElementById('filter-' + type);
+            if (activeBtn) activeBtn.classList.add('active');
+
+            document.querySelectorAll('.menu-item').forEach(item => {
+                let show = true;
+                if (type === 'gluten') {
+                    show = item.getAttribute('data-gluten') !== 'true';
+                } else if (type === 'lacteos') {
+                    show = item.getAttribute('data-lacteos') !== 'true';
+                } else if (type === 'vegano') {
+                    show = item.getAttribute('data-vegano') === 'true';
+                } else if (type === 'picante') {
+                    show = parseInt(item.getAttribute('data-spice') || '0') > 0;
+                } else if (type === 'especialidad') {
+                    show = item.getAttribute('data-recomendado') === 'true';
+                }
+                
+                if (show) {
+                    item.style.display = '';
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+        }
+
+        document.addEventListener("DOMContentLoaded", function() {
+            const body = document.body;
+            if (body.getAttribute('data-sched-enabled') === 'true') {
+                const start = body.getAttribute('data-sched-start');
+                const end = body.getAttribute('data-sched-end');
+                const days = body.getAttribute('data-sched-days').split(',').map(Number);
+                
+                const now = new Date();
+                const currentHour = now.getHours().toString().padStart(2, '0') + ':' + now.getMinutes().toString().padStart(2, '0');
+                let currentDay = now.getDay();
+                if (currentDay === 0) currentDay = 7;
+                
+                const isDayActive = days.includes(currentDay);
+                const isTimeActive = currentHour >= start && currentHour <= end;
+                
+                if (!isDayActive || !isTimeActive) {
+                    const container = document.querySelector('.container');
+                    const warning = document.createElement('div');
+                    warning.className = 'schedule-warning';
+                    warning.innerHTML = `
+                        <div class="i18n" 
+                             data-es="⚠️ Esta sección está fuera de su horario de servicio (Disponible de ` + start + ` a ` + end + `). No se pueden realizar pedidos en este momento." 
+                             data-en="⚠️ This section is outside of its service hours (Available from ` + start + ` to ` + end + `). Orders cannot be placed at this time." 
+                             data-fr="⚠️ Cette section es en dehors de ses heures de service (Disponible de ` + start + ` à ` + end + `). Les commandes ne peuvent pas être passées pour le moment.">
+                             ⚠️ Esta sección está fuera de su horario de servicio (Disponible de ` + start + ` a ` + end + `). No se pueden realizar pedidos en este momento.
+                        </div>
+                    `;
+                    container.insertBefore(warning, container.firstChild);
+                    
+                    document.querySelectorAll('.btn-add-cart, .cart-add-row').forEach(el => {
+                        el.style.display = 'none';
+                    });
+                    
+                    if (typeof setLang === 'function') {
+                        setLang(localStorage.getItem('menuLang') || 'es');
+                    }
+                }
+            }
+        });
     </script>
 
 </body>
