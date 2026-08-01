@@ -14,9 +14,39 @@
 </head>
 
 <body class="theme-gold">
-                                                                                                                                                                                                                                                                                                                        <div id="introOverlay" style="display: none;"></div>
+                                                                                                                                                                                                                                                                                                                                                <div id="introOverlay"
+        style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #121212; z-index: 9999; display: flex; justify-content: center; align-items: center; transition: opacity 0.5s ease;">
+        <img id="introImg1" src="assets/combo1.jpg" alt="Intro 1"
+            style="position: absolute; max-width: 100%; max-height: 100%; object-fit: contain; opacity: 1; transition: opacity 0.5s ease;">
+    </div>
     <script>
-        // document.body.style.overflow = 'hidden';
+        document.body.style.overflow = 'hidden';
+        (function() {
+            const images = [
+                document.getElementById('introImg1')
+            ];
+            let current = 0;
+            const displayTime = 3000; // 3 seconds per image
+
+            function next() {
+                if (current < images.length - 1) {
+                    if (images[current]) images[current].style.opacity = '0';
+                    current++;
+                    if (images[current]) images[current].style.opacity = '1';
+                    setTimeout(next, displayTime);
+                } else {
+                    const overlay = document.getElementById('introOverlay');
+                    if (overlay) {
+                        overlay.style.opacity = '0';
+                        setTimeout(() => {
+                            overlay.style.display = 'none';
+                            document.body.style.overflow = '';
+                        }, 500);
+                    }
+                }
+            }
+            setTimeout(next, displayTime);
+        })();
     </script>
 
     <button class="menu-toggle" onclick="toggleMenu()">☰</button>
@@ -39,7 +69,9 @@
     <header class="hero">
         <a href="index.html" class="home-btn" title="Volver al inicio">🏠</a>
         <div class="hero-content">
+            <img src="assets/sergios_logo.png" alt="Bar Sergio's Logo" class="hero-logo">
             <h1>Bar Sergio's</h1>
+            <hr class="hero-divider">
             <p class="subtitle">Gastronomía & Buen Ambiente</p>
         </div>
     </header>
@@ -66,70 +98,112 @@
 <main class="container">
         <div class="menu-container">
             <section class="menu-section">
-                <h2 class="section-title" style="text-align:center; display:block; border:none;"><span class="i18n" data-es="Nuestra Carta" data-en="Our Menu" data-fr="Notre Carte">Nuestra Carta</span></h2>
+                <div class="section-title-wrapper">
+                    <h2 class="section-title"><span class="i18n" data-es="Nuestra Carta" data-en="Our Menu" data-fr="Notre Carte">Nuestra Carta</span></h2>
+                </div>
 <div class="category-grid">
 
-                    <a href="Desayunos.html" class="category-card">
-                        <img src="assets/cat_Desayunos.webp" alt="Desayunos" class="category-card-image">
+                    <a href="Desayunos.html" class="category-card" id="card-desayunos">
+                        <div class="category-card-img-wrapper">
+                            <img src="assets/cat_Desayunos.webp" alt="Desayunos" class="category-card-image" loading="lazy">
+                            <div class="category-card-overlay"></div>
+                        </div>
                         <div class="category-card-title"><span class="i18n" data-es="Desayunos" data-en="Breakfasts" data-fr="Petits-Déjeuners">Desayunos</span></div>
                         <div class="category-card-description"></div>
+                        <span class="category-card-arrow">→</span>
                     </a>
 
-                    <a href="Bocadillos.html" class="category-card">
-                        <img src="assets/cat_Bocadillos.webp" alt="Bocadillos" class="category-card-image">
+                    <a href="Bocadillos.html" class="category-card" id="card-bocadillos">
+                        <div class="category-card-img-wrapper">
+                            <img src="assets/cat_Bocadillos.webp" alt="Bocadillos" class="category-card-image" loading="lazy">
+                            <div class="category-card-overlay"></div>
+                        </div>
                         <div class="category-card-title"><span class="i18n" data-es="Bocadillos" data-en="Sandwiches" data-fr="Sandwichs">Bocadillos</span></div>
                         <div class="category-card-description"></div>
+                        <span class="category-card-arrow">→</span>
                     </a>
 
-                    <a href="Vermuts.html" class="category-card">
-                        <img src="assets/cat_Vermuts.webp" alt="Vermuts" class="category-card-image">
+                    <a href="Vermuts.html" class="category-card" id="card-vermuts">
+                        <div class="category-card-img-wrapper">
+                            <img src="assets/cat_Vermuts.webp" alt="Vermuts" class="category-card-image" loading="lazy">
+                            <div class="category-card-overlay"></div>
+                        </div>
                         <div class="category-card-title"><span class="i18n" data-es="Vermuts" data-en="Vermouths" data-fr="Vermouths">Vermuts</span></div>
                         <div class="category-card-description"></div>
+                        <span class="category-card-arrow">→</span>
                     </a>
 
-                    <a href="Tapas.html" class="category-card">
-                        <img src="assets/cat_Tapas.webp" alt="Tapas" class="category-card-image">
+                    <a href="Tapas.html" class="category-card" id="card-tapas">
+                        <div class="category-card-img-wrapper">
+                            <img src="assets/cat_Tapas.webp" alt="Tapas" class="category-card-image" loading="lazy">
+                            <div class="category-card-overlay"></div>
+                        </div>
                         <div class="category-card-title"><span class="i18n" data-es="Tapas" data-en="Tapas" data-fr="Tapas">Tapas</span></div>
                         <div class="category-card-description"></div>
+                        <span class="category-card-arrow">→</span>
                     </a>
 
-                    <a href="Torradas.html" class="category-card">
-                        <img src="assets/cat_Torradas.webp" alt="Torradas" class="category-card-image">
+                    <a href="Torradas.html" class="category-card" id="card-torradas">
+                        <div class="category-card-img-wrapper">
+                            <img src="assets/cat_Torradas.webp" alt="Torradas" class="category-card-image" loading="lazy">
+                            <div class="category-card-overlay"></div>
+                        </div>
                         <div class="category-card-title"><span class="i18n" data-es="Torradas" data-en="Toasted Breads" data-fr="Toasts">Torradas</span></div>
                         <div class="category-card-description"></div>
+                        <span class="category-card-arrow">→</span>
                     </a>
 
-                    <a href="Tablas.html" class="category-card">
-                        <img src="assets/cat_Tablas.webp" alt="Tablas" class="category-card-image">
+                    <a href="Tablas.html" class="category-card" id="card-tablas">
+                        <div class="category-card-img-wrapper">
+                            <img src="assets/cat_Tablas.webp" alt="Tablas" class="category-card-image" loading="lazy">
+                            <div class="category-card-overlay"></div>
+                        </div>
                         <div class="category-card-title"><span class="i18n" data-es="Tablas" data-en="Sharing Boards" data-fr="Planches">Tablas</span></div>
                         <div class="category-card-description"></div>
+                        <span class="category-card-arrow">→</span>
                     </a>
 
-                    <a href="Platos Especiales.html" class="category-card">
-                        <img src="assets/cat_Platos Especiales.webp" alt="Platos Especiales" class="category-card-image">
+                    <a href="Platos Especiales.html" class="category-card" id="card-platos-especiales">
+                        <div class="category-card-img-wrapper">
+                            <img src="assets/cat_Platos Especiales.webp" alt="Platos Especiales" class="category-card-image" loading="lazy">
+                            <div class="category-card-overlay"></div>
+                        </div>
                         <div class="category-card-title"><span class="i18n" data-es="Platos Especiales" data-en="Special Dishes" data-fr="Plats Spéciaux">Platos Especiales</span></div>
                         <div class="category-card-description"></div>
+                        <span class="category-card-arrow">→</span>
                     </a>
 
-                    <a href="Arroz.html" class="category-card">
-                        <img src="assets/cat_arroz.webp" alt="Tapa de Arroz" class="category-card-image">
+                    <a href="Arroz.html" class="category-card" id="card-arroz">
+                        <div class="category-card-img-wrapper">
+                            <img src="assets/cat_arroz.webp" alt="Tapa de Arroz" class="category-card-image" loading="lazy">
+                            <div class="category-card-overlay"></div>
+                        </div>
                         <div class="category-card-title"><span class="i18n" data-es="Tapa de Arroz" data-en="Rice Tapa" data-fr="Tapa de Riz">Tapa de Arroz</span></div>
                         <div class="category-card-description"></div>
+                        <span class="category-card-arrow">→</span>
                     </a>
 
-                    <a href="Croquetas.html" class="category-card">
-                        <img src="assets/cat_Croquetas.webp" alt="Croquetas" class="category-card-image">
+                    <a href="Croquetas.html" class="category-card" id="card-croquetas">
+                        <div class="category-card-img-wrapper">
+                            <img src="assets/cat_Croquetas.webp" alt="Croquetas" class="category-card-image" loading="lazy">
+                            <div class="category-card-overlay"></div>
+                        </div>
                         <div class="category-card-title"><span class="i18n" data-es="Croquetas" data-en="Croquettes" data-fr="Croquettes">Croquetas</span></div>
                         <div class="category-card-description"></div>
+                        <span class="category-card-arrow">→</span>
                     </a>
 
-                    <a href="Postres.html" class="category-card">
-                        <img src="assets/cat_Postres.webp" alt="Postres" class="category-card-image">
+                    <a href="Postres.html" class="category-card" id="card-postres">
+                        <div class="category-card-img-wrapper">
+                            <img src="assets/cat_Postres.webp" alt="Postres" class="category-card-image" loading="lazy">
+                            <div class="category-card-overlay"></div>
+                        </div>
                         <div class="category-card-title"><span class="i18n" data-es="Postres" data-en="Desserts" data-fr="Desserts">Postres</span></div>
                         <div class="category-card-description"></div>
+                        <span class="category-card-arrow">→</span>
                     </a>
 
-                    <a href="ruleta.html" class="category-card roulette-card" style="background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%); border-color: rgba(255, 255, 255, 0.15);">
+                    <a href="ruleta.html" class="category-card roulette-card" id="card-ruleta" style="background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%); border-color: rgba(255, 255, 255, 0.15);">
                         <div style="padding: 2.5rem 1.5rem; text-align: center; color: #fff; display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100%; min-height: 200px;">
                             <span style="font-size: 3.5rem; margin-bottom: 10px; display: inline-block;" class="roulette-emoji">🎰</span>
                             <div class="category-card-title" style="color: #fff; padding: 0; margin-bottom: 5px; font-family: 'Playfair Display', serif;"><span class="i18n" data-es="¿Indeciso?" data-en="Feeling Indecisive?" data-fr="Indécis?">¿Indeciso?</span></div>
@@ -174,6 +248,13 @@
 
 
     </script>
+
+
+
+
+
+
+
 
 
 
