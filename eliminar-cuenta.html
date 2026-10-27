@@ -1,0 +1,838 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Eliminación de Cuenta y Datos | Bar Sergios</title>
+  <meta name="description" content="Información y solicitud para la eliminación de cuenta y supresión de datos personales de la aplicación Bar Sergios (com.barsergios.fidelizacion) desarrollada por Bar Sergio's.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-main: #0B0C0E;
+      --bg-card: #14161B;
+      --bg-card-hover: #1A1D24;
+      --border-card: #262A34;
+      --text-main: #F8FAFC;
+      --text-muted: #94A3B8;
+      --text-subtle: #64748B;
+      --accent-lime: #8CFF00;
+      --accent-gold: #D4AF37;
+      --accent-red: #EF4444;
+      --accent-red-bg: rgba(239, 68, 68, 0.12);
+      --accent-blue: #38BDF8;
+      --font-display: 'Outfit', sans-serif;
+      --font-body: 'Inter', sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: var(--bg-main);
+      color: var(--text-main);
+      font-family: var(--font-body);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      padding-bottom: 60px;
+    }
+
+    /* Top navigation header */
+    .header {
+      background: rgba(11, 12, 14, 0.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border-card);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      padding: 16px 24px;
+    }
+
+    .header-content {
+      max-width: 900px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .brand-logo {
+      width: 44px;
+      height: 44px;
+      border-radius: 12px;
+      background: linear-gradient(135deg, #1A1D24 0%, #262A34 100%);
+      border: 1px solid var(--accent-gold);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      font-family: var(--font-display);
+      color: var(--accent-gold);
+      font-size: 22px;
+    }
+
+    .brand-info h1 {
+      font-size: 18px;
+      font-family: var(--font-display);
+      font-weight: 700;
+      letter-spacing: -0.02em;
+    }
+
+    .brand-info p {
+      font-size: 12px;
+      color: var(--accent-lime);
+      font-weight: 500;
+    }
+
+    .header-link {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+
+    .header-link:hover {
+      color: var(--accent-lime);
+    }
+
+    /* Container */
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 40px 20px 20px;
+    }
+
+    /* Hero / App info badge */
+    .app-meta-box {
+      background: var(--bg-card);
+      border: 1px solid var(--border-card);
+      border-radius: 20px;
+      padding: 28px;
+      margin-bottom: 36px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .app-meta-box::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--accent-lime), var(--accent-gold));
+    }
+
+    .tag-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(140, 255, 0, 0.1);
+      color: var(--accent-lime);
+      font-size: 12px;
+      font-weight: 600;
+      padding: 4px 12px;
+      border-radius: 20px;
+      margin-bottom: 14px;
+      border: 1px solid rgba(140, 255, 0, 0.25);
+    }
+
+    .hero-title {
+      font-family: var(--font-display);
+      font-size: 30px;
+      font-weight: 800;
+      line-height: 1.25;
+      margin-bottom: 12px;
+      letter-spacing: -0.02em;
+    }
+
+    .hero-desc {
+      color: var(--text-muted);
+      font-size: 15px;
+      margin-bottom: 24px;
+    }
+
+    .meta-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 16px;
+      padding-top: 18px;
+      border-top: 1px solid var(--border-card);
+    }
+
+    .meta-item {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .meta-label {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--text-subtle);
+      font-weight: 600;
+    }
+
+    .meta-value {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--text-main);
+    }
+
+    .meta-value code {
+      background: #0B0C0E;
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-family: monospace;
+      color: var(--accent-gold);
+      font-size: 13px;
+    }
+
+    /* Section Cards */
+    .section-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-card);
+      border-radius: 18px;
+      padding: 32px;
+      margin-bottom: 28px;
+    }
+
+    .section-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 20px;
+    }
+
+    .section-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+    }
+
+    .icon-mobile {
+      background: rgba(140, 255, 0, 0.15);
+      color: var(--accent-lime);
+    }
+
+    .icon-web {
+      background: rgba(56, 189, 248, 0.15);
+      color: var(--accent-blue);
+    }
+
+    .icon-database {
+      background: rgba(212, 175, 55, 0.15);
+      color: var(--accent-gold);
+    }
+
+    .icon-alert {
+      background: var(--accent-red-bg);
+      color: var(--accent-red);
+    }
+
+    .section-title {
+      font-family: var(--font-display);
+      font-size: 22px;
+      font-weight: 700;
+      color: var(--text-main);
+      letter-spacing: -0.01em;
+    }
+
+    /* Steps list */
+    .steps-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      margin-top: 16px;
+    }
+
+    .step-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+      background: #0F1116;
+      border: 1px solid var(--border-card);
+      border-radius: 12px;
+      padding: 16px;
+    }
+
+    .step-number {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background: var(--accent-lime);
+      color: #000;
+      font-weight: 700;
+      font-size: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    .step-content h4 {
+      font-size: 15px;
+      font-weight: 600;
+      margin-bottom: 4px;
+      color: var(--text-main);
+    }
+
+    .step-content p {
+      font-size: 14px;
+      color: var(--text-muted);
+    }
+
+    /* Highlight box */
+    .alert-box {
+      background: var(--accent-red-bg);
+      border: 1px solid rgba(239, 68, 68, 0.35);
+      border-radius: 12px;
+      padding: 18px 20px;
+      margin-top: 20px;
+      display: flex;
+      gap: 14px;
+      align-items: flex-start;
+    }
+
+    .alert-icon {
+      font-size: 22px;
+      line-height: 1;
+    }
+
+    .alert-text h4 {
+      color: #FCA5A5;
+      font-size: 15px;
+      font-weight: 700;
+      margin-bottom: 4px;
+    }
+
+    .alert-text p {
+      color: #F87171;
+      font-size: 13.5px;
+      line-height: 1.5;
+    }
+
+    /* Interactive Web Form */
+    .web-form-container {
+      background: #0E1015;
+      border: 1px solid var(--border-card);
+      border-radius: 14px;
+      padding: 24px;
+      margin-top: 20px;
+    }
+
+    .form-group {
+      margin-bottom: 16px;
+    }
+
+    .form-label {
+      display: block;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text-main);
+      margin-bottom: 6px;
+    }
+
+    .form-input, .form-textarea {
+      width: 100%;
+      background: #15181F;
+      border: 1px solid #2B303C;
+      border-radius: 8px;
+      padding: 12px 14px;
+      color: #FFF;
+      font-family: inherit;
+      font-size: 14px;
+      transition: border-color 0.2s;
+    }
+
+    .form-input:focus, .form-textarea:focus {
+      outline: none;
+      border-color: var(--accent-lime);
+      box-shadow: 0 0 0 2px rgba(140, 255, 0, 0.15);
+    }
+
+    .form-hint {
+      font-size: 12px;
+      color: var(--text-subtle);
+      margin-top: 4px;
+    }
+
+    .btn-submit-delete {
+      background: #DC2626;
+      color: #FFF;
+      font-weight: 700;
+      font-size: 14px;
+      border: none;
+      border-radius: 10px;
+      padding: 13px 24px;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: background 0.2s, transform 0.1s;
+    }
+
+    .btn-submit-delete:hover {
+      background: #EF4444;
+      transform: translateY(-1px);
+    }
+
+    .direct-contacts {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-top: 18px;
+    }
+
+    .contact-chip {
+      background: #14171E;
+      border: 1px solid var(--border-card);
+      border-radius: 8px;
+      padding: 8px 14px;
+      font-size: 13px;
+      color: var(--text-muted);
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: all 0.2s;
+    }
+
+    .contact-chip:hover {
+      border-color: var(--accent-lime);
+      color: var(--text-main);
+    }
+
+    /* Data retention table */
+    .data-table-wrapper {
+      overflow-x: auto;
+      margin-top: 20px;
+    }
+
+    .data-table {
+      width: 100%;
+      border-collapse: collapse;
+      text-align: left;
+      font-size: 14px;
+    }
+
+    .data-table th {
+      background: #0E1015;
+      padding: 12px 16px;
+      border-bottom: 2px solid var(--border-card);
+      font-weight: 600;
+      color: var(--text-muted);
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+
+    .data-table td {
+      padding: 14px 16px;
+      border-bottom: 1px solid var(--border-card);
+      vertical-align: top;
+    }
+
+    .badge-deleted {
+      background: rgba(239, 68, 68, 0.15);
+      color: #F87171;
+      border: 1px solid rgba(239, 68, 68, 0.3);
+      padding: 3px 8px;
+      border-radius: 6px;
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      display: inline-block;
+      white-space: nowrap;
+    }
+
+    .badge-retained {
+      background: rgba(212, 175, 55, 0.15);
+      color: var(--accent-gold);
+      border: 1px solid rgba(212, 175, 55, 0.3);
+      padding: 3px 8px;
+      border-radius: 6px;
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      display: inline-block;
+      white-space: nowrap;
+    }
+
+    /* Footer */
+    .footer {
+      max-width: 900px;
+      margin: 40px auto 0;
+      padding-top: 24px;
+      border-top: 1px solid var(--border-card);
+      text-align: center;
+      color: var(--text-subtle);
+      font-size: 13px;
+    }
+
+    .footer a {
+      color: var(--text-muted);
+      text-decoration: underline;
+    }
+
+    .footer a:hover {
+      color: var(--accent-lime);
+    }
+
+    @media (max-width: 640px) {
+      .hero-title {
+        font-size: 24px;
+      }
+      .section-card {
+        padding: 22px;
+      }
+      .meta-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="header">
+    <div class="header-content">
+      <a href="index.html" class="brand">
+        <div class="brand-logo">S</div>
+        <div class="brand-info">
+          <h1>Bar Sergio's</h1>
+          <p>Club de Fidelización & Carta Digital</p>
+        </div>
+      </a>
+      <a href="index.html" class="header-link">← Volver a la Carta</a>
+    </div>
+  </header>
+
+  <!-- Main Container -->
+  <div class="container">
+
+    <!-- Identification Card (Google Play requirement 1: Reference App Name & Developer Name) -->
+    <div class="app-meta-box">
+      <div class="tag-badge">
+        <span>🛡️</span> Política Oficial de Supresión de Datos
+      </div>
+      <h2 class="hero-title">Eliminación de Cuenta y Privacidad</h2>
+      <p class="hero-desc">
+        En cumplimiento de las directrices de <strong>Google Play Store</strong> y el <strong>Reglamento General de Protección de Datos (RGPD)</strong>, en <strong>Bar Sergio's</strong> garantizamos tu derecho a solicitar la eliminación definitiva de tu cuenta y la supresión de tus datos personales en cualquier momento.
+      </p>
+
+      <div class="meta-grid">
+        <div class="meta-item">
+          <span class="meta-label">Aplicación oficial</span>
+          <span class="meta-value">Bar Sergios</span>
+        </div>
+        <div class="meta-item">
+          <span class="meta-label">ID de Paquete (Package ID)</span>
+          <span class="meta-value"><code>com.barsergios.fidelizacion</code></span>
+        </div>
+        <div class="meta-item">
+          <span class="meta-label">Desarrollador en Google Play</span>
+          <span class="meta-value">Bar Sergio's</span>
+        </div>
+        <div class="meta-item">
+          <span class="meta-label">Contacto del responsable</span>
+          <span class="meta-value">sergiogene40@gmail.com</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Section: Delete directly in-app (Google Play requirement 2A: Clear steps) -->
+    <div class="section-card">
+      <div class="section-header">
+        <div class="section-icon icon-mobile">📱</div>
+        <h3 class="section-title">Opción 1: Eliminar cuenta desde la App móvil</h3>
+      </div>
+      <p style="color: var(--text-muted); font-size: 14.5px;">
+        Si tienes instalada la app <strong>Bar Sergios</strong> en tu dispositivo Android, puedes realizar la baja instantánea y automática en menos de 1 minuto siguiendo estos sencillos pasos:
+      </p>
+
+      <ol class="steps-list">
+        <li class="step-item">
+          <div class="step-number">1</div>
+          <div class="step-content">
+            <h4>Abre la aplicación Bar Sergios</h4>
+            <p>Inicia la aplicación en tu smartphone o tablet Android e inicia sesión si no lo habías hecho.</p>
+          </div>
+        </li>
+        <li class="step-item">
+          <div class="step-number">2</div>
+          <div class="step-content">
+            <h4>Entra en tu perfil de usuario</h4>
+            <p>Toca el icono <strong>"Mi Perfil"</strong> situado en la esquina inferior derecha de la pantalla principal.</p>
+          </div>
+        </li>
+        <li class="step-item">
+          <div class="step-number">3</div>
+          <div class="step-content">
+            <h4>Accede a la opción de eliminación</h4>
+            <p>Desplázate hacia la parte inferior de la pantalla de ajustes y pulsa sobre la opción en color rojo <strong>"Eliminar cuenta"</strong>.</p>
+          </div>
+        </li>
+        <li class="step-item">
+          <div class="step-number">4</div>
+          <div class="step-content">
+            <h4>Confirma la solicitud</h4>
+            <p>Se mostrará un cuadro de confirmación explicando la supresión de puntos y cupones. Pulsa en <strong>"Sí, eliminar mi cuenta"</strong>.</p>
+          </div>
+        </li>
+      </ol>
+
+      <div class="alert-box">
+        <div class="alert-icon">⚠️</div>
+        <div class="alert-text">
+          <h4>Acción inmediata e irreversible</h4>
+          <p>Al pulsar confirmar en la aplicación, tu cuenta de autenticación, tu perfil, todos tus puntos acumulados y tus cupones activos se eliminan de forma permanente e irrecuperable de nuestros servidores.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Section: Delete without app / web request (Google Play requirement 2B: Clear steps from web) -->
+    <div class="section-card">
+      <div class="section-header">
+        <div class="section-icon icon-web">🌐</div>
+        <h3 class="section-title">Opción 2: Solicitar eliminación desde la Web (Sin la app)</h3>
+      </div>
+      <p style="color: var(--text-muted); font-size: 14.5px;">
+        Si ya has desinstalado la app <strong>Bar Sergios</strong>, no tienes acceso a tu dispositivo o prefieres que gestionemos la baja manualmente, puedes solicitarla directamente desde este formulario o escribiéndonos a nuestro canal de soporte:
+      </p>
+
+      <div class="web-form-container">
+        <form id="deleteRequestForm" onsubmit="handleFormSubmit(event)">
+          <div class="form-group">
+            <label class="form-label" for="userEmail">Correo electrónico registrado en la app *</label>
+            <input type="email" id="userEmail" class="form-input" placeholder="ejemplo@correo.com" required>
+            <p class="form-hint">Introduce el correo con el que te diste de alta en la aplicación (o con el que iniciaste sesión con Google).</p>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="userName">Nombre y Apellidos (Opcional)</label>
+            <input type="text" id="userName" class="form-input" placeholder="Tu nombre como aparece en el perfil">
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="userPhone">Teléfono de contacto (Opcional)</label>
+            <input type="tel" id="userPhone" class="form-input" placeholder="+34 600 000 000">
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="userNotes">Motivo o información adicional (Opcional)</label>
+            <textarea id="userNotes" class="form-textarea" rows="3" placeholder="Si deseas indicarnos algún detalle sobre tu solicitud..."></textarea>
+          </div>
+
+          <button type="submit" class="btn-submit-delete">
+            <span>🗑️</span> Enviar Solicitud de Eliminación de Cuenta
+          </button>
+        </form>
+
+        <div id="formSuccessMessage" style="display: none; margin-top: 18px; padding: 16px; border-radius: 10px; background: rgba(140, 255, 0, 0.12); border: 1px solid rgba(140, 255, 0, 0.3); color: #8CFF00; font-size: 14px;">
+          ✓ Se ha generado tu solicitud de baja. Se abrirá tu cliente de correo electrónico para confirmar el envío a <strong>sergiogene40@gmail.com</strong>. Tramitaremos la supresión de todos tus datos en un plazo máximo de <strong>48 a 72 horas</strong>.
+        </div>
+      </div>
+
+      <div style="margin-top: 24px;">
+        <h4 style="font-size: 14px; font-weight: 600; color: var(--text-muted); margin-bottom: 8px;">Vías directas de atención al cliente:</h4>
+        <div class="direct-contacts">
+          <a class="contact-chip" href="mailto:sergiogene40@gmail.com?subject=Solicitud%20de%20Eliminaci%C3%B3n%20de%20Cuenta%20Bar%20Sergios&body=Hola,%20deseo%20solicitar%20la%20eliminaci%C3%B3n%20definitiva%20de%20mi%20cuenta%20y%20datos%20en%20la%20app%20Bar%20Sergios.%20Mi%20correo%20registrado%20es:%20">
+            <span>✉️</span> sergiogene40@gmail.com
+          </a>
+          <a class="contact-chip" href="tel:+34691138185">
+            <span>📞</span> Teléfono: +34 691 138 185
+          </a>
+          <a class="contact-chip" href="https://wa.me/34691138185?text=Hola,%20deseo%20solicitar%20la%20eliminaci%C3%B3n%20de%20mi%20cuenta%20en%20la%20app%20Bar%20Sergios" target="_blank" rel="noopener">
+            <span>💬</span> WhatsApp: +34 691 138 185
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Section: Types of Data Deleted vs. Retained (Google Play requirement 3: Specification) -->
+    <div class="section-card">
+      <div class="section-header">
+        <div class="section-icon icon-database">🗂️</div>
+        <h3 class="section-title">Especificación de Datos: Eliminados vs. Conservados</h3>
+      </div>
+      <p style="color: var(--text-muted); font-size: 14.5px;">
+        A continuación se detalla exhaustivamente qué información se suprime de forma inmediata y qué registros específicos se conservan por mandato legal tributario:
+      </p>
+
+      <div class="data-table-wrapper">
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>Tipo de Dato</th>
+              <th>Destino tras la Solicitud</th>
+              <th>Periodo de Retención</th>
+              <th>Finalidad / Base Jurídica</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                <strong>Perfil de Usuario</strong><br>
+                <span style="font-size: 12px; color: var(--text-subtle);">Nombre, email, teléfono, foto de perfil</span>
+              </td>
+              <td><span class="badge-deleted">ELIMINADO INMEDIATAMENTE</span></td>
+              <td>0 días (Inmediato)</td>
+              <td>Supresión total en bases de datos Cloud (Firestore).</td>
+            </tr>
+            <tr>
+              <td>
+                <strong>Credenciales de Autenticación</strong><br>
+                <span style="font-size: 12px; color: var(--text-subtle);">Firebase Auth UID, credenciales Google Sign-In</span>
+              </td>
+              <td><span class="badge-deleted">ELIMINADO INMEDIATAMENTE</span></td>
+              <td>0 días (Inmediato)</td>
+              <td>Revocación y borrado completo del identificador de acceso.</td>
+            </tr>
+            <tr>
+              <td>
+                <strong>Puntos de Fidelización</strong><br>
+                <span style="font-size: 12px; color: var(--text-subtle);">Saldo de puntos acumulados en Bar Sergio's</span>
+              </td>
+              <td><span class="badge-deleted">ELIMINADO INMEDIATAMENTE</span></td>
+              <td>0 días (Inmediato)</td>
+              <td>Anulación permanente del saldo del club de fidelización.</td>
+            </tr>
+            <tr>
+              <td>
+                <strong>Cupones y Promociones</strong><br>
+                <span style="font-size: 12px; color: var(--text-subtle);">Cupones activos, canjeados o guardados</span>
+              </td>
+              <td><span class="badge-deleted">ELIMINADO INMEDIATAMENTE</span></td>
+              <td>0 días (Inmediato)</td>
+              <td>Borrado íntegro de la subcolección de cupones.</td>
+            </tr>
+            <tr>
+              <td>
+                <strong>Carnet Digital (Google / Apple Wallet)</strong><br>
+                <span style="font-size: 12px; color: var(--text-subtle);">Pase digital VIP y código QR de socio</span>
+              </td>
+              <td><span class="badge-deleted">DESVINCULADO Y ANULADO</span></td>
+              <td>0 días (Inmediato)</td>
+              <td>El pase queda desactivado y puede removerse del teléfono.</td>
+            </tr>
+            <tr>
+              <td>
+                <strong>Historial de Visitas en App</strong><br>
+                <span style="font-size: 12px; color: var(--text-subtle);">Registro de puntos sumados y avisos recibidos</span>
+              </td>
+              <td><span class="badge-deleted">ELIMINADO INMEDIATAMENTE</span></td>
+              <td>0 días (Inmediato)</td>
+              <td>Eliminación de historial y notificaciones push asociadas.</td>
+            </tr>
+            <tr>
+              <td>
+                <strong>Registros Contables y Tickets (TPV Local Físico)</strong><br>
+                <span style="font-size: 12px; color: var(--text-subtle);">Facturas simplificadas y tickets de caja del local físico</span>
+              </td>
+              <td><span class="badge-retained">CONSERVADO (ANONIMIZADO)</span></td>
+              <td><strong>5 años</strong> (Plazo legal tributario)</td>
+              <td><strong>Obligación Legal:</strong> Art. 29 y 70 Ley 58/2003 General Tributaria de España y Art. 30 Código de Comercio. <em>Nota: Los registros contables quedan 100% anonimizados y disociados, sin datos personales en la nube ni vínculo con la cuenta borrada.</em></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div style="background: #0E1015; border: 1px solid var(--border-card); border-radius: 12px; padding: 18px; margin-top: 20px;">
+        <h4 style="font-size: 14px; font-weight: 700; color: var(--accent-gold); margin-bottom: 6px;">Resumen de Privacidad en Servidores Cloud:</h4>
+        <p style="font-size: 13.5px; color: var(--text-muted); line-height: 1.55;">
+          Una vez ejecutada la eliminación, <strong>se conserva el 0% de los datos personales en la nube</strong>. Toda la infraestructura en Google Cloud y Firebase queda completamente limpia de tus registros personales.
+        </p>
+      </div>
+    </div>
+
+    <!-- Section: Frequently Asked Questions -->
+    <div class="section-card">
+      <div class="section-header">
+        <div class="section-icon icon-alert">❓</div>
+        <h3 class="section-title">Preguntas Frecuentes</h3>
+      </div>
+
+      <div style="display: flex; flex-direction: column; gap: 16px;">
+        <div>
+          <h4 style="font-size: 15px; font-weight: 600; color: var(--text-main); margin-bottom: 4px;">¿Puedo recuperar mis puntos si vuelvo a registrarme?</h4>
+          <p style="font-size: 13.5px; color: var(--text-muted);">No. La eliminación es permanente e irreversible. Si en el futuro decides crear una nueva cuenta con el mismo correo, empezarás desde cero con 0 puntos.</p>
+        </div>
+
+        <div style="border-top: 1px solid var(--border-card); padding-top: 14px;">
+          <h4 style="font-size: 15px; font-weight: 600; color: var(--text-main); margin-bottom: 4px;">¿Cuánto tarda en hacerse efectiva la solicitud vía Web?</h4>
+          <p style="font-size: 13.5px; color: var(--text-muted);">Si utilizas la opción dentro de la app móvil, es <strong>inmediata</strong>. Si envías la solicitud a través del formulario web o correo electrónico, nuestro equipo la procesará y confirmará en un plazo máximo de <strong>48 a 72 horas hábiles</strong>.</p>
+        </div>
+
+        <div style="border-top: 1px solid var(--border-card); padding-top: 14px;">
+          <h4 style="font-size: 15px; font-weight: 600; color: var(--text-main); margin-bottom: 4px;">¿Tengo derecho a solicitar una copia de mis datos antes de eliminarlos?</h4>
+          <p style="font-size: 13.5px; color: var(--text-muted);">Sí, conforme al derecho de portabilidad del RGPD, puedes enviarnos un correo antes de la baja para solicitar un archivo con los datos asociados a tu cuenta.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <p><strong>Bar Sergio's</strong> · Aplicación oficial Bar Sergios (<code>com.barsergios.fidelizacion</code>)</p>
+      <p style="margin-top: 4px;">Atención al cliente: <a href="mailto:sergiogene40@gmail.com">sergiogene40@gmail.com</a> | Tel: <a href="tel:+34691138185">+34 691 138 185</a></p>
+      <p style="margin-top: 12px; font-size: 12px;">
+        <a href="index.html">Carta Digital</a> · 
+        <a href="politica-privacidad.html">Política de Privacidad</a> · 
+        <a href="eliminar-cuenta.html">Eliminar Cuenta</a>
+      </p>
+    </footer>
+
+  </div>
+
+  <script>
+    function handleFormSubmit(e) {
+      e.preventDefault();
+      const email = document.getElementById('userEmail').value.trim();
+      const name = document.getElementById('userName').value.trim();
+      const phone = document.getElementById('userPhone').value.trim();
+      const notes = document.getElementById('userNotes').value.trim();
+
+      const subject = encodeURIComponent("Solicitud de Eliminación de Cuenta - Bar Sergios (" + email + ")");
+      const body = encodeURIComponent(
+        "SOLICITUD FORMAL DE ELIMINACIÓN DE CUENTA Y SUPRESIÓN DE DATOS\n\n" +
+        "Estimado equipo de Bar Sergio's,\n\n" +
+        "Por medio de la presente solicito la baja definitiva de mi cuenta y la supresión de mis datos personales asociados en la app Bar Sergios (com.barsergios.fidelizacion).\n\n" +
+        "DATOS DE LA CUENTA:\n" +
+        "- Correo electrónico registrado: " + email + "\n" +
+        (name ? "- Nombre del usuario: " + name + "\n" : "") +
+        (phone ? "- Teléfono de contacto: " + phone + "\n" : "") +
+        (notes ? "- Observaciones adicionales: " + notes + "\n" : "") +
+        "\nConfirmo que comprendo que esta acción eliminará irreversiblemente mis puntos acumulados, cupones y accesos.\n\n" +
+        "Fecha de solicitud: " + new Date().toLocaleDateString('es-ES')
+      );
+
+      const mailtoUrl = "mailto:sergiogene40@gmail.com?subject=" + subject + "&body=" + body;
+
+      document.getElementById('formSuccessMessage').style.display = 'block';
+      setTimeout(() => {
+        window.location.href = mailtoUrl;
+      }, 600);
+    }
+  </script>
+</body>
+</html>
