@@ -1,7 +1,8 @@
 /**
  * Bar Sergio's - Realtime Firebase Firestore Carta Synchronizer
  * Sincronización en tiempo real entre la App Admin, App Cliente y la Web (GitHub Pages / dirneetapp.github.io)
- * Incluye soporte en vivo para Icono Emoji vs. Foto del Producto con visor ampliado y descripción debajo.
+ * La carta de la App Admin (colección Firestore 'menu') es la AUTORIDAD PREDOMINANTE.
+ * Cualquier modificación, foto, orden o eliminación en la App Admin se refleja en tiempo real en la web.
  * Copyright 2026 Bar Sergio's
  */
 
@@ -20,15 +21,15 @@
 
     // Mapeo del archivo HTML a la categoría de Firestore
     function detectCurrentCategory() {
-        const path = window.location.pathname.toLowerCase();
+        const path = decodeURIComponent((window.location.pathname || '').toLowerCase());
         if (path.includes('desayunos')) return 'DESAYUNOS';
         if (path.includes('bocadillos')) return 'BOCADILLOS';
         if (path.includes('vermuts')) return 'VERMUTS';
-        if (path.includes('tapas')) return 'TAPAS';
+        if (path.includes('tapas') && !path.includes('tapaarroz')) return 'TAPAS';
         if (path.includes('torradas')) return 'TORRADAS';
         if (path.includes('tablas')) return 'TABLAS';
         if (path.includes('platos') || path.includes('especiales')) return 'PLATOS_ESPECIALES';
-        if (path.includes('arroz')) return 'ARROZ';
+        if (path.includes('arroz') || path.includes('tapaarroz')) return 'ARROZ';
         if (path.includes('croquetas')) return 'CROQUETAS';
         if (path.includes('postres')) return 'POSTRES';
         return null; // index.html o ruleta
@@ -43,6 +44,17 @@
             .replace(/[¿?¡!.,;:()'"\-_/\\]/g, ' ')
             .replace(/\s+/g, ' ')
             .trim();
+    }
+
+    // Escapa caracteres HTML peligrosos
+    function escapeHtml(str) {
+        if (!str) return '';
+        return String(str)
+            .replace(/&/g, '&amp;')
+            .replace(/</g, '&lt;')
+            .replace(/>/g, '&gt;')
+            .replace(/"/g, '&quot;')
+            .replace(/'/g, '&#039;');
     }
 
     // Convierte cadena Base64 de Firestore en Data URL válida para <img>
@@ -72,7 +84,7 @@
         document.head.appendChild(appScript);
     }
 
-    // Estilos visuales para elementos sincronizados (miniaturas, modal de foto con descripción, agotados)
+    // Estilos visuales para elementos sincronizados
     function injectStyles() {
         if (document.getElementById('firebase-sync-styles')) return;
         const style = document.createElement('style');
@@ -114,6 +126,20 @@
                 vertical-align: middle !important;
                 box-shadow: 0 2px 5px rgba(245, 158, 11, 0.35) !important;
             }
+            .badge-novedad-live {
+                display: inline-flex !important;
+                align-items: center;
+                gap: 3px;
+                background: linear-gradient(135deg, #10b981 0%, #059669 100%) !important;
+                color: #ffffff !important;
+                font-size: 0.7rem !important;
+                font-weight: 800 !important;
+                padding: 2px 8px !important;
+                border-radius: 8px !important;
+                margin-left: 6px !important;
+                vertical-align: middle !important;
+                box-shadow: 0 2px 5px rgba(16, 185, 129, 0.35) !important;
+            }
             .price-pulse-live {
                 animation: pricePulse 1.2s ease;
             }
@@ -148,6 +174,30 @@
             @keyframes blinkLive {
                 0%, 100% { opacity: 1; transform: scale(1); }
                 50% { opacity: 0.4; transform: scale(0.85); }
+            }
+            .firebase-sync-toast {
+                position: fixed;
+                top: 24px;
+                left: 50%;
+                transform: translateX(-50%);
+                background: rgba(18, 20, 26, 0.96);
+                border: 1.5px solid #8cff00;
+                color: #ffffff;
+                padding: 10px 22px;
+                border-radius: 30px;
+                font-size: 0.88rem;
+                font-weight: 700;
+                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8), 0 0 16px rgba(140, 255, 0, 0.45);
+                z-index: 99999;
+                display: flex;
+                align-items: center;
+                gap: 10px;
+                pointer-events: none;
+                animation: slideDownToast 0.3s ease;
+            }
+            @keyframes slideDownToast {
+                from { opacity: 0; transform: translate(-50%, -15px); }
+                to { opacity: 1; transform: translate(-50%, 0); }
             }
 
             /* Miniatura de Foto o Icono Emoji en la Carta */
@@ -375,6 +425,11 @@
         modal.classList.add('open');
     }
 
+    // Compatibilidad: sobreescribir showImageModal para redirigir al modal de foto
+    window.showImageModal = function (src) {
+        openDishPhotoModal(src, '', '', '');
+    };
+
     // Actualiza o inserta la miniatura (Foto pulsable vs Icono Emoji no pulsable) en un .menu-item
     function syncDishThumbnail(itemEl, firestoreData) {
         const photoDataUrl = toDataUrl(firestoreData.imageBase64);
@@ -384,9 +439,14 @@
         const legacyImg = itemEl.querySelector('img.item-image');
         if (legacyImg) {
             legacyImg.style.display = 'none';
+            legacyImg.onclick = null;
         }
 
         let thumbBox = itemEl.querySelector('.dish-thumb-box');
+
+        const priceText = (typeof firestoreData.price === 'number')
+            ? firestoreData.price.toFixed(2).replace('.', ',') + ' €'
+            : '';
 
         if (photoDataUrl) {
             if (!thumbBox) {
@@ -401,9 +461,6 @@
             `;
             thumbBox.onclick = function (e) {
                 e.stopPropagation();
-                const priceText = (typeof firestoreData.price === 'number')
-                    ? firestoreData.price.toFixed(2).replace('.', ',') + ' €'
-                    : '';
                 openDishPhotoModal(
                     photoDataUrl,
                     firestoreData.name || '',
@@ -411,6 +468,23 @@
                     firestoreData.description || ''
                 );
             };
+
+            // Limpiar onclick antiguo de .item-details y redirigir al visor ampliado
+            const detailsEl = itemEl.querySelector('.item-details');
+            if (detailsEl) {
+                detailsEl.removeAttribute('onclick');
+                detailsEl.style.cursor = 'zoom-in';
+                detailsEl.onclick = function (e) {
+                    if (e.target && (e.target.closest('button') || e.target.closest('select') || e.target.closest('a'))) return;
+                    e.stopPropagation();
+                    openDishPhotoModal(
+                        photoDataUrl,
+                        firestoreData.name || '',
+                        priceText,
+                        firestoreData.description || ''
+                    );
+                };
+            }
         } else if (iconEmoji) {
             if (!thumbBox) {
                 thumbBox = document.createElement('div');
@@ -419,10 +493,34 @@
             thumbBox.className = 'dish-thumb-box has-emoji';
             thumbBox.removeAttribute('title');
             thumbBox.textContent = iconEmoji;
-            // El icono emoji NO es pulsable
             thumbBox.onclick = null;
-        } else if (thumbBox) {
-            thumbBox.remove();
+
+            const detailsEl = itemEl.querySelector('.item-details');
+            if (detailsEl) {
+                detailsEl.removeAttribute('onclick');
+                detailsEl.onclick = null;
+                detailsEl.style.cursor = 'default';
+            }
+        } else {
+            if (thumbBox) thumbBox.remove();
+            const detailsEl = itemEl.querySelector('.item-details');
+            if (detailsEl) {
+                detailsEl.removeAttribute('onclick');
+                detailsEl.onclick = null;
+                detailsEl.style.cursor = 'default';
+            }
+        }
+    }
+
+    // Toast visual para indicar que la página se refresca por cambios en la carta
+    function showReloadToast() {
+        let toast = document.getElementById('firebaseSyncToast');
+        if (!toast) {
+            toast = document.createElement('div');
+            toast.id = 'firebaseSyncToast';
+            toast.className = 'firebase-sync-toast';
+            toast.innerHTML = '<span class="dot" style="width:8px;height:8px;background:#8cff00;border-radius:50%;display:inline-block;box-shadow:0 0 8px #8cff00;"></span> <span>⚡ Carta actualizada desde cocina. Actualizando...</span>';
+            document.body.appendChild(toast);
         }
     }
 
@@ -460,154 +558,256 @@
         db.collection("menu").onSnapshot(function (snapshot) {
             console.log("📡 Cambio detectado en la carta desde Firebase Firestore (" + snapshot.docs.length + " platos recibidos)");
 
-            const itemsMap = new Map();
-            snapshot.docs.forEach(function (doc) {
-                const data = doc.data();
-                const normName = normalizeName(data.name);
-                itemsMap.set(normName, data);
-            });
+            // Huella digital de la carta para detectar modificaciones reales
+            const currentFingerprint = snapshot.docs.map(function (d) {
+                const data = d.data();
+                return [
+                    d.id,
+                    data.updatedAt || 0,
+                    data.price || 0,
+                    data.isOutOfStock ? 1 : 0,
+                    data.isAvailable !== false ? 1 : 0,
+                    data.isPopular ? 1 : 0,
+                    data.isNew ? 1 : 0,
+                    data.name || '',
+                    data.description || '',
+                    data.category || '',
+                    data.order !== undefined ? data.order : 0
+                ].join(':');
+            }).join('|');
 
-            // 1. Actualizar elementos existentes en la página
-            const domItems = document.querySelectorAll('.menu-item');
-            const matchedNormalizedNames = new Set();
+            const isInitial = !window.__barSergiosInitialLoaded;
+            const savedFingerprint = sessionStorage.getItem('barSergiosFingerprint');
+            const hasChanged = (!isInitial && window.__barSergiosFingerprint && window.__barSergiosFingerprint !== currentFingerprint);
 
-            domItems.forEach(function (itemEl) {
-                const nameEl = itemEl.querySelector('.item-name .i18n') || itemEl.querySelector('.item-name');
-                if (!nameEl) return;
+            window.__barSergiosFingerprint = currentFingerprint;
+            sessionStorage.setItem('barSergiosFingerprint', currentFingerprint);
+            window.__barSergiosInitialLoaded = true;
 
-                const rawName = nameEl.textContent.trim();
-                const normName = normalizeName(rawName);
+            if (!currentCategory) {
+                // Página general / index
+                if (hasChanged) {
+                    showReloadToast();
+                    setTimeout(function () { window.location.reload(); }, 600);
+                }
+                return;
+            }
 
-                // Buscar por coincidencia exacta o inclusiva
-                let firestoreData = itemsMap.get(normName);
-                if (!firestoreData) {
-                    for (const [k, v] of itemsMap.entries()) {
-                        if (k === normName || normName.includes(k) || k.includes(normName)) {
-                            firestoreData = v;
-                            matchedNormalizedNames.add(k);
-                            break;
+            const itemsList = document.querySelector('.items-list');
+            if (!itemsList) return;
+
+            // Extraer y ordenar los platos de la categoría actual autorizados por la App Admin
+            const adminCategoryDocs = snapshot.docs
+                .map(function (doc) {
+                    const data = doc.data();
+                    let orderNum = 0;
+                    if (typeof data.order === 'number') {
+                        orderNum = data.order;
+                    } else if (data.order !== undefined && !isNaN(parseInt(data.order))) {
+                        orderNum = parseInt(data.order);
+                    } else {
+                        orderNum = data.updatedAt || 0;
+                    }
+
+                    return {
+                        id: doc.id,
+                        name: data.name || '',
+                        description: data.description || '',
+                        price: (typeof data.price === 'number') ? data.price : parseFloat(data.price) || 0,
+                        category: data.category || 'TAPAS',
+                        iconEmoji: data.iconEmoji || '🍽️',
+                        imageBase64: data.imageBase64 || '',
+                        isPopular: data.isPopular === true,
+                        isAvailable: data.isAvailable !== false,
+                        isOutOfStock: data.isOutOfStock === true,
+                        isNew: data.isNew === true,
+                        allergens: Array.isArray(data.allergens) ? data.allergens : [],
+                        spiceLevel: (typeof data.spiceLevel === 'number') ? data.spiceLevel : parseInt(data.spiceLevel) || 0,
+                        order: orderNum,
+                        updatedAt: data.updatedAt || 0
+                    };
+                })
+                .filter(function (item) {
+                    // Solo platos de la categoría actual y que estén activos en carta (isAvailable !== false)
+                    return item.category === currentCategory && item.isAvailable;
+                })
+                .sort(function (a, b) {
+                    const orderDiff = a.order - b.order;
+                    if (orderDiff !== 0) return orderDiff;
+                    return (a.updatedAt || 0) - (b.updatedAt || 0);
+                });
+
+            if (adminCategoryDocs.length === 0) {
+                return;
+            }
+
+            // Identificar los elementos existentes en el DOM
+            const existingDomItems = Array.from(itemsList.querySelectorAll('.menu-item'));
+            const matchedDomElements = new Set();
+
+            function findMatchingDomItem(adminItem) {
+                const normAdmin = normalizeName(adminItem.name);
+                const byId = document.getElementById('item_' + adminItem.id) || document.getElementById('live_item_' + adminItem.id);
+                if (byId && !matchedDomElements.has(byId)) return byId;
+
+                // Coincidencia exacta de nombre normalizado
+                for (let i = 0; i < existingDomItems.length; i++) {
+                    const el = existingDomItems[i];
+                    if (matchedDomElements.has(el)) continue;
+                    const nameEl = el.querySelector('.item-name .i18n') || el.querySelector('.item-name');
+                    if (nameEl) {
+                        const normDom = normalizeName(nameEl.textContent);
+                        if (normDom === normAdmin) {
+                            return el;
                         }
                     }
-                } else {
-                    matchedNormalizedNames.add(normName);
                 }
 
-                if (!firestoreData) return;
+                // Coincidencia parcial si no hay exacta
+                for (let i = 0; i < existingDomItems.length; i++) {
+                    const el = existingDomItems[i];
+                    if (matchedDomElements.has(el)) continue;
+                    const nameEl = el.querySelector('.item-name .i18n') || el.querySelector('.item-name');
+                    if (nameEl) {
+                        const normDom = normalizeName(nameEl.textContent);
+                        if (normDom.length > 4 && normAdmin.length > 4 && (normDom.includes(normAdmin) || normAdmin.includes(normDom))) {
+                            return el;
+                        }
+                    }
+                }
+                return null;
+            }
 
-                // --- ACTUALIZAR FOTO DEL PRODUCTO (PULSABLE) O ICONO EMOJI (NO PULSABLE) ---
-                syncDishThumbnail(itemEl, firestoreData);
+            // Actualizar o crear cada plato autorizado por la App Admin
+            adminCategoryDocs.forEach(function (adminItem) {
+                let itemEl = findMatchingDomItem(adminItem);
 
-                // --- ACTUALIZAR PRECIO ---
+                if (!itemEl) {
+                    itemEl = document.createElement('article');
+                    itemEl.className = 'menu-item';
+                    itemEl.id = 'item_' + adminItem.id;
+                    itemEl.innerHTML = `
+                        <div class="item-details">
+                            <h3 class="item-name"><span class="i18n" data-es="${escapeHtml(adminItem.name)}">${escapeHtml(adminItem.name)}</span></h3>
+                            <p class="item-description"><span class="i18n" data-es="${escapeHtml(adminItem.description)}">${escapeHtml(adminItem.description)}</span></p>
+                        </div>
+                        <div class="item-right-col">
+                            <div class="item-price">${adminItem.price.toFixed(2)} €</div>
+                        </div>
+                    `;
+                    itemsList.appendChild(itemEl);
+                } else {
+                    itemEl.id = 'item_' + adminItem.id;
+                }
+
+                matchedDomElements.add(itemEl);
+                itemEl.setAttribute('data-admin-synced', 'true');
+
+                // 1. Nombre
+                const nameEl = itemEl.querySelector('.item-name .i18n') || itemEl.querySelector('.item-name');
+                if (nameEl && nameEl.textContent.trim() !== adminItem.name) {
+                    nameEl.textContent = adminItem.name;
+                    nameEl.setAttribute('data-es', adminItem.name);
+                }
+
+                // 2. Descripción
+                const descEl = itemEl.querySelector('.item-description .i18n') || itemEl.querySelector('.item-description');
+                if (descEl) {
+                    descEl.textContent = adminItem.description;
+                    descEl.setAttribute('data-es', adminItem.description);
+                }
+
+                // 3. Precio
                 const priceEl = itemEl.querySelector('.item-price');
-                if (priceEl && typeof firestoreData.price === 'number') {
-                    const newPriceFormatted = firestoreData.price.toFixed(2) + " €";
-                    if (!priceEl.textContent.includes(newPriceFormatted)) {
-                        priceEl.textContent = newPriceFormatted;
+                if (priceEl) {
+                    const priceFormatted = adminItem.price.toFixed(2) + " €";
+                    if (!priceEl.textContent.includes(priceFormatted)) {
+                        priceEl.textContent = priceFormatted;
                         priceEl.classList.remove('price-pulse-live');
-                        void priceEl.offsetWidth; // reiniciar animación
+                        void priceEl.offsetWidth;
                         priceEl.classList.add('price-pulse-live');
                     }
                 }
 
-                // --- ACTUALIZAR AGOTADO HOY ---
-                const isOutOfStock = firestoreData.isOutOfStock === true;
-                const existingAgotadoBadge = itemEl.querySelector('.badge-agotado-hoy');
-                const cartBtn = itemEl.querySelector('.btn-add-cart') || itemEl.querySelector('.cart-add-row');
+                // 4. Badges (Agotado, Especialidad/Popular, Novedad)
+                const titleHeader = itemEl.querySelector('.item-name');
+                if (titleHeader) {
+                    titleHeader.querySelectorAll('.badge-agotado-hoy, .badge-destacado-live, .badge-novedad-live').forEach(function (b) {
+                        b.remove();
+                    });
 
-                if (isOutOfStock) {
-                    itemEl.classList.add('item-agotado-hoy');
-                    if (cartBtn) cartBtn.style.display = 'none';
-
-                    if (!existingAgotadoBadge) {
-                        const titleEl = itemEl.querySelector('.item-name');
-                        if (titleEl) {
-                            const badge = document.createElement('span');
-                            badge.className = 'badge-agotado-hoy';
-                            badge.innerHTML = '⚡ Agotado hoy';
-                            titleEl.appendChild(badge);
-                        }
+                    if (adminItem.isNew) {
+                        const newBadge = document.createElement('span');
+                        newBadge.className = 'badge-novedad-live';
+                        newBadge.innerHTML = '✨ Novedad';
+                        titleHeader.appendChild(newBadge);
                     }
+                    if (adminItem.isPopular) {
+                        const popBadge = document.createElement('span');
+                        popBadge.className = 'badge-destacado-live';
+                        popBadge.innerHTML = '⭐ Especialidad';
+                        titleHeader.appendChild(popBadge);
+                    }
+                    if (adminItem.isOutOfStock) {
+                        const stockBadge = document.createElement('span');
+                        stockBadge.className = 'badge-agotado-hoy';
+                        stockBadge.innerHTML = '⚡ Agotado hoy';
+                        titleHeader.appendChild(stockBadge);
+                    }
+                }
+
+                // 5. Estado agotado
+                if (adminItem.isOutOfStock) {
+                    itemEl.classList.add('item-agotado-hoy');
                 } else {
                     itemEl.classList.remove('item-agotado-hoy');
-                    if (existingAgotadoBadge) existingAgotadoBadge.remove();
-                    if (cartBtn) cartBtn.style.display = '';
                 }
 
-                // --- ACTUALIZAR DISPONIBILIDAD EN CARTA ---
-                if (firestoreData.isAvailable === false) {
-                    itemEl.style.display = 'none';
-                } else if (itemEl.style.display === 'none' && !isOutOfStock) {
-                    itemEl.style.display = '';
-                }
+                // 6. Atributos para filtros de la web
+                const allergensStr = adminItem.allergens.join(' ').toLowerCase();
+                itemEl.setAttribute('data-gluten', allergensStr.includes('gluten') ? 'true' : 'false');
+                itemEl.setAttribute('data-lacteos', (allergensStr.includes('lacteo') || allergensStr.includes('lácteo')) ? 'true' : 'false');
+                itemEl.setAttribute('data-vegano', (allergensStr.includes('vegano') || adminItem.description.toLowerCase().includes('vegano')) ? 'true' : 'false');
+                itemEl.setAttribute('data-spice', (adminItem.spiceLevel || 0).toString());
+                itemEl.setAttribute('data-recomendado', adminItem.isPopular ? 'true' : 'false');
 
-                // --- ACTUALIZAR DESTACADO / ESPECIALIDAD ---
-                const isPopular = firestoreData.isPopular === true;
-                let existingPopularBadge = itemEl.querySelector('.badge-destacado-live');
-                if (isPopular) {
-                    if (!existingPopularBadge && !itemEl.querySelector("[title='Especialidad']")) {
-                        const titleEl = itemEl.querySelector('.item-name');
-                        if (titleEl) {
-                            const badge = document.createElement('span');
-                            badge.className = 'badge-destacado-live';
-                            badge.innerHTML = '⭐ Especialidad';
-                            titleEl.appendChild(badge);
-                        }
-                    }
-                } else if (existingPopularBadge) {
-                    existingPopularBadge.remove();
-                }
+                // 7. Miniatura: Foto del Producto (ampliable) vs Icono Emoji (no ampliable)
+                syncDishThumbnail(itemEl, adminItem);
 
-                // --- ACTUALIZAR DESCRIPCIÓN ---
-                if (firestoreData.description && firestoreData.description.trim()) {
-                    const descEl = itemEl.querySelector('.item-description .i18n') || itemEl.querySelector('.item-description');
-                    if (descEl && descEl.textContent.trim() !== firestoreData.description.trim()) {
-                        descEl.textContent = firestoreData.description.trim();
-                    }
+                // Asegurar visible
+                itemEl.style.display = '';
+            });
+
+            // 8. ELIMINAR del DOM cualquier plato que NO exista en la App Admin (platos borrados o desactivados)
+            existingDomItems.forEach(function (el) {
+                if (!matchedDomElements.has(el)) {
+                    console.log("🗑️ Bar Sergio's Sync: Eliminando plato retirado en App Admin:", el.textContent.trim().slice(0, 35));
+                    el.remove();
                 }
             });
 
-            // 2. Si hay platos nuevos creados en la App Admin que pertenecen a esta categoría y no existen en el HTML
-            if (currentCategory) {
-                const itemsList = document.querySelector('.items-list');
-                if (itemsList) {
-                    snapshot.docs.forEach(function (doc) {
-                        const data = doc.data();
-                        if (data.category === currentCategory && data.isAvailable !== false) {
-                            const normName = normalizeName(data.name);
-                            if (!matchedNormalizedNames.has(normName)) {
-                                let existingLiveArticle = document.getElementById('live_item_' + doc.id);
-                                if (!existingLiveArticle) {
-                                    console.log("➕ Añadiendo plato nuevo en directo:", data.name);
-                                    const newArticle = document.createElement('article');
-                                    newArticle.className = 'menu-item item-nuevo';
-                                    newArticle.id = 'live_item_' + doc.id;
-                                    newArticle.innerHTML = `
-                                        <div class="item-details">
-                                            <h3 class="item-name">
-                                                <span>${data.name}</span>
-                                                <span style="background: linear-gradient(135deg, #8cff00 0%, #10b981 100%); color: #000; font-size:0.7rem; padding: 2px 8px; border-radius: 10px; margin-left: 5px; vertical-align: middle; font-weight: bold;">✨ Nuevo</span>
-                                                ${data.isOutOfStock ? '<span class="badge-agotado-hoy">⚡ Agotado hoy</span>' : ''}
-                                            </h3>
-                                            <p class="item-description"><span>${data.description || ''}</span></p>
-                                        </div>
-                                        <div class="item-right-col">
-                                            <div class="item-price">${(data.price || 0).toFixed(2)} €</div>
-                                        </div>
-                                    `;
-                                    if (data.isOutOfStock) {
-                                        newArticle.classList.add('item-agotado-hoy');
-                                    }
-                                    syncDishThumbnail(newArticle, data);
-                                    itemsList.appendChild(newArticle);
-                                } else {
-                                    syncDishThumbnail(existingLiveArticle, data);
-                                }
-                            }
-                        }
-                    });
+            // 9. ORDENACIÓN ESTRICTA: Reorganizar elementos en el DOM según el orden oficial de la App Admin
+            adminCategoryDocs.forEach(function (adminItem) {
+                const el = document.getElementById('item_' + adminItem.id);
+                if (el && el.parentElement === itemsList) {
+                    itemsList.appendChild(el);
                 }
+            });
+
+            // 10. Re-aplicar idioma activo si existe setLang
+            if (typeof window.setLang === 'function') {
+                const curLang = localStorage.getItem('menuLang') || 'es';
+                window.setLang(curLang);
             }
 
+            // 11. Si hubo un cambio en caliente y se requiere refresco, avisar y refrescar suavemente
+            if (hasChanged) {
+                console.log("⚡ [Bar Sergio's] Cambio detectado en carta desde App Admin. Refrescando página en tiempo real...");
+                showReloadToast();
+                setTimeout(function () {
+                    window.location.reload();
+                }, 800);
+            }
         }, function (error) {
             console.warn("Aviso Firebase Firestore Realtime (usando respaldo estático):", error.message);
         });

@@ -10,9 +10,9 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body class="theme-forest">
-    <button class="menu-toggle" onclick="toggleMenu()">☰</button>
+    <button class="menu-toggle" onclick="toggleMenu()">â˜°</button>
     <div id="mobileMenu" class="mobile-menu-overlay">
-        <button class="menu-toggle" style="position:absolute; top:1rem; right:1rem; border:none; background:none; font-size:2rem;" onclick="toggleMenu()">✕</button>
+        <button class="menu-toggle" style="position:absolute; top:1rem; right:1rem; border:none; background:none; font-size:2rem;" onclick="toggleMenu()">âœ•</button>
         <a href="Desayunos.html" class="mobile-menu-link "><span class="i18n" data-es="Desayunos" data-en="Breakfasts" data-fr="Petits-Déjeuners">Desayunos</span></a>
         <a href="Bocadillos.html" class="mobile-menu-link "><span class="i18n" data-es="Bocadillos" data-en="Sandwiches" data-fr="Sandwichs">Bocadillos</span></a>
         <a href="Vermuts.html" class="mobile-menu-link active"><span class="i18n" data-es="Vermuts" data-en="Vermouths" data-fr="Vermouths">Vermuts</span></a>
@@ -23,20 +23,20 @@
         <a href="Arroz.html" class="mobile-menu-link "><span class="i18n" data-es="Tapa de Arroz" data-en="Rice Tapa" data-fr="Tapa de Riz">Tapa de Arroz</span></a>
         <a href="Croquetas.html" class="mobile-menu-link "><span class="i18n" data-es="Croquetas" data-en="Croquettes" data-fr="Croquettes">Croquetas</span></a>
         <a href="Postres.html" class="mobile-menu-link "><span class="i18n" data-es="Postres" data-en="Desserts" data-fr="Desserts">Postres</span></a>
-        <a href="ruleta.html" class="mobile-menu-link" style="color: #c084fc; font-weight: 600;"><span class="i18n" data-es="🎰 Ruleta Indecisos" data-en="🎰 Indecisive Wheel" data-fr="🎰 Roue des Indécis">🎰 Ruleta Indecisos</span></a>
+        <a href="ruleta.html" class="mobile-menu-link" style="color: #c084fc; font-weight: 600;"><span class="i18n" data-es="ðŸŽ° Ruleta Indecisos" data-en="ðŸŽ° Indecisive Wheel" data-fr="ðŸŽ° Roue des IndÃ©cis">ðŸŽ° Ruleta Indecisos</span></a>
     </div>
     <header class="hero">
-        <a href="index.html" class="home-btn" title="Volver al inicio">🏠</a>
+        <a href="index.html" class="home-btn" title="Volver al inicio">ðŸ </a>
         <div class="hero-content">
             <h1>Bar Sergio's</h1>
-            <p class="subtitle"><span class="i18n" data-es="Gastronomía &amp; Buen Ambiente" data-en="Gastronomy &amp; Good Vibes" data-fr="Gastronomie &amp; Bonne Ambiance">Gastronomía &amp; Buen Ambiente</span></p>
+            <p class="subtitle"><span class="i18n" data-es="GastronomÃ­a &amp; Buen Ambiente" data-en="Gastronomy &amp; Good Vibes" data-fr="Gastronomie &amp; Bonne Ambiance">GastronomÃ­a &amp; Buen Ambiente</span></p>
         </div>
     </header>
 
     <div class="lang-switcher" id="langSwitcher">
-        <button id="lang-es" class="lang-btn active" onclick="setLang('es')" title="Español">🇪🇸</button>
-        <button id="lang-en" class="lang-btn" onclick="setLang('en')" title="English">🇬🇧</button>
-        <button id="lang-fr" class="lang-btn" onclick="setLang('fr')" title="Français">🇫🇷</button>
+        <button id="lang-es" class="lang-btn active" onclick="setLang('es')" title="EspaÃ±ol">ðŸ‡ªðŸ‡¸</button>
+        <button id="lang-en" class="lang-btn" onclick="setLang('en')" title="English">ðŸ‡¬ðŸ‡§</button>
+        <button id="lang-fr" class="lang-btn" onclick="setLang('fr')" title="FranÃ§ais">ðŸ‡«ðŸ‡·</button>
     </div>
     <script>
         function setLang(lang) {
@@ -54,22 +54,22 @@
     <main class="container">
         <div class="filter-container">
             <button id="filter-all" class="filter-btn active" onclick="filterMenu('all')">
-                <span class="i18n" data-es="🍽️ Todos" data-en="🍽️ All" data-fr="🍽️ Tous">🍽️ Todos</span>
+                <span class="i18n" data-es="ðŸ½ï¸ Todos" data-en="ðŸ½ï¸ All" data-fr="ðŸ½ï¸ Tous">ðŸ½ï¸ Todos</span>
             </button>
             <button id="filter-gluten" class="filter-btn" onclick="filterMenu('gluten')">
-                <span class="i18n" data-es="🌾 Sin Gluten" data-en="🌾 Gluten-Free" data-fr="🌾 Sans Gluten">🌾 Sin Gluten</span>
+                <span class="i18n" data-es="ðŸŒ¾ Sin Gluten" data-en="ðŸŒ¾ Gluten-Free" data-fr="ðŸŒ¾ Sans Gluten">ðŸŒ¾ Sin Gluten</span>
             </button>
             <button id="filter-lacteos" class="filter-btn" onclick="filterMenu('lacteos')">
-                <span class="i18n" data-es="🥛 Sin Lactosa" data-en="🥛 Lactose-Free" data-fr="🥛 Sans Lactose">🥛 Sin Lactosa</span>
+                <span class="i18n" data-es="ðŸ¥› Sin Lactosa" data-en="ðŸ¥› Lactose-Free" data-fr="ðŸ¥› Sans Lactose">ðŸ¥› Sin Lactosa</span>
             </button>
             <button id="filter-vegano" class="filter-btn" onclick="filterMenu('vegano')">
-                <span class="i18n" data-es="🌱 Vegano" data-en="🌱 Vegan" data-fr="🌱 Végan">🌱 Vegano</span>
+                <span class="i18n" data-es="ðŸŒ± Vegano" data-en="ðŸŒ± Vegan" data-fr="ðŸŒ± VÃ©gan">ðŸŒ± Vegano</span>
             </button>
             <button id="filter-picante" class="filter-btn" onclick="filterMenu('picante')">
-                <span class="i18n" data-es="🌶️ Picante" data-en="🌶️ Spicy" data-fr="🌶️ Épicé">🌶️ Picante</span>
+                <span class="i18n" data-es="ðŸŒ¶ï¸ Picante" data-en="ðŸŒ¶ï¸ Spicy" data-fr="ðŸŒ¶ï¸ Ã‰picÃ©">ðŸŒ¶ï¸ Picante</span>
             </button>
             <button id="filter-especialidad" class="filter-btn" onclick="filterMenu('especialidad')">
-                <span class="i18n" data-es="⭐ Especialidad" data-en="⭐ Specialty" data-fr="⭐ Spécialité">⭐ Especialidad</span>
+                <span class="i18n" data-es="â­ Especialidad" data-en="â­ Specialty" data-fr="â­ SpÃ©cialitÃ©">â­ Especialidad</span>
             </button>
         </div>
         <div class="menu-container">
@@ -84,19 +84,19 @@
                         </div>
                         
                         <div class="item-right-col">
-                            <div class='item-price'>10.90 €</div>
+                            <div class='item-price'>10.90 â‚¬</div>
                             
                         </div>
                     </article>
                     <article class="menu-item" data-gluten="false" data-lacteos="false" data-vegano="false" data-spice="0" data-recomendado="false">
-                        
-                        <div class="item-details">
+                        <img src='assets/item_vermuts_60.jpg' alt='MAESTRE' class='item-image' onclick="showImageModal('assets/item_vermuts_60.jpg')">
+                        <div class="item-details" onclick="showImageModal('assets/item_vermuts_60.jpg')" style='cursor: zoom-in;'>
                             <h3 class="item-name"><span class="i18n" data-es="MAESTRE" data-en="BOATSWAIN" data-fr="MAESTRE">MAESTRE</span></h3>
                             <p class="item-description"><span class="i18n" data-es="Boquerones,Olivas,Patatas 1/2 L. Vermut" data-en="Anchovies in Vinegar, Olives, Crisps & ½L House Vermouth" data-fr="Boquerones,Olivas,Patatas 1/2 L. Vermut">Boquerones,Olivas,Patatas 1/2 L. Vermut</span></p>
                         </div>
                         
                         <div class="item-right-col">
-                            <div class='item-price'>10.90 €</div>
+                            <div class='item-price'>10.90 â‚¬</div>
                             
                         </div>
                     </article>
@@ -108,7 +108,7 @@
                         </div>
                         
                         <div class="item-right-col">
-                            <div class='item-price'>11.90 €</div>
+                            <div class='item-price'>11.90 â‚¬</div>
                             
                         </div>
                     </article>
@@ -120,7 +120,7 @@
                         </div>
                         
                         <div class="item-right-col">
-                            <div class='item-price'>12.90 €</div>
+                            <div class='item-price'>12.90 â‚¬</div>
                             
                         </div>
                     </article>
@@ -132,7 +132,7 @@
                         </div>
                         
                         <div class="item-right-col">
-                            <div class='item-price'>14.90 €</div>
+                            <div class='item-price'>14.90 â‚¬</div>
                             
                         </div>
                     </article>
@@ -144,19 +144,19 @@
                         </div>
                         
                         <div class="item-right-col">
-                            <div class='item-price'>13.90 €</div>
+                            <div class='item-price'>13.90 â‚¬</div>
                             
                         </div>
                     </article>
                     <article class="menu-item item-nuevo" data-gluten="false" data-lacteos="false" data-vegano="false" data-spice="0" data-recomendado="false">
                         
                         <div class="item-details">
-                            <h3 class="item-name"><span class="i18n" data-es="ARTILLERO" data-en="ARTILLERO" data-fr="ARTILLERO">ARTILLERO</span><span style='background: linear-gradient(135deg, #ff5722 0%, #ff8f00 100%); color: white; font-size:0.7rem; padding: 2px 8px; border-radius: 10px; margin-left: 5px; vertical-align: middle; text-transform: uppercase; font-weight: bold; box-shadow: 0 2px 4px rgba(255, 87, 34, 0.35);'>🆕 Novedad</span></h3>
+                            <h3 class="item-name"><span class="i18n" data-es="ARTILLERO" data-en="ARTILLERO" data-fr="ARTILLERO">ARTILLERO</span><span style='background: linear-gradient(135deg, #ff5722 0%, #ff8f00 100%); color: white; font-size:0.7rem; padding: 2px 8px; border-radius: 10px; margin-left: 5px; vertical-align: middle; text-transform: uppercase; font-weight: bold; box-shadow: 0 2px 4px rgba(255, 87, 34, 0.35);'>ðŸ†• Novedad</span></h3>
                             <p class="item-description"><span class="i18n" data-es="Olivas,Patatas,Berberechos,Boquerones en Vinagre y 1/2 L. Vermut" data-en="Olivas,Patatas,Berberechos,Boquerones en Vinagre y 1/2 L. Vermut" data-fr="Olivas,Patatas,Berberechos,Boquerones en Vinagre y 1/2 L. Vermut">Olivas,Patatas,Berberechos,Boquerones en Vinagre y 1/2 L. Vermut</span></p>
                         </div>
                         
                         <div class="item-right-col">
-                            <div class='item-price'>15.50 €</div>
+                            <div class='item-price'>15.50 â‚¬</div>
                             
                         </div>
                     </article>
@@ -168,31 +168,31 @@
                         </div>
                         
                         <div class="item-right-col">
-                            <div class='item-price'>16.30 €</div>
+                            <div class='item-price'>16.30 â‚¬</div>
                             
                         </div>
                     </article>
                     <article class="menu-item item-nuevo" data-gluten="false" data-lacteos="false" data-vegano="false" data-spice="0" data-recomendado="false">
                         
                         <div class="item-details">
-                            <h3 class="item-name"><span class="i18n" data-es="CIRUJANO" data-en="CIRUJANO" data-fr="CIRUJANO">CIRUJANO</span><span style='background: linear-gradient(135deg, #ff5722 0%, #ff8f00 100%); color: white; font-size:0.7rem; padding: 2px 8px; border-radius: 10px; margin-left: 5px; vertical-align: middle; text-transform: uppercase; font-weight: bold; box-shadow: 0 2px 4px rgba(255, 87, 34, 0.35);'>🆕 Novedad</span></h3>
+                            <h3 class="item-name"><span class="i18n" data-es="CIRUJANO" data-en="CIRUJANO" data-fr="CIRUJANO">CIRUJANO</span><span style='background: linear-gradient(135deg, #ff5722 0%, #ff8f00 100%); color: white; font-size:0.7rem; padding: 2px 8px; border-radius: 10px; margin-left: 5px; vertical-align: middle; text-transform: uppercase; font-weight: bold; box-shadow: 0 2px 4px rgba(255, 87, 34, 0.35);'>ðŸ†• Novedad</span></h3>
                             <p class="item-description"><span class="i18n" data-es="Concha Fina,Anchoas,Patatas,Olivas y 1/2 L. Vermut." data-en="Concha Fina,Anchoas,Patatas,Olivas y 1/2 L. Vermut." data-fr="Concha Fina,Anchoas,Patatas,Olivas y 1/2 L. Vermut.">Concha Fina,Anchoas,Patatas,Olivas y 1/2 L. Vermut.</span></p>
                         </div>
                         
                         <div class="item-right-col">
-                            <div class='item-price'>17.50 €</div>
+                            <div class='item-price'>17.50 â‚¬</div>
                             
                         </div>
                     </article>
                     <article class="menu-item item-nuevo" data-gluten="false" data-lacteos="false" data-vegano="false" data-spice="0" data-recomendado="false">
                         
                         <div class="item-details">
-                            <h3 class="item-name"><span class="i18n" data-es="TONELERO" data-en="TONELERO" data-fr="TONELERO">TONELERO</span><span style='background: linear-gradient(135deg, #ff5722 0%, #ff8f00 100%); color: white; font-size:0.7rem; padding: 2px 8px; border-radius: 10px; margin-left: 5px; vertical-align: middle; text-transform: uppercase; font-weight: bold; box-shadow: 0 2px 4px rgba(255, 87, 34, 0.35);'>🆕 Novedad</span></h3>
+                            <h3 class="item-name"><span class="i18n" data-es="TONELERO" data-en="TONELERO" data-fr="TONELERO">TONELERO</span><span style='background: linear-gradient(135deg, #ff5722 0%, #ff8f00 100%); color: white; font-size:0.7rem; padding: 2px 8px; border-radius: 10px; margin-left: 5px; vertical-align: middle; text-transform: uppercase; font-weight: bold; box-shadow: 0 2px 4px rgba(255, 87, 34, 0.35);'>ðŸ†• Novedad</span></h3>
                             <p class="item-description"><span class="i18n" data-es="Berberechos,Concha Fina,Boquerones,Patatas, 							Olivas y 1 L. Vermut" data-en="Berberechos,Concha Fina,Boquerones,Patatas, 							Olivas y 1 L. Vermut" data-fr="Berberechos,Concha Fina,Boquerones,Patatas, 							Olivas y 1 L. Vermut">Berberechos,Concha Fina,Boquerones,Patatas, 							Olivas y 1 L. Vermut</span></p>
                         </div>
                         
                         <div class="item-right-col">
-                            <div class='item-price'>21.90 €</div>
+                            <div class='item-price'>21.90 â‚¬</div>
                             
                         </div>
                     </article>
@@ -204,7 +204,7 @@
                         </div>
                         
                         <div class="item-right-col">
-                            <div class='item-price'>25.90 €</div>
+                            <div class='item-price'>25.90 â‚¬</div>
                             
                         </div>
                     </article>
@@ -216,7 +216,151 @@
                         </div>
                         
                         <div class="item-right-col">
-                            <div class='item-price'>29.90 €</div>
+                            <div class='item-price'>29.90 â‚¬</div>
+                            
+                        </div>
+                    </article>
+                    <article class="menu-item" data-gluten="false" data-lacteos="false" data-vegano="false" data-spice="0" data-recomendado="false">
+                        
+                        <div class="item-details">
+                            <h3 class="item-name"><span class="i18n" data-es="2 Vermuts de la Casa + Patatas Sergio&#39;s" data-en="2 Vermuts de la Casa + Patatas Sergio&#39;s" data-fr="2 Vermuts de la Casa + Patatas Sergio&#39;s">2 Vermuts de la Casa + Patatas Sergio&#39;s</span></h3>
+                            <p class="item-description"><span class="i18n" data-es="" data-en="" data-fr=""></span></p>
+                        </div>
+                        
+                        <div class="item-right-col">
+                            <div class='item-price'>10.90 â‚¬</div>
+                            
+                        </div>
+                    </article>
+                    <article class="menu-item" data-gluten="false" data-lacteos="false" data-vegano="false" data-spice="0" data-recomendado="false">
+                        
+                        <div class="item-details">
+                            <h3 class="item-name"><span class="i18n" data-es="Almejas 20/25" data-en="Almejas 20/25" data-fr="Almejas 20/25">Almejas 20/25</span></h3>
+                            <p class="item-description"><span class="i18n" data-es="" data-en="" data-fr=""></span></p>
+                        </div>
+                        
+                        <div class="item-right-col">
+                            <div class='item-price'>6.80 â‚¬</div>
+                            
+                        </div>
+                    </article>
+                    <article class="menu-item" data-gluten="false" data-lacteos="false" data-vegano="false" data-spice="0" data-recomendado="false">
+                        
+                        <div class="item-details">
+                            <h3 class="item-name"><span class="i18n" data-es="Mejillones 8/12" data-en="Mejillones 8/12" data-fr="Mejillones 8/12">Mejillones 8/12</span></h3>
+                            <p class="item-description"><span class="i18n" data-es="" data-en="" data-fr=""></span></p>
+                        </div>
+                        
+                        <div class="item-right-col">
+                            <div class='item-price'>5.80 â‚¬</div>
+                            
+                        </div>
+                    </article>
+                    <article class="menu-item" data-gluten="false" data-lacteos="false" data-vegano="false" data-spice="0" data-recomendado="false">
+                        
+                        <div class="item-details">
+                            <h3 class="item-name"><span class="i18n" data-es="Navajas 6/8" data-en="Navajas 6/8" data-fr="Navajas 6/8">Navajas 6/8</span></h3>
+                            <p class="item-description"><span class="i18n" data-es="" data-en="" data-fr=""></span></p>
+                        </div>
+                        
+                        <div class="item-right-col">
+                            <div class='item-price'>5.55 â‚¬</div>
+                            
+                        </div>
+                    </article>
+                    <article class="menu-item" data-gluten="false" data-lacteos="false" data-vegano="false" data-spice="0" data-recomendado="false">
+                        
+                        <div class="item-details">
+                            <h3 class="item-name"><span class="i18n" data-es="Zamburiñas" data-en="Zamburiñas" data-fr="Zamburiñas">Zamburiñas</span></h3>
+                            <p class="item-description"><span class="i18n" data-es="" data-en="" data-fr=""></span></p>
+                        </div>
+                        
+                        <div class="item-right-col">
+                            <div class='item-price'>5.10 â‚¬</div>
+                            
+                        </div>
+                    </article>
+                    <article class="menu-item" data-gluten="false" data-lacteos="false" data-vegano="false" data-spice="0" data-recomendado="false">
+                        
+                        <div class="item-details">
+                            <h3 class="item-name"><span class="i18n" data-es="Olivas Rellenas" data-en="Olivas Rellenas" data-fr="Olivas Rellenas">Olivas Rellenas</span></h3>
+                            <p class="item-description"><span class="i18n" data-es="" data-en="" data-fr=""></span></p>
+                        </div>
+                        
+                        <div class="item-right-col">
+                            <div class='item-price'>1.95 â‚¬</div>
+                            
+                        </div>
+                    </article>
+                    <article class="menu-item" data-gluten="false" data-lacteos="false" data-vegano="false" data-spice="0" data-recomendado="false">
+                        
+                        <div class="item-details">
+                            <h3 class="item-name"><span class="i18n" data-es="Anchoas del Cantabrico 6 Und." data-en="Anchoas del Cantabrico 6 Und." data-fr="Anchoas del Cantabrico 6 Und.">Anchoas del Cantabrico 6 Und.</span></h3>
+                            <p class="item-description"><span class="i18n" data-es="" data-en="" data-fr=""></span></p>
+                        </div>
+                        
+                        <div class="item-right-col">
+                            <div class='item-price'>6.30 â‚¬</div>
+                            
+                        </div>
+                    </article>
+                    <article class="menu-item" data-gluten="false" data-lacteos="false" data-vegano="false" data-spice="0" data-recomendado="false">
+                        
+                        <div class="item-details">
+                            <h3 class="item-name"><span class="i18n" data-es="Boquerones 8 Und." data-en="Boquerones 8 Und." data-fr="Boquerones 8 Und.">Boquerones 8 Und.</span></h3>
+                            <p class="item-description"><span class="i18n" data-es="" data-en="" data-fr=""></span></p>
+                        </div>
+                        
+                        <div class="item-right-col">
+                            <div class='item-price'>5.90 â‚¬</div>
+                            
+                        </div>
+                    </article>
+                    <article class="menu-item" data-gluten="false" data-lacteos="false" data-vegano="false" data-spice="0" data-recomendado="false">
+                        
+                        <div class="item-details">
+                            <h3 class="item-name"><span class="i18n" data-es="Patatas Bolsa" data-en="Patatas Bolsa" data-fr="Patatas Bolsa">Patatas Bolsa</span></h3>
+                            <p class="item-description"><span class="i18n" data-es="" data-en="" data-fr=""></span></p>
+                        </div>
+                        
+                        <div class="item-right-col">
+                            <div class='item-price'>1.90 â‚¬</div>
+                            
+                        </div>
+                    </article>
+                    <article class="menu-item" data-gluten="false" data-lacteos="false" data-vegano="false" data-spice="0" data-recomendado="false">
+                        
+                        <div class="item-details">
+                            <h3 class="item-name"><span class="i18n" data-es="Vermut Blanco/Negro de la Casa" data-en="Vermut Blanco/Negro de la Casa" data-fr="Vermut Blanco/Negro de la Casa">Vermut Blanco/Negro de la Casa</span></h3>
+                            <p class="item-description"><span class="i18n" data-es="" data-en="" data-fr=""></span></p>
+                        </div>
+                        
+                        <div class="item-right-col">
+                            <div class='item-price'>3.00 â‚¬</div>
+                            
+                        </div>
+                    </article>
+                    <article class="menu-item" data-gluten="false" data-lacteos="false" data-vegano="false" data-spice="0" data-recomendado="false">
+                        
+                        <div class="item-details">
+                            <h3 class="item-name"><span class="i18n" data-es="Berberechos 30/40" data-en="Berberechos 30/40" data-fr="Berberechos 30/40">Berberechos 30/40</span></h3>
+                            <p class="item-description"><span class="i18n" data-es="" data-en="" data-fr=""></span></p>
+                        </div>
+                        
+                        <div class="item-right-col">
+                            <div class='item-price'>11.90 â‚¬</div>
+                            
+                        </div>
+                    </article>
+                    <article class="menu-item" data-gluten="false" data-lacteos="false" data-vegano="false" data-spice="0" data-recomendado="false">
+                        
+                        <div class="item-details">
+                            <h3 class="item-name"><span class="i18n" data-es="Concha Fina" data-en="Concha Fina" data-fr="Concha Fina">Concha Fina</span></h3>
+                            <p class="item-description"><span class="i18n" data-es="" data-en="" data-fr=""></span></p>
+                        </div>
+                        
+                        <div class="item-right-col">
+                            <div class='item-price'>8.90 â‚¬</div>
                             
                         </div>
                     </article>
@@ -233,7 +377,7 @@
                         </div>
                         
                         <div class="item-right-col">
-                            <div class='item-price'>10.90 €</div>
+                            <div class='item-price'>10.90 â‚¬</div>
                             
                         </div>
                     </article>
@@ -250,7 +394,7 @@
                         </div>
                         
                         <div class="item-right-col">
-                            <div class='item-price'>6.80 €</div>
+                            <div class='item-price'>6.80 â‚¬</div>
                             
                         </div>
                     </article>
@@ -262,7 +406,7 @@
                         </div>
                         
                         <div class="item-right-col">
-                            <div class='item-price'>5.80 €</div>
+                            <div class='item-price'>5.80 â‚¬</div>
                             
                         </div>
                     </article>
@@ -274,7 +418,7 @@
                         </div>
                         
                         <div class="item-right-col">
-                            <div class='item-price'>5.55 €</div>
+                            <div class='item-price'>5.55 â‚¬</div>
                             
                         </div>
                     </article>
@@ -286,7 +430,7 @@
                         </div>
                         
                         <div class="item-right-col">
-                            <div class='item-price'>5.10 €</div>
+                            <div class='item-price'>5.10 â‚¬</div>
                             
                         </div>
                     </article>
@@ -298,7 +442,7 @@
                         </div>
                         
                         <div class="item-right-col">
-                            <div class='item-price'>1.95 €</div>
+                            <div class='item-price'>1.95 â‚¬</div>
                             
                         </div>
                     </article>
@@ -310,7 +454,7 @@
                         </div>
                         
                         <div class="item-right-col">
-                            <div class='item-price'>6.30 €</div>
+                            <div class='item-price'>6.30 â‚¬</div>
                             
                         </div>
                     </article>
@@ -322,7 +466,7 @@
                         </div>
                         
                         <div class="item-right-col">
-                            <div class='item-price'>5.90 €</div>
+                            <div class='item-price'>5.90 â‚¬</div>
                             
                         </div>
                     </article>
@@ -334,7 +478,7 @@
                         </div>
                         
                         <div class="item-right-col">
-                            <div class='item-price'>1.90 €</div>
+                            <div class='item-price'>1.90 â‚¬</div>
                             
                         </div>
                     </article>
@@ -346,7 +490,7 @@
                         </div>
                         
                         <div class="item-right-col">
-                            <div class='item-price'>3.00 €</div>
+                            <div class='item-price'>3.00 â‚¬</div>
                             
                         </div>
                     </article>
@@ -358,7 +502,7 @@
                         </div>
                         
                         <div class="item-right-col">
-                            <div class='item-price'>11.90 €</div>
+                            <div class='item-price'>11.90 â‚¬</div>
                             
                         </div>
                     </article>
@@ -370,7 +514,7 @@
                         </div>
                         
                         <div class="item-right-col">
-                            <div class='item-price'>8.90 €</div>
+                            <div class='item-price'>8.90 â‚¬</div>
                             
                         </div>
                     </article>
@@ -444,10 +588,10 @@
                     warning.className = 'schedule-warning';
                     warning.innerHTML = `
                         <div class="i18n" 
-                             data-es="⚠️ Esta sección está fuera de su horario de servicio (Disponible de ` + start + ` a ` + end + `). No se pueden realizar pedidos en este momento." 
-                             data-en="⚠️ This section is outside of its service hours (Available from ` + start + ` to ` + end + `). Orders cannot be placed at this time." 
-                             data-fr="⚠️ Cette section es en dehors de ses heures de service (Disponible de ` + start + ` à ` + end + `). Les commandes ne peuvent pas être passées pour le moment.">
-                             ⚠️ Esta sección está fuera de su horario de servicio (Disponible de ` + start + ` a ` + end + `). No se pueden realizar pedidos en este momento.
+                             data-es="âš ï¸ Esta secciÃ³n estÃ¡ fuera de su horario de servicio (Disponible de ` + start + ` a ` + end + `). No se pueden realizar pedidos en este momento." 
+                             data-en="âš ï¸ This section is outside of its service hours (Available from ` + start + ` to ` + end + `). Orders cannot be placed at this time." 
+                             data-fr="âš ï¸ Cette section es en dehors de ses heures de service (Disponible de ` + start + ` Ã  ` + end + `). Les commandes ne peuvent pas Ãªtre passÃ©es pour le moment.">
+                             âš ï¸ Esta secciÃ³n estÃ¡ fuera de su horario de servicio (Disponible de ` + start + ` a ` + end + `). No se pueden realizar pedidos en este momento.
                         </div>
                     `;
                     container.insertBefore(warning, container.firstChild);
@@ -464,6 +608,5 @@
         });
     </script>
 
-    <script src="firebase-sync.js"></script>
 </body>
 </html>

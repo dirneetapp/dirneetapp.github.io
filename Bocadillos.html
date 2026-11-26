@@ -10,9 +10,9 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body class="theme-ocean">
-    <button class="menu-toggle" onclick="toggleMenu()">☰</button>
+    <button class="menu-toggle" onclick="toggleMenu()">â˜°</button>
     <div id="mobileMenu" class="mobile-menu-overlay">
-        <button class="menu-toggle" style="position:absolute; top:1rem; right:1rem; border:none; background:none; font-size:2rem;" onclick="toggleMenu()">✕</button>
+        <button class="menu-toggle" style="position:absolute; top:1rem; right:1rem; border:none; background:none; font-size:2rem;" onclick="toggleMenu()">âœ•</button>
         <a href="Desayunos.html" class="mobile-menu-link "><span class="i18n" data-es="Desayunos" data-en="Breakfasts" data-fr="Petits-Déjeuners">Desayunos</span></a>
         <a href="Bocadillos.html" class="mobile-menu-link active"><span class="i18n" data-es="Bocadillos" data-en="Sandwiches" data-fr="Sandwichs">Bocadillos</span></a>
         <a href="Vermuts.html" class="mobile-menu-link "><span class="i18n" data-es="Vermuts" data-en="Vermouths" data-fr="Vermouths">Vermuts</span></a>
@@ -23,20 +23,20 @@
         <a href="Arroz.html" class="mobile-menu-link "><span class="i18n" data-es="Tapa de Arroz" data-en="Rice Tapa" data-fr="Tapa de Riz">Tapa de Arroz</span></a>
         <a href="Croquetas.html" class="mobile-menu-link "><span class="i18n" data-es="Croquetas" data-en="Croquettes" data-fr="Croquettes">Croquetas</span></a>
         <a href="Postres.html" class="mobile-menu-link "><span class="i18n" data-es="Postres" data-en="Desserts" data-fr="Desserts">Postres</span></a>
-        <a href="ruleta.html" class="mobile-menu-link" style="color: #c084fc; font-weight: 600;"><span class="i18n" data-es="🎰 Ruleta Indecisos" data-en="🎰 Indecisive Wheel" data-fr="🎰 Roue des Indécis">🎰 Ruleta Indecisos</span></a>
+        <a href="ruleta.html" class="mobile-menu-link" style="color: #c084fc; font-weight: 600;"><span class="i18n" data-es="ðŸŽ° Ruleta Indecisos" data-en="ðŸŽ° Indecisive Wheel" data-fr="ðŸŽ° Roue des IndÃ©cis">ðŸŽ° Ruleta Indecisos</span></a>
     </div>
     <header class="hero">
-        <a href="index.html" class="home-btn" title="Volver al inicio">🏠</a>
+        <a href="index.html" class="home-btn" title="Volver al inicio">ðŸ </a>
         <div class="hero-content">
             <h1>Bar Sergio's</h1>
-            <p class="subtitle"><span class="i18n" data-es="Gastronomía &amp; Buen Ambiente" data-en="Gastronomy &amp; Good Vibes" data-fr="Gastronomie &amp; Bonne Ambiance">Gastronomía &amp; Buen Ambiente</span></p>
+            <p class="subtitle"><span class="i18n" data-es="GastronomÃ­a &amp; Buen Ambiente" data-en="Gastronomy &amp; Good Vibes" data-fr="Gastronomie &amp; Bonne Ambiance">GastronomÃ­a &amp; Buen Ambiente</span></p>
         </div>
     </header>
 
     <div class="lang-switcher" id="langSwitcher">
-        <button id="lang-es" class="lang-btn active" onclick="setLang('es')" title="Español">🇪🇸</button>
-        <button id="lang-en" class="lang-btn" onclick="setLang('en')" title="English">🇬🇧</button>
-        <button id="lang-fr" class="lang-btn" onclick="setLang('fr')" title="Français">🇫🇷</button>
+        <button id="lang-es" class="lang-btn active" onclick="setLang('es')" title="EspaÃ±ol">ðŸ‡ªðŸ‡¸</button>
+        <button id="lang-en" class="lang-btn" onclick="setLang('en')" title="English">ðŸ‡¬ðŸ‡§</button>
+        <button id="lang-fr" class="lang-btn" onclick="setLang('fr')" title="FranÃ§ais">ðŸ‡«ðŸ‡·</button>
     </div>
     <script>
         function setLang(lang) {
@@ -54,22 +54,22 @@
     <main class="container">
         <div class="filter-container">
             <button id="filter-all" class="filter-btn active" onclick="filterMenu('all')">
-                <span class="i18n" data-es="🍽️ Todos" data-en="🍽️ All" data-fr="🍽️ Tous">🍽️ Todos</span>
+                <span class="i18n" data-es="ðŸ½ï¸ Todos" data-en="ðŸ½ï¸ All" data-fr="ðŸ½ï¸ Tous">ðŸ½ï¸ Todos</span>
             </button>
             <button id="filter-gluten" class="filter-btn" onclick="filterMenu('gluten')">
-                <span class="i18n" data-es="🌾 Sin Gluten" data-en="🌾 Gluten-Free" data-fr="🌾 Sans Gluten">🌾 Sin Gluten</span>
+                <span class="i18n" data-es="ðŸŒ¾ Sin Gluten" data-en="ðŸŒ¾ Gluten-Free" data-fr="ðŸŒ¾ Sans Gluten">ðŸŒ¾ Sin Gluten</span>
             </button>
             <button id="filter-lacteos" class="filter-btn" onclick="filterMenu('lacteos')">
-                <span class="i18n" data-es="🥛 Sin Lactosa" data-en="🥛 Lactose-Free" data-fr="🥛 Sans Lactose">🥛 Sin Lactosa</span>
+                <span class="i18n" data-es="ðŸ¥› Sin Lactosa" data-en="ðŸ¥› Lactose-Free" data-fr="ðŸ¥› Sans Lactose">ðŸ¥› Sin Lactosa</span>
             </button>
             <button id="filter-vegano" class="filter-btn" onclick="filterMenu('vegano')">
-                <span class="i18n" data-es="🌱 Vegano" data-en="🌱 Vegan" data-fr="🌱 Végan">🌱 Vegano</span>
+                <span class="i18n" data-es="ðŸŒ± Vegano" data-en="ðŸŒ± Vegan" data-fr="ðŸŒ± VÃ©gan">ðŸŒ± Vegano</span>
             </button>
             <button id="filter-picante" class="filter-btn" onclick="filterMenu('picante')">
-                <span class="i18n" data-es="🌶️ Picante" data-en="🌶️ Spicy" data-fr="🌶️ Épicé">🌶️ Picante</span>
+                <span class="i18n" data-es="ðŸŒ¶ï¸ Picante" data-en="ðŸŒ¶ï¸ Spicy" data-fr="ðŸŒ¶ï¸ Ã‰picÃ©">ðŸŒ¶ï¸ Picante</span>
             </button>
             <button id="filter-especialidad" class="filter-btn" onclick="filterMenu('especialidad')">
-                <span class="i18n" data-es="⭐ Especialidad" data-en="⭐ Specialty" data-fr="⭐ Spécialité">⭐ Especialidad</span>
+                <span class="i18n" data-es="â­ Especialidad" data-en="â­ Specialty" data-fr="â­ SpÃ©cialitÃ©">â­ Especialidad</span>
             </button>
         </div>
         <div class="menu-container">
@@ -84,19 +84,19 @@
                         </div>
                         
                         <div class="item-right-col">
-                            <div class='item-price'>5.20 €</div>
+                            <div class='item-price'>5.20 â‚¬</div>
                             
                         </div>
                     </article>
-                    <article class="menu-item" data-gluten="true" data-lacteos="true" data-vegano="false" data-spice="0" data-recomendado="false">
+                    <article class="menu-item" data-gluten="false" data-lacteos="false" data-vegano="false" data-spice="0" data-recomendado="false">
                         
                         <div class="item-details">
-                            <h3 class="item-name"><span class="i18n" data-es="Queso Curado" data-en="Aged Cheese" data-fr="Queso Curado">Queso Curado</span><span title='Gluten' style='margin-left:5px; font-size:1.1rem; cursor:help;'>🌾</span><span title='Lácteos' style='margin-left:5px; font-size:1.1rem; cursor:help;'>🥛</span></h3>
+                            <h3 class="item-name"><span class="i18n" data-es="Queso Curado" data-en="Aged Cheese" data-fr="Queso Curado">Queso Curado</span></h3>
                             <p class="item-description"><span class="i18n" data-es="" data-en="" data-fr=""></span></p>
                         </div>
                         
                         <div class="item-right-col">
-                            <div class='item-price'>5.80 €</div>
+                            <div class='item-price'>5.80 â‚¬</div>
                             
                         </div>
                     </article>
@@ -108,7 +108,7 @@
                         </div>
                         
                         <div class="item-right-col">
-                            <div class='item-price'>4.60 €</div>
+                            <div class='item-price'>4.60 â‚¬</div>
                             
                         </div>
                     </article>
@@ -120,19 +120,19 @@
                         </div>
                         
                         <div class="item-right-col">
-                            <div class='item-price'>5.40 €</div>
+                            <div class='item-price'>5.40 â‚¬</div>
                             
                         </div>
                     </article>
                     <article class="menu-item" data-gluten="false" data-lacteos="false" data-vegano="false" data-spice="0" data-recomendado="false">
                         
                         <div class="item-details">
-                            <h3 class="item-name"><span class="i18n" data-es="Tortilla de Patatas" data-en="Spanish Omelette" data-fr="Tortilla de Patatas">Tortilla de Patatas</span></h3>
-                            <p class="item-description"><span class="i18n" data-es="Tortilla de patatas recién hecha" data-en="Freshly made potato omelette" data-fr="Tortilla de patatas recién hecha">Tortilla de patatas recién hecha</span></p>
+                            <h3 class="item-name"><span class="i18n" data-es="Tortilla de Patatas con Cebolla" data-en="Tortilla de Patatas con Cebolla" data-fr="Tortilla de Patatas con Cebolla">Tortilla de Patatas con Cebolla</span></h3>
+                            <p class="item-description"><span class="i18n" data-es="Tortilla de patatas recién hecha" data-en="Tortilla de patatas recién hecha" data-fr="Tortilla de patatas recién hecha">Tortilla de patatas recién hecha</span></p>
                         </div>
                         
                         <div class="item-right-col">
-                            <div class='item-price'>5.75 €</div>
+                            <div class='item-price'>5.75 â‚¬</div>
                             
                         </div>
                     </article>
@@ -144,19 +144,19 @@
                         </div>
                         
                         <div class="item-right-col">
-                            <div class='item-price'>5.95 €</div>
+                            <div class='item-price'>5.95 â‚¬</div>
                             
                         </div>
                     </article>
                     <article class="menu-item" data-gluten="false" data-lacteos="false" data-vegano="false" data-spice="0" data-recomendado="false">
                         
                         <div class="item-details">
-                            <h3 class="item-name"><span class="i18n" data-es="Butifarra de L&#39;Emporda" data-en="Butifarra de L&#39;Emporda" data-fr="Butifarra de L&#39;Emporda">Butifarra de L&#39;Emporda</span></h3>
+                            <h3 class="item-name"><span class="i18n" data-es="Butifarra Blanca de  L&#39;Emporda" data-en="Butifarra Blanca de  L&#39;Emporda" data-fr="Butifarra Blanca de  L&#39;Emporda">Butifarra Blanca de  L&#39;Emporda</span></h3>
                             <p class="item-description"><span class="i18n" data-es="" data-en="" data-fr=""></span></p>
                         </div>
                         
                         <div class="item-right-col">
-                            <div class='item-price'>5.30 €</div>
+                            <div class='item-price'>5.30 â‚¬</div>
                             
                         </div>
                     </article>
@@ -168,7 +168,7 @@
                         </div>
                         
                         <div class="item-right-col">
-                            <div class='item-price'>5.40 €</div>
+                            <div class='item-price'>5.40 â‚¬</div>
                             
                         </div>
                     </article>
@@ -180,7 +180,7 @@
                         </div>
                         
                         <div class="item-right-col">
-                            <div class='item-price'>6.30 €</div>
+                            <div class='item-price'>6.30 â‚¬</div>
                             
                         </div>
                     </article>
@@ -192,7 +192,7 @@
                         </div>
                         
                         <div class="item-right-col">
-                            <div class='item-price'>6.20 €</div>
+                            <div class='item-price'>6.20 â‚¬</div>
                             
                         </div>
                     </article>
@@ -204,7 +204,7 @@
                         </div>
                         
                         <div class="item-right-col">
-                            <div class='item-price'>5.50 €</div>
+                            <div class='item-price'>5.50 â‚¬</div>
                             
                         </div>
                     </article>
@@ -216,7 +216,7 @@
                         </div>
                         
                         <div class="item-right-col">
-                            <div class='item-price'>5.50 €</div>
+                            <div class='item-price'>5.50 â‚¬</div>
                             
                         </div>
                     </article>
@@ -228,19 +228,7 @@
                         </div>
                         
                         <div class="item-right-col">
-                            <div class='item-price'>5.85 €</div>
-                            
-                        </div>
-                    </article>
-                    <article class="menu-item" data-gluten="false" data-lacteos="false" data-vegano="false" data-spice="0" data-recomendado="false">
-                        
-                        <div class="item-details">
-                            <h3 class="item-name"><span class="i18n" data-es="Butifarra de Pages" data-en="Butifarra de Pages" data-fr="Butifarra de Pages">Butifarra de Pages</span></h3>
-                            <p class="item-description"><span class="i18n" data-es="" data-en="" data-fr=""></span></p>
-                        </div>
-                        
-                        <div class="item-right-col">
-                            <div class='item-price'>6.10 €</div>
+                            <div class='item-price'>5.85 â‚¬</div>
                             
                         </div>
                     </article>
@@ -252,7 +240,7 @@
                         </div>
                         
                         <div class="item-right-col">
-                            <div class='item-price'>5.20 €</div>
+                            <div class='item-price'>5.20 â‚¬</div>
                             
                         </div>
                     </article>
@@ -264,7 +252,7 @@
                         </div>
                         
                         <div class="item-right-col">
-                            <div class='item-price'>5.65 €</div>
+                            <div class='item-price'>5.65 â‚¬</div>
                             
                         </div>
                     </article>
@@ -276,7 +264,7 @@
                         </div>
                         
                         <div class="item-right-col">
-                            <div class='item-price'>5.20 €</div>
+                            <div class='item-price'>5.20 â‚¬</div>
                             
                         </div>
                     </article>
@@ -288,7 +276,7 @@
                         </div>
                         
                         <div class="item-right-col">
-                            <div class='item-price'>0.50 €</div>
+                            <div class='item-price'>0.50 â‚¬</div>
                             
                         </div>
                     </article>
@@ -300,7 +288,247 @@
                         </div>
                         
                         <div class="item-right-col">
-                            <div class='item-price'>0.50 €</div>
+                            <div class='item-price'>0.50 â‚¬</div>
+                            
+                        </div>
+                    </article>
+                    <article class="menu-item" data-gluten="false" data-lacteos="false" data-vegano="false" data-spice="0" data-recomendado="false">
+                        
+                        <div class="item-details">
+                            <h3 class="item-name"><span class="i18n" data-es="Queso Curado" data-en="Aged Cheese" data-fr="Queso Curado">Queso Curado</span></h3>
+                            <p class="item-description"><span class="i18n" data-es="" data-en="" data-fr=""></span></p>
+                        </div>
+                        
+                        <div class="item-right-col">
+                            <div class='item-price'>2.90 â‚¬</div>
+                            
+                        </div>
+                    </article>
+                    <article class="menu-item" data-gluten="false" data-lacteos="false" data-vegano="false" data-spice="0" data-recomendado="false">
+                        
+                        <div class="item-details">
+                            <h3 class="item-name"><span class="i18n" data-es="Fuet" data-en="Fuet" data-fr="Fuet">Fuet</span></h3>
+                            <p class="item-description"><span class="i18n" data-es="" data-en="Catalan dried sausage" data-fr=""></span></p>
+                        </div>
+                        
+                        <div class="item-right-col">
+                            <div class='item-price'>2.70 â‚¬</div>
+                            
+                        </div>
+                    </article>
+                    <article class="menu-item" data-gluten="false" data-lacteos="false" data-vegano="false" data-spice="0" data-recomendado="false">
+                        
+                        <div class="item-details">
+                            <h3 class="item-name"><span class="i18n" data-es="Jamon Dulce" data-en="Cooked Ham" data-fr="Jamon Dulce">Jamon Dulce</span></h3>
+                            <p class="item-description"><span class="i18n" data-es="" data-en="" data-fr=""></span></p>
+                        </div>
+                        
+                        <div class="item-right-col">
+                            <div class='item-price'>2.50 â‚¬</div>
+                            
+                        </div>
+                    </article>
+                    <article class="menu-item" data-gluten="false" data-lacteos="false" data-vegano="false" data-spice="0" data-recomendado="false">
+                        
+                        <div class="item-details">
+                            <h3 class="item-name"><span class="i18n" data-es="Atun" data-en="Tuna" data-fr="Atun">Atun</span></h3>
+                            <p class="item-description"><span class="i18n" data-es="" data-en="" data-fr=""></span></p>
+                        </div>
+                        
+                        <div class="item-right-col">
+                            <div class='item-price'>2.80 â‚¬</div>
+                            
+                        </div>
+                    </article>
+                    <article class="menu-item" data-gluten="false" data-lacteos="false" data-vegano="false" data-spice="0" data-recomendado="false">
+                        
+                        <div class="item-details">
+                            <h3 class="item-name"><span class="i18n" data-es="Tortilla de Patatas" data-en="Spanish Omelette" data-fr="Tortilla de Patatas">Tortilla de Patatas</span></h3>
+                            <p class="item-description"><span class="i18n" data-es="" data-en="Freshly made potato omelette" data-fr=""></span></p>
+                        </div>
+                        
+                        <div class="item-right-col">
+                            <div class='item-price'>3.20 â‚¬</div>
+                            
+                        </div>
+                    </article>
+                    <article class="menu-item" data-gluten="false" data-lacteos="false" data-vegano="false" data-spice="0" data-recomendado="false">
+                        
+                        <div class="item-details">
+                            <h3 class="item-name"><span class="i18n" data-es="Jamon de Reserva" data-en="Jamon de Reserva" data-fr="Jamon de Reserva">Jamon de Reserva</span></h3>
+                            <p class="item-description"><span class="i18n" data-es="" data-en="" data-fr=""></span></p>
+                        </div>
+                        
+                        <div class="item-right-col">
+                            <div class='item-price'>3.50 â‚¬</div>
+                            
+                        </div>
+                    </article>
+                    <article class="menu-item" data-gluten="false" data-lacteos="false" data-vegano="false" data-spice="0" data-recomendado="false">
+                        
+                        <div class="item-details">
+                            <h3 class="item-name"><span class="i18n" data-es="Butifarra  Blanca de L&#39;Emporda" data-en="Butifarra  Blanca de L&#39;Emporda" data-fr="Butifarra  Blanca de L&#39;Emporda">Butifarra  Blanca de L&#39;Emporda</span></h3>
+                            <p class="item-description"><span class="i18n" data-es="" data-en="" data-fr=""></span></p>
+                        </div>
+                        
+                        <div class="item-right-col">
+                            <div class='item-price'>2.80 â‚¬</div>
+                            
+                        </div>
+                    </article>
+                    <article class="menu-item" data-gluten="false" data-lacteos="false" data-vegano="false" data-spice="0" data-recomendado="false">
+                        
+                        <div class="item-details">
+                            <h3 class="item-name"><span class="i18n" data-es="Bacon" data-en="Bacon" data-fr="Bacon">Bacon</span></h3>
+                            <p class="item-description"><span class="i18n" data-es="" data-en="" data-fr=""></span></p>
+                        </div>
+                        
+                        <div class="item-right-col">
+                            <div class='item-price'>3.30 â‚¬</div>
+                            
+                        </div>
+                    </article>
+                    <article class="menu-item" data-gluten="false" data-lacteos="false" data-vegano="false" data-spice="0" data-recomendado="false">
+                        
+                        <div class="item-details">
+                            <h3 class="item-name"><span class="i18n" data-es="Chorizo Iberico" data-en="Iberian Chorizo" data-fr="Chorizo Iberico">Chorizo Iberico</span></h3>
+                            <p class="item-description"><span class="i18n" data-es="" data-en="" data-fr=""></span></p>
+                        </div>
+                        
+                        <div class="item-right-col">
+                            <div class='item-price'>2.75 â‚¬</div>
+                            
+                        </div>
+                    </article>
+                    <article class="menu-item" data-gluten="false" data-lacteos="false" data-vegano="false" data-spice="0" data-recomendado="false">
+                        
+                        <div class="item-details">
+                            <h3 class="item-name"><span class="i18n" data-es="Sobrasada de Mallorca" data-en="Sobrasada de Mallorca" data-fr="Sobrasada de Mallorca">Sobrasada de Mallorca</span></h3>
+                            <p class="item-description"><span class="i18n" data-es="" data-en="" data-fr=""></span></p>
+                        </div>
+                        
+                        <div class="item-right-col">
+                            <div class='item-price'>3.05 â‚¬</div>
+                            
+                        </div>
+                    </article>
+                    <article class="menu-item" data-gluten="false" data-lacteos="false" data-vegano="false" data-spice="0" data-recomendado="false">
+                        
+                        <div class="item-details">
+                            <h3 class="item-name"><span class="i18n" data-es="Salchichas" data-en="Salchichas" data-fr="Salchichas">Salchichas</span></h3>
+                            <p class="item-description"><span class="i18n" data-es="" data-en="" data-fr=""></span></p>
+                        </div>
+                        
+                        <div class="item-right-col">
+                            <div class='item-price'>3.35 â‚¬</div>
+                            
+                        </div>
+                    </article>
+                    <article class="menu-item" data-gluten="false" data-lacteos="false" data-vegano="false" data-spice="0" data-recomendado="false">
+                        
+                        <div class="item-details">
+                            <h3 class="item-name"><span class="i18n" data-es="Pollo" data-en="Pollo" data-fr="Pollo">Pollo</span></h3>
+                            <p class="item-description"><span class="i18n" data-es="" data-en="" data-fr=""></span></p>
+                        </div>
+                        
+                        <div class="item-right-col">
+                            <div class='item-price'>3.90 â‚¬</div>
+                            
+                        </div>
+                    </article>
+                    <article class="menu-item" data-gluten="false" data-lacteos="false" data-vegano="false" data-spice="0" data-recomendado="false">
+                        
+                        <div class="item-details">
+                            <h3 class="item-name"><span class="i18n" data-es="Lomo" data-en="Lomo" data-fr="Lomo">Lomo</span></h3>
+                            <p class="item-description"><span class="i18n" data-es="" data-en="" data-fr=""></span></p>
+                        </div>
+                        
+                        <div class="item-right-col">
+                            <div class='item-price'>3.85 â‚¬</div>
+                            
+                        </div>
+                    </article>
+                    <article class="menu-item" data-gluten="false" data-lacteos="false" data-vegano="false" data-spice="0" data-recomendado="false">
+                        
+                        <div class="item-details">
+                            <h3 class="item-name"><span class="i18n" data-es="Chistorra" data-en="Chistorra" data-fr="Chistorra">Chistorra</span></h3>
+                            <p class="item-description"><span class="i18n" data-es="" data-en="" data-fr=""></span></p>
+                        </div>
+                        
+                        <div class="item-right-col">
+                            <div class='item-price'>3.90 â‚¬</div>
+                            
+                        </div>
+                    </article>
+                    <article class="menu-item" data-gluten="false" data-lacteos="false" data-vegano="false" data-spice="0" data-recomendado="false">
+                        
+                        <div class="item-details">
+                            <h3 class="item-name"><span class="i18n" data-es="Butifarra Negra" data-en="Butifarra Negra" data-fr="Butifarra Negra">Butifarra Negra</span></h3>
+                            <p class="item-description"><span class="i18n" data-es="" data-en="" data-fr=""></span></p>
+                        </div>
+                        
+                        <div class="item-right-col">
+                            <div class='item-price'>2.75 â‚¬</div>
+                            
+                        </div>
+                    </article>
+                    <article class="menu-item" data-gluten="false" data-lacteos="false" data-vegano="false" data-spice="0" data-recomendado="false">
+                        
+                        <div class="item-details">
+                            <h3 class="item-name"><span class="i18n" data-es="Mini de Frankfurt" data-en="Mini de Frankfurt" data-fr="Mini de Frankfurt">Mini de Frankfurt</span></h3>
+                            <p class="item-description"><span class="i18n" data-es="" data-en="" data-fr=""></span></p>
+                        </div>
+                        
+                        <div class="item-right-col">
+                            <div class='item-price'>2.80 â‚¬</div>
+                            
+                        </div>
+                    </article>
+                    <article class="menu-item" data-gluten="false" data-lacteos="false" data-vegano="false" data-spice="0" data-recomendado="false">
+                        
+                        <div class="item-details">
+                            <h3 class="item-name"><span class="i18n" data-es="Extra de Queso" data-en="Extra de Queso" data-fr="Extra de Queso">Extra de Queso</span></h3>
+                            <p class="item-description"><span class="i18n" data-es="" data-en="" data-fr=""></span></p>
+                        </div>
+                        
+                        <div class="item-right-col">
+                            <div class='item-price'>0.30 â‚¬</div>
+                            
+                        </div>
+                    </article>
+                    <article class="menu-item" data-gluten="false" data-lacteos="false" data-vegano="false" data-spice="0" data-recomendado="false">
+                        
+                        <div class="item-details">
+                            <h3 class="item-name"><span class="i18n" data-es="Extra de Mayonesa" data-en="Extra de Mayonesa" data-fr="Extra de Mayonesa">Extra de Mayonesa</span></h3>
+                            <p class="item-description"><span class="i18n" data-es="" data-en="" data-fr=""></span></p>
+                        </div>
+                        
+                        <div class="item-right-col">
+                            <div class='item-price'>0.30 â‚¬</div>
+                            
+                        </div>
+                    </article>
+                    <article class="menu-item item-nuevo" data-gluten="false" data-lacteos="false" data-vegano="false" data-spice="0" data-recomendado="true">
+                        
+                        <div class="item-details">
+                            <h3 class="item-name"><span class="i18n" data-es="Atún con pimiento rojo asado" data-en="Atún con pimiento rojo asado" data-fr="Atún con pimiento rojo asado">Atún con pimiento rojo asado</span><span style='background: #ffecb3; color: #ff8f00; font-size:0.7rem; padding: 2px 6px; border-radius: 10px; margin-left: 5px; vertical-align: middle; text-transform: uppercase; font-weight: bold;'>â­ Especialidad</span><span style='background: linear-gradient(135deg, #ff5722 0%, #ff8f00 100%); color: white; font-size:0.7rem; padding: 2px 8px; border-radius: 10px; margin-left: 5px; vertical-align: middle; text-transform: uppercase; font-weight: bold; box-shadow: 0 2px 4px rgba(255, 87, 34, 0.35);'>ðŸ†• Novedad</span></h3>
+                            <p class="item-description"><span class="i18n" data-es="" data-en="" data-fr=""></span></p>
+                        </div>
+                        
+                        <div class="item-right-col">
+                            <div class='item-price'>5.50 â‚¬</div>
+                            
+                        </div>
+                    </article>
+                    <article class="menu-item" data-gluten="false" data-lacteos="false" data-vegano="false" data-spice="0" data-recomendado="false">
+                        
+                        <div class="item-details">
+                            <h3 class="item-name"><span class="i18n" data-es="Butifarra de pages" data-en="Butifarra de pages" data-fr="Butifarra de pages">Butifarra de pages</span></h3>
+                            <p class="item-description"><span class="i18n" data-es="" data-en="" data-fr=""></span></p>
+                        </div>
+                        
+                        <div class="item-right-col">
+                            <div class='item-price'>6.50 â‚¬</div>
                             
                         </div>
                     </article>
@@ -317,7 +545,7 @@
                         </div>
                         
                         <div class="item-right-col">
-                            <div class='item-price'>2.90 €</div>
+                            <div class='item-price'>2.90 â‚¬</div>
                             
                         </div>
                     </article>
@@ -329,7 +557,7 @@
                         </div>
                         
                         <div class="item-right-col">
-                            <div class='item-price'>2.70 €</div>
+                            <div class='item-price'>2.70 â‚¬</div>
                             
                         </div>
                     </article>
@@ -341,7 +569,7 @@
                         </div>
                         
                         <div class="item-right-col">
-                            <div class='item-price'>2.50 €</div>
+                            <div class='item-price'>2.50 â‚¬</div>
                             
                         </div>
                     </article>
@@ -353,7 +581,7 @@
                         </div>
                         
                         <div class="item-right-col">
-                            <div class='item-price'>2.80 €</div>
+                            <div class='item-price'>2.80 â‚¬</div>
                             
                         </div>
                     </article>
@@ -365,7 +593,7 @@
                         </div>
                         
                         <div class="item-right-col">
-                            <div class='item-price'>3.20 €</div>
+                            <div class='item-price'>3.20 â‚¬</div>
                             
                         </div>
                     </article>
@@ -377,7 +605,7 @@
                         </div>
                         
                         <div class="item-right-col">
-                            <div class='item-price'>3.50 €</div>
+                            <div class='item-price'>3.50 â‚¬</div>
                             
                         </div>
                     </article>
@@ -389,7 +617,7 @@
                         </div>
                         
                         <div class="item-right-col">
-                            <div class='item-price'>2.80 €</div>
+                            <div class='item-price'>2.80 â‚¬</div>
                             
                         </div>
                     </article>
@@ -401,7 +629,7 @@
                         </div>
                         
                         <div class="item-right-col">
-                            <div class='item-price'>3.30 €</div>
+                            <div class='item-price'>3.30 â‚¬</div>
                             
                         </div>
                     </article>
@@ -413,7 +641,7 @@
                         </div>
                         
                         <div class="item-right-col">
-                            <div class='item-price'>2.75 €</div>
+                            <div class='item-price'>2.75 â‚¬</div>
                             
                         </div>
                     </article>
@@ -425,7 +653,7 @@
                         </div>
                         
                         <div class="item-right-col">
-                            <div class='item-price'>3.05 €</div>
+                            <div class='item-price'>3.05 â‚¬</div>
                             
                         </div>
                     </article>
@@ -437,7 +665,7 @@
                         </div>
                         
                         <div class="item-right-col">
-                            <div class='item-price'>3.35 €</div>
+                            <div class='item-price'>3.35 â‚¬</div>
                             
                         </div>
                     </article>
@@ -449,7 +677,7 @@
                         </div>
                         
                         <div class="item-right-col">
-                            <div class='item-price'>3.90 €</div>
+                            <div class='item-price'>3.90 â‚¬</div>
                             
                         </div>
                     </article>
@@ -461,7 +689,7 @@
                         </div>
                         
                         <div class="item-right-col">
-                            <div class='item-price'>3.85 €</div>
+                            <div class='item-price'>3.85 â‚¬</div>
                             
                         </div>
                     </article>
@@ -473,7 +701,7 @@
                         </div>
                         
                         <div class="item-right-col">
-                            <div class='item-price'>3.90 €</div>
+                            <div class='item-price'>3.90 â‚¬</div>
                             
                         </div>
                     </article>
@@ -485,7 +713,7 @@
                         </div>
                         
                         <div class="item-right-col">
-                            <div class='item-price'>2.75 €</div>
+                            <div class='item-price'>2.75 â‚¬</div>
                             
                         </div>
                     </article>
@@ -497,7 +725,7 @@
                         </div>
                         
                         <div class="item-right-col">
-                            <div class='item-price'>2.80 €</div>
+                            <div class='item-price'>2.80 â‚¬</div>
                             
                         </div>
                     </article>
@@ -509,7 +737,7 @@
                         </div>
                         
                         <div class="item-right-col">
-                            <div class='item-price'>0.30 €</div>
+                            <div class='item-price'>0.30 â‚¬</div>
                             
                         </div>
                     </article>
@@ -521,7 +749,7 @@
                         </div>
                         
                         <div class="item-right-col">
-                            <div class='item-price'>0.30 €</div>
+                            <div class='item-price'>0.30 â‚¬</div>
                             
                         </div>
                     </article>
@@ -595,10 +823,10 @@
                     warning.className = 'schedule-warning';
                     warning.innerHTML = `
                         <div class="i18n" 
-                             data-es="⚠️ Esta sección está fuera de su horario de servicio (Disponible de ` + start + ` a ` + end + `). No se pueden realizar pedidos en este momento." 
-                             data-en="⚠️ This section is outside of its service hours (Available from ` + start + ` to ` + end + `). Orders cannot be placed at this time." 
-                             data-fr="⚠️ Cette section es en dehors de ses heures de service (Disponible de ` + start + ` à ` + end + `). Les commandes ne peuvent pas être passées pour le moment.">
-                             ⚠️ Esta sección está fuera de su horario de servicio (Disponible de ` + start + ` a ` + end + `). No se pueden realizar pedidos en este momento.
+                             data-es="âš ï¸ Esta secciÃ³n estÃ¡ fuera de su horario de servicio (Disponible de ` + start + ` a ` + end + `). No se pueden realizar pedidos en este momento." 
+                             data-en="âš ï¸ This section is outside of its service hours (Available from ` + start + ` to ` + end + `). Orders cannot be placed at this time." 
+                             data-fr="âš ï¸ Cette section es en dehors de ses heures de service (Disponible de ` + start + ` Ã  ` + end + `). Les commandes ne peuvent pas Ãªtre passÃ©es pour le moment.">
+                             âš ï¸ Esta secciÃ³n estÃ¡ fuera de su horario de servicio (Disponible de ` + start + ` a ` + end + `). No se pueden realizar pedidos en este momento.
                         </div>
                     `;
                     container.insertBefore(warning, container.firstChild);
@@ -615,6 +843,5 @@
         });
     </script>
 
-    <script src="firebase-sync.js"></script>
 </body>
 </html>
