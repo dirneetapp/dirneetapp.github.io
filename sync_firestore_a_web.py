@@ -214,8 +214,8 @@ if __name__ == '__main__':
     try:
         firestore_items = fetch_firestore_menu()
         update_menu_json(firestore_items)
-        regenerate_html_files()
-        print("\n🎉 SINCRONIZACIÓN COMPLETADA CON ÉXITO.")
+        print("\n🎉 SINCRONIZACIÓN DE FOTOS Y DATOS COMPLETADA CON ÉXITO.")
+        print("💡 La web se sincroniza en vivo en tiempo real a través de firebase-sync.js con UTF-8 limpio.")
     except Exception as e:
         print(f"\n❌ Error durante la sincronización: {e}")
         import traceback

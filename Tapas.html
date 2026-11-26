@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+(<!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
@@ -10,9 +10,9 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body class="theme-lavender">
-    <button class="menu-toggle" onclick="toggleMenu()">â˜°</button>
+    <button class="menu-toggle" onclick="toggleMenu()">☰</button>
     <div id="mobileMenu" class="mobile-menu-overlay">
-        <button class="menu-toggle" style="position:absolute; top:1rem; right:1rem; border:none; background:none; font-size:2rem;" onclick="toggleMenu()">âœ•</button>
+        <button class="menu-toggle" style="position:absolute; top:1rem; right:1rem; border:none; background:none; font-size:2rem;" onclick="toggleMenu()">✕</button>
         <a href="Desayunos.html" class="mobile-menu-link "><span class="i18n" data-es="Desayunos" data-en="Breakfasts" data-fr="Petits-Déjeuners">Desayunos</span></a>
         <a href="Bocadillos.html" class="mobile-menu-link "><span class="i18n" data-es="Bocadillos" data-en="Sandwiches" data-fr="Sandwichs">Bocadillos</span></a>
         <a href="Vermuts.html" class="mobile-menu-link "><span class="i18n" data-es="Vermuts" data-en="Vermouths" data-fr="Vermouths">Vermuts</span></a>
@@ -23,20 +23,20 @@
         <a href="Arroz.html" class="mobile-menu-link "><span class="i18n" data-es="Tapa de Arroz" data-en="Rice Tapa" data-fr="Tapa de Riz">Tapa de Arroz</span></a>
         <a href="Croquetas.html" class="mobile-menu-link "><span class="i18n" data-es="Croquetas" data-en="Croquettes" data-fr="Croquettes">Croquetas</span></a>
         <a href="Postres.html" class="mobile-menu-link "><span class="i18n" data-es="Postres" data-en="Desserts" data-fr="Desserts">Postres</span></a>
-        <a href="ruleta.html" class="mobile-menu-link" style="color: #c084fc; font-weight: 600;"><span class="i18n" data-es="ðŸŽ° Ruleta Indecisos" data-en="ðŸŽ° Indecisive Wheel" data-fr="ðŸŽ° Roue des IndÃ©cis">ðŸŽ° Ruleta Indecisos</span></a>
+        <a href="ruleta.html" class="mobile-menu-link" style="color: #c084fc; font-weight: 600;"><span class="i18n" data-es="🎰 Ruleta Indecisos" data-en="🎰 Indecisive Wheel" data-fr="🎰 Roue des Indécis">🎰 Ruleta Indecisos</span></a>
     </div>
     <header class="hero">
-        <a href="index.html" class="home-btn" title="Volver al inicio">ðŸ </a>
+        <a href="index.html" class="home-btn" title="Volver al inicio">🏠</a>
         <div class="hero-content">
             <h1>Bar Sergio's</h1>
-            <p class="subtitle"><span class="i18n" data-es="GastronomÃ­a &amp; Buen Ambiente" data-en="Gastronomy &amp; Good Vibes" data-fr="Gastronomie &amp; Bonne Ambiance">GastronomÃ­a &amp; Buen Ambiente</span></p>
+            <p class="subtitle"><span class="i18n" data-es="Gastronomía &amp; Buen Ambiente" data-en="Gastronomy &amp; Good Vibes" data-fr="Gastronomie &amp; Bonne Ambiance">Gastronomía &amp; Buen Ambiente</span></p>
         </div>
     </header>
 
     <div class="lang-switcher" id="langSwitcher">
-        <button id="lang-es" class="lang-btn active" onclick="setLang('es')" title="EspaÃ±ol">ðŸ‡ªðŸ‡¸</button>
-        <button id="lang-en" class="lang-btn" onclick="setLang('en')" title="English">ðŸ‡¬ðŸ‡§</button>
-        <button id="lang-fr" class="lang-btn" onclick="setLang('fr')" title="FranÃ§ais">ðŸ‡«ðŸ‡·</button>
+        <button id="lang-es" class="lang-btn active" onclick="setLang('es')" title="Español">🇪🇸</button>
+        <button id="lang-en" class="lang-btn" onclick="setLang('en')" title="English">🇬🇧</button>
+        <button id="lang-fr" class="lang-btn" onclick="setLang('fr')" title="Français">🇫🇷</button>
     </div>
     <script>
         function setLang(lang) {
@@ -54,97 +54,86 @@
     <main class="container">
         <div class="filter-container">
             <button id="filter-all" class="filter-btn active" onclick="filterMenu('all')">
-                <span class="i18n" data-es="ðŸ½ï¸ Todos" data-en="ðŸ½ï¸ All" data-fr="ðŸ½ï¸ Tous">ðŸ½ï¸ Todos</span>
+                <span class="i18n" data-es="🍽️ Todos" data-en="🍽️ All" data-fr="🍽️ Tous">🍽️ Todos</span>
             </button>
             <button id="filter-gluten" class="filter-btn" onclick="filterMenu('gluten')">
-                <span class="i18n" data-es="ðŸŒ¾ Sin Gluten" data-en="ðŸŒ¾ Gluten-Free" data-fr="ðŸŒ¾ Sans Gluten">ðŸŒ¾ Sin Gluten</span>
+                <span class="i18n" data-es="🌾 Sin Gluten" data-en="🌾 Gluten-Free" data-fr="🌾 Sans Gluten">🌾 Sin Gluten</span>
             </button>
             <button id="filter-lacteos" class="filter-btn" onclick="filterMenu('lacteos')">
-                <span class="i18n" data-es="ðŸ¥› Sin Lactosa" data-en="ðŸ¥› Lactose-Free" data-fr="ðŸ¥› Sans Lactose">ðŸ¥› Sin Lactosa</span>
+                <span class="i18n" data-es="🥛 Sin Lactosa" data-en="🥛 Lactose-Free" data-fr="🥛 Sans Lactose">🥛 Sin Lactosa</span>
             </button>
             <button id="filter-vegano" class="filter-btn" onclick="filterMenu('vegano')">
-                <span class="i18n" data-es="ðŸŒ± Vegano" data-en="ðŸŒ± Vegan" data-fr="ðŸŒ± VÃ©gan">ðŸŒ± Vegano</span>
+                <span class="i18n" data-es="🌱 Vegano" data-en="🌱 Vegan" data-fr="🌱 Végan">🌱 Vegano</span>
             </button>
             <button id="filter-picante" class="filter-btn" onclick="filterMenu('picante')">
-                <span class="i18n" data-es="ðŸŒ¶ï¸ Picante" data-en="ðŸŒ¶ï¸ Spicy" data-fr="ðŸŒ¶ï¸ Ã‰picÃ©">ðŸŒ¶ï¸ Picante</span>
+                <span class="i18n" data-es="🌶️ Picante" data-en="🌶️ Spicy" data-fr="🌶️ Épicé">🌶️ Picante</span>
             </button>
             <button id="filter-especialidad" class="filter-btn" onclick="filterMenu('especialidad')">
-                <span class="i18n" data-es="â­ Especialidad" data-en="â­ Specialty" data-fr="â­ SpÃ©cialitÃ©">â­ Especialidad</span>
+                <span class="i18n" data-es="⭐ Especialidad" data-en="⭐ Specialty" data-fr="⭐ Spécialité">⭐ Especialidad</span>
             </button>
         </div>
         <div class="menu-container">
             <section class="menu-section">
                 <h2 class="section-title"><span class="i18n" data-es="Tapas" data-en="Tapas" data-fr="Tapas">Tapas</span></h2>
                 <div class="items-list">
-                    <article class="menu-item" data-gluten="false" data-lacteos="false" data-vegano="false" data-spice="1" data-recomendado="true">
+                    <article class="menu-item item-nuevo" data-gluten="false" data-lacteos="false" data-vegano="false" data-spice="1" data-recomendado="false">
                         
                         <div class="item-details">
-                            <h3 class="item-name"><span class="i18n" data-es="Bocaditos de Jalapeño con Cheddar y Salsa Guacamole" data-en="Bocaditos de Jalapeño con Cheddar y Salsa Guacamole" data-fr="Bocaditos de Jalapeño con Cheddar y Salsa Guacamole">Bocaditos de Jalapeño con Cheddar y Salsa Guacamole</span><span style='background: #ffecb3; color: #ff8f00; font-size:0.7rem; padding: 2px 6px; border-radius: 10px; margin-left: 5px; vertical-align: middle; text-transform: uppercase; font-weight: bold;'>â­ Especialidad</span><span title='Nivel de picante 1/3' style='font-size:0.9rem; margin-left:6px; vertical-align:middle; cursor:help;'>ðŸŒ¶ï¸</span></h3>
+                            <h3 class="item-name"><span class="i18n" data-es="Bocaditos de Jalapeño con Cheddar y Salsa Guacamole" data-en="Bocaditos de Jalapeño con Cheddar y Salsa Guacamole" data-fr="Bocaditos de Jalapeño con Cheddar y Salsa Guacamole">Bocaditos de Jalapeño con Cheddar y Salsa Guacamole</span><span style='background: linear-gradient(135deg, #ff5722 0%, #ff8f00 100%); color: white; font-size:0.7rem; padding: 2px 8px; border-radius: 10px; margin-left: 5px; vertical-align: middle; text-transform: uppercase; font-weight: bold; box-shadow: 0 2px 4px rgba(255, 87, 34, 0.35);'>🆕 Novedad</span><span title='Nivel de picante 1/3' style='font-size:0.9rem; margin-left:6px; vertical-align:middle; cursor:help;'>🌶️</span></h3>
                             <p class="item-description"><span class="i18n" data-es="Bocaditos de Jalapeño con Cheddar y Salsa Guacamole" data-en="Bocaditos de Jalapeño con Cheddar y Salsa Guacamole" data-fr="Bocaditos de Jalapeño con Cheddar y Salsa Guacamole">Bocaditos de Jalapeño con Cheddar y Salsa Guacamole</span></p>
                         </div>
                         
                         <div class="item-right-col">
-                            <div class='item-price'>5.80 â‚¬</div>
-                            
-                        </div>
-                    </article>
-                    <article class="menu-item item-nuevo" data-gluten="false" data-lacteos="false" data-vegano="false" data-spice="0" data-recomendado="true">
-                        
-                        <div class="item-details">
-                            <h3 class="item-name"><span class="i18n" data-es="Chupa Chups de Pollo Sergio&#39;s" data-en="Chupa Chups de Pollo Sergio&#39;s" data-fr="Chupa Chups de Pollo Sergio&#39;s">Chupa Chups de Pollo Sergio&#39;s</span><span style='background: #ffecb3; color: #ff8f00; font-size:0.7rem; padding: 2px 6px; border-radius: 10px; margin-left: 5px; vertical-align: middle; text-transform: uppercase; font-weight: bold;'>â­ Especialidad</span><span style='background: linear-gradient(135deg, #ff5722 0%, #ff8f00 100%); color: white; font-size:0.7rem; padding: 2px 8px; border-radius: 10px; margin-left: 5px; vertical-align: middle; text-transform: uppercase; font-weight: bold; box-shadow: 0 2px 4px rgba(255, 87, 34, 0.35);'>ðŸ†• Novedad</span></h3>
-                            <p class="item-description"><span class="i18n" data-es="5 unidades" data-en="5 unidades" data-fr="5 unidades">5 unidades</span></p>
-                        </div>
-                        
-                        <div class="item-right-col">
-                            <div class='item-price'>5.70 â‚¬</div>
+                            <div class='item-price'>5.80 €</div>
                             
                         </div>
                     </article>
                     <article class="menu-item item-nuevo" data-gluten="false" data-lacteos="false" data-vegano="false" data-spice="0" data-recomendado="false">
                         
                         <div class="item-details">
-                            <h3 class="item-name"><span class="i18n" data-es="Papas Francesas Cornudas" data-en="Papas Francesas Cornudas" data-fr="Papas Francesas Cornudas">Papas Francesas Cornudas</span><span style='background: linear-gradient(135deg, #ff5722 0%, #ff8f00 100%); color: white; font-size:0.7rem; padding: 2px 8px; border-radius: 10px; margin-left: 5px; vertical-align: middle; text-transform: uppercase; font-weight: bold; box-shadow: 0 2px 4px rgba(255, 87, 34, 0.35);'>ðŸ†• Novedad</span></h3>
+                            <h3 class="item-name"><span class="i18n" data-es="Muslos de Pollo Marinado" data-en="Muslos de Pollo Marinado" data-fr="Muslos de Pollo Marinado">Muslos de Pollo Marinado</span><span style='background: linear-gradient(135deg, #ff5722 0%, #ff8f00 100%); color: white; font-size:0.7rem; padding: 2px 8px; border-radius: 10px; margin-left: 5px; vertical-align: middle; text-transform: uppercase; font-weight: bold; box-shadow: 0 2px 4px rgba(255, 87, 34, 0.35);'>🆕 Novedad</span></h3>
                             <p class="item-description"><span class="i18n" data-es="" data-en="" data-fr=""></span></p>
                         </div>
                         
                         <div class="item-right-col">
-                            <div class='item-price'>5.60 â‚¬</div>
+                            <div class='item-price'>5.70 €</div>
                             
                         </div>
                     </article>
-                    <article class="menu-item" data-gluten="false" data-lacteos="false" data-vegano="false" data-spice="0" data-recomendado="false">
-                        <img src='assets/item_tapas_86.jpg' alt='Anillas de Calamar' class='item-image' onclick="showImageModal('assets/item_tapas_86.jpg')">
-                        <div class="item-details" onclick="showImageModal('assets/item_tapas_86.jpg')" style='cursor: zoom-in;'>
-                            <h3 class="item-name"><span class="i18n" data-es="Anillas de Calamar" data-en="Anillas de Calamar" data-fr="Anillas de Calamar">Anillas de Calamar</span></h3>
+                    <article class="menu-item item-nuevo" data-gluten="false" data-lacteos="false" data-vegano="false" data-spice="0" data-recomendado="false">
+                        
+                        <div class="item-details">
+                            <h3 class="item-name"><span class="i18n" data-es="Anillas de Calamar" data-en="Anillas de Calamar" data-fr="Anillas de Calamar">Anillas de Calamar</span><span style='background: linear-gradient(135deg, #ff5722 0%, #ff8f00 100%); color: white; font-size:0.7rem; padding: 2px 8px; border-radius: 10px; margin-left: 5px; vertical-align: middle; text-transform: uppercase; font-weight: bold; box-shadow: 0 2px 4px rgba(255, 87, 34, 0.35);'>🆕 Novedad</span></h3>
                             <p class="item-description"><span class="i18n" data-es="Anillas de Calamar Rebozadas de la Yaya" data-en="Anillas de Calamar Rebozadas de la Yaya" data-fr="Anillas de Calamar Rebozadas de la Yaya">Anillas de Calamar Rebozadas de la Yaya</span></p>
                         </div>
                         
                         <div class="item-right-col">
-                            <div class='item-price'>7.50 â‚¬</div>
+                            <div class='item-price'>7.50 €</div>
                             
                         </div>
                     </article>
-                    <article class="menu-item" data-gluten="false" data-lacteos="false" data-vegano="false" data-spice="0" data-recomendado="true">
-                        <img src='assets/item_tapas_88.jpg' alt='Morros de cerdo con pan con Tomate' class='item-image' onclick="showImageModal('assets/item_tapas_88.jpg')">
-                        <div class="item-details" onclick="showImageModal('assets/item_tapas_88.jpg')" style='cursor: zoom-in;'>
-                            <h3 class="item-name"><span class="i18n" data-es="Morros de cerdo con pan con Tomate" data-en="Morros de cerdo con pan con Tomate" data-fr="Morros de cerdo con pan con Tomate">Morros de cerdo con pan con Tomate</span><span style='background: #ffecb3; color: #ff8f00; font-size:0.7rem; padding: 2px 6px; border-radius: 10px; margin-left: 5px; vertical-align: middle; text-transform: uppercase; font-weight: bold;'>â­ Especialidad</span></h3>
+                    <article class="menu-item item-nuevo" data-gluten="false" data-lacteos="false" data-vegano="false" data-spice="0" data-recomendado="false">
+                        
+                        <div class="item-details">
+                            <h3 class="item-name"><span class="i18n" data-es="Papas Francesas Cornudas" data-en="Papas Francesas Cornudas" data-fr="Papas Francesas Cornudas">Papas Francesas Cornudas</span><span style='background: linear-gradient(135deg, #ff5722 0%, #ff8f00 100%); color: white; font-size:0.7rem; padding: 2px 8px; border-radius: 10px; margin-left: 5px; vertical-align: middle; text-transform: uppercase; font-weight: bold; box-shadow: 0 2px 4px rgba(255, 87, 34, 0.35);'>🆕 Novedad</span></h3>
                             <p class="item-description"><span class="i18n" data-es="" data-en="" data-fr=""></span></p>
                         </div>
                         
                         <div class="item-right-col">
-                            <div class='item-price'>6.40 â‚¬</div>
+                            <div class='item-price'>5.60 €</div>
                             
                         </div>
+                    
                     </article>
                     <article class="menu-item" data-gluten="false" data-lacteos="false" data-vegano="false" data-spice="0" data-recomendado="false">
                         
                         <div class="item-details">
                             <h3 class="item-name"><span class="i18n" data-es="Fries&Chips Sergio&#39;s" data-en="Fries&Chips Sergio&#39;s" data-fr="Fries&Chips Sergio&#39;s">Fries&Chips Sergio&#39;s</span></h3>
-                            <p class="item-description"><span class="i18n" data-es="Cebolla tostada,Bacon y Queso Chedar" data-en="Cebolla tostada,Bacon y Queso Chedar" data-fr="Cebolla tostada,Bacon y Queso Chedar">Cebolla tostada,Bacon y Queso Chedar</span></p>
+                            <p class="item-description"><span class="i18n" data-es="Cebolla Caramelizada,Bacon y Queso Chedar" data-en="Cebolla Caramelizada,Bacon y Queso Chedar" data-fr="Cebolla Caramelizada,Bacon y Queso Chedar">Cebolla Caramelizada,Bacon y Queso Chedar</span></p>
                         </div>
                         
                         <div class="item-right-col">
-                            <div class='item-price'>4.95 â‚¬</div>
+                            <div class='item-price'>4.95 €</div>
                             
                         </div>
                     </article>
@@ -156,7 +145,7 @@
                         </div>
                         
                         <div class="item-right-col">
-                            <div class='item-price'>7.80 â‚¬</div>
+                            <div class='item-price'>7.80 €</div>
                             
                         </div>
                     </article>
@@ -168,19 +157,19 @@
                         </div>
                         
                         <div class="item-right-col">
-                            <div class='item-price'>7.95 â‚¬</div>
+                            <div class='item-price'>7.95 €</div>
                             
                         </div>
                     </article>
-                    <article class="menu-item" data-gluten="false" data-lacteos="false" data-vegano="false" data-spice="0" data-recomendado="true">
-                        
-                        <div class="item-details">
-                            <h3 class="item-name"><span class="i18n" data-es="Torreznos de Soria con Pan con Tomate" data-en="Torreznos de Soria con Pan con Tomate" data-fr="Torreznos de Soria con Pan con Tomate">Torreznos de Soria con Pan con Tomate</span><span style='background: #ffecb3; color: #ff8f00; font-size:0.7rem; padding: 2px 6px; border-radius: 10px; margin-left: 5px; vertical-align: middle; text-transform: uppercase; font-weight: bold;'>â­ Especialidad</span></h3>
+                    <article class="menu-item" data-gluten="false" data-lacteos="false" data-vegano="false" data-spice="0" data-recomendado="false">
+                        <img src='assets/item_TorreznosdeSoria.webp' alt='Torreznos de Soria' class='item-image' onclick="showImageModal('assets/item_TorreznosdeSoria.webp')">
+                        <div class="item-details" onclick="showImageModal('assets/item_TorreznosdeSoria.webp')" style='cursor: zoom-in;'>
+                            <h3 class="item-name"><span class="i18n" data-es="Torreznos de Soria" data-en="Torreznos de Soria" data-fr="Torreznos de Soria">Torreznos de Soria</span></h3>
                             <p class="item-description"><span class="i18n" data-es="Torreznos de Soria con Pan con Tomate" data-en="Torreznos de Soria con Pan con Tomate" data-fr="Torreznos de Soria con Pan con Tomate">Torreznos de Soria con Pan con Tomate</span></p>
                         </div>
                         
                         <div class="item-right-col">
-                            <div class='item-price'>7.35 â‚¬</div>
+                            <div class='item-price'>7.35 €</div>
                             
                         </div>
                     </article>
@@ -192,7 +181,7 @@
                         </div>
                         
                         <div class="item-right-col">
-                            <div class='item-price'>5.95 â‚¬</div>
+                            <div class='item-price'>5.95 €</div>
                             
                         </div>
                     </article>
@@ -204,43 +193,32 @@
                         </div>
                         
                         <div class="item-right-col">
-                            <div class='item-price'>6.25 â‚¬</div>
+                            <div class='item-price'>6.25 €</div>
                             
                         </div>
+                    
                     </article>
                     <article class="menu-item" data-gluten="false" data-lacteos="false" data-vegano="false" data-spice="0" data-recomendado="false">
-                        <img src='assets/item_tapas_96.jpg' alt='Pincho de Tortilla (und)' class='item-image' onclick="showImageModal('assets/item_tapas_96.jpg')">
-                        <div class="item-details" onclick="showImageModal('assets/item_tapas_96.jpg')" style='cursor: zoom-in;'>
-                            <h3 class="item-name"><span class="i18n" data-es="Pincho de Tortilla (und)" data-en="Pincho de Tortilla (und)" data-fr="Pincho de Tortilla (und)">Pincho de Tortilla (und)</span></h3>
-                            <p class="item-description"><span class="i18n" data-es="Pincho de Tortilla con pan con tomate" data-en="Pincho de Tortilla con pan con tomate" data-fr="Pincho de Tortilla con pan con tomate">Pincho de Tortilla con pan con tomate</span></p>
-                        </div>
-                        
-                        <div class="item-right-col">
-                            <div class='item-price'>1.60 â‚¬</div>
-                            
-                        </div>
-                    </article>
-                    <article class="menu-item" data-gluten="false" data-lacteos="false" data-vegano="false" data-spice="0" data-recomendado="true">
                         
                         <div class="item-details">
-                            <h3 class="item-name"><span class="i18n" data-es="Patatas Gajo picantitas Sergio&#39;s" data-en="Patatas Gajo picantitas Sergio&#39;s" data-fr="Patatas Gajo picantitas Sergio&#39;s">Patatas Gajo picantitas Sergio&#39;s</span><span style='background: #ffecb3; color: #ff8f00; font-size:0.7rem; padding: 2px 6px; border-radius: 10px; margin-left: 5px; vertical-align: middle; text-transform: uppercase; font-weight: bold;'>â­ Especialidad</span></h3>
+                            <h3 class="item-name"><span class="i18n" data-es="Patatas Gajo" data-en="Patatas Gajo" data-fr="Patatas Gajo">Patatas Gajo</span></h3>
                             <p class="item-description"><span class="i18n" data-es="Con salsa Sergio*s" data-en="Con salsa Sergio*s" data-fr="Con salsa Sergio*s">Con salsa Sergio*s</span></p>
                         </div>
                         
                         <div class="item-right-col">
-                            <div class='item-price'>6.55 â‚¬</div>
+                            <div class='item-price'>6.55 €</div>
                             
                         </div>
                     </article>
                     <article class="menu-item" data-gluten="false" data-lacteos="false" data-vegano="false" data-spice="0" data-recomendado="false">
-                        <img src='assets/item_tapas_98.jpg' alt='Pinchos Morunos' class='item-image' onclick="showImageModal('assets/item_tapas_98.jpg')">
-                        <div class="item-details" onclick="showImageModal('assets/item_tapas_98.jpg')" style='cursor: zoom-in;'>
+                        
+                        <div class="item-details">
                             <h3 class="item-name"><span class="i18n" data-es="Pinchos Morunos" data-en="Pinchos Morunos" data-fr="Pinchos Morunos">Pinchos Morunos</span></h3>
                             <p class="item-description"><span class="i18n" data-es="" data-en="" data-fr=""></span></p>
                         </div>
                         
                         <div class="item-right-col">
-                            <div class='item-price'>6.80 â‚¬</div>
+                            <div class='item-price'>6.80 €</div>
                             
                         </div>
                     </article>
@@ -248,11 +226,11 @@
                         
                         <div class="item-details">
                             <h3 class="item-name"><span class="i18n" data-es="Patatas Bravas" data-en="Patatas Bravas" data-fr="Patatas Bravas">Patatas Bravas</span></h3>
-                            <p class="item-description"><span class="i18n" data-es="salsas exclusivas separadas" data-en="salsas exclusivas separadas" data-fr="salsas exclusivas separadas">salsas exclusivas separadas</span></p>
+                            <p class="item-description"><span class="i18n" data-es="" data-en="" data-fr=""></span></p>
                         </div>
                         
                         <div class="item-right-col">
-                            <div class='item-price'>5.75 â‚¬</div>
+                            <div class='item-price'>5.75 €</div>
                             
                         </div>
                     </article>
@@ -264,7 +242,7 @@
                         </div>
                         
                         <div class="item-right-col">
-                            <div class='item-price'>4.15 â‚¬</div>
+                            <div class='item-price'>4.15 €</div>
                             
                         </div>
                     </article>
@@ -276,7 +254,7 @@
                         </div>
                         
                         <div class="item-right-col">
-                            <div class='item-price'>7.90 â‚¬</div>
+                            <div class='item-price'>7.90 €</div>
                             
                         </div>
                     </article>
@@ -288,7 +266,7 @@
                         </div>
                         
                         <div class="item-right-col">
-                            <div class='item-price'>6.10 â‚¬</div>
+                            <div class='item-price'>6.10 €</div>
                             
                         </div>
                     </article>
@@ -300,31 +278,43 @@
                         </div>
                         
                         <div class="item-right-col">
-                            <div class='item-price'>6.50 â‚¬</div>
-                            
-                        </div>
-                    </article>
-                    <article class="menu-item" data-gluten="false" data-lacteos="false" data-vegano="false" data-spice="0" data-recomendado="true">
-                        
-                        <div class="item-details">
-                            <h3 class="item-name"><span class="i18n" data-es="Chistorra" data-en="Chistorra" data-fr="Chistorra">Chistorra</span><span style='background: #ffecb3; color: #ff8f00; font-size:0.7rem; padding: 2px 6px; border-radius: 10px; margin-left: 5px; vertical-align: middle; text-transform: uppercase; font-weight: bold;'>â­ Especialidad</span></h3>
-                            <p class="item-description"><span class="i18n" data-es="Chistorra con Pan con Tomate" data-en="Chistorra con Pan con Tomate" data-fr="Chistorra con Pan con Tomate">Chistorra con Pan con Tomate</span></p>
-                        </div>
-                        
-                        <div class="item-right-col">
-                            <div class='item-price'>6.50 â‚¬</div>
+                            <div class='item-price'>6.50 €</div>
                             
                         </div>
                     </article>
                     <article class="menu-item" data-gluten="false" data-lacteos="false" data-vegano="false" data-spice="0" data-recomendado="false">
                         
                         <div class="item-details">
-                            <h3 class="item-name"><span class="i18n" data-es="Pollo estilo Kentucky" data-en="Pollo estilo Kentucky" data-fr="Pollo estilo Kentucky">Pollo estilo Kentucky</span></h3>
+                            <h3 class="item-name"><span class="i18n" data-es="Pechuguitas de Pollo Barbacoa" data-en="Pechuguitas de Pollo Barbacoa" data-fr="Pechuguitas de Pollo Barbacoa">Pechuguitas de Pollo Barbacoa</span></h3>
                             <p class="item-description"><span class="i18n" data-es="" data-en="" data-fr=""></span></p>
                         </div>
                         
                         <div class="item-right-col">
-                            <div class='item-price'>6.95 â‚¬</div>
+                            <div class='item-price'>6.20 €</div>
+                            
+                        </div>
+                    </article>
+                    <article class="menu-item" data-gluten="false" data-lacteos="false" data-vegano="false" data-spice="0" data-recomendado="false">
+                        
+                        <div class="item-details">
+                            <h3 class="item-name"><span class="i18n" data-es="Chistorra" data-en="Chistorra" data-fr="Chistorra">Chistorra</span></h3>
+                            <p class="item-description"><span class="i18n" data-es="Chistorra con Pan con Tomate" data-en="Chistorra con Pan con Tomate" data-fr="Chistorra con Pan con Tomate">Chistorra con Pan con Tomate</span></p>
+                        </div>
+                        
+                        <div class="item-right-col">
+                            <div class='item-price'>6.50 €</div>
+                            
+                        </div>
+                    </article>
+                    <article class="menu-item" data-gluten="false" data-lacteos="false" data-vegano="false" data-spice="0" data-recomendado="false">
+                        
+                        <div class="item-details">
+                            <h3 class="item-name"><span class="i18n" data-es="Pollo Kentucky" data-en="Pollo Kentucky" data-fr="Pollo Kentucky">Pollo Kentucky</span></h3>
+                            <p class="item-description"><span class="i18n" data-es="" data-en="" data-fr=""></span></p>
+                        </div>
+                        
+                        <div class="item-right-col">
+                            <div class='item-price'>6.95 €</div>
                             
                         </div>
                     </article>
@@ -332,23 +322,23 @@
                         
                         <div class="item-details">
                             <h3 class="item-name"><span class="i18n" data-es="Alcachofas Rebozadas Sergio&#39;s" data-en="Alcachofas Rebozadas Sergio&#39;s" data-fr="Alcachofas Rebozadas Sergio&#39;s">Alcachofas Rebozadas Sergio&#39;s</span></h3>
-                            <p class="item-description"><span class="i18n" data-es="rebozadas ysabrosas con toque picante" data-en="rebozadas ysabrosas con toque picante" data-fr="rebozadas ysabrosas con toque picante">rebozadas ysabrosas con toque picante</span></p>
+                            <p class="item-description"><span class="i18n" data-es="" data-en="" data-fr=""></span></p>
                         </div>
                         
                         <div class="item-right-col">
-                            <div class='item-price'>8.90 â‚¬</div>
+                            <div class='item-price'>8.90 €</div>
                             
                         </div>
                     </article>
                     <article class="menu-item" data-gluten="false" data-lacteos="false" data-vegano="false" data-spice="0" data-recomendado="false">
                         
                         <div class="item-details">
-                            <h3 class="item-name"><span class="i18n" data-es="Alitas de Pollo barbacoa (5 und)" data-en="Alitas de Pollo barbacoa (5 und)" data-fr="Alitas de Pollo barbacoa (5 und)">Alitas de Pollo barbacoa (5 und)</span></h3>
+                            <h3 class="item-name"><span class="i18n" data-es="Alitas de Pollo (5 und)" data-en="Alitas de Pollo (5 und)" data-fr="Alitas de Pollo (5 und)">Alitas de Pollo (5 und)</span></h3>
                             <p class="item-description"><span class="i18n" data-es="" data-en="" data-fr=""></span></p>
                         </div>
                         
                         <div class="item-right-col">
-                            <div class='item-price'>6.25 â‚¬</div>
+                            <div class='item-price'>6.25 €</div>
                             
                         </div>
                     </article>
@@ -360,43 +350,7 @@
                         </div>
                         
                         <div class="item-right-col">
-                            <div class='item-price'>5.20 â‚¬</div>
-                            
-                        </div>
-                    </article>
-                    <article class="menu-item" data-gluten="false" data-lacteos="false" data-vegano="false" data-spice="0" data-recomendado="false">
-                        
-                        <div class="item-details">
-                            <h3 class="item-name"><span class="i18n" data-es="Choricitos a la sidra" data-en="Choricitos a la sidra" data-fr="Choricitos a la sidra">Choricitos a la sidra</span></h3>
-                            <p class="item-description"><span class="i18n" data-es="Choricitos a la Sidra" data-en="Choricitos a la Sidra" data-fr="Choricitos a la Sidra">Choricitos a la Sidra</span></p>
-                        </div>
-                        
-                        <div class="item-right-col">
-                            <div class='item-price'>7.90 â‚¬</div>
-                            
-                        </div>
-                    </article>
-                    <article class="menu-item item-nuevo" data-gluten="false" data-lacteos="false" data-vegano="false" data-spice="0" data-recomendado="true">
-                        
-                        <div class="item-details">
-                            <h3 class="item-name"><span class="i18n" data-es="Cannoli de Sobrasada Iberica con Miel" data-en="Cannoli de Sobrasada Iberica con Miel" data-fr="Cannoli de Sobrasada Iberica con Miel">Cannoli de Sobrasada Iberica con Miel</span><span style='background: #ffecb3; color: #ff8f00; font-size:0.7rem; padding: 2px 6px; border-radius: 10px; margin-left: 5px; vertical-align: middle; text-transform: uppercase; font-weight: bold;'>â­ Especialidad</span><span style='background: linear-gradient(135deg, #ff5722 0%, #ff8f00 100%); color: white; font-size:0.7rem; padding: 2px 8px; border-radius: 10px; margin-left: 5px; vertical-align: middle; text-transform: uppercase; font-weight: bold; box-shadow: 0 2px 4px rgba(255, 87, 34, 0.35);'>ðŸ†• Novedad</span></h3>
-                            <p class="item-description"><span class="i18n" data-es="Con Miel aparte. sabor único" data-en="Con Miel aparte. sabor único" data-fr="Con Miel aparte. sabor único">Con Miel aparte. sabor único</span></p>
-                        </div>
-                        
-                        <div class="item-right-col">
-                            <div class='item-price'>8.95 â‚¬</div>
-                            
-                        </div>
-                    </article>
-                    <article class="menu-item item-nuevo" data-gluten="false" data-lacteos="false" data-vegano="false" data-spice="0" data-recomendado="true">
-                        
-                        <div class="item-details">
-                            <h3 class="item-name"><span class="i18n" data-es="Cazuelita  marinera" data-en="Cazuelita  marinera" data-fr="Cazuelita  marinera">Cazuelita  marinera</span><span style='background: #ffecb3; color: #ff8f00; font-size:0.7rem; padding: 2px 6px; border-radius: 10px; margin-left: 5px; vertical-align: middle; text-transform: uppercase; font-weight: bold;'>â­ Especialidad</span><span style='background: linear-gradient(135deg, #ff5722 0%, #ff8f00 100%); color: white; font-size:0.7rem; padding: 2px 8px; border-radius: 10px; margin-left: 5px; vertical-align: middle; text-transform: uppercase; font-weight: bold; box-shadow: 0 2px 4px rgba(255, 87, 34, 0.35);'>ðŸ†• Novedad</span></h3>
-                            <p class="item-description"><span class="i18n" data-es="Suculento plato con Mejillones, Almejas,Gambas, Patatas, Calamares con Fumet de Pescado" data-en="Suculento plato con Mejillones, Almejas,Gambas, Patatas, Calamares con Fumet de Pescado" data-fr="Suculento plato con Mejillones, Almejas,Gambas, Patatas, Calamares con Fumet de Pescado">Suculento plato con Mejillones, Almejas,Gambas, Patatas, Calamares con Fumet de Pescado</span></p>
-                        </div>
-                        
-                        <div class="item-right-col">
-                            <div class='item-price'>8.90 â‚¬</div>
+                            <div class='item-price'>5.20 €</div>
                             
                         </div>
                     </article>
@@ -408,7 +362,7 @@
                         </div>
                         
                         <div class="item-right-col">
-                            <div class='item-price'>1.50 â‚¬</div>
+                            <div class='item-price'>1.50 €</div>
                             
                         </div>
                     </article>
@@ -420,11 +374,12 @@
                         </div>
                         
                         <div class="item-right-col">
-                            <div class='item-price'>2.50 â‚¬</div>
+                            <div class='item-price'>2.50 €</div>
                             
                         </div>
-                    </article>
-                </div>
+                    
+                            
+                        </div>
             </section>
         </div>
     </main>
@@ -494,10 +449,10 @@
                     warning.className = 'schedule-warning';
                     warning.innerHTML = `
                         <div class="i18n" 
-                             data-es="âš ï¸ Esta secciÃ³n estÃ¡ fuera de su horario de servicio (Disponible de ` + start + ` a ` + end + `). No se pueden realizar pedidos en este momento." 
-                             data-en="âš ï¸ This section is outside of its service hours (Available from ` + start + ` to ` + end + `). Orders cannot be placed at this time." 
-                             data-fr="âš ï¸ Cette section es en dehors de ses heures de service (Disponible de ` + start + ` Ã  ` + end + `). Les commandes ne peuvent pas Ãªtre passÃ©es pour le moment.">
-                             âš ï¸ Esta secciÃ³n estÃ¡ fuera de su horario de servicio (Disponible de ` + start + ` a ` + end + `). No se pueden realizar pedidos en este momento.
+                             data-es="⚠️ Esta sección está fuera de su horario de servicio (Disponible de ` + start + ` a ` + end + `). No se pueden realizar pedidos en este momento." 
+                             data-en="⚠️ This section is outside of its service hours (Available from ` + start + ` to ` + end + `). Orders cannot be placed at this time." 
+                             data-fr="⚠️ Cette section es en dehors de ses heures de service (Disponible de ` + start + ` à ` + end + `). Les commandes ne peuvent pas être passées pour le moment.">
+                             ⚠️ Esta sección está fuera de su horario de servicio (Disponible de ` + start + ` a ` + end + `). No se pueden realizar pedidos en este momento.
                         </div>
                     `;
                     container.insertBefore(warning, container.firstChild);
@@ -514,5 +469,7 @@
         });
     </script>
 
+    <script src="firebase-sync.js"></script>
 </body>
 </html>
+
